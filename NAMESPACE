@@ -1,0 +1,6 @@
+export(BainTTestBayesianIndependentSamples)
+export(BainTTestBayesianPairedSamples)
+export(BainTTestBayesianOneSample)
+export(BainAnovaBayesian)
+export(BainAncovaBayesian)
+export(BainRegressionLinearBayesian)
