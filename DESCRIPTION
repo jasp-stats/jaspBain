@@ -1,4 +1,4 @@
-Package: BAIN
+Package: jaspBain
 Type: Package
 Title: Bain Module for JASP
 Version: 0.1.0
