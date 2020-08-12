@@ -381,7 +381,7 @@ BainTTestBayesianIndependentSamples <- function(jaspResults, dataset, options, .
 				CiLower <- bainSummary[["lb"]]
 				CiUpper <- bainSummary[["ub"]]
 
-				yBreaks <- JASPgraphs::getPrettyAxisBreaks(c(CiLower, CiUpper), min.n = 4)
+				yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(CiLower, CiUpper), min.n = 4)
 				d <- data.frame(v = levels, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1:length(levels))
 
 				p <- ggplot2::ggplot(d, ggplot2::aes(x=index, y=mean)) +
@@ -392,7 +392,7 @@ BainTTestBayesianIndependentSamples <- function(jaspResults, dataset, options, .
 						ggplot2::xlab(options[["groupingVariable"]]) +
 						ggplot2::scale_x_continuous(breaks = 1:length(levels), labels = as.character(levels)) +
 						ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks))
-				p <- JASPgraphs::themeJasp(p)
+				p <- jaspGraphs::themeJasp(p)
 
 				descriptivesPlots[[variable]] <- createJaspPlot(plot=p, title = variable)
 				descriptivesPlots[[variable]]$dependOn(optionContainsValue=list("variables" = variable))

@@ -332,7 +332,7 @@ BainTTestBayesianOneSample <- function(jaspResults, dataset, options, ...) {
         CiLower <- bainSummary[["lb"]]
         CiUpper <- bainSummary[["ub"]]
 
-        yBreaks <- JASPgraphs::getPrettyAxisBreaks(c(options[["testValue"]], CiLower, CiUpper), min.n = 4)
+        yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(options[["testValue"]], CiLower, CiUpper), min.n = 4)
         d <- data.frame(v = variable, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1)
 
         p <- ggplot2::ggplot(d, ggplot2::aes(x=index, y=mean)) +
@@ -343,7 +343,7 @@ BainTTestBayesianOneSample <- function(jaspResults, dataset, options, ...) {
               ggplot2::xlab("") +
               ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks)) +
               ggplot2::scale_x_continuous(breaks = 0:2, labels = NULL)
-        p <- JASPgraphs::themeJasp(p, xAxis = FALSE) + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())
+        p <- jaspGraphs::themeJasp(p, xAxis = FALSE) + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())
         
         descriptivesPlots[[variable]] <- createJaspPlot(plot=p, title = variable)
         descriptivesPlots[[variable]]$dependOn(optionContainsValue=list("variables" = variable))

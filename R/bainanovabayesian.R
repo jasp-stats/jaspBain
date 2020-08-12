@@ -247,7 +247,7 @@ Posterior model probabilities (a: excluding the unconstrained hypothesis, b: inc
 			ggplot2::xlab(options[["fixedFactors"]]) +
 			bainBreaks(d, TRUE) +
 			ggplot2::scale_x_continuous(breaks = 1:length(varLevels), labels = as.character(varLevels))
-	p <- JASPgraphs::themeJasp(p)
+	p <- jaspGraphs::themeJasp(p)
 
 	descriptivesPlot$plotObject <- p
 }
@@ -267,7 +267,7 @@ Posterior model probabilities (a: excluding the unconstrained hypothesis, b: inc
 
 		if(options[["fixedFactors"]] != ""){
 			if(any(grepl(pattern = " ", x = levels(dataset[, .v(options[["fixedFactors"]])])))){
-				JASP:::.quitAnalysis(gettext("Bain does not accept factor levels that contain spaces. Please remove the spaces from your factor levels to continue."))
+				jaspBase:::.quitAnalysis(gettext("Bain does not accept factor levels that contain spaces. Please remove the spaces from your factor levels to continue."))
 			}
 		}
 	} else {

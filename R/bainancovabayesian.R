@@ -168,7 +168,7 @@ Posterior model probabilities (a: excluding the unconstrained hypothesis, b: inc
 
 		if(options[["fixedFactors"]] != ""){
 			if(any(grepl(pattern = " ", x = levels(dataset[, .v(options[["fixedFactors"]])])))){
-				JASP:::.quitAnalysis(gettext("Bain does not accept factor levels that contain spaces. Please remove the spaces from your factor levels to continue."))
+				jaspBase:::.quitAnalysis(gettext("Bain does not accept factor levels that contain spaces. Please remove the spaces from your factor levels to continue."))
 			}
 		}
 	} else {
@@ -265,7 +265,7 @@ Posterior model probabilities (a: excluding the unconstrained hypothesis, b: inc
           ggplot2::scale_fill_brewer(palette="Set1")
     
     plotMat <- list(p1 = p1, p2 = p2)
-    pp <- JASPgraphs::ggMatrixPlot(plotList = plotMat, layout = matrix(c(1, 2), ncol = 2))
+    pp <- jaspGraphs::ggMatrixPlot(plotList = plotMat, layout = matrix(c(1, 2), ncol = 2))
     
     return(pp)
   }
