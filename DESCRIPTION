@@ -8,3 +8,12 @@ Website: www.informative-hypotheses.sites.uu.nl/software/bain/
 Maintainer: Koen Derks <k.derks@nyenrode.nl>
 Description: A module for computing approximated adjusted fractional Bayes factors for equality, inequality, and about equality constrained hypotheses.
 License: GPL (>= 3)
+Encoding: UTF-8
+Imports:
+  bain,
+  ggplot2,
+  jaspBase,
+  jaspGraphs
+Remotes:
+  jasp-stats/jaspBase,
+  jasp-stats/jaspGraphs
