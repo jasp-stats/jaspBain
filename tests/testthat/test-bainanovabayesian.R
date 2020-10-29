@@ -29,6 +29,7 @@ test_that("Bayes Factor Matrix table results match", {
 })
 
 test_that("Posterior Probabilities plot matches", {
+  skip("Does not reproduce on Linux")
   plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "posterior-probabilities", dir="BainAnovaBayesian")
