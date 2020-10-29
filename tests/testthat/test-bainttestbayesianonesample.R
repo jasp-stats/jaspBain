@@ -20,6 +20,7 @@ test_that("Bain One Sample T-test table results match", {
 })
 
 test_that("BF age plot matches", {
+  skip("Does not reproduce on Linux")
   plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorPlots"]][["collection"]][["bainContainer_bayesFactorPlots_age"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "BF age", dir="BainTTestBayesianOneSample")
