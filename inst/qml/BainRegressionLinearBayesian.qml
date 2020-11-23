@@ -88,7 +88,7 @@ Form
 			name: "model"
 			implicitHeight: 200
 			text: ""
-			textType: JASP.TextAreaModel
+			textType: JASP.TextTypeModel
 			trim: true
 		}
 	}
