@@ -123,7 +123,7 @@ Posterior model probabilities (a: excluding the unconstrained hypothesis, b: inc
 	if (type == "regression")
 		bayesFactorMatrix$dependOn(options = c("bayesFactorMatrix", "standardized", "seed"))
 
-	if (type == "ancova" || type == "anova")
+	if (type == "ancova" || type == "anova" || type == "sem")
 		bayesFactorMatrix$dependOn(options = c("bayesFactorMatrix", "seed"))
 		
   bayesFactorMatrix$addColumnInfo(name = "hypothesis",  title = "",             type = "string")

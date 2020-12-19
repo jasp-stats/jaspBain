@@ -11,7 +11,9 @@ License: GPL (>= 3)
 Encoding: UTF-8
 Imports:
   bain,
+  lavaan,
   ggplot2,
+  semPlot,
   jaspBase,
   jaspGraphs
 Remotes:

@@ -48,8 +48,8 @@ Form
 
 			CheckBox
 			{
-				name: 					"descriptives"
-				text: 					qsTr("Descriptives")
+				name: 					"coefficients"
+				text: 					qsTr("Coefficients")
 				
 				CIField 
 				{ 
@@ -71,8 +71,8 @@ Form
 
 			CheckBox 
 			{ 
-				name: 					"descriptivesPlot"
-				text: 					qsTr("Descriptives plot")			
+				name: 					"pathDiagram"
+				text: 					qsTr("Path diagram")			
 			}
 		}
 
