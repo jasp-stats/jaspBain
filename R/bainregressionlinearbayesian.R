@@ -33,7 +33,7 @@ BainRegressionLinearBayesian <- function(jaspResults, dataset, options, ...) {
   .bainLegend(dataList[["dataset"]], options, type = "regression", jaspResults, position = 0)
   
   ### RESULTS ###
-  .bainLinearRegressionResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missingValuesIndicator"]], ready, position = 1)
+  .bainLinearRegressionResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, position = 1)
   
   ### BAYES FACTOR MATRIX ###
   .bainBayesFactorMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "regression", position = 2)
@@ -142,65 +142,4 @@ Posterior model probabilities (a: excluding the unconstrained hypothesis, b: inc
   
   row <- data.frame(v = groups, N = N, mean = mu, SE = se, CiLower = CiLower, CiUpper = CiUpper)
   coefficientsTable$addRows(row)
-}
-
-.plot_bain_regression_cran <- function(x)
-{
-  PMPa <- na.omit(x$fit$PMPa)
-  PMPb <- x$fit$PMPb
-  numH <- length(PMPa)
-  P_lables <- paste(gettext("H"), 1:numH, sep = "")
-  ggdata1 <- data.frame(lab = P_lables, PMP = PMPa)
-  ggdata2 <- data.frame(lab = c(P_lables, gettext("Hu")), PMP = PMPb)
-  
-  if (numH == 1) {
-    
-    p <- ggplot2::ggplot(data = ggdata2, mapping = ggplot2::aes(x = "", y = PMP, fill = lab)) +
-      ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
-      ggplot2::geom_col() + 
-      ggplot2::coord_polar(theta = "y", direction = -1) +
-      ggplot2::labs(x = "", y = "", title = "") +
-      ggplot2::theme(panel.grid = ggplot2::element_blank(), legend.position = "none") +
-      ggplot2::scale_y_continuous(breaks = cumsum(rev(PMPb)) - rev(PMPb)/2, labels = rev(c(P_lables, "Hu"))) +
-      ggplot2::theme(panel.background = ggplot2::element_blank(),
-                     axis.text=ggplot2::element_text(size=17, color = "black"),
-                     plot.title = ggplot2::element_text(size=18, hjust = .5),
-                     axis.ticks.y = ggplot2::element_blank()) +
-      ggplot2::scale_fill_brewer(palette="Set1")
-    
-    return(p)
-    
-  } else if (numH > 1) {
-    
-    p1 <- ggplot2::ggplot(data = ggdata1, mapping = ggplot2::aes(x = "", y = PMP, fill = lab)) +
-      ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
-      ggplot2::geom_col() +
-      ggplot2::coord_polar(theta = "y", direction = -1) +
-      ggplot2::labs(x = "", y = "", title = gettext("Excluding Hu")) +
-      ggplot2::theme(panel.grid = ggplot2::element_blank(),legend.position = "none") +
-      ggplot2::scale_y_continuous(breaks = cumsum(rev(PMPa)) - rev(PMPa)/2, labels = rev(P_lables)) +            
-      ggplot2::theme(panel.background = ggplot2::element_blank(),
-                     axis.text=ggplot2::element_text(size=17, color = "black"),
-                     plot.title = ggplot2::element_text(size=18, hjust = .5),
-                     axis.ticks.y = ggplot2::element_blank()) +
-      ggplot2::scale_fill_brewer(palette="Set1")
-    
-    p2 <- ggplot2::ggplot(data = ggdata2, mapping = ggplot2::aes(x = "", y = PMP, fill = lab)) +
-      ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
-      ggplot2::geom_col() + 
-      ggplot2::coord_polar(theta = "y", direction = -1) +
-      ggplot2::labs(x = "", y = "", title = gettext("Including Hu")) +
-      ggplot2::theme(panel.grid = ggplot2::element_blank(), legend.position = "none") +
-      ggplot2::scale_y_continuous(breaks = cumsum(rev(PMPb)) - rev(PMPb)/2, labels = rev(c(P_lables, "Hu"))) +
-      ggplot2::theme(panel.background = ggplot2::element_blank(),
-                     axis.text=ggplot2::element_text(size=17, color = "black"),
-                     plot.title = ggplot2::element_text(size=18, hjust = .5),
-                     axis.ticks.y = ggplot2::element_blank()) +
-      ggplot2::scale_fill_brewer(palette="Set1")
-    
-    plotMat <- list(p1 = p1, p2 = p2)
-    pp <- jaspGraphs::ggMatrixPlot(plotList = plotMat, layout = matrix(c(1, 2), ncol = 2))
-    
-    return(pp)
-  }
 }

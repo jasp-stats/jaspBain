@@ -174,11 +174,6 @@ Posterior model probabilities (a: excluding the unconstrained hypothesis, b: inc
   return(dataset)
 }
 
-.bainSemIsReady <- function(options, dataset) {
-  usedvars <- .bainSemGetUsedVars(options[["syntax"]], colnames(dataset))
-  if (length(usedvars) > 1) TRUE else FALSE
-}
-
 .bainSemGetUsedVars <- function(syntax, availablevars, decode = TRUE) {
   if(decode){
     vv <- decodeColNames(availablevars)

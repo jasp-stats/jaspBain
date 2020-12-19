@@ -30,7 +30,7 @@ BainTTestBayesianPairedSamples <- function(jaspResults, dataset, options, ...) {
   bainContainer <- .bainGetContainer(jaspResults, deps = "seed")
   
   ### RESULTS ###
-  .bainPairedSamplesResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missingValuesIndicator"]], ready, position = 1)
+  .bainPairedSamplesResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, position = 1)
   
   ### DESCRIPTIVES ###
   .bainPairedSamplesDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, position = 2)

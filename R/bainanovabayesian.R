@@ -33,7 +33,7 @@ BainAnovaBayesian <- function(jaspResults, dataset, options, ...) {
   .bainLegend(dataList[["dataset"]], options, type = "anova", jaspResults, position = 0)
   
   ### RESULTS ###
-  .bainAnovaResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missingValuesIndicator"]], ready, position = 1)
+  .bainAnovaResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, position = 1)
   
   ### BAYES FACTOR MATRIX ###
   .bainBayesFactorMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "anova", position = 2)
@@ -250,32 +250,4 @@ Posterior model probabilities (a: excluding the unconstrained hypothesis, b: inc
   p <- jaspGraphs::themeJasp(p)
   
   descriptivesPlot$plotObject <- p
-}
-
-.readDataBainAnova <- function(options, dataset) {
-  
-  numeric.variables	<- c(unlist(options[["dependent"]]))
-  numeric.variables	<- numeric.variables[numeric.variables != ""]
-  factor.variables	<- unlist(options[["fixedFactors"]])
-  factor.variables	<- factor.variables[factor.variables != ""]
-  all.variables		<- c(numeric.variables, factor.variables)
-  
-  if (is.null(dataset)) {
-    trydata	<- .readDataSetToEnd(columns.as.numeric=all.variables)
-    missingValuesIndicator	<- .unv(names(which(apply(trydata, 2, function(x) { any(is.na(x))} ))))
-    dataset <- .readDataSetToEnd(columns.as.numeric=numeric.variables, columns.as.factor=factor.variables, exclude.na.listwise=all.variables)
-    
-    if(options[["fixedFactors"]] != ""){
-      if(any(grepl(pattern = " ", x = levels(dataset[, .v(options[["fixedFactors"]])])))){
-        jaspBase:::.quitAnalysis(gettext("Bain does not accept factor levels that contain spaces. Please remove the spaces from your factor levels to continue."))
-      }
-    }
-  } else {
-    dataset <- .vdf(dataset, columns.as.numeric=numeric.variables, columns.as.factor=factor.variables)
-  }
-  
-  readList <- list()
-  readList[["dataset"]] <- dataset
-  readList[["missingValuesIndicator"]] <- missingValuesIndicator
-  return(readList)
 }

@@ -30,7 +30,7 @@ BainTTestBayesianOneSample <- function(jaspResults, dataset, options, ...) {
   bainContainer <- .bainGetContainer(jaspResults, deps = c("testValue", "seed"))
   
   ### RESULTS ###
-  .bainOneSampleResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missingValuesIndicator"]], ready, position = 1)
+  .bainOneSampleResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, position = 1)
   
   ### DESCRIPTIVES ###
   .bainOneSampleDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, position = 2)

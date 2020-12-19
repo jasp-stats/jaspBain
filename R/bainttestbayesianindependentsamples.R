@@ -30,7 +30,7 @@ BainTTestBayesianIndependentSamples <- function(jaspResults, dataset, options, .
   bainContainer <- .bainGetContainer(jaspResults, deps = c("groupingVariable", "seed"))
   
   ### RESULTS ###
-  .bainIndependentSamplesResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missingValuesIndicator"]], ready, position = 1)
+  .bainIndependentSamplesResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, position = 1)
   
   ### DESCRIPTIVES ###
   .bainIndependentSamplesDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, position = 2)
