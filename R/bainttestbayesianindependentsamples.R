@@ -17,8 +17,8 @@
 
 BainTTestBayesianIndependentSamples <- function(jaspResults, dataset, options, ...) {
   
-  ### READY ###
-  ready <- length(options[["variables"]][options[["variables"]] != ""] > 0) && options[["groupingVariable"]] != ""
+  ### DO CURRENT OPTIONS ALLOW FOR ANALYSIS? ###
+  ready <- .bainOptionsReady(options, type = "independentTTest")
   
   ### READ DATA ###
   readList <- .readDataBainTwoSample(options, dataset)

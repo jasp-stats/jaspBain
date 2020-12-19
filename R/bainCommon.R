@@ -14,10 +14,30 @@
 .bainGetContainer <- function(jaspResults, deps) {
   if (is.null(jaspResults[["bainContainer"]])) {
     jaspResults[["bainContainer"]] <- createJaspContainer()
-    jaspResults[["bainContainer"]]$dependOn(options=deps)
+    jaspResults[["bainContainer"]]$dependOn(options = deps)
     jaspResults[["bainContainer"]]$position = 1
   }
   invisible(jaspResults[["bainContainer"]])
+}
+
+### DO CURRENT OPTIONS ALLOW FOR ANALYSIS? ###
+.bainOptionsReady <- function(options, type, dataset = NULL){
+	if(type == "independentTTest"){
+		ready <- length(options[["variables"]][options[["variables"]] != ""] > 0) && options[["groupingVariable"]] != ""
+	} else if(type == "pairedTTest"){
+		ready <- !is.null(unlist(options[["pairs"]]))
+	} else if(type == "onesampleTTest"){
+		ready <- length(options[["variables"]][options[["variables"]] != ""] > 0)
+	} else if(type == "anova"){
+		ready <- options[["fixedFactors"]] != "" && options[["dependent"]] != ""
+	} else if(type == "ancova"){
+		ready <- options[["dependent"]] != "" && options[["fixedFactors"]] != ""  && !is.null(unlist(options[["covariates"]]))
+	} else if(type == "regression"){
+		ready <- (options[["dependent"]] != "" && unlist(options[["covariates"]]) != "" && !is.null(unlist(options[["covariates"]])))
+	} else if(type == "sem"){
+		ready <- .bainSemIsReady(options, dataset)
+	}
+	return(ready)
 }
 
 .bainBayesFactorMatrix <- function(dataset, options, bainContainer, ready, type, position) {

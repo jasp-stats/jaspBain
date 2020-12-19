@@ -17,8 +17,8 @@
 
 BainTTestBayesianPairedSamples <- function(jaspResults, dataset, options, ...) {
   
-  ### READY ###
-  ready <- !is.null(unlist(options[["pairs"]]))
+  ### DO CURRENT OPTIONS ALLOW FOR ANALYSIS? ###
+  ready <- .bainOptionsReady(options, type = "pairedTTest")
   
   ### READ DATA ###
   readList <- .readDataBainPairedSamples(options, dataset)

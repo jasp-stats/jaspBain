@@ -17,8 +17,8 @@
 
 BainAncovaBayesian	 <- function(jaspResults, dataset, options, ...) {
   
-  ### READY ###
-  ready <- options[["dependent"]] != "" && options[["fixedFactors"]] != ""  && !is.null(unlist(options[["covariates"]]))
+  ### DO CURRENT OPTIONS ALLOW FOR ANALYSIS? ###
+  ready <- .bainOptionsReady(options, type = "ancova")
   
   ### READ DATA ###
   readList <- .readDataBainAncova(options, dataset)

@@ -17,8 +17,8 @@
 
 BainAnovaBayesian <- function(jaspResults, dataset, options, ...) {
   
-  ### READY ###
-  ready <- options[["fixedFactors"]] != "" && options[["dependent"]] != ""
+  ### DO CURRENT OPTIONS ALLOW FOR ANALYSIS? ###
+  ready <- .bainOptionsReady(options, type = "anova")
   
   ### READ DATA ###
   readList <- .readDataBainAnova(options, dataset)

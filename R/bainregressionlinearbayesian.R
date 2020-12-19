@@ -17,8 +17,8 @@
 
 BainRegressionLinearBayesian <- function(jaspResults, dataset, options, ...) {
   
-  ### READY ###
-  ready <- (options[["dependent"]] != "" && unlist(options[["covariates"]]) != "" && !is.null(unlist(options[["covariates"]])))
+  ### DO CURRENT OPTIONS ALLOW FOR ANALYSIS? ###
+  ready <- .bainOptionsReady(options, type = "regression")
   
   ### READ DATA ###
   readList <- .readDataBainLinearRegression(options, dataset)

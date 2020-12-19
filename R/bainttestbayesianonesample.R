@@ -17,8 +17,8 @@
 
 BainTTestBayesianOneSample <- function(jaspResults, dataset, options, ...) {
   
-  ### READY ###
-  ready <- length(options[["variables"]][options[["variables"]] != ""] > 0)
+  ### DO CURRENT OPTIONS ALLOW FOR ANALYSIS? ###
+  ready <- .bainOptionsReady(options, type = "onesampleTTest")
   
   ### READ DATA ###
   readList								<- .readDataBainOneSample(options, dataset)

@@ -19,9 +19,11 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   
   # Read dataset
   dataset <- .bainSemReadData(dataset, options)
-  ready   <- .bainSemIsReady(dataset, options)
+
+  ### DO CURRENT OPTIONS ALLOW FOR ANALYSIS? ###
+  ready <- .bainOptionsReady(options, type = "sem", dataset)
   
-  bainContainer <- .bainGetContainer(jaspResults, deps=c("syntax", "model", "seed"))
+  bainContainer <- .bainGetContainer(jaspResults, deps = c("syntax", "model", "seed"))
   
   .bainLegendSem(dataset, options, jaspResults, position = 0)
   
@@ -206,7 +208,7 @@ Posterior model probabilities (a: excluding the unconstrained hypothesis, b: inc
   return(dataset)
 }
 
-.bainSemIsReady <- function(dataset, options) {
+.bainSemIsReady <- function(options, dataset) {
   usedvars <- .bainSemGetUsedVars(options[["syntax"]], colnames(dataset))
   if (length(usedvars) > 1) TRUE else FALSE
 }
