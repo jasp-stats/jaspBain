@@ -17,59 +17,29 @@
 
 BainTTestBayesianIndependentSamples <- function(jaspResults, dataset, options, ...) {
   
-  ### DO CURRENT OPTIONS ALLOW FOR ANALYSIS? ###
+  # Check if current options allow for analysis
   ready <- .bainOptionsReady(options, type = "independentTTest")
   
-  ### READ DATA ###
-  readList <- .readDataBainTwoSample(options, dataset)
-  dataset	<- readList[["dataset"]]
-  missingValuesIndicator	<- readList[["missingValuesIndicator"]]
+  # Read the data set 
+  dataList <- .bainReadDataset(options, type = "independentTTest", dataset)
   
-  .bainTwoSampleErrorCheck(dataset, options)
+  # Check if current data allow for analysis
+  .bainDataReady(dataList[["dataset"]], options, type = "independentTTest")
   
-  bainContainer <- .bainGetContainer(jaspResults, deps=c("groupingVariable", "seed"))
+  # Create a container for the results
+  bainContainer <- .bainGetContainer(jaspResults, deps = c("groupingVariable", "seed"))
   
   ### RESULTS ###
-  .bainIndependentSamplesResultsTable(dataset, options, bainContainer, missingValuesIndicator, ready, position = 1)
+  .bainIndependentSamplesResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missingValuesIndicator"]], ready, position = 1)
   
   ### DESCRIPTIVES ###
-  .bainIndependentSamplesDescriptivesTable(dataset, options, bainContainer, ready, position = 2)
+  .bainIndependentSamplesDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, position = 2)
   
-  ### BAYES FACTOR PLOTS ###
-  .bainTTestFactorPlots(dataset, options, bainContainer, ready, type = "independentSamples", position = 3)
+  ### POSTERIOR PROBABILITIES PLOT ###
+  .bainTTestFactorPlots(dataList[["dataset"]], options, bainContainer, ready, type = "independentSamples", position = 3)
   
   ### DESCRIPTIVES PLOTS ###
-  .bainIndependentSamplesDescriptivesPlots(dataset, options, bainContainer, ready, position = 4)
-}
-
-.readDataBainTwoSample <- function(options, dataset) {
-  
-  all.variables 									<- unlist(options$variables)
-  grouping   										<- options$groupingVariable
-  read.variables 									<- c(all.variables, grouping)
-  if (options[["groupingVariable"]] == "")
-    grouping <- NULL
-  
-  if(is.null(dataset)) {
-    trydata <- .readDataSetToEnd(columns.as.numeric=all.variables)
-    missingValuesIndicator <- .unv(names(which(apply(trydata, 2, function(x) { any(is.na(x))} ))))
-    dataset <- .readDataSetToEnd(columns.as.numeric=all.variables, columns.as.factor=grouping, exclude.na.listwise=read.variables)
-  }
-  
-  readList <- list()
-  readList[["dataset"]] <- dataset
-  readList[["missingValuesIndicator"]] <- missingValuesIndicator
-  return(readList)
-}
-
-.bainTwoSampleErrorCheck <- function(dataset, options){
-  if(options[["groupingVariable"]] != ""){
-    .hasErrors(dataset, type="factorLevels",
-               factorLevels.target=options[["groupingVariable"]], factorLevels.amount = "!= 2",
-               exitAnalysisIfErrors = TRUE)
-  }
-  
-  .bainCommonErrorCheck(dataset, options)
+  .bainIndependentSamplesDescriptivesPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)
 }
 
 .bainTwoSampleState <- function(variable, options, dataset, bainContainer){

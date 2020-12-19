@@ -17,47 +17,29 @@
 
 BainTTestBayesianOneSample <- function(jaspResults, dataset, options, ...) {
   
-  ### DO CURRENT OPTIONS ALLOW FOR ANALYSIS? ###
-  ready <- .bainOptionsReady(options, type = "onesampleTTest")
+  # Check if current options allow for analysis
+  ready 	<- .bainOptionsReady(options, type = "onesampleTTest")
   
-  ### READ DATA ###
-  readList								<- .readDataBainOneSample(options, dataset)
-  dataset									<- readList[["dataset"]]
-  missingValuesIndicator	<- readList[["missingValuesIndicator"]]
+  # Read the data set 
+  dataList 	<- .bainReadDataset(options, type = "onesampleTTest", dataset)
   
-  .bainCommonErrorCheck(dataset, options)
+  # Check if current data allow for analysis
+  .bainDataReady(dataset, options, type = "onesampleTTest")
   
-  bainContainer <- .bainGetContainer(jaspResults, deps=c("testValue", "seed"))
+  # Create a container for the results
+  bainContainer <- .bainGetContainer(jaspResults, deps = c("testValue", "seed"))
   
   ### RESULTS ###
-  .bainOneSampleResultsTable(dataset, options, bainContainer, missingValuesIndicator, ready, position = 1)
+  .bainOneSampleResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missingValuesIndicator"]], ready, position = 1)
   
   ### DESCRIPTIVES ###
-  .bainOneSampleDescriptivesTable(dataset, options, bainContainer, ready, position = 2)
+  .bainOneSampleDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, position = 2)
   
-  ### BAYES FACTOR PLOTS ###
-  .bainTTestFactorPlots(dataset, options, bainContainer, ready, type = "oneSample", position = 3)
+  ### POSTERIOR PROBABILITIES PLOT ###
+  .bainTTestFactorPlots(dataList[["dataset"]], options, bainContainer, ready, type = "oneSample", position = 3)
   
   ### DESCRIPTIVES PLOTS ###
-  .bainOneSampleDescriptivesPlot(dataset, options, bainContainer, ready, position = 4)
-}
-
-.readDataBainOneSample <- function(options, dataset) {
-  if (is.null(dataset)) {
-    trydata									<- .readDataSetToEnd(columns.as.numeric = options[["variables"]])
-    missingValuesIndicator	<- .unv(names(which(apply(trydata, 2, function(x) { any(is.na(x))} ))))
-    dataset									<- .readDataSetToEnd(columns.as.numeric = options[["variables"]], exclude.na.listwise = options[["variables"]])
-  }
-  readList <- list()
-  readList[["dataset"]] <- dataset
-  readList[["missingValuesIndicator"]] <- missingValuesIndicator
-  return(readList)
-}
-
-.bainCommonErrorCheck <- function(dataset, options){
-  .hasErrors(dataset, type=c("infinity", "variance", "observations"),
-             all.target = options[["variables"]], observations.amount="< 3",
-             exitAnalysisIfErrors = TRUE)
+  .bainOneSampleDescriptivesPlot(dataList[["dataset"]], options, bainContainer, ready, position = 4)
 }
 
 .bainOneSampleState <- function(variable, options, dataset, bainContainer){
@@ -350,114 +332,4 @@ BainTTestBayesianOneSample <- function(jaspResults, dataset, options, ...) {
       }
     }
   }
-}
-
-.bainTTestFactorPlots <- function(dataset, options, bainContainer, ready, type, position) {
-  
-  if (!is.null(bainContainer[["bayesFactorPlots"]]) || !options[["bayesFactorPlot"]]) return()
-  
-  bayesFactorPlots <- createJaspContainer(gettext("Posterior Probabilities"))
-  bayesFactorPlots$dependOn(options = c("variables", "bayesFactorPlot", "hypothesis", "pairs"))
-  bayesFactorPlots$position <- position
-  
-  bainContainer[["bayesFactorPlots"]] <- bayesFactorPlots
-  
-  if (!ready)
-    return()
-  
-  analysisType <- base::switch(options[["hypothesis"]],
-                               "equalNotEqual"		= 1,
-                               "equalBigger"		  = 2,
-                               "equalSmaller"		= 3,
-                               "biggerSmaller"		= 4,
-                               "equalBiggerSmaller"= 5)
-  
-  if(type == "oneSample" || type == "independentSamples"){
-    
-    for(variable in options[["variables"]]){
-      
-      if (is.null(bayesFactorPlots[[variable]])){
-        
-        bainAnalysis <- .bainOneSampleState(variable, options, dataset, bainContainer)
-        
-        plot <- createJaspPlot(plot = NULL, title = variable, height = 300, width = 400)
-        plot$dependOn(optionContainsValue=list("variables" = variable))
-        
-        if(isTryError(bainAnalysis)){
-          plot$setError(gettext("Plotting not possible: the results for this variable were not computed."))
-        } else {
-          p <- try({
-            plot$plotObject <- .plot_bain_ttest_cran(bainAnalysis, type = analysisType)
-          })
-          if(isTryError(p)){
-            plot$setError(gettextf("Plotting not possible: %s", .extractErrorMessage(p)))
-          }
-        }    
-        bayesFactorPlots[[variable]] <- plot
-      }
-    }
-    
-  } else if (type == "pairedSamples"){
-    
-    for(pair in options[["pairs"]]){
-      
-      currentPair <- paste(pair, collapse=" - ")
-      
-      if (is.null(bayesFactorPlots[[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]){
-        
-        bainAnalysis <- .bainPairedSampleState(pair, options, dataset, bainContainer)
-        
-        plot <- createJaspPlot(plot = NULL, title = currentPair, height = 300, width = 400)
-        plot$dependOn(optionContainsValue=list("pairs" = pair))
-        
-        if(isTryError(bainAnalysis)){
-          plot$setError(gettext("Plotting not possible: the results for this variable were not computed."))
-        } else {
-          p <- try({
-            plot$plotObject <- .plot_bain_ttest_cran(bainAnalysis, type = analysisType)
-          })
-          if(isTryError(p)){
-            plot$setError(gettextf("Plotting not possible: %s", .extractErrorMessage(p)))
-          }
-        }    
-        bayesFactorPlots[[currentPair]] <- plot
-      }
-    }
-  }
-}
-
-.plot_bain_ttest_cran <- function(x, type){
-  
-  if(type == 1 || type == 2 || type == 3){
-    labs <- c(gettext("H0"), gettext("H1"))
-  }
-  if(type == 4){
-    labs <- c(gettext("H1"), gettext("H2"))
-  }
-  if(type == 5){
-    labs <- c(gettext("H0"), gettext("H1"), gettext("H2"))
-  }
-  labels <- rev(labs)
-  if(type == 1){
-    values <- x$fit$PMPb
-  } else {
-    values <- na.omit(x$fit$PMPa)
-  }
-  
-  ggdata <- data.frame(lab = labs, PMP = values)
-  
-  p <- ggplot2::ggplot(data = ggdata, mapping = ggplot2::aes(x = "", y = PMP, fill = lab)) +
-    ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
-    ggplot2::geom_col() +
-    ggplot2::coord_polar(theta = "y", direction = -1) +
-    ggplot2::labs(x = "", y = "") +
-    ggplot2::theme(panel.grid = ggplot2::element_blank(), legend.position = "none") +
-    ggplot2::scale_y_continuous(breaks = cumsum(rev(values)) - rev(values)/2, labels = labels) +
-    ggplot2::theme(panel.background = ggplot2::element_blank(),
-                   axis.text=ggplot2::element_text(size=17, color = "black"),
-                   plot.title = ggplot2::element_text(size=18, hjust = .5),
-                   axis.ticks.y = ggplot2::element_blank()) +
-    ggplot2::scale_fill_brewer(palette="Set1")
-  
-  return(p)
 }

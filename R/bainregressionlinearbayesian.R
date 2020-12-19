@@ -17,32 +17,32 @@
 
 BainRegressionLinearBayesian <- function(jaspResults, dataset, options, ...) {
   
-  ### DO CURRENT OPTIONS ALLOW FOR ANALYSIS? ###
+  # Check if current options allow for analysis
   ready <- .bainOptionsReady(options, type = "regression")
   
-  ### READ DATA ###
-  readList <- .readDataBainLinearRegression(options, dataset)
-  dataset <- readList[["dataset"]]
-  missingValuesIndicator <- readList[["missingValuesIndicator"]]
+  # Read the data set
+  dataList <- .bainReadDataset(options, type = "regression", dataset)
   
-  .bainCommonErrorCheck(dataset, options)
+  # Check if current data allow for analysis
+  .bainDataReady(dataset, options, type = "regression")
   
-  bainContainer <- .bainGetContainer(jaspResults, deps=c("dependent", "covariates", "model", "standardized", "seed"))
+  # Create a container for the results
+  bainContainer <- .bainGetContainer(jaspResults, deps = c("dependent", "covariates", "model", "standardized", "seed"))
   
   ### LEGEND ###
-  .bainLegendRegression(dataset, options, jaspResults, position = 0)
+  .bainLegendRegression(dataList[["dataset"]], options, jaspResults, position = 0)
   
   ### RESULTS ###
-  .bainLinearRegressionResultsTable(dataset, options, bainContainer, missingValuesIndicator, ready, position = 1)
+  .bainLinearRegressionResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missingValuesIndicator"]], ready, position = 1)
   
   ### BAYES FACTOR MATRIX ###
-  .bainBayesFactorMatrix(dataset, options, bainContainer, ready, type = "regression", position = 2)
+  .bainBayesFactorMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "regression", position = 2)
   
   ### COEFFICIENTS ###
-  .bainLinearRegressionCoefficientsTable(dataset, options, bainContainer, ready, position = 3)
+  .bainLinearRegressionCoefficientsTable(dataList[["dataset"]], options, bainContainer, ready, position = 3)
   
-  ### BAYES FACTOR PLOT ###
-  .bainLinearRegressionBayesFactorPlots(dataset, options, bainContainer, ready, position = 4)
+  ### POSTERIOR PROBABILITIES PLOT ###
+  .bainLinearRegressionBayesFactorPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)
 }
 
 .bainLinearRegressionResultsTable <- function(dataset, options, bainContainer, missingValuesIndicator, ready, position) {
@@ -142,22 +142,6 @@ Posterior model probabilities (a: excluding the unconstrained hypothesis, b: inc
   
   row <- data.frame(v = groups, N = N, mean = mu, SE = se, CiLower = CiLower, CiUpper = CiUpper)
   coefficientsTable$addRows(row)
-}
-
-.readDataBainLinearRegression <- function(options, dataset) {
-  all.variables <- c(options$dependent, unlist(options$covariates))
-  all.variables <- all.variables[all.variables != ""]
-  if (is.null(dataset)) {
-    trydata <- .readDataSetToEnd(columns.as.numeric=all.variables)
-    missingValuesIndicator <- .unv(names(which(apply(trydata, 2, function(x) { any(is.na(x))} ))))
-    dataset <- .readDataSetToEnd(columns.as.numeric=all.variables, exclude.na.listwise=all.variables)
-  } else {
-    dataset <- .vdf(dataset, columns.as.numeric=all.variables)
-  }
-  readList <- list()
-  readList[["dataset"]] <- dataset
-  readList[["missingValuesIndicator"]] <- missingValuesIndicator
-  return(readList)
 }
 
 .bainLegendRegression <- function(dataset, options, jaspResults, position) {

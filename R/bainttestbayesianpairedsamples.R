@@ -17,55 +17,29 @@
 
 BainTTestBayesianPairedSamples <- function(jaspResults, dataset, options, ...) {
   
-  ### DO CURRENT OPTIONS ALLOW FOR ANALYSIS? ###
+  # Check if current options allow for analysis
   ready <- .bainOptionsReady(options, type = "pairedTTest")
   
-  ### READ DATA ###
-  readList <- .readDataBainPairedSamples(options, dataset)
-  dataset <- readList[["dataset"]]
-  missingValuesIndicator <- readList[["missingValuesIndicator"]]
+  # Read the data set
+  dataList <- .bainReadDataset(options, type = "pairedTTest", dataset)
   
-  .bainPairedSamplesErrorCheck(dataset, options)
+  # Check if current data allow for analysis
+  .bainDataReady(dataset, options, type = "pairedTTest")
   
-  bainContainer <- .bainGetContainer(jaspResults, deps=c("seed"))
+  # Create a container for the results
+  bainContainer <- .bainGetContainer(jaspResults, deps = "seed")
   
   ### RESULTS ###
-  .bainPairedSamplesResultsTable(dataset, options, bainContainer, missingValuesIndicator, ready, position = 1)
+  .bainPairedSamplesResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missingValuesIndicator"]], ready, position = 1)
   
   ### DESCRIPTIVES ###
-  .bainPairedSamplesDescriptivesTable(dataset, options, bainContainer, ready, position = 2)
+  .bainPairedSamplesDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, position = 2)
   
-  ### BAYES FACTOR PLOTS ###
-  .bainTTestFactorPlots(dataset, options, bainContainer, ready, type = "pairedSamples", position = 3)
+  ### POSTERIOR PROBABILITIES PLOT ###
+  .bainTTestFactorPlots(dataList[["dataset"]], options, bainContainer, ready, type = "pairedSamples", position = 3)
   
   ### DESCRIPTIVES PLOTS ###
-  .bainPairedSamplesDescriptivesPlots(dataset, options, bainContainer, ready, position = 4)
-}
-
-.readDataBainPairedSamples <- function(options, dataset) {
-  
-  all.variables <- unique(unlist(options[["pairs"]]))
-  all.variables <- all.variables[all.variables != ""]
-  pairs <- options[["pairs"]]
-  
-  if (is.null(dataset)) {
-    trydata <- .readDataSetToEnd(columns.as.numeric=all.variables)
-    missingValuesIndicator <- .unv(names(which(apply(trydata, 2, function(x) { any(is.na(x))} ))))
-    dataset <- .readDataSetToEnd(columns.as.numeric=all.variables, exclude.na.listwise=all.variables)
-  }
-  
-  readList <- list()
-  readList[["dataset"]] <- dataset
-  readList[["missingValuesIndicator"]] <- missingValuesIndicator
-  return(readList)
-}
-
-.bainPairedSamplesErrorCheck <- function(dataset, options){
-  all.variables <- unique(unlist(options[["pairs"]]))
-  all.variables <- all.variables[all.variables != ""]
-  .hasErrors(dataset, type=c("infinity", "variance", "observations"),
-             all.target=all.variables, observations.amount="< 3",
-             exitAnalysisIfErrors = TRUE)
+  .bainPairedSamplesDescriptivesPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)
 }
 
 .bainPairedSampleState <- function(pair, options, dataset, bainContainer){

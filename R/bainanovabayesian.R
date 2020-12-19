@@ -17,35 +17,35 @@
 
 BainAnovaBayesian <- function(jaspResults, dataset, options, ...) {
   
-  ### DO CURRENT OPTIONS ALLOW FOR ANALYSIS? ###
+  # Check if current options allow for analysis
   ready <- .bainOptionsReady(options, type = "anova")
   
-  ### READ DATA ###
-  readList <- .readDataBainAnova(options, dataset)
-  dataset <- readList[["dataset"]]
-  missingValuesIndicator <- readList[["missingValuesIndicator"]]
+  # Read the data set
+  dataList <- .bainReadDataset(options, type = "anova", dataset)
   
-  .bainCommonErrorCheck(dataset, options)
+  # Check if current data allow for analysis
+  .bainDataReady(dataList[["dataset"]], options, type = "anova")
   
-  bainContainer <- .bainGetContainer(jaspResults, deps=c("dependent", "fixedFactors", "model"))
+  # Create a container for the results
+  bainContainer <- .bainGetContainer(jaspResults, deps = c("dependent", "fixedFactors", "model"))
   
   ### LEGEND ###
-  .bainLegendAncova(dataset, options, jaspResults, position = 0)
+  .bainLegendAncova(dataList[["dataset"]], options, jaspResults, position = 0)
   
   ### RESULTS ###
-  .bainAnovaResultsTable(dataset, options, bainContainer, missingValuesIndicator, ready, position = 1)
+  .bainAnovaResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missingValuesIndicator"]], ready, position = 1)
   
   ### BAYES FACTOR MATRIX ###
-  .bainBayesFactorMatrix(dataset, options, bainContainer, ready, type = "anova", position = 2)
+  .bainBayesFactorMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "anova", position = 2)
   
   ### DESCRIPTIVES ###
-  .bainAnovaDescriptivesTable(dataset, options, bainContainer, ready, type = "anova", position = 3)
+  .bainAnovaDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "anova", position = 3)
   
-  ### BAYES FACTOR PLOT ###
-  .bainAnovaBayesFactorPlots(dataset, options, bainContainer, ready, position = 4)
+  ### POSTERIOR PROBABILITIES PLOT ###
+  .bainAnovaBayesFactorPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)
   
   ### DESCRIPTIVES PLOT ###
-  .bainAnovaDescriptivesPlot(dataset, options, bainContainer, ready, type = "anova", position = 5)
+  .bainAnovaDescriptivesPlot(dataList[["dataset"]], options, bainContainer, ready, type = "anova", position = 5)
 }
 
 .bainAnovaResultsTable <- function(dataset, options, bainContainer, missingValuesIndicator, ready, position) {

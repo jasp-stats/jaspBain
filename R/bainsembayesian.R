@@ -17,30 +17,33 @@
 
 BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   
-  # Read dataset
-  dataset <- .bainSemReadData(dataset, options)
-
-  ### DO CURRENT OPTIONS ALLOW FOR ANALYSIS? ###
-  ready <- .bainOptionsReady(options, type = "sem", dataset)
+  # Read the data set
+  dataList <- .bainReadDataset(options, type = "sem", dataset)
   
+  # Check if current options allow for analysis
+  ready <- .bainOptionsReady(options, type = "sem", dataList[["dataset"]])
+
+  # Check if current data allow for analysis
+  .bainDataReady(dataList[["dataset"]], options, type = "sem")
+  
+  # Create a container for the results
   bainContainer <- .bainGetContainer(jaspResults, deps = c("syntax", "model", "seed"))
   
-  .bainLegendSem(dataset, options, jaspResults, position = 0)
+  .bainLegendSem(dataList[["dataset"]], options, jaspResults, position = 0)
   
-  .bainSemResultsTable(dataset, options, ready, bainContainer, jaspResults, position = 1)
+  .bainSemResultsTable(dataList[["dataset"]], options, ready, bainContainer, jaspResults, position = 1)
   
   ### BAYES FACTOR MATRIX ###
-  .bainBayesFactorMatrix(dataset, options, bainContainer, ready, type = "sem", position = 2)
+  .bainBayesFactorMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "sem", position = 2)
   
   ### COEFFICIENTS TABLE ###
-  .bainSemCoefficientsTable(dataset, options, bainContainer, ready, position = 3)
+  .bainSemCoefficientsTable(dataList[["dataset"]], options, bainContainer, ready, position = 3)
   
   ### POSTERIOR PROBABILITIES PLOT ###
-  .bainLinearRegressionBayesFactorPlots(dataset, options, bainContainer, ready, position = 4)
+  .bainLinearRegressionBayesFactorPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)
   
   ### PATH DIAGRAM ###
-  .bainSemPathDiagram(dataset, options, bainContainer, ready, jaspResults, position = 5)
-  
+  .bainSemPathDiagram(dataList[["dataset"]], options, bainContainer, ready, jaspResults, position = 5)
 }
 
 .bainLegendSem <- function(dataset, options, jaspResults, position) {

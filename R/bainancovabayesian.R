@@ -15,37 +15,37 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-BainAncovaBayesian	 <- function(jaspResults, dataset, options, ...) {
+BainAncovaBayesian <- function(jaspResults, dataset, options, ...) {
   
-  ### DO CURRENT OPTIONS ALLOW FOR ANALYSIS? ###
+  # Check if current options allow for analysis
   ready <- .bainOptionsReady(options, type = "ancova")
   
-  ### READ DATA ###
-  readList <- .readDataBainAncova(options, dataset)
-  dataset <- readList[["dataset"]]
-  missingValuesIndicator <- readList[["missingValuesIndicator"]]
+  # Read the data set 
+  dataList <- .bainReadDataset(options, type = "ancova", dataset)
   
-  .bainCommonErrorCheck(dataset, options)
+  # Check if current data allow for analysis
+  .bainDataReady(dataList[["dataset"]], options, type = "ancova")
   
-  bainContainer <- .bainGetContainer(jaspResults, deps=c("dependent", "fixedFactors", "covariates", "model"))
+  # Create a container for the results
+  bainContainer <- .bainGetContainer(jaspResults, deps = c("dependent", "fixedFactors", "covariates", "model"))
   
   ### LEGEND ###
-  .bainLegendAncova(dataset, options, jaspResults, position = 0)
+  .bainLegendAncova(dataList[["dataset"]], options, jaspResults, position = 0)
   
   ### RESULTS ###
-  .bainAncovaResultsTable(dataset, options, bainContainer, missingValuesIndicator, ready, position = 1)
+  .bainAncovaResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missingValuesIndicator"]], ready, position = 1)
   
   ### BAYES FACTOR MATRIX ###
-  .bainBayesFactorMatrix(dataset, options, bainContainer, ready, type = "ancova", position = 2)
+  .bainBayesFactorMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "ancova", position = 2)
   
   ### COEFFICIENTS ###
-  .bainAnovaDescriptivesTable(dataset, options, bainContainer, ready, type = "ancova", position = 3)
+  .bainAnovaDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "ancova", position = 3)
   
-  ### BAYES FACTOR PLOT ###
-  .bainAnovaBayesFactorPlots(dataset, options, bainContainer, ready, position = 4)
+  ### POSTERIOR PROBABILITIES PLOT ###
+  .bainAnovaBayesFactorPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)
   
   ### DESCRIPTIVES PLOT ###
-  .bainAnovaDescriptivesPlot(dataset, options, bainContainer, ready, type = "ancova", position = 5)
+  .bainAnovaDescriptivesPlot(dataList[["dataset"]], options, bainContainer, ready, type = "ancova", position = 5)
 }
 
 .bainAncovaResultsTable <- function(dataset, options, bainContainer, missingValuesIndicator, ready, position) {
@@ -111,31 +111,6 @@ Posterior model probabilities (a: excluding the unconstrained hypothesis, b: inc
   }
   row <- list(hypotheses = gettext("Hu"), BF = "", PMP1 = "", PMP2 = bainResult$fit$PMPb[length(bainResult$fit$BF)])
   bainTable$addRows(row) 
-}
-
-.readDataBainAncova <- function(options, dataset) {
-  numeric.variables	<- c(options[["dependent"]],unlist(options[["covariates"]]))
-  numeric.variables	<- numeric.variables[numeric.variables != ""]
-  factor.variables	<- options[["fixedFactors"]]
-  factor.variables	<- factor.variables[factor.variables != ""]
-  all.variables			<- c(numeric.variables, factor.variables)
-  if (is.null(dataset)) {
-    trydata									<- .readDataSetToEnd(columns.as.numeric=all.variables)
-    missingValuesIndicator	<- .unv(names(which(apply(trydata, 2, function(x) { any(is.na(x))} ))))
-    dataset									<- .readDataSetToEnd(columns.as.numeric=numeric.variables, columns.as.factor=factor.variables, exclude.na.listwise=all.variables)
-    
-    if(options[["fixedFactors"]] != ""){
-      if(any(grepl(pattern = " ", x = levels(dataset[, .v(options[["fixedFactors"]])])))){
-        jaspBase:::.quitAnalysis(gettext("Bain does not accept factor levels that contain spaces. Please remove the spaces from your factor levels to continue."))
-      }
-    }
-  } else {
-    dataset									<- .vdf(dataset, columns.as.numeric=numeric.variables, columns.as.factor=factor.variables)
-  }
-  readList <- list()
-  readList[["dataset"]] <- dataset
-  readList[["missingValuesIndicator"]] <- missingValuesIndicator
-  return(readList)
 }
 
 .bainLegendAncova <- function(dataset, options, jaspResults, position) {
