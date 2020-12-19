@@ -67,16 +67,10 @@ Description
 		title:		"Regression"
 		func:		"BainRegressionLinearBayesian"
 	}
-
-	GroupTitle
-	{
-		title: 		"Structural Equation Modeling"
-		icon: 		"analysis-bain-sem.svg"
-	}	
 	Analysis
 	{
 		menu:   	"Structural Equation Modeling"
-		title:		"Bain Structural Equation Modeling"
+		title:		"Bain Structural Equation Model"
 		func:		"BainSemBayesian"
 	}
 }
