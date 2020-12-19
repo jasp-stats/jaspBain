@@ -117,8 +117,8 @@ Form
 			name: 						"model"
 			implicitHeight: 			200 * preferencesModel.uiScale 
 			text: 						""
-			textType: 					JASP.TextTypeModel
-			trim: 						true
+			textType: JASP.TextTypeLavaan//textType: 				JASP.TextTypeModel
+			//trim: 					true
 		}
 	}
 }

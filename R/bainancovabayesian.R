@@ -29,8 +29,8 @@ BainAncovaBayesian <- function(jaspResults, dataset, options, ...) {
   # Create a container for the results
   bainContainer <- .bainGetContainer(jaspResults, deps = c("dependent", "fixedFactors", "covariates", "model"))
   
-  ### LEGEND ###
-  .bainLegendAncova(dataList[["dataset"]], options, jaspResults, position = 0)
+  # Create a legend containing the order constrained hypotheses
+  .bainLegend(dataList[["dataset"]], options, type = "ancova", jaspResults, position = 0)
   
   ### RESULTS ###
   .bainAncovaResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missingValuesIndicator"]], ready, position = 1)
@@ -111,36 +111,6 @@ Posterior model probabilities (a: excluding the unconstrained hypothesis, b: inc
   }
   row <- list(hypotheses = gettext("Hu"), BF = "", PMP1 = "", PMP2 = bainResult$fit$PMPb[length(bainResult$fit$BF)])
   bainTable$addRows(row) 
-}
-
-.bainLegendAncova <- function(dataset, options, jaspResults, position) {
-  
-  if (!is.null(jaspResults[["legendTable"]])) return() #The options for this table didn't change so we don't need to rebuild it
-  
-  legendTable <- createJaspTable(gettext("Hypothesis Legend"))
-  legendTable$dependOn(options =c("model", "fixedFactors"))
-  legendTable$position <- position
-  
-  legendTable$addColumnInfo(name="number"    , type="string", title="")
-  legendTable$addColumnInfo(name="hypothesis", type="string", title=gettext("Hypothesis"))
-  
-  jaspResults[["legendTable"]] <- legendTable
-  
-  if (options[["model"]] != "") {
-    rest.string <- .bainCleanModelInput(options[["model"]])
-    hyp.vector <- unlist(strsplit(rest.string, "[;]"))
-    for (i in 1:length(hyp.vector)) {
-      row <- list(number = gettextf("H%i",i), hypothesis = hyp.vector[i])
-      legendTable$addRows(row)
-    }
-  } else if (options[["fixedFactors"]] != "") {
-    factor <- options[["fixedFactors"]]
-    fact <- dataset[, .v(factor)]
-    levels <- levels(fact)
-    string <- paste(paste(factor, levels, sep = ""), collapse = " = ")
-    row <- list(number = gettext("H1"), hypothesis = string)
-    legendTable$addRows(row)
-  }
 }
 
 .plot_bain_ancova_cran <- function(x)

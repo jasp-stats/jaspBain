@@ -92,34 +92,103 @@
 
 # Check if current data allow for analysis
 .bainDataReady <- function(dataset, options, type){
-
-	if(type == "independentTTest"){
-		factors <- options[["groupingVariable"]]
-		factors <- factors[factors != ""]
-		if(length(factors) > 0)
-			.hasErrors(dataset, type = "factorLevels",
-				factorLevels.target = factors, factorLevels.amount = "!= 2",
-				exitAnalysisIfErrors = TRUE)
-	}
-
-	numerics <- switch(type,
-						"onesampleTTest" = options[["variables"]],
-						"pairedTTest" = unique(unlist(options[["pairs"]])),
-						"independentTTest" = unlist(options[["variables"]]),
-						"anova" = options[["dependent"]],
-						"ancova" = c(options[["dependent"]], unlist(options[["covariates"]])),
-						"regression" = c(options[["dependent"]], unlist(options[["covariates"]])),
-						"sem" = NULL)
-	numerics <- numerics[numerics != ""]
-	if(length(numerics) > 0)
-		.hasErrors(dataset, type = c("infinity", "variance", "observations"),
-					all.target = numerics, observations.amount = "< 3",
-					exitAnalysisIfErrors = TRUE)
+  
+  if(type == "independentTTest"){
+    factors <- options[["groupingVariable"]]
+    factors <- factors[factors != ""]
+    if(length(factors) > 0)
+      .hasErrors(dataset, type = "factorLevels",
+                 factorLevels.target = factors, factorLevels.amount = "!= 2",
+                 exitAnalysisIfErrors = TRUE)
+  }
+  
+  numerics <- switch(type,
+                     "onesampleTTest" = options[["variables"]],
+                     "pairedTTest" = unique(unlist(options[["pairs"]])),
+                     "independentTTest" = unlist(options[["variables"]]),
+                     "anova" = options[["dependent"]],
+                     "ancova" = c(options[["dependent"]], unlist(options[["covariates"]])),
+                     "regression" = c(options[["dependent"]], unlist(options[["covariates"]])),
+                     "sem" = NULL)
+  numerics <- numerics[numerics != ""]
+  if(length(numerics) > 0)
+    .hasErrors(dataset, type = c("infinity", "variance", "observations"),
+               all.target = numerics, observations.amount = "< 3",
+               exitAnalysisIfErrors = TRUE)
 }
 
 ##################
 ### TABLES #######
 ##################
+
+.bainLegend <- function(dataset, options, type, jaspResults, position) {
+  
+  if (!is.null(jaspResults[["legendTable"]])) return()
+  
+  legendTable <- createJaspTable("Hypothesis Legend")
+  deps <- switch(type, 
+                 "regression" = c("model", "covariates"),
+                 "anova" = c("model", "fixedFactors"),
+                 "ancova" = c("model", "fixedFactors"),
+                 "sem" = c("model", "syntax"))
+  legendTable$dependOn(options = deps)
+  legendTable$position <- position
+  legendTable$addColumnInfo(name = "number",     type = "string", title = "")
+  legendTable$addColumnInfo(name = "hypothesis", type = "string", title = gettext("Hypothesis"))
+  
+  jaspResults[["legendTable"]] <- legendTable
+  
+  if (options[["model"]] != "") {
+    rest.string <- .bainCleanModelInput(options[["model"]])
+    hyp.vector <- unlist(strsplit(rest.string, "[;]"))
+    
+    for (i in 1:length(hyp.vector)) {
+      row <- list(number = gettextf("H%i", i), hypothesis = hyp.vector[i])
+      legendTable$addRows(row)
+    }
+  } else {
+    if(type == "regression"){
+      variables <- options$covariates
+      if (length(variables) == 0) {
+        string <- ""
+        row <- list(number = gettext("H1"), hypothesis = string)
+        legendTable$addRows(row)
+      } else if (length(variables) == 1) {
+        string <- paste(variables, "= 0")
+        row <- list(number = gettext("H1"), hypothesis = string)
+        legendTable$addRows(row)
+      } else {
+        string <- paste0(paste0(variables, " = 0"), collapse = " & ")
+        row <- list(number = gettext("H1"), hypothesis = string)
+        legendTable$addRows(row)
+      }
+    } else if(type == "anova" || type == "ancova"){
+      if (options[["fixedFactors"]] != "") {
+        factor <- options[["fixedFactors"]]
+        fact <- dataset[, .v(factor)]
+        levels <- levels(fact)
+        string <- paste(paste(factor, levels, sep = ""), collapse = " = ")
+        row <- list(number = gettext("H1"), hypothesis = string)
+        legendTable$addRows(row)
+      }
+    } else if(type == "sem"){
+      variables <- .bainSemGetUsedVars(options[["syntax"]], colnames(dataset))
+      if (length(variables) == 0) {
+        string <- ""
+        row <- list(number = gettext("H1"), hypothesis = string)
+        legendTable$addRows(row)
+      } else if (length(variables) == 1) {
+        string <- paste(variables, "= 0")
+        row <- list(number = gettext("H1"), hypothesis = string)
+        legendTable$addRows(row)
+      } else {
+        string <- paste0(paste0(variables, " = 0"), collapse = " & ")
+        row <- list(number = gettext("H1"), hypothesis = string)
+        legendTable$addRows(row)
+      }
+    }
+  }
+}
 
 .bainBayesFactorMatrix <- function(dataset, options, bainContainer, ready, type, position) {
   

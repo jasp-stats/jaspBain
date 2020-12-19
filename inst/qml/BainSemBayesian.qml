@@ -23,72 +23,73 @@ import JASP								1.0
 
 Form
 {
-	columns: 							1
+	columns: 							2
+	
+	Text
+	{
+		text:							qsTr("Lavaan syntax")
+	}
 
 	TextArea 
 	{ 
 		name: 							"syntax"
 		text:							""
 		textType: 						JASP.TextTypeLavaan 
+		Layout.columnSpan: 				2
 	}
 
-	GridLayout
+	Group
 	{
-		columns: 						2
+		title: 							qsTr("Tables")
 
-		Group
-		{
-			title: 						qsTr("Tables")
-
-			CheckBox 
-			{ 	
-				name: 					"bayesFactorMatrix"
-				text: 					qsTr("Bayes factor matrix") 
-			}
-
-			CheckBox
-			{
-				name: 					"coefficients"
-				text: 					qsTr("Coefficients")
-				
-				CIField 
-				{ 
-					name: 				"CredibleInterval"
-					text: 				qsTr("Credible interval") 
-				}
-			}
+		CheckBox 
+		{ 	
+			name: 						"bayesFactorMatrix"
+			text: 						qsTr("Bayes factor matrix") 
 		}
 
-		Group
+		CheckBox
 		{
-			title: 						qsTr("Plots")
-
-			CheckBox 
-			{ 
-				name: 					"bayesFactorPlot"
-				text: 					qsTr("Posterior probabilities")	
-			}
-
-			CheckBox 
-			{ 
-				name: 					"pathDiagram"
-				text: 					qsTr("Path diagram")			
-			}
-		}
-
-		Group
-		{
-			title: 						qsTr("Additional Options")
+			name: 						"coefficients"
+			text: 						qsTr("Coefficients")
 			
-			DoubleField  
+			CIField 
 			{ 
-				name: 					"seed"
-				text: 					qsTr("Seed")
-				defaultValue: 			100
-				min: 					-999999
-				max: 					999999
-				fieldWidth: 			60 * preferencesModel.uiScale 
+				name: 					"CredibleInterval"
+				text: 					qsTr("Credible interval") 
 			}
+		}
+	}
+
+	Group
+	{
+		title: 							qsTr("Plots")
+
+		CheckBox 
+		{ 
+			name: 						"bayesFactorPlot"
+			text: 						qsTr("Posterior probabilities")	
+		}
+
+		CheckBox 
+		{ 
+			name: 						"pathDiagram"
+			text: 						qsTr("Path diagram")			
+		}
+	}
+
+	Group
+	{
+		title: 							qsTr("Additional Options")
+		
+		DoubleField  
+		{ 
+			name: 						"seed"
+			text: 						qsTr("Seed")
+			defaultValue: 				100
+			min: 						-999999
+			max: 						999999
+			fieldWidth: 				60 * preferencesModel.uiScale 
 		}
 	}
 
@@ -105,10 +106,9 @@ Form
 		TextArea
 		{
 				name: 					"model"
-				implicitHeight: 		200 * preferencesModel.uiScale
 				text: 					""
-				textType: 				JASP.TextTypeModel
-				trim: 					true
+				textType: JASP.TextTypeLavaan//textType: 				JASP.TextTypeModel
+				//trim: 					true
 		}
 	}
 }

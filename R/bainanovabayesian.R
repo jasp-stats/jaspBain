@@ -29,8 +29,8 @@ BainAnovaBayesian <- function(jaspResults, dataset, options, ...) {
   # Create a container for the results
   bainContainer <- .bainGetContainer(jaspResults, deps = c("dependent", "fixedFactors", "model"))
   
-  ### LEGEND ###
-  .bainLegendAncova(dataList[["dataset"]], options, jaspResults, position = 0)
+  # Create a legend containing the order constrained hypotheses
+  .bainLegend(dataList[["dataset"]], options, type = "anova", jaspResults, position = 0)
   
   ### RESULTS ###
   .bainAnovaResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missingValuesIndicator"]], ready, position = 1)

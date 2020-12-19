@@ -29,8 +29,8 @@ BainRegressionLinearBayesian <- function(jaspResults, dataset, options, ...) {
   # Create a container for the results
   bainContainer <- .bainGetContainer(jaspResults, deps = c("dependent", "covariates", "model", "standardized", "seed"))
   
-  ### LEGEND ###
-  .bainLegendRegression(dataList[["dataset"]], options, jaspResults, position = 0)
+  # Create a legend containing the order constrained hypotheses
+  .bainLegend(dataList[["dataset"]], options, type = "regression", jaspResults, position = 0)
   
   ### RESULTS ###
   .bainLinearRegressionResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missingValuesIndicator"]], ready, position = 1)
@@ -142,44 +142,6 @@ Posterior model probabilities (a: excluding the unconstrained hypothesis, b: inc
   
   row <- data.frame(v = groups, N = N, mean = mu, SE = se, CiLower = CiLower, CiUpper = CiUpper)
   coefficientsTable$addRows(row)
-}
-
-.bainLegendRegression <- function(dataset, options, jaspResults, position) {
-  
-  if (!is.null(jaspResults[["legendTable"]])) return()
-  
-  legendTable <- createJaspTable("Hypothesis Legend")
-  legendTable$dependOn(options =c("model", "covariates"))
-  legendTable$position <- position
-  legendTable$addColumnInfo(name="number",     type="string", title="")
-  legendTable$addColumnInfo(name="hypothesis", type="string", title=gettext("Hypothesis"))
-  
-  jaspResults[["legendTable"]] <- legendTable
-  
-  if (options$model != "") {
-    rest.string <- .bainCleanModelInput(options$model)
-    hyp.vector <- unlist(strsplit(rest.string, "[;]"))
-    
-    for (i in 1:length(hyp.vector)) {
-      row <- list(number = gettextf("H%i",i), hypothesis = hyp.vector[i])
-      legendTable$addRows(row)
-    }
-  } else {
-    variables <- options$covariates
-    if (length(variables) == 0) {
-      string <- ""
-      row <- list(number = gettext("H1"), hypothesis = string)
-      legendTable$addRows(row)
-    } else if (length(variables) == 1) {
-      string <- paste(variables, "= 0")
-      row <- list(number = gettext("H1"), hypothesis = string)
-      legendTable$addRows(row)
-    } else {
-      string <- paste0(paste0(variables, " = 0"), collapse = " & ")
-      row <- list(number = gettext("H1"), hypothesis = string)
-      legendTable$addRows(row)
-    }
-  }
 }
 
 .plot_bain_regression_cran <- function(x)
