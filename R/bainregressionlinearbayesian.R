@@ -35,8 +35,8 @@ BainRegressionLinearBayesian <- function(jaspResults, dataset, options, ...) {
   ### RESULTS ###
   .bainLinearRegressionResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, position = 1)
   
-  ### BAYES FACTOR MATRIX ###
-  .bainBayesFactorMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "regression", position = 2)
+  # Create the Bayes factor matrix
+  .bainBfMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "regression", position = 2)
   
   ### COEFFICIENTS ###
   .bainLinearRegressionCoefficientsTable(dataList[["dataset"]], options, bainContainer, ready, position = 3)
@@ -81,7 +81,7 @@ Posterior model probabilities (a: excluding the unconstrained hypothesis, b: inc
   if (options$model == "") {
     rest.string <- NULL
   } else {
-    rest.string <- .v(.bainCleanModelInput(options[["model"]]))
+    rest.string <- encodeColNames(.bainCleanModelInput(options[["model"]]))
   }
   
   p <- try({

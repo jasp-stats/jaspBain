@@ -35,7 +35,7 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   .bainSemResultsTable(dataList[["dataset"]], options, ready, bainContainer, jaspResults, position = 1)
   
   ### BAYES FACTOR MATRIX ###
-  .bainBayesFactorMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "sem", position = 2)
+  .bainBfMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "sem", position = 2)
   
   ### COEFFICIENTS TABLE ###
   .bainSemCoefficientsTable(dataList[["dataset"]], options, bainContainer, ready, position = 3)

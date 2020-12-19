@@ -92,7 +92,6 @@
 
 # Check if current data allow for analysis
 .bainDataReady <- function(dataset, options, type){
-  
   if(type == "independentTTest"){
     factors <- options[["groupingVariable"]]
     factors <- factors[factors != ""]
@@ -100,8 +99,7 @@
       .hasErrors(dataset, type = "factorLevels",
                  factorLevels.target = factors, factorLevels.amount = "!= 2",
                  exitAnalysisIfErrors = TRUE)
-  }
-  
+  }  
   numerics <- switch(type,
                      "onesampleTTest" = options[["variables"]],
                      "pairedTTest" = unique(unlist(options[["pairs"]])),
@@ -121,10 +119,10 @@
 ### TABLES #######
 ##################
 
+# Create a legend containing the order constrained hypotheses
 .bainLegend <- function(dataset, options, type, jaspResults, position) {
-  
-  if (!is.null(jaspResults[["legendTable"]])) return()
-  
+  if (!is.null(jaspResults[["legendTable"]])) 
+    return()
   legendTable <- createJaspTable("Hypothesis Legend")
   deps <- switch(type, 
                  "regression" = c("model", "covariates"),
@@ -135,20 +133,15 @@
   legendTable$position <- position
   legendTable$addColumnInfo(name = "number",     type = "string", title = "")
   legendTable$addColumnInfo(name = "hypothesis", type = "string", title = gettext("Hypothesis"))
-  
   jaspResults[["legendTable"]] <- legendTable
-  
   if (options[["model"]] != "") {
     rest.string <- .bainCleanModelInput(options[["model"]])
-    hyp.vector <- unlist(strsplit(rest.string, "[;]"))
-    
+    hyp.vector <- unlist(strsplit(rest.string, "[;]")) 
     for (i in 1:length(hyp.vector)) {
       row <- list(number = gettextf("H%i", i), hypothesis = hyp.vector[i])
       legendTable$addRows(row)
     }
-
   } else {
-
     if(type == "regression"){
       variables <- options[["covariates"]]
       if (length(variables) == 0) {
@@ -162,7 +155,9 @@
       if (options[["fixedFactors"]] != "") {
         string <- paste(paste(options[["fixedFactors"]], levels(dataset[, .v(options[["fixedFactors"]])]), sep = ""), collapse = " = ")
         row <- list(number = gettext("H1"), hypothesis = string)
-      }
+      } else {
+		row <- list(number = gettext("H1"), hypothesis = "")
+	  }
     } else if(type == "sem"){
       variables <- .bainSemGetUsedVars(options[["syntax"]], colnames(dataset))
       if (length(variables) == 0) {
@@ -173,43 +168,34 @@
         row <- list(number = gettext("H1"), hypothesis = paste0(paste0(variables, " = 0"), collapse = " & ")) # Needs to be adjusted
       }
     }
-
 	legendTable$addRows(row)
   }
 }
 
-.bainBayesFactorMatrix <- function(dataset, options, bainContainer, ready, type, position) {
-  
-  if (!is.null(bainContainer[["bayesFactorMatrix"]]) || !options[["bayesFactorMatrix"]]) return()
-  
+# Create the Bayes factor matrix
+.bainBfMatrix <- function(dataset, options, bainContainer, ready, type, position) {
+  if (!is.null(bainContainer[["bayesFactorMatrix"]]) || !options[["bayesFactorMatrix"]]) 
+    return() 
   bayesFactorMatrix <- createJaspTable(gettext("Bayes Factor Matrix"))
   bayesFactorMatrix$position <- position
-  
   if (type == "regression")
-    bayesFactorMatrix$dependOn(options = c("bayesFactorMatrix", "standardized", "seed"))
-  
+    bayesFactorMatrix$dependOn(options = c("bayesFactorMatrix", "standardized", "seed")) 
   if (type == "ancova" || type == "anova" || type == "sem")
-    bayesFactorMatrix$dependOn(options = c("bayesFactorMatrix", "seed"))
-  
+    bayesFactorMatrix$dependOn(options = c("bayesFactorMatrix", "seed")) 
   bayesFactorMatrix$addColumnInfo(name = "hypothesis",  title = "",             type = "string")
   bayesFactorMatrix$addColumnInfo(name = "H1",          title = gettext("H1"),  type = "number")
-  
   bainContainer[["bayesFactorMatrix"]] <- bayesFactorMatrix
-  
   if (!ready || bainContainer$getError()) {
     row <- data.frame(hypothesis = gettext("H1"), H1 = ".")
     bayesFactorMatrix$addRows(row)
     return()
   }
-  
   bainResult <- bainContainer[["bainResult"]]$object
   BFmatrix <- bainResult[["BFmatrix"]]
-  
   if (nrow(BFmatrix) > 1) {
     for (i in 2:nrow(BFmatrix))
       bayesFactorMatrix$addColumnInfo(name = paste0("H", i), title = gettextf("H%i", i), type = "number")
   }
-  
   for (i in 1:nrow(BFmatrix)) {
     tmp <- list(hypothesis = gettextf("H%i", i))
     for (j in 1:ncol(BFmatrix)) {

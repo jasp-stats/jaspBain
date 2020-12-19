@@ -35,8 +35,8 @@ BainAnovaBayesian <- function(jaspResults, dataset, options, ...) {
   ### RESULTS ###
   .bainAnovaResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, position = 1)
   
-  ### BAYES FACTOR MATRIX ###
-  .bainBayesFactorMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "anova", position = 2)
+  # Create the Bayes factor matrix
+  .bainBfMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "anova", position = 2)
   
   ### DESCRIPTIVES ###
   .bainAnovaDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "anova", position = 3)
@@ -94,7 +94,7 @@ Posterior model probabilities (a: excluding the unconstrained hypothesis, b: inc
   if (options[["model"]] == "") {
     rest.string <- NULL
   } else {
-    rest.string <- .v(.bainCleanModelInput(options[["model"]]))
+    rest.string <- encodeColNames(.bainCleanModelInput(options[["model"]]))
   }
   
   p <- try(silent= FALSE, expr= {
