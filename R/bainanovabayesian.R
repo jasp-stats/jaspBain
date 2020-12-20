@@ -38,8 +38,8 @@ BainAnovaBayesian <- function(jaspResults, dataset, options, ...) {
   # Create the Bayes factor matrix
   .bainBfMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "anova", position = 2)
   
-  ### DESCRIPTIVES ###
-  .bainAnovaDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "anova", position = 3)
+  # Create the descriptive statistics table
+  .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "anova", position = 3)
   
   ### POSTERIOR PROBABILITIES PLOT ###
   .bainAnovaBayesFactorPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)
@@ -56,7 +56,7 @@ BainAnovaBayesian <- function(jaspResults, dataset, options, ...) {
   meanTitle <- ifelse(type == "anova", yes = gettext("Mean"),                   no = gettext("Coefficient"))
   
   descriptivesTable <- createJaspTable(title)
-  descriptivesTable$dependOn(options =c("descriptives", "CredibleInterval", "coefficients"))
+  descriptivesTable$dependOn(options =c("descriptives", "credibleInterval", "coefficients"))
   descriptivesTable$position <- position
   
   descriptivesTable$addColumnInfo(name="v",    		title="",         	 type="string")
@@ -66,7 +66,7 @@ BainAnovaBayesian <- function(jaspResults, dataset, options, ...) {
     descriptivesTable$addColumnInfo(name="sd", 		title=gettext("SD"),	type="number")
   descriptivesTable$addColumnInfo(name="se",   		title=gettext("SE"), 	type="number")
   
-  overTitle <- gettextf("%.0f%% Credible Interval", options[["CredibleInterval"]] * 100)
+  overTitle <- gettextf("%.0f%% Credible Interval", options[["credibleInterval"]] * 100)
   descriptivesTable$addColumnInfo(name="lowerCI",      title = gettext("Lower"), type="number", overtitle = overTitle)
   descriptivesTable$addColumnInfo(name="upperCI",      title = gettext("Upper"), type="number", overtitle = overTitle)
   
@@ -79,7 +79,7 @@ BainAnovaBayesian <- function(jaspResults, dataset, options, ...) {
   varLevels <- levels(groupCol)
   
   bainResult <- bainContainer[["bainResult"]]$object
-  bainSummary <- summary(bainResult, ci = options[["CredibleInterval"]])
+  bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
   sigma <- diag(bainResult$posterior)
   
   # Extract all but sd and se from bain result
@@ -134,7 +134,7 @@ BainAnovaBayesian <- function(jaspResults, dataset, options, ...) {
   plotTitle <- ifelse(type == "anova", yes = gettext("Descriptives Plot"), no = gettext("Adjusted Means"))
   
   descriptivesPlot <- createJaspPlot(plot = NULL, title = plotTitle)
-  descriptivesPlot$dependOn(options=c("descriptivesPlot", "CredibleInterval"))
+  descriptivesPlot$dependOn(options=c("descriptivesPlot", "credibleInterval"))
   descriptivesPlot$position <- position
   
   bainContainer[["descriptivesPlot"]] <- descriptivesPlot
@@ -154,7 +154,7 @@ BainAnovaBayesian <- function(jaspResults, dataset, options, ...) {
   varLevels <- levels(groupCol)
   
   bainResult <- bainContainer[["bainResult"]]$object
-  bainSummary <- summary(bainResult, ci = options[["CredibleInterval"]])
+  bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
   
   # Remove covariates in ANCOVA
   if(type == "ancova")

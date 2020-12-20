@@ -32,8 +32,8 @@ BainTTestBayesianPairedSamples <- function(jaspResults, dataset, options, ...) {
   # Create a table containing the main analysis results
   .bainResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type = "pairedTTest", position = 1)
   
-  ### DESCRIPTIVES ###
-  .bainPairedSamplesDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, position = 2)
+  # Create the descriptive statistics table
+  .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "pairedTTest", position = 2)
   
   ### POSTERIOR PROBABILITIES PLOT ###
   .bainTTestFactorPlots(dataList[["dataset"]], options, bainContainer, ready, type = "pairedSamples", position = 3)

@@ -38,8 +38,8 @@ BainAncovaBayesian <- function(jaspResults, dataset, options, ...) {
   # Create the Bayes factor matrix
   .bainBfMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "ancova", position = 2)
   
-  ### COEFFICIENTS ###
-  .bainAnovaDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "ancova", position = 3)
+  # Create the descriptive statistics (coefficients) table
+  .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "ancova", position = 3)
   
   ### POSTERIOR PROBABILITIES PLOT ###
   .bainAnovaBayesFactorPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)

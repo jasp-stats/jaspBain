@@ -32,79 +32,14 @@ BainTTestBayesianIndependentSamples <- function(jaspResults, dataset, options, .
   # Create a table containing the main analysis results
   .bainResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type = "independentTTest", position = 1)
   
-  ### DESCRIPTIVES ###
-  .bainIndependentSamplesDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, position = 2)
+  # Create the descriptive statistics table
+  .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "independentTTest", position = 2)
   
   ### POSTERIOR PROBABILITIES PLOT ###
   .bainTTestFactorPlots(dataList[["dataset"]], options, bainContainer, ready, type = "independentSamples", position = 3)
   
   ### DESCRIPTIVES PLOTS ###
   .bainIndependentSamplesDescriptivesPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)
-}
-
-.bainIndependentSamplesDescriptivesTable <- function(dataset, options, bainContainer, ready, position) {
-  
-  if (!is.null(bainContainer[["descriptivesTable"]]) || !options[["descriptives"]]) return() 
-  
-  descriptivesTable <- createJaspTable(gettext("Descriptive Statistics"))
-  descriptivesTable$dependOn(options =c("variables", "descriptives", "credibleInterval"))
-  descriptivesTable$position <- position
-  
-  descriptivesTable$addColumnInfo(name="v",                    title = "",               type="string")
-  descriptivesTable$addColumnInfo(name="group",                title = gettext("Group"), type="string")
-  descriptivesTable$addColumnInfo(name="N",                    title = gettext("N"),     type="integer")
-  descriptivesTable$addColumnInfo(name="mean",                 title = gettext("Mean"),  type="number")
-  descriptivesTable$addColumnInfo(name="sd",                   title = gettext("SD"),    type="number")
-  descriptivesTable$addColumnInfo(name="se",                   title = gettext("SE"),    type="number")
-  
-  overTitle <- gettextf("%.0f%% Credible Interval", 100 * options[["credibleInterval"]])
-  descriptivesTable$addColumnInfo(name="lowerCI",              title = gettext("Lower"), type="number", overtitle = overTitle)
-  descriptivesTable$addColumnInfo(name="upperCI",              title = gettext("Upper"), type="number", overtitle = overTitle)
-  
-  bainContainer[["descriptivesTable"]] <- descriptivesTable
-  
-  if (!ready)
-    return()
-  
-  descriptivesTable$setExpectedSize(length(options[["variables"]]) * 2)
-  
-  levels <- base::levels(dataset[[ .v(options[["groupingVariable"]]) ]])
-  if (length(levels) != 2) {
-    g1 <- "1"
-    g2 <- "2"
-  } else {
-    g1 <- levels[1]
-    g2 <- levels[2]
-  }
-  
-  for (variable in options[["variables"]]) {
-    
-    bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type = "independentTTest", variable = variable)
-    
-    if(isTryError(bainAnalysis)){
-      
-      descriptivesTable$addRows(data.frame(v=variable), rowNames=variable)
-      descriptivesTable$addFootnote(message=gettextf("Results not computed: %s", .extractErrorMessage(bainAnalysis)), colNames="v", rowNames=variable)
-      
-    } else {
-      
-      bainSummary <- summary(bainAnalysis, ci = options[["credibleInterval"]])
-      
-      # Descriptives from bain, sd calculated manually
-      N <- bainSummary[["n"]]
-      mu <- bainSummary[["Estimate"]]
-      CiLower <- bainSummary[["lb"]]
-      CiUpper <- bainSummary[["ub"]]
-      sd <- aggregate(dataset[, .v(variable)], list(dataset[, .v(options[["groupingVariable"]])]), sd)[, 2]
-      se <- sqrt(diag(bainAnalysis[["posterior"]]))
-      
-      row <- data.frame(v = variable, group = g1, N = N[1], mean = mu[1], sd = sd[1], se = se[1], lowerCI = CiLower[1], upperCI = CiUpper[1])
-      descriptivesTable$addRows(row)
-      row <- data.frame(v = "", group = g2, N = N[2], mean = mu[2], sd = sd[2], se = se[2], lowerCI = CiLower[2], upperCI = CiUpper[2])
-      descriptivesTable$addRows(row)
-      
-    }
-  }
 }
 
 .bainIndependentSamplesDescriptivesPlots <- function(dataset, options, bainContainer, ready, position) {

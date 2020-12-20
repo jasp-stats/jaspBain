@@ -32,66 +32,14 @@ BainTTestBayesianOneSample <- function(jaspResults, dataset, options, ...) {
   # Create a table containing the main analysis results
   .bainResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type = "onesampleTTest", position = 1)
   
-  ### DESCRIPTIVES ###
-  .bainOneSampleDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, position = 2)
+  # Create the descriptive statistics table
+  .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "onesampleTTest", position = 2)
   
   ### POSTERIOR PROBABILITIES PLOT ###
   .bainTTestFactorPlots(dataList[["dataset"]], options, bainContainer, ready, type = "oneSample", position = 3)
   
   ### DESCRIPTIVES PLOTS ###
   .bainOneSampleDescriptivesPlot(dataList[["dataset"]], options, bainContainer, ready, position = 4)
-}
-
-.bainOneSampleDescriptivesTable <- function(dataset, options, bainContainer, ready, position) {
-  
-  if (!is.null(bainContainer[["descriptivesTable"]]) || !options[["descriptives"]]) return()
-  
-  descriptivesTable <- createJaspTable(gettext("Descriptive Statistics"))
-  descriptivesTable$dependOn(options = c("variables", "descriptives", "credibleInterval"))
-  descriptivesTable$position <- position
-  
-  descriptivesTable$addColumnInfo(name="v",                    title = "",              type="string")
-  descriptivesTable$addColumnInfo(name="N",                    title = gettext("N"),    type="integer")
-  descriptivesTable$addColumnInfo(name="mean",                 title = gettext("Mean"), type="number")
-  descriptivesTable$addColumnInfo(name="sd",                   title = gettext("SD"),   type="number")
-  descriptivesTable$addColumnInfo(name="se",                   title = gettext("SE"),   type="number")
-  
-  overTitle <- gettextf("%.0f%% Credible Interval", 100 * options[["credibleInterval"]])
-  descriptivesTable$addColumnInfo(name="lowerCI",              title = gettext("Lower"), type="number", overtitle = overTitle)
-  descriptivesTable$addColumnInfo(name="upperCI",              title = gettext("Upper"), type="number", overtitle = overTitle)
-  
-  bainContainer[["descriptivesTable"]] <- descriptivesTable
-  
-  if (!ready)
-    return()
-  
-  descriptivesTable$setExpectedSize(length(options[["variables"]]))
-  
-  for (variable in options[["variables"]]) {
-    
-    bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type = "onesampleTTest", variable = variable)
-    
-    if(isTryError(bainAnalysis)){
-      
-      descriptivesTable$addRows(data.frame(v=variable), rowNames=variable)
-      descriptivesTable$addFootnote(message=gettextf("Results not computed: %s", .extractErrorMessage(bainAnalysis)), colNames="v", rowNames=variable)
-      
-    } else {
-      
-      bainSummary <- summary(bainAnalysis, ci = options[["credibleInterval"]])
-      
-      # Descriptives from bain, sd calculated manually
-      N <- bainSummary[["n"]]
-      mu <- bainSummary[["Estimate"]]
-      CiLower <- bainSummary[["lb"]]
-      CiUpper <- bainSummary[["ub"]]
-      sd <- sd(dataset[, .v(variable)])
-      se <- sqrt(diag(bainAnalysis[["posterior"]]))
-      
-      row <- list(v = variable, N = N, mean = mu, sd = sd, se = se, lowerCI = CiLower, upperCI = CiUpper)
-      descriptivesTable$addRows(row)
-    }
-  }
 }
 
 .bainOneSampleDescriptivesPlot <- function(dataset, options, bainContainer, ready, position) {

@@ -35,11 +35,11 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   # Create a table containing the main analysis results
   .bainResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type = "sem", position = 1)
   
-  ### BAYES FACTOR MATRIX ###
+  # Create the Bayes factor matrix
   .bainBfMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "sem", position = 2)
   
-  ### COEFFICIENTS TABLE ###
-  .bainSemCoefficientsTable(dataList[["dataset"]], options, bainContainer, ready, position = 3)
+  # Create the descriptive statistics (coefficients) table
+  .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "sem", position = 3)
   
   ### POSTERIOR PROBABILITIES PLOT ###
   .bainLinearRegressionBayesFactorPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)
@@ -65,40 +65,6 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
     bainContainer[["lavaanResult"]]$dependOn(options = "syntax")
     return(bainContainer[["lavaanResult"]]$object)
   }
-}
-
-.bainSemCoefficientsTable <- function(dataset, options, bainContainer, ready, position){
-  
-  if (!is.null(bainContainer[["coefficientsTable"]]) || !options[["coefficients"]]) 
-    return() 
-  
-  coefficientsTable <- createJaspTable(gettext("Coefficients"))
-  coefficientsTable$position <- position
-  coefficientsTable$dependOn(c("coefficients", "CredibleInterval"))
-  
-  coefficientsTable$addColumnInfo(name="Parameter", type="string", title = "Parameter")
-  coefficientsTable$addColumnInfo(name="n", type="integer", title = "n")
-  coefficientsTable$addColumnInfo(name="Estimate", type="number", title = "Estimate")
-  coefficientsTable$addColumnInfo(name="lb", type="number", title = "Lower", overtitle = gettextf("%1$s%% Credible interval", round(options[["CredibleInterval"]] * 100, 2)))
-  coefficientsTable$addColumnInfo(name="ub", type="number", title = "Upper", overtitle = gettextf("%1$s%% Credible interval", round(options[["CredibleInterval"]] * 100, 2)))
-  
-  bainContainer[["coefficientsTable"]] <- coefficientsTable
-  
-  if(!ready)
-    return()
-  
-  bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type = "sem")
-  coefficients <- summary(bainResult, ci = options[["CredibleInterval"]])
-  coefficientsTable$setData(coefficients)
-  
-}
-
-# helper functions
-.bainSemReadData <- function(dataset, options) {
-  if (!is.null(dataset)) 
-    return(dataset)
-  dataset <- .readDataSetToEnd(all.columns = TRUE)
-  return(dataset)
 }
 
 .bainSemGetUsedVars <- function(syntax, availablevars, decode = TRUE) {

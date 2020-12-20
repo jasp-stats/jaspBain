@@ -58,12 +58,12 @@ Form
 
 		CheckBox 
 		{ 
-			name: 						"coefficients"
+			name: 						"descriptives"
 			text: 						qsTr("Coefficients")	
 
 			CIField 
 			{ 
-				name: 					"CredibleInterval"
+				name: 					"credibleInterval"
 				text: 					qsTr("Credible interval")
 			} 
 		}

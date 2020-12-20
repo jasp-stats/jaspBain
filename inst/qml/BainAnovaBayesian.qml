@@ -64,7 +64,7 @@ Form
 
 			CIField 
 			{ 
-				name: 					"CredibleInterval"
+				name: 					"credibleInterval"
 				text: 					qsTr("Credible interval") 
 			}
 		}

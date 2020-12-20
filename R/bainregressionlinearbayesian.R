@@ -38,51 +38,9 @@ BainRegressionLinearBayesian <- function(jaspResults, dataset, options, ...) {
   # Create the Bayes factor matrix
   .bainBfMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "regression", position = 2)
   
-  ### COEFFICIENTS ###
-  .bainLinearRegressionCoefficientsTable(dataList[["dataset"]], options, bainContainer, ready, position = 3)
+  # Create the descriptive statistics (coefficients) table
+  .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "regression", position = 3)
   
   ### POSTERIOR PROBABILITIES PLOT ###
   .bainLinearRegressionBayesFactorPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)
-}
-
-.bainLinearRegressionCoefficientsTable <- function(dataset, options, bainContainer, ready, position) {
-  
-  if (!is.null(bainContainer[["coefficientsTable"]]) || !options[["coefficients"]]) return()
-  
-  coefficientsTable <- createJaspTable(gettext("Coefficients"))
-  coefficientsTable$dependOn(options = c("coefficients", "CredibleInterval"))
-  coefficientsTable$position <- position
-  
-  overTitle <- gettextf("%i%% Credible Interval", round(options[["CredibleInterval"]] * 100))
-  
-  coefficientsTable$addColumnInfo(name="v",       title=gettext("Covariate"),   type="string")
-  coefficientsTable$addColumnInfo(name="N",     	title=gettext("N"), 	 	 	    type="integer")
-  coefficientsTable$addColumnInfo(name="mean",    title=gettext("Coefficient"), type="number")
-  coefficientsTable$addColumnInfo(name="SE",      title=gettext("SE"),          type="number")
-  coefficientsTable$addColumnInfo(name="CiLower", title=gettext("Lower"),     	type="number", overtitle = overTitle)
-  coefficientsTable$addColumnInfo(name="CiUpper", title=gettext("Upper"),     	type="number", overtitle = overTitle)
-  
-  if(options[["standardized"]])
-    coefficientsTable$addFootnote(message = gettext("The displayed coefficients are standardized."))
-  
-  bainContainer[["coefficientsTable"]] <- coefficientsTable
-  
-  if (!ready || bainContainer$getError())
-    return()
-  
-  bainResult <- bainContainer[["bainResult"]]$object
-  bainSummary <- summary(bainResult, ci = options[["CredibleInterval"]])
-  
-  # Extract names, mean and n from bain result
-  groups <- .unv(bainSummary[["Parameter"]])
-  N <- bainSummary[["n"]]
-  mu <- bainSummary[["Estimate"]]
-  CiLower <- bainSummary[["lb"]]
-  CiUpper <- bainSummary[["ub"]]
-  
-  # Standard error according to bain package
-  se <- sqrt(diag(bainResult$posterior))
-  
-  row <- data.frame(v = groups, N = N, mean = mu, SE = se, CiLower = CiLower, CiUpper = CiUpper)
-  coefficientsTable$addRows(row)
 }
