@@ -41,8 +41,8 @@ BainTTestBayesianPairedSamples <- function(jaspResults, dataset, options, ...) {
   # Create the posterior probability plots
   .bainPosteriorProbabilityPlot(dataList[["dataset"]], options, bainContainer, ready, type, position = 3)
   
-  ### DESCRIPTIVES PLOTS ###
-  .bainPairedSamplesDescriptivesPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)
+  # Create the descriptive plot(s)
+  .bainDescriptivePlots(dataList[["dataset"]], options, bainContainer, ready, type, position = 4)
 }
 
 .bainPairedSamplesDescriptivesPlots <- function(dataset, options, bainContainer, ready, position) {

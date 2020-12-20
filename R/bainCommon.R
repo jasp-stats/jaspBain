@@ -718,11 +718,11 @@
   table$addColumnInfo(name="upperCI",              title = gettext("Upper"), type="number", overtitle = overTitle)
   bainContainer[["descriptivesTable"]] <- table
   if(type == "regression")
-	  table$addFootnote(message = ifelse(options[["standardized"]], yes = gettext("The displayed coefficients are standardized."), no = gettext("The displayed coefficients are unstandardized.")))
+    table$addFootnote(message = ifelse(options[["standardized"]], yes = gettext("The displayed coefficients are standardized."), no = gettext("The displayed coefficients are unstandardized.")))
   
   if (!ready)
     return()
-
+  
   if(type == "independentTTest"){
     table$setExpectedSize(length(options[["variables"]]) * 2)
     levels <- base::levels(dataset[[ .v(options[["groupingVariable"]]) ]])
@@ -842,159 +842,282 @@
 # Create the posterior probability plots
 .bainPosteriorProbabilityPlot <- function(dataset, options, bainContainer, ready, type, position){
   if (!is.null(bainContainer[["posteriorProbabilityPlot"]]) || !options[["bayesFactorPlot"]]) 
-  	return()
-  if(type %in% c("independentTTest", "pairedTTest", "onesampleTTest")){
-  bayesFactorPlots <- createJaspContainer(gettext("Posterior Probabilities"))
-  bayesFactorPlots$dependOn(options = c("variables", "bayesFactorPlot", "hypothesis", "pairs"))
-  bayesFactorPlots$position <- position
-  
-  bainContainer[["posteriorProbabilityPlot"]] <- bayesFactorPlots
-  
-  if (!ready)
     return()
-  
-  analysisType <- base::switch(options[["hypothesis"]],
-                               "equalNotEqual"		= 1,
-                               "equalBigger"		  = 2,
-                               "equalSmaller"		= 3,
-                               "biggerSmaller"		= 4,
-                               "equalBiggerSmaller"= 5)
-  
-  if(type == "onesampleTTest" || type == "independentTTest"){
+  if(type %in% c("independentTTest", "pairedTTest", "onesampleTTest")){
+    bayesFactorPlots <- createJaspContainer(gettext("Posterior Probabilities"))
+    bayesFactorPlots$dependOn(options = c("variables", "bayesFactorPlot", "hypothesis", "pairs"))
+    bayesFactorPlots$position <- position
     
-    for(variable in options[["variables"]]){
+    bainContainer[["posteriorProbabilityPlot"]] <- bayesFactorPlots
+    
+    if (!ready)
+      return()
+    
+    analysisType <- base::switch(options[["hypothesis"]],
+                                 "equalNotEqual"		= 1,
+                                 "equalBigger"		  = 2,
+                                 "equalSmaller"		= 3,
+                                 "biggerSmaller"		= 4,
+                                 "equalBiggerSmaller"= 5)
+    
+    if(type == "onesampleTTest" || type == "independentTTest"){
       
-      if (is.null(bayesFactorPlots[[variable]])){
+      for(variable in options[["variables"]]){
         
-        bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type = "onesampleTTest", variable = variable)
+        if (is.null(bayesFactorPlots[[variable]])){
+          
+          bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type = "onesampleTTest", variable = variable)
+          
+          plot <- createJaspPlot(plot = NULL, title = variable, height = 300, width = 400)
+          plot$dependOn(optionContainsValue=list("variables" = variable))
+          
+          if(isTryError(bainAnalysis)){
+            plot$setError(gettext("Plotting not possible: the results for this variable were not computed."))
+          } else {
+            p <- try({
+              plot$plotObject <- .plot_bain_ttest_cran(bainAnalysis, type = analysisType)
+            })
+            if(isTryError(p)){
+              plot$setError(gettextf("Plotting not possible: %s", .extractErrorMessage(p)))
+            }
+          }    
+          bayesFactorPlots[[variable]] <- plot
+        }
+      }
+      
+    } else if (type == "pairedTTest"){
+      
+      for(pair in options[["pairs"]]){
         
-        plot <- createJaspPlot(plot = NULL, title = variable, height = 300, width = 400)
-        plot$dependOn(optionContainsValue=list("variables" = variable))
+        currentPair <- paste(pair, collapse=" - ")
         
-        if(isTryError(bainAnalysis)){
-          plot$setError(gettext("Plotting not possible: the results for this variable were not computed."))
-        } else {
-          p <- try({
-            plot$plotObject <- .plot_bain_ttest_cran(bainAnalysis, type = analysisType)
-          })
-          if(isTryError(p)){
-            plot$setError(gettextf("Plotting not possible: %s", .extractErrorMessage(p)))
-          }
-        }    
-        bayesFactorPlots[[variable]] <- plot
+        if (is.null(bayesFactorPlots[[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]){
+          
+          bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type = "pairedTTest", pair = pair)
+          
+          plot <- createJaspPlot(plot = NULL, title = currentPair, height = 300, width = 400)
+          plot$dependOn(optionContainsValue=list("pairs" = pair))
+          
+          if(isTryError(bainAnalysis)){
+            plot$setError(gettext("Plotting not possible: the results for this variable were not computed."))
+          } else {
+            p <- try({
+              plot$plotObject <- .plot_bain_ttest_cran(bainAnalysis, type = analysisType)
+            })
+            if(isTryError(p)){
+              plot$setError(gettextf("Plotting not possible: %s", .extractErrorMessage(p)))
+            }
+          }    
+          bayesFactorPlots[[currentPair]] <- plot
+        }
       }
     }
-    
-  } else if (type == "pairedTTest"){
-    
-    for(pair in options[["pairs"]]){
-      
-      currentPair <- paste(pair, collapse=" - ")
-      
-      if (is.null(bayesFactorPlots[[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]){
-        
-        bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type = "pairedTTest", pair = pair)
-        
-        plot <- createJaspPlot(plot = NULL, title = currentPair, height = 300, width = 400)
-        plot$dependOn(optionContainsValue=list("pairs" = pair))
-        
-        if(isTryError(bainAnalysis)){
-          plot$setError(gettext("Plotting not possible: the results for this variable were not computed."))
-        } else {
-          p <- try({
-            plot$plotObject <- .plot_bain_ttest_cran(bainAnalysis, type = analysisType)
-          })
-          if(isTryError(p)){
-            plot$setError(gettextf("Plotting not possible: %s", .extractErrorMessage(p)))
-          }
-        }    
-        bayesFactorPlots[[currentPair]] <- plot
-      }
-    }
-  }
   } else if(type %in% c("anova", "ancova", "regression", "sem")){
-	if(options[["model"]] == ""){
-		height <- 300
-		width <- 400
-	} else {
-		height <- 400
-		width <- 600
-	}
-	
-	bayesFactorPlot <- createJaspPlot(plot = NULL, title = gettext("Posterior Probabilities"), height = height, width = width)
-	
-	bayesFactorPlot$dependOn(options = "bayesFactorPlot")
-	bayesFactorPlot$position <- position
-	bainContainer[["posteriorProbabilityPlot"]] <- bayesFactorPlot
-	
-	if (!ready || bainContainer$getError())
-		return()
-	
-	bainResult <- bainContainer[["bainResult"]]$object
-	if(type %in% c("anova", "ancova")){
-		bayesFactorPlot$plotObject <- .suppressGrDevice(.plot_bain_ancova_cran(bainResult))
-	} else if(type %in% c("regression", "sem")){
-		bayesFactorPlot$plotObject <- .suppressGrDevice(.plot_bain_regression_cran(bainResult))
-	}
+    if(options[["model"]] == ""){
+      height <- 300
+      width <- 400
+    } else {
+      height <- 400
+      width <- 600
+    }
+    
+    bayesFactorPlot <- createJaspPlot(plot = NULL, title = gettext("Posterior Probabilities"), height = height, width = width)
+    
+    bayesFactorPlot$dependOn(options = "bayesFactorPlot")
+    bayesFactorPlot$position <- position
+    bainContainer[["posteriorProbabilityPlot"]] <- bayesFactorPlot
+    
+    if (!ready || bainContainer$getError())
+      return()
+    
+    bainResult <- bainContainer[["bainResult"]]$object
+    if(type %in% c("anova", "ancova")){
+      bayesFactorPlot$plotObject <- .suppressGrDevice(.plot_bain_ancova_cran(bainResult))
+    } else if(type %in% c("regression", "sem")){
+      bayesFactorPlot$plotObject <- .suppressGrDevice(.plot_bain_regression_cran(bainResult))
+    }
   }
 }
 
 # Create the descriptive plot(s)
 .bainDescriptivePlots <- function(dataset, options, bainContainer, ready, type, position){
-
-	  if (!is.null(bainContainer[["descriptivesPlots"]]) || !options[["descriptivesPlot"]]) 
-  	return()
   
-  descriptivesPlots <- createJaspContainer(gettext("Descriptive Plots"))
-  descriptivesPlots$dependOn(options =c("variables", "descriptivesPlots", "credibleInterval"))
-  descriptivesPlots$position <- position
-  
-  bainContainer[["descriptivesPlots"]] <- descriptivesPlots
-  
-  if (!ready)
+  if (!is.null(bainContainer[["descriptivesPlots"]]) || !options[["descriptivesPlot"]]) 
     return()
   
-  for (variable in options[["variables"]]) {
+  if(type %in% c("independentTTest", "pairedTTest", "onesampleTTest")){
+    descriptivesPlots <- createJaspContainer(gettext("Descriptive Plots"))
+    descriptivesPlots$dependOn(options = c("variables", "pairs", "descriptivesPlots", "credibleInterval"))
+    descriptivesPlots$position <- position
     
-    if(is.null(bainContainer[["descriptivesPlots"]][[variable]])){
+    bainContainer[["descriptivesPlots"]] <- descriptivesPlots
+  } else {
+    plotTitle <- ifelse(type == "anova", yes = gettext("Descriptives Plot"), no = gettext("Adjusted Means"))
+    
+    descriptivesPlots <- createJaspPlot(plot = NULL, title = plotTitle)
+    descriptivesPlots$dependOn(options = c("descriptivesPlot", "credibleInterval"))
+    descriptivesPlots$position <- position
+    
+    bainContainer[["descriptivesPlots"]] <- descriptivesPlots
+  }
+  
+  if (!ready || bainContainer$getError())
+    return()
+  
+  if(type %in% c("independentTTest", "onesampleTTest")){
+    for (variable in options[["variables"]]) {
       
-      bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type = "onesampleTTest", variable = variable)
-      
-      if(isTryError(bainAnalysis)){
+      if(is.null(bainContainer[["descriptivesPlots"]][[variable]])){
         
-        descriptivesPlots[[variable]] <- createJaspPlot(plot=NULL, title = variable)
-        descriptivesPlots[[variable]]$dependOn(optionContainsValue=list("variables" = variable))
-        descriptivesPlots[[variable]]$setError(.extractErrorMessage(bainAnalysis))
+        bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type, variable = variable)
         
-      } else {
-        
-        bainSummary <- summary(bainAnalysis, ci = options[["credibleInterval"]])
-        
-        # Descriptive statistics from bain
-        N <- bainSummary[["n"]]
-        mu <- bainSummary[["Estimate"]]
-        CiLower <- bainSummary[["lb"]]
-        CiUpper <- bainSummary[["ub"]]
-        
-        yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(options[["testValue"]], CiLower, CiUpper), min.n = 4)
-        d <- data.frame(v = variable, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1)
-        
-        p <- ggplot2::ggplot(d, ggplot2::aes(x=index, y=mean)) +
-          ggplot2::geom_segment(ggplot2::aes(x = -Inf, xend = Inf, y = options[["testValue"]], yend = options[["testValue"]]), linetype = 2, color = "darkgray") +
-          ggplot2::geom_errorbar(ggplot2::aes(ymin=lowerCI, ymax=upperCI), colour="black", width=.1, position = ggplot2::position_dodge(.2)) +
-          ggplot2::geom_point(position=ggplot2::position_dodge(.2), size=4) +
-          ggplot2::ylab("") +
-          ggplot2::xlab("") +
-          ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks)) +
-          ggplot2::scale_x_continuous(breaks = 0:2, labels = NULL)
-        p <- jaspGraphs::themeJasp(p, xAxis = FALSE) + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())
-        
-        descriptivesPlots[[variable]] <- createJaspPlot(plot=p, title = variable)
-        descriptivesPlots[[variable]]$dependOn(optionContainsValue=list("variables" = variable))
+        if(isTryError(bainAnalysis)){
+          
+          descriptivesPlots[[variable]] <- createJaspPlot(plot=NULL, title = variable)
+          descriptivesPlots[[variable]]$dependOn(optionContainsValue=list("variables" = variable))
+          descriptivesPlots[[variable]]$setError(gettextf("Results not computed: %1$s", JASP:::.extractErrorMessage(bainAnalysis)))
+          
+        } else {
+          if(type == "onesampleTTest"){
+            bainSummary <- summary(bainAnalysis, ci = options[["credibleInterval"]])
+            
+            # Descriptive statistics from bain
+            N <- bainSummary[["n"]]
+            mu <- bainSummary[["Estimate"]]
+            CiLower <- bainSummary[["lb"]]
+            CiUpper <- bainSummary[["ub"]]
+            
+            yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(options[["testValue"]], CiLower, CiUpper), min.n = 4)
+            d <- data.frame(v = variable, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1)
+            
+            p <- ggplot2::ggplot(d, ggplot2::aes(x=index, y=mean)) +
+              ggplot2::geom_segment(ggplot2::aes(x = -Inf, xend = Inf, y = options[["testValue"]], yend = options[["testValue"]]), linetype = 2, color = "darkgray") +
+              ggplot2::geom_errorbar(ggplot2::aes(ymin=lowerCI, ymax=upperCI), colour="black", width=.1, position = ggplot2::position_dodge(.2)) +
+              ggplot2::geom_point(position=ggplot2::position_dodge(.2), size=4) +
+              ggplot2::ylab("") +
+              ggplot2::xlab("") +
+              ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks)) +
+              ggplot2::scale_x_continuous(breaks = 0:2, labels = NULL)
+            p <- jaspGraphs::themeJasp(p, xAxis = FALSE) + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())
+          } else if(type == "independentTTest"){
+            bainSummary <- summary(bainAnalysis, ci = options[["credibleInterval"]])
+            levels <- base::levels(dataset[[ .v(options[["groupingVariable"]]) ]])
+            N <- bainSummary[["n"]]
+            mu <- bainSummary[["Estimate"]]
+            CiLower <- bainSummary[["lb"]]
+            CiUpper <- bainSummary[["ub"]]
+            
+            yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(CiLower, CiUpper), min.n = 4)
+            d <- data.frame(v = levels, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1:length(levels))
+            
+            p <- ggplot2::ggplot(d, ggplot2::aes(x=index, y=mean)) +
+              ggplot2::geom_errorbar(ggplot2::aes(ymin=lowerCI, ymax=upperCI), colour="black", width=.2, position = ggplot2::position_dodge(.2)) +
+              ggplot2::geom_line(position=ggplot2::position_dodge(.2), size = .7) +
+              ggplot2::geom_point(position=ggplot2::position_dodge(.2), size=4) +
+              ggplot2::ylab(variable) +
+              ggplot2::xlab(options[["groupingVariable"]]) +
+              ggplot2::scale_x_continuous(breaks = 1:length(levels), labels = as.character(levels)) +
+              ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks))
+            p <- jaspGraphs::themeJasp(p)
+          }
+          
+          descriptivesPlots[[variable]] <- createJaspPlot(plot=p, title = variable)
+          descriptivesPlots[[variable]]$dependOn(optionContainsValue=list("variables" = variable))
+        }
       }
     }
+  } else if(type == "pairedTTest"){
+    for (pair in options[["pairs"]]) {
+      
+      currentPair <- paste(pair, collapse=" - ")
+      
+      if (is.null(bainContainer[["descriptivesPlots"]][[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]){
+        
+        testType <- base::switch(options[["hypothesis"]],
+                                 "equalNotEqual"       = 1,
+                                 "equalBigger"         = 2,
+                                 "equalSmaller"        = 3,
+                                 "biggerSmaller"       = 4,
+                                 "equalBiggerSmaller"  = 5)
+        bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type = "pairedTTest", pair = pair, testType = testType)
+        
+        if(isTryError(bainAnalysis)){
+          
+          descriptivesPlots[[currentPair]] <- createJaspPlot(plot=NULL, title = currentPair)
+          descriptivesPlots[[currentPair]]$dependOn(optionContainsValue=list("variables" = currentPair))
+          descriptivesPlots[[currentPair]]$setError(.extractErrorMessage(bainAnalysis))
+          
+        } else {
+          
+          bainSummary <- summary(bainAnalysis, ci = options[["credibleInterval"]])
+          
+          # Descriptive statistics from bain
+          N <- bainSummary[["n"]]
+          mu <- bainSummary[["Estimate"]]
+          CiLower <- bainSummary[["lb"]]
+          CiUpper <- bainSummary[["ub"]]
+          
+          yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, CiLower, CiUpper), min.n = 4)
+          d <- data.frame(v = gettext("Difference"), N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1)
+          
+          p <- ggplot2::ggplot(d, ggplot2::aes(x=index, y=mean)) +
+            ggplot2::geom_segment(ggplot2::aes(x = -Inf, xend = Inf, y = 0, yend = 0), linetype = 2, color = "darkgray") +
+            ggplot2::geom_errorbar(ggplot2::aes(ymin=lowerCI, ymax=upperCI), colour="black", width=.1, position = ggplot2::position_dodge(.2)) +
+            ggplot2::geom_point(position=ggplot2::position_dodge(.2), size=4) +
+            ggplot2::ylab("") +
+            ggplot2::xlab("") +
+            ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks)) +
+            ggplot2::scale_x_continuous(breaks = 0:2, labels = NULL)
+          p <- jaspGraphs::themeJasp(p, xAxis = FALSE) + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())
+          
+          descriptivesPlots[[currentPair]] <- createJaspPlot(plot=p, title = currentPair)
+          descriptivesPlots[[currentPair]]$dependOn(optionContainsValue=list("pairs" = pair))
+        }
+      }
+    }
+  } else if(type %in% c("anova", "ancova")){
+    bainBreaks <- function(x, plotErrorBars = TRUE) {
+      ci.pos <- c(x[,"mean"], x[,"lowerCI"], x[,"upperCI"])
+      b <- pretty(ci.pos)
+      d <- data.frame(x=-Inf, xend=-Inf, y=min(b), yend=max(b))
+      list(ggplot2::geom_segment(data=d, ggplot2::aes(x=x, y=y, xend=xend, yend=yend), inherit.aes=FALSE, size = 1),
+           ggplot2::scale_y_continuous(breaks=c(min(b),max(b))))
+    }
+    
+    groupCol <- dataset[ , .v(options[["fixedFactors"]])]
+    varLevels <- levels(groupCol)
+    
+    bainResult <- bainContainer[["bainResult"]]$object
+    bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
+    
+    # Remove covariates in ANCOVA
+    if(type == "ancova")
+      bainSummary <- bainSummary[1:length(varLevels), ]
+    
+    # Extract all but sd and se from bain result
+    variable <- bainSummary[["Parameter"]]
+    N <- bainSummary[["n"]]
+    mu <- bainSummary[["Estimate"]]
+    CiLower <- bainSummary[["lb"]]
+    CiUpper <- bainSummary[["ub"]]
+    
+    d <- data.frame(v = variable, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1:length(variable))
+    
+    p <- ggplot2::ggplot(d, ggplot2::aes(x=index, y=mean)) +
+      ggplot2::geom_errorbar(ggplot2::aes(ymin=lowerCI, ymax=upperCI), colour="black", width=.2, position = ggplot2::position_dodge(.2)) +
+      ggplot2::geom_line(position=ggplot2::position_dodge(.2), size = .7) +
+      ggplot2::geom_point(position=ggplot2::position_dodge(.2), size=4) +
+      ggplot2::scale_fill_manual(values = c(rep(c("white","black"),5),rep("grey",100)), guide=ggplot2::guide_legend(nrow=10)) +
+      ggplot2::scale_shape_manual(values = c(rep(c(21:25),each=2),21:25,7:14,33:112), guide=ggplot2::guide_legend(nrow=10)) +
+      ggplot2::scale_color_manual(values = rep("black",200), guide=ggplot2::guide_legend(nrow=10)) +
+      ggplot2::ylab(options[["dependent"]]) +
+      ggplot2::xlab(options[["fixedFactors"]]) +
+      bainBreaks(d, TRUE) +
+      ggplot2::scale_x_continuous(breaks = 1:length(varLevels), labels = as.character(varLevels))
+    p <- jaspGraphs::themeJasp(p)
+    
+    descriptivesPlots$plotObject <- p
   }
-
 }
 
 .plot_bain_ttest_cran <- function(x, type){
