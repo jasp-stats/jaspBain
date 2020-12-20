@@ -119,6 +119,7 @@
 ##################
 
 .bainAnalysisState <- function(dataset, options, bainContainer, ready, type, variable = NULL, pair = NULL, testType = NULL){
+  
   if(type %in% c("onesampleTTest", "independentTTest")){
     if(!is.null(bainContainer[[variable]]))
       return(bainContainer[[variable]]$object)
@@ -199,7 +200,7 @@
           bainResult <- bain:::bain_regression_cran(X = dataset, dep = .v(options[["dependent"]]), pred = paste(.v(options[["covariates"]]), collapse = " "), hyp = rest.string, std = options[["standardized"]], seed = options[["seed"]])
         } else if(type == "sem"){
           lavaanFit <- .bainLavaanState(dataset, options, bainContainer, ready, jaspResults)
-          bainResult <- bain::bain(x = lavaanFit, hypothesis = rest.string)
+          bainResult <- bain::bain(x = lavaanFit, hypothesis = rest.string)#, fraction = options[["fraction"]])
         }
       })
       if (isTryError(p)) {
@@ -207,6 +208,10 @@
         return()
       }
       bainContainer[["bainResult"]] <- createJaspState(bainResult)
+	  deps <- "seed"
+	  if(type == "sem")
+	  	deps <- c(deps, "fraction")
+	  bainContainer[["bainResult"]]$dependOn(options = deps)
       return(bainContainer[["bainResult"]]$object)  
     }
   } 
@@ -218,8 +223,10 @@
 
 # Create a legend containing the order constrained hypotheses
 .bainLegend <- function(dataset, options, type, jaspResults, position) {
+  
   if (!is.null(jaspResults[["legendTable"]])) 
     return()
+  
   legendTable <- createJaspTable("Hypothesis Legend")
   deps <- switch(type, 
                  "regression" = c("model", "covariates"),
@@ -231,6 +238,7 @@
   legendTable$addColumnInfo(name = "number",     type = "string", title = "")
   legendTable$addColumnInfo(name = "hypothesis", type = "string", title = gettext("Hypothesis"))
   jaspResults[["legendTable"]] <- legendTable
+  
   if (options[["model"]] != "") {
     rest.string <- .bainCleanModelInput(options[["model"]])
     hyp.vector <- unlist(strsplit(rest.string, "[;]")) 
@@ -271,8 +279,10 @@
 
 # Create a table containing the main analysis results
 .bainResultsTable <- function(dataset, options, bainContainer, missing, ready, type, position) {
+  
   if (!is.null(bainContainer[["mainResultsTable"]])) 
     return()
+  
   title <- switch(type,
                   "independentTTest" = gettext("Bain Independent Samples Welch's T-Test"),
                   "pairedTTest" = gettext("Bain Paired Samples T-Test"),
@@ -282,13 +292,13 @@
                   "regression" = gettext("Bain Linear Regression"),
                   "sem" = gettext("Bain Structural Equation Model"))
   deps <- switch(type,
-                 "independentTTest" = c("variables", "bayesFactorType", "hypothesis"),
-                 "pairedTTest" = c("pairs", "hypothesis", "bayesFactorType"),
-                 "onesampleTTest" = c("variables", "hypothesis", "bayesFactorType"),
-                 "anova" = NULL,
-                 "ancova" = NULL,
-                 "regression" = NULL,
-                 "sem" = NULL)
+                 "independentTTest" = c("variables", "bayesFactorType", "hypothesis", "seed"),
+                 "pairedTTest" = c("pairs", "hypothesis", "bayesFactorType", "seed"),
+                 "onesampleTTest" = c("variables", "hypothesis", "bayesFactorType", "seed"),
+                 "anova" = "seed",
+                 "ancova" = "seed",
+                 "regression" = c("seed", "standardized"),
+                 "sem" = c("seed", "fraction"))
   table <- createJaspTable(title)
   table$dependOn(options = deps)
   table$position <- position
@@ -649,23 +659,25 @@
 
 # Create the Bayes factor matrix
 .bainBfMatrix <- function(dataset, options, bainContainer, ready, type, position) {
+  
   if (!is.null(bainContainer[["bayesFactorMatrix"]]) || !options[["bayesFactorMatrix"]]) 
     return() 
+  
   bayesFactorMatrix <- createJaspTable(gettext("Bayes Factor Matrix"))
   bayesFactorMatrix$position <- position
-  if (type == "regression")
-    bayesFactorMatrix$dependOn(options = c("bayesFactorMatrix", "standardized", "seed")) 
-  if (type == "ancova" || type == "anova" || type == "sem")
-    bayesFactorMatrix$dependOn(options = c("bayesFactorMatrix", "seed")) 
+  deps <- c("bayesFactorMatrix", "seed", "standardized", "fraction")
+  bayesFactorMatrix$dependOn(options = deps) 
   bayesFactorMatrix$addColumnInfo(name = "hypothesis",  title = "",             type = "string")
   bayesFactorMatrix$addColumnInfo(name = "H1",          title = gettext("H1"),  type = "number")
   bainContainer[["bayesFactorMatrix"]] <- bayesFactorMatrix
+
   if (!ready || bainContainer$getError()) {
     row <- data.frame(hypothesis = gettext("H1"), H1 = ".")
     bayesFactorMatrix$addRows(row)
     return()
   }
-  bainResult <- bainContainer[["bainResult"]]$object
+
+  bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type)
   BFmatrix <- bainResult[["BFmatrix"]]
   if (nrow(BFmatrix) > 1) {
     for (i in 2:nrow(BFmatrix))
@@ -683,8 +695,10 @@
 
 # Create the descriptive statistics table
 .bainDescriptivesTable <- function(dataset, options, bainContainer, ready, type, position){
+  
   if (!is.null(bainContainer[["descriptivesTable"]]) || !options[["descriptives"]]) 
     return()
+  
   if(type == "ancova"){
     title <- gettext("Coefficients for Groups plus Covariates")
   } else if(type == "regression" || type == "sem"){
@@ -698,9 +712,9 @@
                  "pairedTTest" = c("pairs", "descriptives", "credibleInterval"),
                  "onesampleTTest" = c("variables", "descriptives", "credibleInterval"),
                  "anova" = c("descriptives", "credibleInterval", "coefficients"),
-                 "ancova" = c("descriptives", "credibleInterval", "coefficients"),
-                 "regression" = c("coefficients", "credibleInterval"),
-                 "sem" = c("coefficients", "credibleInterval")) 
+                 "ancova" = c("descriptives", "credibleInterval", "coefficients", "seed"),
+                 "regression" = c("coefficients", "credibleInterval", "seed"),
+                 "sem" = c("coefficients", "credibleInterval", "seed", "fraction")) 
   table <- createJaspTable(title)
   table$dependOn(options = deps)
   table$position <- position
@@ -719,7 +733,7 @@
   if(type == "regression")
     table$addFootnote(message = ifelse(options[["standardized"]], yes = gettext("The displayed coefficients are standardized."), no = gettext("The displayed coefficients are unstandardized.")))
   
-  if (!ready)
+  if (!ready || bainContainer$getError())
     return()
   
   if(type == "independentTTest"){
@@ -840,74 +854,60 @@
 
 # Create the posterior probability plots
 .bainPosteriorProbabilityPlot <- function(dataset, options, bainContainer, ready, type, position){
+  
   if (!is.null(bainContainer[["posteriorProbabilityPlot"]]) || !options[["bayesFactorPlot"]]) 
     return()
+
   if(type %in% c("independentTTest", "pairedTTest", "onesampleTTest")){
-    bayesFactorPlots <- createJaspContainer(gettext("Posterior Probabilities"))
-    bayesFactorPlots$dependOn(options = c("variables", "bayesFactorPlot", "hypothesis", "pairs"))
-    bayesFactorPlots$position <- position
-    
-    bainContainer[["posteriorProbabilityPlot"]] <- bayesFactorPlots
-    
-    if (!ready)
+    container <- createJaspContainer(gettext("Posterior Probabilities"))
+    container$dependOn(options = c("variables", "bayesFactorPlot", "hypothesis", "pairs", "seed"))
+    container$position <- position
+    bainContainer[["posteriorProbabilityPlot"]] <- container
+    if (!ready || bainContainer$getError())
       return()
-    
     analysisType <- base::switch(options[["hypothesis"]],
-                                 "equalNotEqual"		= 1,
-                                 "equalBigger"		  = 2,
-                                 "equalSmaller"		= 3,
-                                 "biggerSmaller"		= 4,
-                                 "equalBiggerSmaller"= 5)
-    
-    if(type == "onesampleTTest" || type == "independentTTest"){
-      
-      for(variable in options[["variables"]]){
-        
-        if (is.null(bayesFactorPlots[[variable]])){
-          
-          bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type = "onesampleTTest", variable = variable)
-          
+                                 "equalNotEqual" = 1,
+                                 "equalBigger" = 2,
+                                 "equalSmaller"	= 3,
+                                 "biggerSmaller" = 4,
+                                 "equalBiggerSmaller" = 5)
+    if(type == "onesampleTTest" || type == "independentTTest"){  
+      for(variable in options[["variables"]]){     
+        if (is.null(container[[variable]])){       
+          bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type, variable = variable)
           plot <- createJaspPlot(plot = NULL, title = variable, height = 300, width = 400)
-          plot$dependOn(optionContainsValue=list("variables" = variable))
-          
-          if(isTryError(bainAnalysis)){
+          plot$dependOn(optionContainsValue = list("variables" = variable))
+          if(isTryError(bainResult)){
             plot$setError(gettext("Plotting not possible: the results for this variable were not computed."))
           } else {
             p <- try({
-              plot$plotObject <- .plot_bain_ttest_cran(bainAnalysis, type = analysisType)
+              plot$plotObject <- .plot_bain_ttest_cran(bainResult, type = analysisType)
             })
             if(isTryError(p)){
-              plot$setError(gettextf("Plotting not possible: %s", .extractErrorMessage(p)))
+              plot$setError(gettextf("Plotting not possible: %1$s", JASP:::.extractErrorMessage(p)))
             }
           }    
-          bayesFactorPlots[[variable]] <- plot
+          container[[variable]] <- plot
         }
-      }
-      
+      } 
     } else if (type == "pairedTTest"){
-      
-      for(pair in options[["pairs"]]){
-        
+      for(pair in options[["pairs"]]){   
         currentPair <- paste(pair, collapse=" - ")
-        
-        if (is.null(bayesFactorPlots[[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]){
-          
-          bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type = "pairedTTest", pair = pair)
-          
+        if (is.null(container[[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]){
+          bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type, pair = pair)
           plot <- createJaspPlot(plot = NULL, title = currentPair, height = 300, width = 400)
-          plot$dependOn(optionContainsValue=list("pairs" = pair))
-          
-          if(isTryError(bainAnalysis)){
+          plot$dependOn(optionContainsValue = list("pairs" = pair))
+          if(isTryError(bainResult)){
             plot$setError(gettext("Plotting not possible: the results for this variable were not computed."))
           } else {
             p <- try({
-              plot$plotObject <- .plot_bain_ttest_cran(bainAnalysis, type = analysisType)
+              plot$plotObject <- .plot_bain_ttest_cran(bainResult, type = analysisType)
             })
             if(isTryError(p)){
-              plot$setError(gettextf("Plotting not possible: %s", .extractErrorMessage(p)))
+              plot$setError(gettextf("Plotting not possible: %1$s", JASP:::.extractErrorMessage(p)))
             }
           }    
-          bayesFactorPlots[[currentPair]] <- plot
+          container[[currentPair]] <- plot
         }
       }
     }
@@ -919,21 +919,17 @@
       height <- 400
       width <- 600
     }
-    
-    bayesFactorPlot <- createJaspPlot(plot = NULL, title = gettext("Posterior Probabilities"), height = height, width = width)
-    
-    bayesFactorPlot$dependOn(options = "bayesFactorPlot")
-    bayesFactorPlot$position <- position
-    bainContainer[["posteriorProbabilityPlot"]] <- bayesFactorPlot
-    
+    plot <- createJaspPlot(plot = NULL, title = gettext("Posterior Probabilities"), height = height, width = width)
+    plot$dependOn(options = c("bayesFactorPlot", "seed", "fraction", "standardized"))
+    plot$position <- position
+    bainContainer[["posteriorProbabilityPlot"]] <- plot
     if (!ready || bainContainer$getError())
       return()
-    
-    bainResult <- bainContainer[["bainResult"]]$object
+    bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type)
     if(type %in% c("anova", "ancova")){
-      bayesFactorPlot$plotObject <- .suppressGrDevice(.plot_bain_ancova_cran(bainResult))
+      plot$plotObject <- .suppressGrDevice(.plot_bain_ancova_cran(bainResult))
     } else if(type %in% c("regression", "sem")){
-      bayesFactorPlot$plotObject <- .suppressGrDevice(.plot_bain_regression_cran(bainResult))
+      plot$plotObject <- .suppressGrDevice(.plot_bain_regression_cran(bainResult))
     }
   }
 }
@@ -943,7 +939,7 @@
   
   if (!is.null(bainContainer[["descriptivesPlots"]]) || !options[["descriptivesPlot"]]) 
     return()
-  
+
   if(type %in% c("independentTTest", "pairedTTest", "onesampleTTest")){
     container <- createJaspContainer(gettext("Descriptive Plots"))
     container$dependOn(options = c("variables", "pairs", "descriptivesPlot", "credibleInterval"))

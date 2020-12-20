@@ -30,7 +30,7 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   .bainDataReady(dataList[["dataset"]], options, type)
   
   # Create a container for the results
-  bainContainer <- .bainGetContainer(jaspResults, deps = c("syntax", "model", "seed"))
+  bainContainer <- .bainGetContainer(jaspResults, deps = c("syntax", "model"))
   
   # Create a legend containing the order constrained hypotheses
   .bainLegend(dataList[["dataset"]], options, type, jaspResults, position = 0)
@@ -120,7 +120,7 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
     return()
   
   plot <- createJaspPlot(title = gettext("Path diagram"), width = 600, height = 400)
-  plot$dependOn(options = "pathDiagram")
+  plot$dependOn(options = c("pathDiagram", "seed", "fraction"))
   bainContainer[["pathDiagram"]] <- plot
   
   fit <- .bainLavaanState(dataset, options, bainContainer, ready, jaspResults)
