@@ -7,6 +7,17 @@
   return(gsub("\n+", ";", input))
 }
 
+# Clean the input for the order constraints
+.bainCleanSemModelInput <- function(input) {
+  result <- gsub("\n+", ";", input)
+  result <- gsub(" =~ ", "___by___", result)
+  result <- gsub("=~", "___by___", result)
+  result <- gsub(" ~ ", "___on___", result)
+  result <- gsub("~", "___on___", result)
+  result <- gsub(" & ", " ", result)
+  return(result)
+}
+
 # Add the Bain citations
 .bainGetCitations <- function() {
   citations <- c(
@@ -189,7 +200,7 @@
       } else {
         rest.string <- encodeColNames(.bainCleanModelInput(options[["model"]]))
         if(type == "sem")
-          rest.string <- .v(.bainCleanModelInput(options[["model"]])) # Why does this only work with .v?
+          rest.string <- .v(.bainCleanSemModelInput(options[["model"]])) # Why does this only work with .v?
       }
       p <- try({
         if(type == "anova"){	

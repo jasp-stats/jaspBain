@@ -119,8 +119,8 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   if(!is.null(bainContainer[["pathDiagram"]]) || !options[["pathDiagram"]])
     return()
   
-  plot <- createJaspPlot(title = gettext("Path diagram"), width = 600, height = 400)
-  plot$dependOn(options = c("pathDiagram", "seed", "fraction"))
+  plot <- createJaspPlot(title = gettext("Path Diagram"), width = 600, height = 400)
+  plot$dependOn(options = c("pathDiagram", "seed", "fraction", "pathDiagramEstimates", "pathDiagramLegend"))
   bainContainer[["pathDiagram"]] <- plot
   
   fit <- .bainLavaanState(dataset, options, bainContainer, ready, jaspResults)
@@ -132,11 +132,11 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
     layout         = "tree2",
     intercepts     = FALSE,
     reorder        = FALSE,
-    whatLabels     = "par", # ifelse(options[["pathPlotPar"]], "par", "name"),
+    whatLabels     = ifelse(options[["pathDiagramEstimates"]], "par", "name"),
     edge.color     = "black",
     color          = list(lat = "#EAEAEA", man = "#EAEAEA", int = "#FFFFFF"),
     title          = FALSE,
-    legend         = FALSE, #options[["pathPlotLegend"]],
+    legend         = options[["pathDiagramLegend"]],
     legend.mode    = "names",
     legend.cex     = 0.6,
     label.cex      = 1.3,

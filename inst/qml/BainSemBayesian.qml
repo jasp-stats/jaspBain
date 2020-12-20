@@ -24,11 +24,6 @@ import JASP								1.0
 Form
 {
 	columns: 							2
-	
-	Text
-	{
-		text:							qsTr("Lavaan syntax")
-	}
 
 	TextArea 
 	{ 
@@ -74,7 +69,19 @@ Form
 		CheckBox 
 		{ 
 			name: 						"pathDiagram"
-			text: 						qsTr("Path diagram")			
+			text: 						qsTr("Path diagram")	
+
+			CheckBox
+			{
+				name:					"pathDiagramEstimates"
+				text:					qsTr("Show parameter estimates")
+			}	
+
+			CheckBox
+			{
+				name:					"pathDiagramLegend"
+				text:					qsTr("Show legend")
+			}		
 		}
 	}
 
@@ -113,7 +120,7 @@ Form
 
 		Text 
 		{ 
-			text: 						qsTr("Place each hypothesis on a new line. For example:\n\nfactorLow = factorMed = factorHigh\nfactorLow < factorMed < factorHigh\n\nwhere factor is the factor name and Low/Med/High are the factor level names.\nRead the help file for further instructions.") 
+			text: 						qsTr("Place each hypothesis on a new line. For example:\n\nlatent1 =~ manifest1 = latent1 =~ manifest2\nlatent1 =~ manifest1 < latent` =~ manifest2\n\nwhere latent is the latent variable name and manifest are the manifest variable names.\nRead the help file for further instructions.") 
 		}
 
 		TextArea
