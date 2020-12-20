@@ -32,7 +32,8 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   # Create a legend containing the order constrained hypotheses
   .bainLegend(dataList[["dataset"]], options, type = "sem", jaspResults, position = 0)
   
-  .bainSemResultsTable(dataList[["dataset"]], options, ready, bainContainer, jaspResults, position = 1)
+  # Create a table containing the main analysis results
+  .bainResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type = "sem", position = 1)
   
   ### BAYES FACTOR MATRIX ###
   .bainBfMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "sem", position = 2)
@@ -47,97 +48,23 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   .bainSemPathDiagram(dataList[["dataset"]], options, bainContainer, ready, jaspResults, position = 5)
 }
 
-.fitLavaanModelBain <- function(dataset, options, ready, bainContainer, jaspResults){
-  
+.bainLavaanState <- function(dataset, options, bainContainer, ready, jaspResults){
   if(!is.null(bainContainer[["lavaanResult"]])){
-    
     return(bainContainer[["lavaanResult"]]$object)
-    
   } else if(ready){
-    
     syntax <- .bainSemTranslateModel(options[["syntax"]], dataset)
     colnames(dataset) <- decodeColNames(colnames(dataset))
     error <- try({
       fit <- lavaan::sem(model = syntax, data = dataset)
     })
-    
     if(isTryError(error)){
       bainContainer$setError(gettextf("An error occurred in the call to lavaan: %1$s", JASP:::.extractErrorMessage(error)))
       return()
     }
-    
     bainContainer[["lavaanResult"]] <- createJaspState(fit)
     bainContainer[["lavaanResult"]]$dependOn(options = "syntax")
-    
     return(bainContainer[["lavaanResult"]]$object)
-    
   }
-}
-
-.fitBainSemModel <- function(dataset, options, ready, bainContainer, jaspResults, rest.string){
-  
-  if(!is.null(bainContainer[["bainResult"]])){
-    
-    return(bainContainer[["bainResult"]]$object)
-    
-  } else if(ready){
-    
-    fit <- .fitLavaanModelBain(dataset, options, ready, bainContainer, jaspResults)
-    
-    error <- try({
-      bainResult <- bain::bain(x = fit, hypothesis = rest.string)
-    })
-    
-    if(isTryError(error)){
-      bainContainer$setError(gettextf("An error occurred in the call to bain: %1$s", JASP:::.extractErrorMessage(error)))
-      return()
-    }
-    
-    bainContainer[["bainResult"]] <- createJaspState(bainResult)
-    bainContainer[["bainResult"]]$dependOn(options = "model")
-    
-    return(bainContainer[["bainResult"]]$object)
-    
-  }
-}
-
-.bainSemResultsTable <- function(dataset, options, ready, bainContainer, jaspResults, position){
-  
-  if (!is.null(bainContainer[["bainTable"]])) 
-    return() 
-  
-  bainTable <- createJaspTable(gettext("Bain Structural Equation Model"))
-  bainContainer[["bainTable"]] <- bainTable
-  bainTable$position <- position
-  
-  bainTable$addColumnInfo(name="hypotheses", type="string", title="")
-  bainTable$addColumnInfo(name="BF",         type="number", title=gettext("BF.c"))
-  bainTable$addColumnInfo(name="PMP1",       type="number", title=gettext("PMP a"))
-  bainTable$addColumnInfo(name="PMP2",       type="number", title=gettext("PMP b"))
-  
-  message <- gettext("BF.c denotes the Bayes factor of the hypothesis in the row versus its complement.\
-Posterior model probabilities (a: excluding the unconstrained hypothesis, b: including the unconstrained hypothesis) are based on equal prior model probabilities.")
-  bainTable$addFootnote(message=message)
-  
-  bainTable$addCitation(.bainGetCitations())
-  
-  if (!ready)
-    return()
-  
-  if (options$model == "") {
-    rest.string <- "ind60___by___x2 = 0" # CHANGE
-  } else {
-    rest.string <- .v(.bainCleanModelInput(options[["model"]]))
-  }
-  
-  bainResult <- .fitBainSemModel(dataset, options, ready, bainContainer, jaspResults, rest.string)
-  
-  for (i in 1:(length(bainResult$fit$BF)-1)) {
-    row <- list(hypotheses = gettextf("H%i",i), BF = bainResult$fit$BF[i], PMP1 = bainResult$fit$PMPa[i], PMP2 = bainResult$fit$PMPb[i])
-    bainTable$addRows(row)
-  }
-  row <- list(hypotheses = gettext("Hu"), BF = "", PMP1 = "", PMP2 = bainResult$fit$PMPb[length(bainResult$fit$BF)])
-  bainTable$addRows(row) 
 }
 
 .bainSemCoefficientsTable <- function(dataset, options, bainContainer, ready, position){
@@ -160,7 +87,7 @@ Posterior model probabilities (a: excluding the unconstrained hypothesis, b: inc
   if(!ready)
     return()
   
-  bainResult <- .fitBainSemModel(dataset, options, ready, bainContainer, jaspResults, rest.string)
+  bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type = "sem")
   coefficients <- summary(bainResult, ci = options[["CredibleInterval"]])
   coefficientsTable$setData(coefficients)
   
@@ -227,7 +154,7 @@ Posterior model probabilities (a: excluding the unconstrained hypothesis, b: inc
   plot$dependOn(options = "pathDiagram")
   bainContainer[["pathDiagram"]] <- plot
   
-  fit <- .fitLavaanModelBain(dataset, options, ready, bainContainer, jaspResults)
+  fit <- .bainLavaanState(dataset, options, bainContainer, ready, jaspResults)
   
   # create a qgraph object using semplot
   po <- .bainlavToPlotObj(fit)

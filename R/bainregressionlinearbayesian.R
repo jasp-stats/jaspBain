@@ -32,8 +32,8 @@ BainRegressionLinearBayesian <- function(jaspResults, dataset, options, ...) {
   # Create a legend containing the order constrained hypotheses
   .bainLegend(dataList[["dataset"]], options, type = "regression", jaspResults, position = 0)
   
-  ### RESULTS ###
-  .bainLinearRegressionResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, position = 1)
+  # Create a table containing the main analysis results
+  .bainResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type = "regression", position = 1)
   
   # Create the Bayes factor matrix
   .bainBfMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "regression", position = 2)
@@ -43,63 +43,6 @@ BainRegressionLinearBayesian <- function(jaspResults, dataset, options, ...) {
   
   ### POSTERIOR PROBABILITIES PLOT ###
   .bainLinearRegressionBayesFactorPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)
-}
-
-.bainLinearRegressionResultsTable <- function(dataset, options, bainContainer, missingValuesIndicator, ready, position) {
-  
-  if (!is.null(bainContainer[["bainTable"]])) return() #The options for this table didn't change so we don't need to rebuild it
-  
-  variables <- c(options[["dependent"]], unlist(options[["covariates"]]))
-  
-  bainTable <- createJaspTable(gettext("Bain Linear Regression"))
-  bainContainer[["bainTable"]] <- bainTable
-  bainTable$position <- position
-  
-  bainTable$addColumnInfo(name="hypotheses", type="string", title="")
-  bainTable$addColumnInfo(name="BF",         type="number", title=gettext("BF.c"))
-  bainTable$addColumnInfo(name="PMP1",       type="number", title=gettext("PMP a"))
-  bainTable$addColumnInfo(name="PMP2",       type="number", title=gettext("PMP b"))
-  
-  message <- gettext("BF.c denotes the Bayes factor of the hypothesis in the row versus its complement.\
-Posterior model probabilities (a: excluding the unconstrained hypothesis, b: including the unconstrained hypothesis) are based on equal prior model probabilities.")
-  bainTable$addFootnote(message=message)
-  
-  bainTable$addCitation(.bainGetCitations())
-  
-  if (!ready)
-    return()
-  
-  if (any(variables %in% missingValuesIndicator)) {
-    i <- which(variables %in% missingValuesIndicator)
-    if (length(i) > 1) {
-      bainTable$addFootnote(message= gettextf("The variables %s contain missing values, the rows containing these values are removed in the analysis.", paste(variables[i], collapse = ", ")), symbol=gettext("<b>Warning.</b>"))
-    } else if (length(i) == 1) {
-      bainTable$addFootnote(message= gettextf("The variable %s contains missing values, the rows containing these values are removed in the analysis.", variables[i]), symbol=gettext("<b>Warning.</b>"))
-    }
-  }
-  
-  if (options$model == "") {
-    rest.string <- NULL
-  } else {
-    rest.string <- encodeColNames(.bainCleanModelInput(options[["model"]]))
-  }
-  
-  p <- try({
-    bainResult <- bain:::bain_regression_cran(X = dataset, dep = .v(options[["dependent"]]), pred = paste(.v(options[["covariates"]]), collapse = " "), hyp = rest.string, std = options[["standardized"]], seed = options[["seed"]])
-    bainContainer[["bainResult"]] <- createJaspState(bainResult)
-  })
-  
-  if (isTryError(p)) {
-    bainContainer$setError(gettextf("An error occurred in the analysis:<br>%s<br><br>Please double check your variables and model constraints.", .unv(.extractErrorMessage(p))))
-    return()
-  }
-  
-  for (i in 1:(length(bainResult$fit$BF)-1)) {
-    row <- list(hypotheses = gettextf("H%i",i), BF = bainResult$fit$BF[i], PMP1 = bainResult$fit$PMPa[i], PMP2 = bainResult$fit$PMPb[i])
-    bainTable$addRows(row)
-  }
-  row <- list(hypotheses = gettext("Hu"), BF = "", PMP1 = "", PMP2 = bainResult$fit$PMPb[length(bainResult$fit$BF)])
-  bainTable$addRows(row) 
 }
 
 .bainLinearRegressionCoefficientsTable <- function(dataset, options, bainContainer, ready, position) {

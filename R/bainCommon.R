@@ -53,7 +53,6 @@
       trydata	<- .readDataSetToEnd(columns.as.numeric = numerics, columns.as.factor = factors)
       missing	<- .unv(names(which(apply(trydata, 2, function(x) { any(is.na(x))} ))))
       dataset	<- .readDataSetToEnd(columns.as.numeric = numerics, columns.as.factor = factors, exclude.na.listwise = vars)
-      
       if((type == "anova" || type == "ancova") && options[["fixedFactors"]] != ""){
         if(any(grepl(pattern = " ", x = levels(dataset[, .v(options[["fixedFactors"]])])))){
           jaspBase:::.quitAnalysis(gettext("Bain does not accept factor levels that contain spaces. Please remove the spaces from your factor levels to continue."))
@@ -116,6 +115,109 @@
 }
 
 ##################
+### STATE ########
+##################
+
+.bainAnalysisState <- function(dataset, options, bainContainer, ready, type, variable = NULL, pair = NULL, testType = NULL){
+  if(type %in% c("onesampleTTest", "independentTTest")){
+    if(!is.null(bainContainer[[variable]]))
+      return(bainContainer[[variable]]$object)
+    
+    variableData <- dataset[[ .v(variable) ]]
+    testValue <- format(options[["testValue"]], scientific = FALSE)
+    
+    p <- try({
+      if(type == "onesampleTTest"){
+        bainResult <- bain:::bain_ttest_cran(x = variableData, nu = testValue, type = testType, seed = options[["seed"]])
+      } else if(type == "independentTTest"){
+        levels <- base::levels(dataset[[ .v(options[["groupingVariable"]]) ]])
+        if (length(levels) != 2) {
+          g1 <- "1"
+          g2 <- "2"
+        } else {
+          g1 <- levels[1]
+          g2 <- levels[2]
+        } 
+        subDataSet <- dataset[, c(.v(variable), .v(options[["groupingVariable"]]))]
+        group1 <- subDataSet[subDataSet[[.v(options[["groupingVariable"]])]]== g1,.v(variable)]
+        group2 <- subDataSet[subDataSet[[.v(options[["groupingVariable"]])]]== g2,.v(variable)]
+        bainResult <- bain:::bain_ttest_cran(x = group1, y = group2, type = testType, seed = options[["seed"]])
+      }
+    })
+    if (isTryError(p)) {
+      bainContainer$setError(gettextf("An error occurred in the analysis:<br>%1$s.", JASP:::.extractErrorMessage(p)))
+      return()
+    }
+    bainContainer[[variable]] <- createJaspState(bainResult, dependencies = c("testValue", "hypothesis", "seed"))
+    bainContainer[[variable]]$dependOn(optionContainsValue = list("variables" = variable))
+    return(bainContainer[[variable]]$object)
+  } else if(type == "pairedTTest"){
+    currentPair <- paste(pair, collapse = " - ")
+    if(!is.null(bainContainer[[currentPair]]))
+      return(bainContainer[[currentPair]]$object)
+    
+    if (pair[[2]] != "" && pair[[1]] != pair[[2]] && pair[[1]] != "") {
+      
+      subDataSet <- subset(dataset, select=c(.v(pair[[1]]), .v(pair[[2]])) )
+      c1 <- subDataSet[[ .v(pair[[1]]) ]]
+      c2 <- subDataSet[[ .v(pair[[2]]) ]]
+      
+      p <- try({
+        # Call bain from package
+        bainResult <- bain:::bain_ttest_cran(x = c1, y = c2, type = testType, paired = TRUE, seed = options[["seed"]])
+      })
+      if (isTryError(p)) {
+        bainContainer$setError(gettextf("An error occurred in the analysis:<br>%1$s.", JASP:::.extractErrorMessage(p)))
+        return()
+      }
+      bainContainer[[currentPair]] <- createJaspState(bainResult, dependencies = c("hypothesis", "seed"))
+      bainContainer[[currentPair]]$dependOn(optionContainsValue=list("pairs" = pair))
+      return(bainContainer[[currentPair]]$object) 
+    } 
+  } else if (type %in% c("anova", "ancova", "regression", "sem")){
+    if(!is.null(bainContainer[["bainResult"]])){
+      return(bainContainer[["bainResult"]]$object)
+    } else if(ready){
+      if(type == "anova" || type == "ancova"){
+        groupCol <- dataset[ , .v(options[["fixedFactors"]])]
+        varLevels <- levels(groupCol)
+        if (length(varLevels) > 15) {
+          bainContainer$setError(gettext("The fixed factor has too many levels for a Bain analysis."))
+          return()
+        }
+      }
+      if (options[["model"]] == "") {
+        rest.string <- NULL
+        if(type == "sem")
+          rest.string <- "ind60___by___x2 = 0" # CHANGE DEFAULT HYPOTHESIS FOR SEM (NULL DOES NOT WORK)
+      } else {
+        rest.string <- encodeColNames(.bainCleanModelInput(options[["model"]]))
+        if(type == "sem")
+          rest.string <- .v(.bainCleanModelInput(options[["model"]]))
+      }
+      p <- try({
+        if(type == "anova"){	
+          bainResult <- bain:::bain_anova_cran(X = dataset, dep = .v(options[["dependent"]]), group = .v(options[["fixedFactors"]]), hyp = rest.string, seed = options[["seed"]])	
+        } else if(type == "ancova"){
+          bainResult <- bain:::bain_ancova_cran(X = dataset, dep = .v(options[["dependent"]]), cov = paste(.v(options[["covariates"]]), collapse = " "), group = .v(options[["fixedFactors"]]), hyp = rest.string, seed = options[["seed"]])
+        } else if(type == "regression"){
+          bainResult <- bain:::bain_regression_cran(X = dataset, dep = .v(options[["dependent"]]), pred = paste(.v(options[["covariates"]]), collapse = " "), hyp = rest.string, std = options[["standardized"]], seed = options[["seed"]])
+        } else if(type == "sem"){
+          lavaanFit <- .bainLavaanState(dataset, options, bainContainer, ready, jaspResults)
+          bainResult <- bain::bain(x = lavaanFit, hypothesis = rest.string)
+        }
+      })
+      if (isTryError(p)) {
+        bainContainer$setError(gettextf("An error occurred in the analysis:<br>%1$s<br><br>Please double check if the variables in the 'Model Contraints' section match the variables in your data set.", JASP:::.extractErrorMessage(p)))
+        return()
+      }
+      bainContainer[["bainResult"]] <- createJaspState(bainResult)
+      return(bainContainer[["bainResult"]]$object)  
+    }
+  } 
+}
+
+##################
 ### TABLES #######
 ##################
 
@@ -156,8 +258,8 @@
         string <- paste(paste(options[["fixedFactors"]], levels(dataset[, .v(options[["fixedFactors"]])]), sep = ""), collapse = " = ")
         row <- list(number = gettext("H1"), hypothesis = string)
       } else {
-		row <- list(number = gettext("H1"), hypothesis = "")
-	  }
+        row <- list(number = gettext("H1"), hypothesis = "")
+      }
     } else if(type == "sem"){
       variables <- .bainSemGetUsedVars(options[["syntax"]], colnames(dataset))
       if (length(variables) == 0) {
@@ -168,7 +270,387 @@
         row <- list(number = gettext("H1"), hypothesis = paste0(paste0(variables, " = 0"), collapse = " & ")) # Needs to be adjusted
       }
     }
-	legendTable$addRows(row)
+    legendTable$addRows(row)
+  }
+}
+
+# Create a table containing the main analysis results
+.bainResultsTable <- function(dataset, options, bainContainer, missing, ready, type, position) {
+  if (!is.null(bainContainer[["mainResultsTable"]])) 
+    return()
+  title <- switch(type,
+                  "independentTTest" = gettext("Bain Independent Samples Welch's T-Test"),
+                  "pairedTTest" = gettext("Bain Paired Samples T-Test"),
+                  "onesampleTTest" = gettext("Bain One Sample T-test"),
+                  "anova" = gettext("Bain ANOVA"),
+                  "ancova" = gettext("Bain ANCOVA"),
+                  "regression" = gettext("Bain Linear Regression"),
+                  "sem" = gettext("Bain Structural Equation Model"))
+  deps <- switch(type,
+                 "independentTTest" = c("variables", "bayesFactorType", "hypothesis"),
+                 "pairedTTest" = c("pairs", "hypothesis", "bayesFactorType"),
+                 "onesampleTTest" = c("variables", "hypothesis", "bayesFactorType"),
+                 "anova" = NULL,
+                 "ancova" = NULL,
+                 "regression" = NULL,
+                 "sem" = NULL)
+  table <- createJaspTable(title)
+  table$dependOn(options = deps)
+  table$position <- position
+  if(type %in% c("independentTTest", "pairedTTest", "onesampleTTest")){
+    bf.type <- options[["bayesFactorType"]]
+    BFH1H0 <- FALSE
+    if (options$hypothesis == "equalBiggerSmaller") {
+      table$addColumnInfo(name="Variable",      type="string",                title="")
+      table$addColumnInfo(name="type[equal]",   type="string",                title=gettext("Hypothesis"))
+      table$addColumnInfo(name="BF[equal]",     type="number",                title=gettext("BF"))
+      table$addColumnInfo(name="pmp[equal]",    type="number", format="dp:3", title=gettext("Posterior probability"))
+      table$addColumnInfo(name="type[greater]", type="string",                title=gettext("Hypothesis"))
+      table$addColumnInfo(name="BF[greater]",   type="number",                title=gettext("BF"))
+      table$addColumnInfo(name="pmp[greater]",  	type="number", format="dp:3", title=gettext("Posterior probability"))
+      table$addColumnInfo(name="type[less]",    	type="string",                title=gettext("Hypothesis"))
+      table$addColumnInfo(name="BF[less]",      	type="number",                title=gettext("BF"))
+      table$addColumnInfo(name="pmp[less]",     	type="number", format="dp:3", title=gettext("Posterior probability"))
+    } else {
+      table$addColumnInfo(name="Variable",          type="string",                title="")
+      table$addColumnInfo(name="hypothesis[type1]", type="string",                title=gettext("Hypothesis"))
+      table$addColumnInfo(name="BF[type1]",         type="number",                title=gettext("BF"))
+      table$addColumnInfo(name="pmp[type1]",        type="number", format="dp:3", title=gettext("Posterior probability"))
+      table$addColumnInfo(name="hypothesis[type2]", type="string",                title=gettext("Hypothesis"))
+      table$addColumnInfo(name="BF[type2]",         type="number",                title=gettext("BF"))
+      table$addColumnInfo(name="pmp[type2]",        type="number", format="dp:3", title=gettext("Posterior probability"))
+    }
+    if(type == "onesampleTTest")
+      message <- base::switch(options[["hypothesis"]],
+                              "equalNotEqual"     = gettextf("The alternative hypothesis H1 specifies that the mean is unequal to %s. The posterior probabilities are based on equal prior probabilities.", options[["testValue"]]),
+                              "equalBigger"       = gettextf("The alternative hypothesis H1 specifies that the mean is bigger than %s. The posterior probabilities are based on equal prior probabilities.", options[["testValue"]]),
+                              "equalSmaller"      = gettextf("The alternative hypothesis H1 specifies that the mean is smaller than %s. The posterior probabilities are based on equal prior probabilities.", options[["testValue"]]),
+                              "biggerSmaller"     = gettextf("The hypothesis H1 specifies that the mean is bigger than %1$s and the hypothesis H2 specifies that the mean is smaller than %1$s. The posterior probabilities are based on equal prior probabilities.", options[["testValue"]]),
+                              "equalBiggerSmaller"= gettextf("The null hypothesis H0 with test value %1$s is tested against the other hypotheses. H1 states that the mean is bigger than %1$s and H2 states that the mean is smaller than %1$s. The posterior probabilities are based on equal prior probabilities.", options[["testValue"]]))
+    if(type == "independentTTest")
+      message <- base::switch(options[["hypothesis"]],
+                              "equalNotEqual"     = gettext("The alternative hypothesis H1 specifies that the mean of group 1 is unequal to the mean of group 2. The posterior probabilities are based on equal prior probabilities."),
+                              "equalSmaller"      = gettext("The alternative hypothesis H1 specifies that the mean of group 1 is smaller than the mean of group 2. The posterior probabilities are based on equal prior probabilities."),
+                              "equalBigger"       = gettext("The alternative hypothesis H1 specifies that mean of group 1 is bigger than the mean of group 2. The posterior probabilities are based on equal prior probabilities."),
+                              "biggerSmaller"     = gettext("The hypothesis H1 specifies that the mean of group 1 is bigger than the mean of group 2. The hypothesis H2 specifies that the mean in group 1 is smaller than the mean in group 2. The posterior probabilities are based on equal prior probabilities."),
+                              "equalBiggerSmaller"= gettext("The null hypothesis H0 (equal group means) is tested against H1 (first mean larger than second mean) and H2 (first mean smaller than second mean). The posterior probabilities are based on equal prior probabilities."))
+    if(type == "pairedTTest")
+      message <- base::switch(options[["hypothesis"]],
+                              "equalNotEqual"       = gettext("The alternative hypothesis H1 specifies that the mean of variable 1 is unequal to the mean of variable 2. The posterior probabilities are based on equal prior probabilities."),
+                              "equalBigger"         = gettext("The alternative hypothesis H1 specifies that the mean of variable 1 is bigger than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."),
+                              "equalSmaller"        = gettext("The alternative hypothesis H1 specifies that the mean of variable 1 is smaller than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."),
+                              "biggerSmaller"       = gettext("The hypothesis H1 specifies that the mean of variable 1 is bigger than the mean of variable 2, while the hypothesis H2 specifies that it is smaller. The posterior probabilities are based on equal prior probabilities."),
+                              "equalBiggerSmaller"  = gettext("The null hypothesis H0 with equal means is tested against the other hypotheses. The alternative hypothesis H1 states that the mean of variable 1 is bigger than the mean of variable 2. The alternative hypothesis H2 states that the mean of variable 1 is smaller than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."))
+  } else if(type %in% c("anova", "ancova", "regression", "sem")){
+    table$addColumnInfo(name = "hypotheses", type = "string", title = "")
+    table$addColumnInfo(name = "BF",         type = "number", title = gettext("BF.c"))
+    table$addColumnInfo(name = "PMP1",       type = "number", title = gettext("PMP a"))
+    table$addColumnInfo(name = "PMP2",       type = "number", title = gettext("PMP b"))
+    message <- gettext("BF.c denotes the Bayes factor of the hypothesis in the row versus its complement.\
+	Posterior model probabilities (a: excluding the unconstrained hypothesis, b: including the unconstrained hypothesis) are based on equal prior model probabilities.")
+  }
+  table$addFootnote(message = message)
+  table$addCitation(.bainGetCitations())
+  bainContainer[["mainResultsTable"]] <- table
+  
+  if (!ready)
+    return()
+  
+  if(type %in% c("onesampleTTest", "independentTTest")){
+    
+    testType <- base::switch(options[["hypothesis"]],
+                             "equalNotEqual"       = 1,
+                             "equalBigger"         = 2,
+                             "equalSmaller"        = 3,
+                             "biggerSmaller"       = 4,
+                             "equalBiggerSmaller"  = 5)
+    
+    table$setExpectedSize(length(options[["variables"]]))
+    startProgressbar(length(options[["variables"]]))
+    for (variable in options[["variables"]]) {
+      
+      bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type, variable = variable, testType = testType)
+      
+      if (isTryError(bainAnalysis)){
+        table$addRows(list(Variable=variable), rowNames=variable)
+        table$addFootnote(message = gettextf("Results not computed: %1$s.", JASP:::.extractErrorMessage(bainAnalysis)), colNames = "Variable", rowNames = variable)
+        progressbarTick()
+        next
+      }
+      
+      if (variable %in% missing) {
+        table$addFootnote(message = gettext("Variable contains missing values, the rows containing these values are removed in the analysis."), colNames = "Variable", rowNames = variable)
+      }
+      
+      if (testType == 1) {
+        BF_0u <- bainAnalysis$fit$BF[1]
+        PMP_u <- bainAnalysis$fit$PMPb[2]
+        PMP_0 <- bainAnalysis$fit$PMPb[1]
+        if (options$bayesFactorType == "BF10")
+          BF_0u <- 1/BF_0u
+      }
+      if (testType == 2) {
+        BF_01 <- bainAnalysis$BFmatrix[1,2]
+        PMP_1 <- bainAnalysis$fit$PMPa[2]
+        PMP_0 <- bainAnalysis$fit$PMPa[1]
+        if (options$bayesFactorType == "BF10")
+          BF_01 <- 1/BF_01
+      }
+      if (testType == 3) {
+        BF_01 <- bainAnalysis$BFmatrix[1,2]
+        PMP_0 <- bainAnalysis$fit$PMPa[1]
+        PMP_1 <- bainAnalysis$fit$PMPa[2]
+        if (options$bayesFactorType == "BF10")
+          BF_01 <- 1/BF_01
+      }
+      if (testType == 4) {
+        BF_01 <- bainAnalysis$BFmatrix[1,2]
+        PMP_0 <- bainAnalysis$fit$PMPa[1]
+        PMP_1 <- bainAnalysis$fit$PMPa[2]
+        if (options$bayesFactorType == "BF10")
+          BF_01 <- 1/BF_01
+      }
+      if (testType == 5) {
+        BF_01 <- bainAnalysis$BFmatrix[1,2]
+        BF_02 <- bainAnalysis$BFmatrix[1,3]
+        BF_12 <- bainAnalysis$BFmatrix[2,3]
+        PMP_0 <- bainAnalysis$fit$PMPa[1]
+        PMP_1 <- bainAnalysis$fit$PMPa[2]
+        PMP_2 <- bainAnalysis$fit$PMPa[3]
+        if (options$bayesFactorType == "BF10")
+        {
+          BF_01 <- 1/BF_01
+          BF_02 <- 1/BF_02
+          BF_12 <- 1/BF_12
+        }
+      }
+      
+      # The code here looks suspiciously similar to the code in BAIN TTest Independent Samples, perhaps this could be merged?
+      
+      if (options$bayesFactorType == "BF01") {
+        if (options$hypothesis == "equalNotEqual") {
+          row <- list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"),"BF[type1]"=BF_0u, "pmp[type1]" = PMP_0,
+                      "hypothesis[type2]" = gettext("H1: Not equal"), "BF[type2]" = "", "pmp[type2]" = PMP_u)
+        } else if (options$hypothesis == "equalBigger") {
+          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"=BF_01, "pmp[type1]" = PMP_0,
+                     "hypothesis[type2]" = gettext("H1: Bigger"), "BF[type2]" = "", "pmp[type2]" = PMP_1)
+        } else if (options$hypothesis == "equalSmaller") {
+          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"=BF_01, "pmp[type1]" = PMP_0,
+                     "hypothesis[type2]" = gettext("H1: Smaller"), "BF[type2]" = "", "pmp[type2]" = PMP_1)
+        } else if (options$hypothesis == "biggerSmaller") {
+          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H1: Bigger"), "BF[type1]"=BF_01, "pmp[type1]" = PMP_0,
+                     "hypothesis[type2]" = gettext("H2: Smaller"), "BF[type2]" = "", "pmp[type2]" = PMP_1)
+        } else if (options$hypothesis == "equalBiggerSmaller") {
+          row <-list(Variable=variable, "type[equal]" = gettext("H0: Equal"), "BF[equal]"= "", "pmp[equal]" = PMP_0,
+                     "type[greater]" =gettext( "H1: Bigger"), "BF[greater]" = BF_01, "pmp[greater]" = PMP_1,
+                     "type[less]" = gettext("H2: Smaller"), "BF[less]" = BF_02, "pmp[less]" = PMP_2)
+        }
+      } else if (options$bayesFactorType == "BF10") {
+        if (options$hypothesis == "equalNotEqual") {
+          row <- list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"),"BF[type1]"="", "pmp[type1]" = PMP_0,
+                      "hypothesis[type2]" = gettext("H1: Not equal"), "BF[type2]" = BF_0u, "pmp[type2]" = PMP_u)
+        } else if (options$hypothesis == "equalBigger") {
+          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"),"BF[type1]"="", "pmp[type1]" = PMP_0,
+                     "hypothesis[type2]" = gettext("H1: Bigger"), "BF[type2]" = BF_01, "pmp[type2]" = PMP_1)
+        } else if (options$hypothesis == "equalSmaller") {
+          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"="", "pmp[type1]" = PMP_0,
+                     "hypothesis[type2]" = gettext("H1: Smaller"), "BF[type2]" = BF_01, "pmp[type2]" = PMP_1)
+        } else if (options$hypothesis == "biggerSmaller") {
+          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H1: Bigger"), "BF[type1]"= "", "pmp[type1]" = PMP_0,
+                     "hypothesis[type2]" = gettext("H2: Smaller"), "BF[type2]" = BF_01, "pmp[type2]" = PMP_1)
+        } else if (options$hypothesis == "equalBiggerSmaller") {
+          row <-list(Variable=variable, "type[equal]" = gettext("H0: Equal"), "BF[equal]"= "", "pmp[equal]" = PMP_0,
+                     "type[greater]"= gettext("H1: Bigger"), "BF[greater]" = BF_01, "pmp[greater]" = PMP_1,
+                     "type[less]" = gettext("H2: Smaller"), "BF[less]" = BF_02, "pmp[less]" = PMP_2)
+        }
+      }
+      table$addRows(row, rowNames = variable)
+      progressbarTick()
+    }
+  } else if(type == "pairedTTest"){
+    testType <- base::switch(options[["hypothesis"]],
+                             "equalNotEqual"       = 1,
+                             "equalBigger"         = 2,
+                             "equalSmaller"        = 3,
+                             "biggerSmaller"       = 4,
+                             "equalBiggerSmaller"  = 5)
+    
+    table$setExpectedSize(length(options[["pairs"]]))
+    
+    startProgressbar(length(options[["pairs"]]))
+    
+    for (pair in options[["pairs"]]){
+      
+      currentPair <- paste(pair, collapse=" - ")
+      
+      if(pair[[1]] != "" || pair[[2]] != ""){
+        
+        bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type, pair = pair, testType = testType)
+        
+        if (isTryError(bainAnalysis)) {
+          table$addRows(list(Variable=currentPair), rowNames=currentPair)
+          table$addFootnote(message=gettextf("Results not computed: %s", JASP:::.extractErrorMessage(bainAnalysis)), colNames = "Variable", rowNames = currentPair)
+          progressbarTick()
+          next
+        } 
+        
+        if (any(pair %in% missing)) {
+          i <- which(pair %in% missing)
+          if (length(i) > 1) {
+            message <- gettext("Both variables contain missing values, the rows containing these values are removed in the analysis.")
+          } else {
+            message <- gettextf("The variable %s contains missing values, the rows containing these values are removed in the analysis.", pair[i])
+          }
+          table$addFootnote(message = message, colNames = "Variable", rowNames = currentPair)
+        }
+        
+        if (testType == 1) {
+          BF_0u <- bainAnalysis$fit$BF[1]
+          PMP_u <- bainAnalysis$fit$PMPb[2]
+          PMP_0 <- bainAnalysis$fit$PMPb[1]
+          if (options$bayesFactorType == "BF10")
+            BF_0u <- 1/BF_0u
+        }
+        if (testType == 2) {
+          BF_01 <- bainAnalysis$BFmatrix[1,2]
+          PMP_1 <- bainAnalysis$fit$PMPa[2]
+          PMP_0 <- bainAnalysis$fit$PMPa[1]
+          if (options$bayesFactorType == "BF10")
+            BF_01 <- 1/BF_01
+        }
+        if (testType == 3) {
+          BF_01 <- bainAnalysis$BFmatrix[1,2]
+          PMP_0 <- bainAnalysis$fit$PMPa[1]
+          PMP_1 <- bainAnalysis$fit$PMPa[2]
+          if (options$bayesFactorType == "BF10")
+            BF_01 <- 1/BF_01
+        }
+        if (testType == 4) {
+          BF_01 <- bainAnalysis$BFmatrix[1,2]
+          PMP_0 <- bainAnalysis$fit$PMPa[1]
+          PMP_1 <- bainAnalysis$fit$PMPa[2]
+          if (options$bayesFactorType == "BF10")
+            BF_01 <- 1/BF_01
+        }
+        if (testType == 5) {
+          BF_01 <- bainAnalysis$BFmatrix[1,2]
+          BF_02 <- bainAnalysis$BFmatrix[1,3]
+          BF_12 <- bainAnalysis$BFmatrix[2,3]
+          PMP_0 <- bainAnalysis$fit$PMPa[1]
+          PMP_1 <- bainAnalysis$fit$PMPa[2]
+          PMP_2 <- bainAnalysis$fit$PMPa[3]
+          if (options$bayesFactorType == "BF10")
+          {
+            BF_01 <- 1/BF_01
+            BF_02 <- 1/BF_02
+            BF_12 <- 1/BF_12
+          }
+        }
+        
+        if (options$bayesFactorType == "BF01") {
+          if (options$hypothesis == "equalNotEqual") {
+            row <- list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"=BF_0u, "pmp[type1]" = PMP_0,
+                        "hypothesis[type2]" = gettext("H1: Not equal"), "BF[type2]" = "", "pmp[type2]" = PMP_u)
+          }
+          if (options$hypothesis == "equalSmaller") {
+            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"= BF_01, "pmp[type1]" = PMP_0,
+                       "hypothesis[type2]" = gettext("H1: Smaller"), "BF[type2]" = "", "pmp[type2]" = PMP_1)
+          }
+          if (options$hypothesis == "equalBigger") {
+            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"= BF_01, "pmp[type1]" = PMP_0,
+                       "hypothesis[type2]" = gettext("H1: Bigger"), "BF[type2]" = "", "pmp[type2]" = PMP_1)
+          }
+          if (options$hypothesis == "biggerSmaller") {
+            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H1: Bigger"), "BF[type1]"= BF_01, "pmp[type1]" = PMP_0,
+                       "hypothesis[type2]" = gettext("H2: Smaller"), "BF[type2]" = "", "pmp[type2]" = PMP_1)
+          }
+          if (options$hypothesis == "equalBiggerSmaller") {
+            row <-list(Variable=currentPair,
+                       "type[equal]" = gettext("H0: Equal"),
+                       "BF[equal]"= "",
+                       "pmp[equal]" = PMP_0,
+                       "type[greater]"= gettext("H1: Bigger"),
+                       "BF[greater]" = BF_01,
+                       "pmp[greater]" = PMP_1,
+                       "type[less]" = gettext("H2: Smaller"),
+                       "BF[less]" = BF_02,
+                       "pmp[less]" = PMP_2)
+          }
+        } else if (options$bayesFactorType == "BF10") {
+          if (options$hypothesis == "equalNotEqual") {
+            row <- list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"),"BF[type1]"="", "pmp[type1]" = PMP_0,
+                        "hypothesis[type2]" = gettext("H1: Not equal"), "BF[type2]" = BF_0u, "pmp[type2]" = PMP_u)
+          }
+          if (options$hypothesis == "equalSmaller") {
+            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"= "", "pmp[type1]" = PMP_0,
+                       "hypothesis[type2]" = gettext("H1: Smaller"), "BF[type2]" = BF_01, "pmp[type2]" = PMP_1)
+          }
+          if (options$hypothesis == "equalBigger") {
+            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"= "", "pmp[type1]" = PMP_0,
+                       "hypothesis[type2]" = gettext("H1: Bigger"), "BF[type2]" = BF_01, "pmp[type2]" = PMP_1)
+          }
+          if (options$hypothesis == "biggerSmaller") {
+            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H1: Bigger"), "BF[type1]"= "", "pmp[type1]" = PMP_0,
+                       "hypothesis[type2]" = gettext("H2: Smaller"), "BF[type2]" = BF_01, "pmp[type2]" = PMP_1)
+          }
+          if (options$hypothesis == "equalBiggerSmaller") {
+            row <-list(Variable=currentPair,
+                       "type[equal]" = gettext("H0: Equal"),
+                       "BF[equal]"= "",
+                       "pmp[equal]" = PMP_0,
+                       "type[greater]"= gettext("H1: Bigger"),
+                       "BF[greater]" = BF_01,
+                       "pmp[greater]" = PMP_1,
+                       "type[less]" = gettext("H2: Smaller"),
+                       "BF[less]" = BF_02,
+                       "pmp[less]" = PMP_2)
+          }
+        }
+      } else {
+        if (options$hypothesis == "equalBiggerSmaller") {
+          row <- list(Variable=currentPair, "type[equal]" = ".", "BF[equal]"= ".", "pmp[equal]" = ".",
+                      "type[greater]"= ".", "BF[greater]" = ".", "pmp[greater]" = ".",
+                      "type[less]" = ".", "BF[less]" = ".", "pmp[less]" = ".")
+        } else {
+          row <- list(Variable=currentPair, "hypothesis[type1]" = ".", "BF[type1]"= ".", "pmp[type1]" = ".",
+                      "hypothesis[type2]" = ".", "BF[type2]" = ".", "pmp[type2]" = ".")
+        }
+      }
+      table$addRows(row, rowNames = currentPair)
+      
+      if(pair[[1]] == pair[[2]]){
+        table$addFootnote(message=gettext("Results not computed: The variables in this pair are the same."), colNames="Variable", rowNames=currentPair)
+      }
+      if(pair[[1]] == "" || pair[[2]] == ""){
+        table$addFootnote(message=gettext("Results not computed: The pair is incomplete."), colNames="Variable", rowNames=currentPair)
+      }
+      progressbarTick()
+    }
+  } else if (type %in% c("anova", "ancova", "regression", "sem")){
+    variables <- switch(type,
+                        "anova" = c(options[["dependent"]], options[["fixedFactors"]]),
+                        "ancova" = c(options[["dependent"]], options[["fixedFactors"]], unlist(options[["covariates"]])),
+                        "regression" = c(options[["dependent"]], unlist(options[["covariates"]])),
+                        "sem" = .bainSemGetUsedVars(.bainSemTranslateModel(options[["syntax"]], dataset), colnames(dataset)))
+    if (any(variables %in% missing)) {
+      i <- which(variables %in% missing)
+      if (length(i) > 1) {
+        if(type == "regression" || type == "ancova" || type == "sem"){
+          table$addFootnote(message = gettextf("The variables %s contain missing values, the rows containing these values are removed in the analysis.", paste(variables[i], collapse = ", ")), symbol=gettext("<b>Warning.</b>"))
+        } else if(type == "anova"){
+          table$addFootnote(message= gettextf("The variables %1$s and %2$s contain missing values, the rows containing these values are removed in the analysis.", variables[1], variables[2]), symbol=gettext("<b>Warning.</b>"))
+        }
+      } else if (length(i) == 1) {
+        table$addFootnote(message = gettextf("The variable %s contains missing values, the rows containing these values are removed in the analysis.", variables[i]), symbol=gettext("<b>Warning.</b>"))
+      }
+    }
+    bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type)
+    for (i in 1:(length(bainResult[["fit"]]$BF)-1)) {
+      row <- list(hypotheses = gettextf("H%i",i), BF = bainResult[["fit"]]$BF[i], PMP1 = bainResult[["fit"]]$PMPa[i], PMP2 = bainResult[["fit"]]$PMPb[i])
+      table$addRows(row)
+    }
+    row <- list(hypotheses = gettext("Hu"), BF = "", PMP1 = "", PMP2 = bainResult[["fit"]]$PMPb[length(bainResult[["fit"]]$BF)])
+    table$addRows(row) 
   }
 }
 
@@ -261,7 +743,7 @@
       
       if (is.null(bayesFactorPlots[[variable]])){
         
-        bainAnalysis <- .bainOneSampleState(variable, options, dataset, bainContainer)
+        bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type = "onesampleTTest", variable = variable)
         
         plot <- createJaspPlot(plot = NULL, title = variable, height = 300, width = 400)
         plot$dependOn(optionContainsValue=list("variables" = variable))
