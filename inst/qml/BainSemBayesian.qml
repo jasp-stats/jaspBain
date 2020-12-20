@@ -99,18 +99,18 @@ Form
 			fieldWidth: 				60 * preferencesModel.uiScale 
 		}
 
-		Group
-		{
-			title:						qsTr("Data used for prior")
+		// Group
+		// {
+		// 	title:						qsTr("Data used for prior")
 
-			DoubleField
-			{
-				name:					"fraction"
-				afterLabel:				qsTr("times the minimal fraction")
-				defaultValue:			1
-				min:					1
-			}
-		}
+		// 	DoubleField
+		// 	{
+		// 		name:					"fraction"
+		// 		afterLabel:				qsTr("times the minimal fraction")
+		// 		defaultValue:			1
+		// 		min:					1
+		// 	}
+		// }
 	}
 
 	Section

@@ -30,7 +30,7 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   .bainDataReady(dataList[["dataset"]], options, type)
   
   # Create a container for the results
-  bainContainer <- .bainGetContainer(jaspResults, deps = c("syntax", "model"))
+  bainContainer <- .bainGetContainer(jaspResults, deps = c("syntax", "model", "seed"))
   
   # Create a legend containing the order constrained hypotheses
   .bainLegend(dataList[["dataset"]], options, type, jaspResults, position = 0)
@@ -86,31 +86,22 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
 }
 
 .bainSemTranslateModel <- function(syntax, dataset) {
-  #' translate model syntax to jasp column names syntax
   usedvars <- .bainSemGetUsedVars(syntax, colnames(dataset))
-  
-  if (length(usedvars) == 0) {
+  if (length(usedvars) == 0)
     return(syntax)
-  }
-  
   usedvars <- usedvars[order(nchar(usedvars), decreasing = TRUE)]
   with.s.quotes <- paste("\\b'", usedvars, "'\\b", sep="")
   with.d.quotes <- paste('\\b"', usedvars, '"\\b', sep="")
-  
   new.names <- .v(usedvars)
-  
   for (i in 1:length(usedvars)) {
     syntax <- gsub(with.d.quotes[i], new.names[i], syntax)
   }
-  
   for (i in 1:length(usedvars)) {
     syntax <- gsub(with.s.quotes[i], new.names[i], syntax)
   }
-  
   for (i in 1:length(usedvars)) {
     syntax <- gsub(paste0("\\b", usedvars[i], "\\b"), new.names[i], syntax)
   }
-  
   return(syntax)
 }
 
@@ -122,10 +113,7 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   plot <- createJaspPlot(title = gettext("Path Diagram"), width = 600, height = 400)
   plot$dependOn(options = c("pathDiagram", "seed", "fraction", "pathDiagramEstimates", "pathDiagramLegend"))
   bainContainer[["pathDiagram"]] <- plot
-  
   fit <- .bainLavaanState(dataset, options, bainContainer, ready, jaspResults)
-  
-  # create a qgraph object using semplot
   po <- .bainlavToPlotObj(fit)
   pp <- .suppressGrDevice(semPlot::semPaths(
     object         = po,
@@ -146,25 +134,18 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
     rotation       = 2,
     ask            = FALSE
   ))
-  
   plot$plotObject <- pp
 }
 
 .bainlavToPlotObj <- function(lavResult) {
-  # Create semplot model and decode the names of the manifest variables
-  # Sorry, this code is really ugly but all it does is replace names for plot.
   semPlotMod <- semPlot::semPlotModel(list(lavResult), list(mplusStd = "std"))[[1]]
-  
   manifests <- semPlotMod@Vars$name[semPlotMod@Vars$manifest]
   semPlotMod@Vars$name[semPlotMod@Vars$manifest] <- decodeColNames(manifests)
-  
   lhsAreManifest <- semPlotMod@Pars$lhs %in% manifests
   if (any(lhsAreManifest)) 
     semPlotMod@Pars$lhs[lhsAreManifest] <- decodeColNames(semPlotMod@Pars$lhs[lhsAreManifest])
-  
   rhsAreManifest <- semPlotMod@Pars$rhs %in% manifests
   if (any(rhsAreManifest)) 
     semPlotMod@Pars$rhs[rhsAreManifest] <- decodeColNames(semPlotMod@Pars$rhs[rhsAreManifest])
-  
   return(semPlotMod)
 }

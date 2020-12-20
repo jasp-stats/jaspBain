@@ -30,7 +30,7 @@ BainRegressionLinearBayesian <- function(jaspResults, dataset, options, ...) {
   .bainDataReady(dataset, options, type)
   
   # Create a container for the results
-  bainContainer <- .bainGetContainer(jaspResults, deps = c("dependent", "covariates", "model"))
+  bainContainer <- .bainGetContainer(jaspResults, deps = c("dependent", "covariates", "model", "seed"))
   
   # Create a legend containing the order constrained hypotheses
   .bainLegend(dataList[["dataset"]], options, type, jaspResults, position = 0)

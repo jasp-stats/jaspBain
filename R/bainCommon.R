@@ -14,7 +14,6 @@
   result <- gsub("=~", "___by___", result)
   result <- gsub(" ~ ", "___on___", result)
   result <- gsub("~", "___on___", result)
-  result <- gsub(" & ", " ", result)
   return(result)
 }
 
@@ -158,7 +157,7 @@
       bainContainer$setError(gettextf("An error occurred in the analysis:<br>%1$s.", JASP:::.extractErrorMessage(p)))
       return()
     }
-    bainContainer[[variable]] <- createJaspState(bainResult, dependencies = c("testValue", "hypothesis", "seed"))
+    bainContainer[[variable]] <- createJaspState(bainResult, dependencies = c("testValue", "hypothesis"))
     bainContainer[[variable]]$dependOn(optionContainsValue = list("variables" = variable))
     return(bainContainer[[variable]]$object)
   } else if(type == "pairedTTest"){
@@ -170,15 +169,14 @@
       c1 <- subDataSet[[ .v(pair[[1]]) ]]
       c2 <- subDataSet[[ .v(pair[[2]]) ]]    
       p <- try({
-        # Call bain from package
         bainResult <- bain:::bain_ttest_cran(x = c1, y = c2, type = testType, paired = TRUE, seed = options[["seed"]])
       })
       if (isTryError(p)) {
         bainContainer$setError(gettextf("An error occurred in the analysis:<br>%1$s.", JASP:::.extractErrorMessage(p)))
         return()
       }
-      bainContainer[[currentPair]] <- createJaspState(bainResult, dependencies = c("hypothesis", "seed"))
-      bainContainer[[currentPair]]$dependOn(optionContainsValue=list("pairs" = pair))
+      bainContainer[[currentPair]] <- createJaspState(bainResult, dependencies = "hypothesis")
+      bainContainer[[currentPair]]$dependOn(optionContainsValue = list("pairs" = pair))
       return(bainContainer[[currentPair]]$object) 
     } 
   } else if (type %in% c("anova", "ancova", "regression", "sem")){
@@ -196,7 +194,7 @@
       if (options[["model"]] == "") {
         rest.string <- NULL
         if(type == "sem")
-          rest.string <- "ind60___by___x2 = 0" # CHANGE DEFAULT HYPOTHESIS FOR SEM ONLY (NULL DOES NOT WORK; THERE IS NO WRAPPER LIKE bain_regression_cran)
+          rest.string <- .v(.bainCleanSemModelInput("ind60 =~ x2 = ind60 =~ x3 & dem60 =~ y2 = dem60 =~ y3 = dem60 =~ y4 & dem65 =~ y6 = dem65 =~ y7 = dem65 =~ y8")) # CHANGE DEFAULT HYPOTHESIS FOR SEM ONLY (NULL DOES NOT WORK; THERE IS NO WRAPPER LIKE bain_regression_cran)
       } else {
         rest.string <- encodeColNames(.bainCleanModelInput(options[["model"]]))
         if(type == "sem")
@@ -211,7 +209,7 @@
           bainResult <- bain:::bain_regression_cran(X = dataset, dep = .v(options[["dependent"]]), pred = paste(.v(options[["covariates"]]), collapse = " "), hyp = rest.string, std = options[["standardized"]], seed = options[["seed"]])
         } else if(type == "sem"){
           lavaanFit <- .bainLavaanState(dataset, options, bainContainer, ready, jaspResults)
-          bainResult <- bain::bain(x = lavaanFit, hypothesis = rest.string)#, fraction = options[["fraction"]])
+          bainResult <- bain::bain(x = lavaanFit, hypothesis = rest.string)
         }
       })
       if (isTryError(p)) {
@@ -219,10 +217,6 @@
         return()
       }
       bainContainer[["bainResult"]] <- createJaspState(bainResult)
-	  deps <- "seed"
-	  if(type == "sem")
-	  	deps <- c(deps, "fraction")
-	  bainContainer[["bainResult"]]$dependOn(options = deps)
       return(bainContainer[["bainResult"]]$object)  
     }
   } 
@@ -303,13 +297,13 @@
                   "regression" = gettext("Bain Linear Regression"),
                   "sem" = gettext("Bain Structural Equation Model"))
   deps <- switch(type,
-                 "independentTTest" = c("variables", "bayesFactorType", "hypothesis", "seed"),
-                 "pairedTTest" = c("pairs", "hypothesis", "bayesFactorType", "seed"),
-                 "onesampleTTest" = c("variables", "hypothesis", "bayesFactorType", "seed"),
-                 "anova" = "seed",
-                 "ancova" = "seed",
-                 "regression" = c("seed", "standardized"),
-                 "sem" = c("seed", "fraction"))
+                 "independentTTest" = c("variables", "bayesFactorType", "hypothesis"),
+                 "pairedTTest" = c("pairs", "hypothesis", "bayesFactorType"),
+                 "onesampleTTest" = c("variables", "hypothesis", "bayesFactorType"),
+                 "anova" = NULL,
+                 "ancova" = NULL,
+                 "regression" = "standardized",
+                 "sem" = NULL)
   table <- createJaspTable(title)
   table$dependOn(options = deps)
   table$position <- position
@@ -676,8 +670,7 @@
   
   bayesFactorMatrix <- createJaspTable(gettext("Bayes Factor Matrix"))
   bayesFactorMatrix$position <- position
-  deps <- c("bayesFactorMatrix", "seed", "standardized", "fraction")
-  bayesFactorMatrix$dependOn(options = deps) 
+  bayesFactorMatrix$dependOn(options = c("bayesFactorMatrix", "standardized")) 
   bayesFactorMatrix$addColumnInfo(name = "hypothesis",  title = "",             type = "string")
   bayesFactorMatrix$addColumnInfo(name = "H1",          title = gettext("H1"),  type = "number")
   bainContainer[["bayesFactorMatrix"]] <- bayesFactorMatrix
@@ -718,16 +711,8 @@
     title <- gettext("Descriptive Statistics")
   }
   meanTitle <- ifelse(type %in% c("ancova", "regression"), yes = gettext("Coefficient"), no = gettext("Mean"))
-  deps <- switch(type,
-                 "independentTTest" = c("variables", "descriptives", "credibleInterval"),
-                 "pairedTTest" = c("pairs", "descriptives", "credibleInterval"),
-                 "onesampleTTest" = c("variables", "descriptives", "credibleInterval"),
-                 "anova" = c("descriptives", "credibleInterval", "coefficients"),
-                 "ancova" = c("descriptives", "credibleInterval", "coefficients", "seed"),
-                 "regression" = c("coefficients", "credibleInterval", "seed"),
-                 "sem" = c("coefficients", "credibleInterval", "seed", "fraction")) 
   table <- createJaspTable(title)
-  table$dependOn(options = deps)
+  table$dependOn(options = c("variables", "descriptives", "credibleInterval", "pairs"))
   table$position <- position
   overTitle <- gettextf("%.0f%% Credible Interval", 100 * options[["credibleInterval"]])
   table$addColumnInfo(name = "v",                title = "",                 type = "string")
@@ -871,7 +856,7 @@
 
   if(type %in% c("independentTTest", "pairedTTest", "onesampleTTest")){
     container <- createJaspContainer(gettext("Posterior Probabilities"))
-    container$dependOn(options = c("variables", "bayesFactorPlot", "hypothesis", "pairs", "seed"))
+    container$dependOn(options = c("variables", "bayesFactorPlot", "hypothesis", "pairs"))
     container$position <- position
     bainContainer[["posteriorProbabilityPlot"]] <- container
     if (!ready || bainContainer$getError())
@@ -931,7 +916,7 @@
       width <- 600
     }
     plot <- createJaspPlot(plot = NULL, title = gettext("Posterior Probabilities"), height = height, width = width)
-    plot$dependOn(options = c("bayesFactorPlot", "seed", "fraction", "standardized"))
+    plot$dependOn(options = c("bayesFactorPlot", "fraction", "standardized"))
     plot$position <- position
     bainContainer[["posteriorProbabilityPlot"]] <- plot
     if (!ready || bainContainer$getError())

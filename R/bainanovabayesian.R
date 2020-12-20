@@ -30,7 +30,7 @@ BainAnovaBayesian <- function(jaspResults, dataset, options, ...) {
   .bainDataReady(dataList[["dataset"]], options, type)
   
   # Create a container for the results
-  bainContainer <- .bainGetContainer(jaspResults, deps = c("dependent", "fixedFactors", "model"))
+  bainContainer <- .bainGetContainer(jaspResults, deps = c("dependent", "fixedFactors", "model", "seed"))
   
   # Create a legend containing the order constrained hypotheses
   .bainLegend(dataList[["dataset"]], options, type, jaspResults, position = 0)
