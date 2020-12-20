@@ -980,7 +980,7 @@
               		ggplot2::xlab("") +
               		ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks)) +
               		ggplot2::scale_x_continuous(breaks = 0:2, labels = NULL)
-            p <- jaspGraphs::themeJasp(p, xAxis = FALSE) + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())
+            p <- jaspGraphs::themeJasp(p, sides = "l") + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())
           } else if(type == "independentTTest"){
             bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
             levels <- base::levels(dataset[[ .v(options[["groupingVariable"]]) ]])
@@ -1030,7 +1030,7 @@
             ggplot2::xlab("") +
             ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks)) +
             ggplot2::scale_x_continuous(breaks = 0:2, labels = NULL)
-          p <- jaspGraphs::themeJasp(p, xAxis = FALSE) + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())  
+          p <- jaspGraphs::themeJasp(p, sides = "l") + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())  
           container[[currentPair]] <- createJaspPlot(plot = p, title = currentPair)
           container[[currentPair]]$dependOn(optionContainsValue = list("pairs" = pair))
         }

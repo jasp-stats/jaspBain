@@ -99,7 +99,7 @@ BainTTestBayesianPairedSamples <- function(jaspResults, dataset, options, ...) {
           ggplot2::xlab("") +
           ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks)) +
           ggplot2::scale_x_continuous(breaks = 0:2, labels = NULL)
-        p <- jaspGraphs::themeJasp(p, xAxis = FALSE) + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())
+        p <- jaspGraphs::themeJasp(p, sides = "l") + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())
         
         descriptivesPlots[[currentPair]] <- createJaspPlot(plot=p, title = currentPair)
         descriptivesPlots[[currentPair]]$dependOn(optionContainsValue=list("pairs" = pair))
