@@ -41,10 +41,10 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   # Create the descriptive statistics (coefficients) table
   .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "sem", position = 3)
   
-  ### POSTERIOR PROBABILITIES PLOT ###
-  .bainLinearRegressionBayesFactorPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)
+  # Create the posterior probability plots
+  .bainPosteriorProbabilityPlot(dataList[["dataset"]], options, bainContainer, ready, type = "sem", position = 4)
   
-  ### PATH DIAGRAM ###
+  # Create the path diagram plot
   .bainSemPathDiagram(dataList[["dataset"]], options, bainContainer, ready, jaspResults, position = 5)
 }
 

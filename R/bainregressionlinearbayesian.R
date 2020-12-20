@@ -41,6 +41,6 @@ BainRegressionLinearBayesian <- function(jaspResults, dataset, options, ...) {
   # Create the descriptive statistics (coefficients) table
   .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "regression", position = 3)
   
-  ### POSTERIOR PROBABILITIES PLOT ###
-  .bainLinearRegressionBayesFactorPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)
+  # Create the posterior probability plots
+  .bainPosteriorProbabilityPlot(dataList[["dataset"]], options, bainContainer, ready, type = "regression", position = 4)
 }

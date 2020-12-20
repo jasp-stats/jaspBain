@@ -41,8 +41,8 @@ BainAncovaBayesian <- function(jaspResults, dataset, options, ...) {
   # Create the descriptive statistics (coefficients) table
   .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "ancova", position = 3)
   
-  ### POSTERIOR PROBABILITIES PLOT ###
-  .bainAnovaBayesFactorPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)
+  # Create the posterior probability plots
+  .bainPosteriorProbabilityPlot(dataList[["dataset"]], options, bainContainer, ready, type = "ancova", position = 4)
   
   ### DESCRIPTIVES PLOT ###
   .bainAnovaDescriptivesPlot(dataList[["dataset"]], options, bainContainer, ready, type = "ancova", position = 5)

@@ -35,8 +35,8 @@ BainTTestBayesianOneSample <- function(jaspResults, dataset, options, ...) {
   # Create the descriptive statistics table
   .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "onesampleTTest", position = 2)
   
-  ### POSTERIOR PROBABILITIES PLOT ###
-  .bainTTestFactorPlots(dataList[["dataset"]], options, bainContainer, ready, type = "oneSample", position = 3)
+  # Create the posterior probability plots
+  .bainPosteriorProbabilityPlot(dataList[["dataset"]], options, bainContainer, ready, type = "onesampleTTest", position = 3)
   
   ### DESCRIPTIVES PLOTS ###
   .bainOneSampleDescriptivesPlot(dataList[["dataset"]], options, bainContainer, ready, position = 4)

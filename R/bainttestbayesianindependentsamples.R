@@ -35,8 +35,8 @@ BainTTestBayesianIndependentSamples <- function(jaspResults, dataset, options, .
   # Create the descriptive statistics table
   .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "independentTTest", position = 2)
   
-  ### POSTERIOR PROBABILITIES PLOT ###
-  .bainTTestFactorPlots(dataList[["dataset"]], options, bainContainer, ready, type = "independentSamples", position = 3)
+  # Create the posterior probability plots
+  .bainPosteriorProbabilityPlot(dataList[["dataset"]], options, bainContainer, ready, type = "independentTTest", position = 3)
   
   ### DESCRIPTIVES PLOTS ###
   .bainIndependentSamplesDescriptivesPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)

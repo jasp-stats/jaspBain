@@ -41,90 +41,11 @@ BainAnovaBayesian <- function(jaspResults, dataset, options, ...) {
   # Create the descriptive statistics table
   .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "anova", position = 3)
   
-  ### POSTERIOR PROBABILITIES PLOT ###
-  .bainAnovaBayesFactorPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)
+  # Create the posterior probability plots
+  .bainPosteriorProbabilityPlot(dataList[["dataset"]], options, bainContainer, ready, type = "anova", position = 4)
   
   ### DESCRIPTIVES PLOT ###
   .bainAnovaDescriptivesPlot(dataList[["dataset"]], options, bainContainer, ready, type = "anova", position = 5)
-}
-
-.bainAnovaDescriptivesTable <- function(dataset, options, bainContainer, ready, type = "anova", position) {
-  
-  if (!is.null(bainContainer[["descriptivesTable"]]) || !options[["descriptives"]]) return()
-  
-  title     <- ifelse(type == "anova", yes = gettext("Descriptive Statistics"), no = gettext("Coefficients for Groups plus Covariates"))
-  meanTitle <- ifelse(type == "anova", yes = gettext("Mean"),                   no = gettext("Coefficient"))
-  
-  descriptivesTable <- createJaspTable(title)
-  descriptivesTable$dependOn(options =c("descriptives", "credibleInterval", "coefficients"))
-  descriptivesTable$position <- position
-  
-  descriptivesTable$addColumnInfo(name="v",    		title="",         	 type="string")
-  descriptivesTable$addColumnInfo(name="N",    		title=gettext("N"),	 type="integer")
-  descriptivesTable$addColumnInfo(name="mean", 		title=meanTitle,		 type="number")
-  if(type == "anova")
-    descriptivesTable$addColumnInfo(name="sd", 		title=gettext("SD"),	type="number")
-  descriptivesTable$addColumnInfo(name="se",   		title=gettext("SE"), 	type="number")
-  
-  overTitle <- gettextf("%.0f%% Credible Interval", options[["credibleInterval"]] * 100)
-  descriptivesTable$addColumnInfo(name="lowerCI",      title = gettext("Lower"), type="number", overtitle = overTitle)
-  descriptivesTable$addColumnInfo(name="upperCI",      title = gettext("Upper"), type="number", overtitle = overTitle)
-  
-  bainContainer[["descriptivesTable"]] <- descriptivesTable
-  
-  if (!ready || bainContainer$getError())
-    return()
-  
-  groupCol <- dataset[ , .v(options[["fixedFactors"]])]
-  varLevels <- levels(groupCol)
-  
-  bainResult <- bainContainer[["bainResult"]]$object
-  bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
-  sigma <- diag(bainResult$posterior)
-  
-  # Extract all but sd and se from bain result
-  variable <- .unv(bainSummary[["Parameter"]])
-  N        <- bainSummary[["n"]]
-  mu       <- bainSummary[["Estimate"]]
-  CiLower  <- bainSummary[["lb"]]
-  CiUpper  <- bainSummary[["ub"]]
-  
-  if(type == "anova"){
-    # Include the standard deviation from the groups
-    sd <- aggregate(dataset[, .v(options[["dependent"]])], list(dataset[, .v(options[["fixedFactors"]])]), sd)[, 2]
-  }
-  se <- sqrt(sigma)	
-  
-  row <- data.frame(v = variable, N = N, mean = mu, se = se, lowerCI = CiLower, upperCI = CiUpper)
-  if(type == "anova")
-    row <- cbind(row, sd = sd)
-  descriptivesTable$addRows(row)
-}
-
-.bainAnovaBayesFactorPlots <- function(dataset, options, bainContainer, ready, position) {
-  
-  if (!is.null(bainContainer[["bayesFactorPlot"]]) || !options[["bayesFactorPlot"]]) return()
-  
-  if(options[["model"]] == ""){
-    height <- 300
-    width <- 400
-  } else {
-    height <- 400
-    width <- 600
-  }
-  
-  bayesFactorPlot <- createJaspPlot(plot = NULL, title = gettext("Posterior Probabilities"), height = height, width = width)
-  
-  bayesFactorPlot$dependOn(options=c("bayesFactorPlot", "seed"))
-  bayesFactorPlot$position <- position
-  
-  bainContainer[["bayesFactorPlot"]] <- bayesFactorPlot
-  
-  if (!ready || bainContainer$getError())
-    return()
-  
-  bainResult <- bainContainer[["bainResult"]]$object
-  bayesFactorPlot$plotObject <- .suppressGrDevice(.plot_bain_ancova_cran(bainResult))
 }
 
 .bainAnovaDescriptivesPlot <- function(dataset, options, bainContainer, ready, type = "anova", position) {
