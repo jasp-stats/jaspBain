@@ -17,26 +17,29 @@
 
 BainTTestBayesianPairedSamples <- function(jaspResults, dataset, options, ...) {
   
+  # What type of Bain analysis is being conducted?
+  type <- "pairedTTest"
+
   # Check if current options allow for analysis
-  ready <- .bainOptionsReady(options, type = "pairedTTest")
+  ready <- .bainOptionsReady(options, type)
   
   # Read the data set
-  dataList <- .bainReadDataset(options, type = "pairedTTest", dataset)
+  dataList <- .bainReadDataset(options, type, dataset)
   
   # Check if current data allow for analysis
-  .bainDataReady(dataset, options, type = "pairedTTest")
+  .bainDataReady(dataset, options, type)
   
   # Create a container for the results
   bainContainer <- .bainGetContainer(jaspResults, deps = "seed")
   
   # Create a table containing the main analysis results
-  .bainResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type = "pairedTTest", position = 1)
+  .bainResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type, position = 1)
   
   # Create the descriptive statistics table
-  .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "pairedTTest", position = 2)
+  .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type, position = 2)
   
   # Create the posterior probability plots
-  .bainPosteriorProbabilityPlot(dataList[["dataset"]], options, bainContainer, ready, type = "pairedTTest", position = 3)
+  .bainPosteriorProbabilityPlot(dataList[["dataset"]], options, bainContainer, ready, type, position = 3)
   
   ### DESCRIPTIVES PLOTS ###
   .bainPairedSamplesDescriptivesPlots(dataList[["dataset"]], options, bainContainer, ready, position = 4)
@@ -44,7 +47,7 @@ BainTTestBayesianPairedSamples <- function(jaspResults, dataset, options, ...) {
 
 .bainPairedSamplesDescriptivesPlots <- function(dataset, options, bainContainer, ready, position) {
   
-  if (!is.null(bainContainer[["descriptivesPlots"]]) || !options[["descriptivesPlots"]]) return()
+  if (!is.null(bainContainer[["descriptivesPlots"]]) || !options[["descriptivesPlot"]]) return()
   
   descriptivesPlots <- createJaspContainer(gettext("Descriptive Plots"))
   descriptivesPlots$dependOn(options =c("pairs", "descriptivesPlots", "credibleInterval"))

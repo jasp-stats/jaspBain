@@ -16,33 +16,36 @@
 #
 
 BainSemBayesian <- function(jaspResults, dataset, options, ...) {
-  
+
+  # What type of Bain analysis is being conducted?
+  type <- "sem"
+
   # Read the data set
-  dataList <- .bainReadDataset(options, type = "sem", dataset)
+  dataList <- .bainReadDataset(options, type, dataset)
   
   # Check if current options allow for analysis
-  ready <- .bainOptionsReady(options, type = "sem", dataList[["dataset"]])
+  ready <- .bainOptionsReady(options, type, dataList[["dataset"]])
 
   # Check if current data allow for analysis
-  .bainDataReady(dataList[["dataset"]], options, type = "sem")
+  .bainDataReady(dataList[["dataset"]], options, type)
   
   # Create a container for the results
   bainContainer <- .bainGetContainer(jaspResults, deps = c("syntax", "model", "seed"))
   
   # Create a legend containing the order constrained hypotheses
-  .bainLegend(dataList[["dataset"]], options, type = "sem", jaspResults, position = 0)
+  .bainLegend(dataList[["dataset"]], options, type, jaspResults, position = 0)
   
   # Create a table containing the main analysis results
-  .bainResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type = "sem", position = 1)
+  .bainResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type, position = 1)
   
   # Create the Bayes factor matrix
-  .bainBfMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "sem", position = 2)
+  .bainBfMatrix(dataList[["dataset"]], options, bainContainer, ready, type, position = 2)
   
   # Create the descriptive statistics (coefficients) table
-  .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "sem", position = 3)
+  .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type, position = 3)
   
   # Create the posterior probability plots
-  .bainPosteriorProbabilityPlot(dataList[["dataset"]], options, bainContainer, ready, type = "sem", position = 4)
+  .bainPosteriorProbabilityPlot(dataList[["dataset"]], options, bainContainer, ready, type, position = 4)
   
   # Create the path diagram plot
   .bainSemPathDiagram(dataList[["dataset"]], options, bainContainer, ready, jaspResults, position = 5)

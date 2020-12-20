@@ -184,11 +184,11 @@
       if (options[["model"]] == "") {
         rest.string <- NULL
         if(type == "sem")
-          rest.string <- "ind60___by___x2 = 0" # CHANGE DEFAULT HYPOTHESIS FOR SEM (NULL DOES NOT WORK)
+          rest.string <- "ind60___by___x2 = 0" # CHANGE DEFAULT HYPOTHESIS FOR SEM ONLY (NULL DOES NOT WORK; THERE IS NO WRAPPER LIKE bain_regression_cran)
       } else {
         rest.string <- encodeColNames(.bainCleanModelInput(options[["model"]]))
         if(type == "sem")
-          rest.string <- .v(.bainCleanModelInput(options[["model"]]))
+          rest.string <- .v(.bainCleanModelInput(options[["model"]])) # Why does this only work with .v?
       }
       p <- try({
         if(type == "anova"){	
@@ -937,6 +937,64 @@
 		bayesFactorPlot$plotObject <- .suppressGrDevice(.plot_bain_regression_cran(bainResult))
 	}
   }
+}
+
+# Create the descriptive plot(s)
+.bainDescriptivePlots <- function(dataset, options, bainContainer, ready, type, position){
+
+	  if (!is.null(bainContainer[["descriptivesPlots"]]) || !options[["descriptivesPlot"]]) 
+  	return()
+  
+  descriptivesPlots <- createJaspContainer(gettext("Descriptive Plots"))
+  descriptivesPlots$dependOn(options =c("variables", "descriptivesPlots", "credibleInterval"))
+  descriptivesPlots$position <- position
+  
+  bainContainer[["descriptivesPlots"]] <- descriptivesPlots
+  
+  if (!ready)
+    return()
+  
+  for (variable in options[["variables"]]) {
+    
+    if(is.null(bainContainer[["descriptivesPlots"]][[variable]])){
+      
+      bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type = "onesampleTTest", variable = variable)
+      
+      if(isTryError(bainAnalysis)){
+        
+        descriptivesPlots[[variable]] <- createJaspPlot(plot=NULL, title = variable)
+        descriptivesPlots[[variable]]$dependOn(optionContainsValue=list("variables" = variable))
+        descriptivesPlots[[variable]]$setError(.extractErrorMessage(bainAnalysis))
+        
+      } else {
+        
+        bainSummary <- summary(bainAnalysis, ci = options[["credibleInterval"]])
+        
+        # Descriptive statistics from bain
+        N <- bainSummary[["n"]]
+        mu <- bainSummary[["Estimate"]]
+        CiLower <- bainSummary[["lb"]]
+        CiUpper <- bainSummary[["ub"]]
+        
+        yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(options[["testValue"]], CiLower, CiUpper), min.n = 4)
+        d <- data.frame(v = variable, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1)
+        
+        p <- ggplot2::ggplot(d, ggplot2::aes(x=index, y=mean)) +
+          ggplot2::geom_segment(ggplot2::aes(x = -Inf, xend = Inf, y = options[["testValue"]], yend = options[["testValue"]]), linetype = 2, color = "darkgray") +
+          ggplot2::geom_errorbar(ggplot2::aes(ymin=lowerCI, ymax=upperCI), colour="black", width=.1, position = ggplot2::position_dodge(.2)) +
+          ggplot2::geom_point(position=ggplot2::position_dodge(.2), size=4) +
+          ggplot2::ylab("") +
+          ggplot2::xlab("") +
+          ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks)) +
+          ggplot2::scale_x_continuous(breaks = 0:2, labels = NULL)
+        p <- jaspGraphs::themeJasp(p, xAxis = FALSE) + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())
+        
+        descriptivesPlots[[variable]] <- createJaspPlot(plot=p, title = variable)
+        descriptivesPlots[[variable]]$dependOn(optionContainsValue=list("variables" = variable))
+      }
+    }
+  }
+
 }
 
 .plot_bain_ttest_cran <- function(x, type){

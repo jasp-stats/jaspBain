@@ -153,7 +153,7 @@ Form
 
 			CheckBox 
 			{ 
-				name: 					"descriptivesPlots"
+				name: 					"descriptivesPlot"
 				text: 					qsTr("Descriptives plots") 
 			}
 		}

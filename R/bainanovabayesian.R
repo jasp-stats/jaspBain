@@ -16,33 +16,36 @@
 #
 
 BainAnovaBayesian <- function(jaspResults, dataset, options, ...) {
-  
+
+  # What type of Bain analysis is being conducted?
+  type <- "anova"
+
   # Check if current options allow for analysis
-  ready <- .bainOptionsReady(options, type = "anova")
+  ready <- .bainOptionsReady(options, type)
   
   # Read the data set
-  dataList <- .bainReadDataset(options, type = "anova", dataset)
+  dataList <- .bainReadDataset(options, type, dataset)
   
   # Check if current data allow for analysis
-  .bainDataReady(dataList[["dataset"]], options, type = "anova")
+  .bainDataReady(dataList[["dataset"]], options, type)
   
   # Create a container for the results
   bainContainer <- .bainGetContainer(jaspResults, deps = c("dependent", "fixedFactors", "model"))
   
   # Create a legend containing the order constrained hypotheses
-  .bainLegend(dataList[["dataset"]], options, type = "anova", jaspResults, position = 0)
+  .bainLegend(dataList[["dataset"]], options, type, jaspResults, position = 0)
   
   # Create a table containing the main analysis results
-  .bainResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type = "anova", position = 1)
+  .bainResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type, position = 1)
   
   # Create the Bayes factor matrix
-  .bainBfMatrix(dataList[["dataset"]], options, bainContainer, ready, type = "anova", position = 2)
+  .bainBfMatrix(dataList[["dataset"]], options, bainContainer, ready, type, position = 2)
   
   # Create the descriptive statistics table
-  .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type = "anova", position = 3)
+  .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type, position = 3)
   
   # Create the posterior probability plots
-  .bainPosteriorProbabilityPlot(dataList[["dataset"]], options, bainContainer, ready, type = "anova", position = 4)
+  .bainPosteriorProbabilityPlot(dataList[["dataset"]], options, bainContainer, ready, type, position = 4)
   
   ### DESCRIPTIVES PLOT ###
   .bainAnovaDescriptivesPlot(dataList[["dataset"]], options, bainContainer, ready, type = "anova", position = 5)
