@@ -687,13 +687,12 @@
     return()
   if(type == "ancova"){
     title <- gettext("Coefficients for Groups plus Covariates")
-  } else if(type == "regression"){
-    
+  } else if(type == "regression" || type == "sem"){
+    title <- gettext("Coefficients for Parameters")
   } else {
     title <- gettext("Descriptive Statistics")
   }
   meanTitle <- ifelse(type %in% c("ancova", "regression"), yes = gettext("Coefficient"), no = gettext("Mean"))
-  groupTitle <- ifelse(type %in% c("regression"), yes = gettext("Coefficient"), no = gettext(""))
   deps <- switch(type,
                  "independentTTest" = c("variables", "descriptives", "credibleInterval"),
                  "pairedTTest" = c("pairs", "descriptives", "credibleInterval"),
@@ -705,17 +704,17 @@
   table <- createJaspTable(title)
   table$dependOn(options = deps)
   table$position <- position
-  table$addColumnInfo(name="v",                    title = groupTitle,              type="string")
-  if(type == "independentTTest")
-    table$addColumnInfo(name="group",                title = gettext("Group"), type="string")
-  table$addColumnInfo(name="N",                    title = gettext("N"),    type="integer")
-  table$addColumnInfo(name="mean",                 title = meanTitle, type="number")
-  if(type %in% c("independentTTest", "pairedTTest", "onesampleTTest", "anova"))
-    table$addColumnInfo(name="sd",                   title = gettext("SD"),   type="number")
-  table$addColumnInfo(name="se",                   title = gettext("SE"),   type="number")
   overTitle <- gettextf("%.0f%% Credible Interval", 100 * options[["credibleInterval"]])
-  table$addColumnInfo(name="lowerCI",              title = gettext("Lower"), type="number", overtitle = overTitle)
-  table$addColumnInfo(name="upperCI",              title = gettext("Upper"), type="number", overtitle = overTitle)
+  table$addColumnInfo(name = "v",                title = "",                 type = "string")
+  if(type == "independentTTest")
+    table$addColumnInfo(name = "group",          title = gettext("Group"),   type = "string")
+  table$addColumnInfo(name = "N",                title = gettext("N"),       type = "integer")
+  table$addColumnInfo(name = "mean",             title = meanTitle,          type = "number")
+  if(type %in% c("independentTTest", "pairedTTest", "onesampleTTest", "anova"))
+    table$addColumnInfo(name = "sd",             title = gettext("SD"),      type = "number")
+  table$addColumnInfo(name = "se",               title = gettext("SE"),      type = "number")
+  table$addColumnInfo(name = "lowerCI",          title = gettext("Lower"),   type = "number", overtitle = overTitle)
+  table$addColumnInfo(name = "upperCI",          title = gettext("Upper"),   type = "number", overtitle = overTitle)
   bainContainer[["descriptivesTable"]] <- table
   if(type == "regression")
     table$addFootnote(message = ifelse(options[["standardized"]], yes = gettext("The displayed coefficients are standardized."), no = gettext("The displayed coefficients are unstandardized.")))
@@ -734,18 +733,18 @@
       g2 <- levels[2]
     }
     for (variable in options[["variables"]]) {
-      bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type = "independentTTest", variable = variable) 
-      if(isTryError(bainAnalysis)){ 
-        table$addRows(data.frame(v=variable), rowNames=variable)
-        table$addFootnote(message=gettextf("Results not computed: %s", .extractErrorMessage(bainAnalysis)), colNames="v", rowNames=variable)
+      bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type, variable = variable) 
+      if(isTryError(bainResult)){ 
+        table$addRows(data.frame(v = variable), rowNames = variable)
+        table$addFootnote(message = gettextf("Results not computed: %s", JASP:::.extractErrorMessage(bainResult)), colNames = "v", rowNames = variable)
       } else {
-        bainSummary <- summary(bainAnalysis, ci = options[["credibleInterval"]])
+        bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
         N <- bainSummary[["n"]]
         mu <- bainSummary[["Estimate"]]
         CiLower <- bainSummary[["lb"]]
         CiUpper <- bainSummary[["ub"]]
         sd <- aggregate(dataset[, .v(variable)], list(dataset[, .v(options[["groupingVariable"]])]), sd)[, 2]
-        se <- sqrt(diag(bainAnalysis[["posterior"]]))
+        se <- sqrt(diag(bainResult[["posterior"]]))
         row <- data.frame(v = variable, group = g1, N = N[1], mean = mu[1], sd = sd[1], se = se[1], lowerCI = CiLower[1], upperCI = CiUpper[1])
         table$addRows(row)
         row <- data.frame(v = "", group = g2, N = N[2], mean = mu[2], sd = sd[2], se = se[2], lowerCI = CiLower[2], upperCI = CiUpper[2])
@@ -767,17 +766,17 @@
                                  "equalSmaller"        = 3,
                                  "biggerSmaller"       = 4,
                                  "equalBiggerSmaller"  = 5)
-        bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type = "pairedTTest", pair = pair, testType = testType)
-        if(isTryError(bainAnalysis)){
-          table$addRows(data.frame(v=currentPair), rowNames=currentPair)
-          table$addFootnote(message=gettextf("Results not computed: %s", .extractErrorMessage(bainAnalysis)), colNames="v", rowNames=currentPair)    
+        bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type, pair = pair, testType = testType)
+        if(isTryError(bainResult)){
+          table$addRows(data.frame(v = currentPair), rowNames = currentPair)
+          table$addFootnote(message = gettextf("Results not computed: %s", JASP:::.extractErrorMessage(bainResult)), colNames = "v", rowNames = currentPair)    
         } else {     
-          bainSummary <- summary(bainAnalysis, ci = options[["credibleInterval"]])
+          bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
           N <- bainSummary[["n"]]
           mu <- bainSummary[["Estimate"]]
           CiLower <- bainSummary[["lb"]]
           CiUpper <- bainSummary[["ub"]]
-          se <- sqrt(diag(bainAnalysis[["posterior"]]))
+          se <- sqrt(diag(bainResult[["posterior"]]))
           sd <- sd(difference)   
           row <- list(v = currentPair, N = N, mean = mu, sd = sd, se = se, lowerCI = CiLower, upperCI = CiUpper)
           table$addRows(row)
@@ -787,18 +786,18 @@
   } else if(type == "onesampleTTest"){
     table$setExpectedSize(length(options[["variables"]]))
     for (variable in options[["variables"]]) {
-      bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type, variable = variable)
-      if(isTryError(bainAnalysis)){
-        descriptivesTable$addRows(data.frame(v=variable), rowNames=variable)
-        descriptivesTable$addFootnote(message=gettextf("Results not computed: %s", .extractErrorMessage(bainAnalysis)), colNames="v", rowNames=variable)  
+      bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type, variable = variable)
+      if(isTryError(bainResult)){
+        table$addRows(data.frame(v = variable), rowNames = variable)
+        table$addFootnote(message = gettextf("Results not computed: %s", JASP:::.extractErrorMessage(bainResult)), colNames = "v", rowNames = variable)  
       } else {   
-        bainSummary <- summary(bainAnalysis, ci = options[["credibleInterval"]])   
+        bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])   
         N <- bainSummary[["n"]]
         mu <- bainSummary[["Estimate"]]
         CiLower <- bainSummary[["lb"]]
         CiUpper <- bainSummary[["ub"]]
         sd <- sd(dataset[, .v(variable)])
-        se <- sqrt(diag(bainAnalysis[["posterior"]]))  
+        se <- sqrt(diag(bainResult[["posterior"]]))  
         row <- list(v = variable, N = N, mean = mu, sd = sd, se = se, lowerCI = CiLower, upperCI = CiUpper)
         table$addRows(row)
       }
@@ -806,9 +805,9 @@
   } else if(type %in% c("anova", "ancova")){
     groupCol <- dataset[ , .v(options[["fixedFactors"]])]
     varLevels <- levels(groupCol)
-    bainResult <- bainContainer[["bainResult"]]$object
+    bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type)
     bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
-    sigma <- diag(bainResult$posterior)
+    sigma <- diag(bainResult[["posterior"]])
     variable <- .unv(bainSummary[["Parameter"]])
     N        <- bainSummary[["n"]]
     mu       <- bainSummary[["Estimate"]]
@@ -822,7 +821,7 @@
     }
     table$addRows(row)
   } else if(type %in% c("regression", "sem")){
-    bainResult <- bainContainer[["bainResult"]]$object
+    bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type)
     bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
     groups <- .unv(bainSummary[["Parameter"]])
     N <- bainSummary[["n"]]
@@ -1062,7 +1061,7 @@
 			ggplot2::scale_fill_manual(values = c(rep(c("white","black"),5),rep("grey",100)), guide=ggplot2::guide_legend(nrow=10)) +
 			ggplot2::scale_shape_manual(values = c(rep(c(21:25),each=2),21:25,7:14,33:112), guide=ggplot2::guide_legend(nrow=10)) +
 			ggplot2::scale_color_manual(values = rep("black",200), guide=ggplot2::guide_legend(nrow=10)) +
-			ggplot2::scale_y_continuous(name = options[["dependent"]], breaks = yBreaks)
+			ggplot2::scale_y_continuous(name = options[["dependent"]], breaks = yBreaks) +
 			ggplot2::scale_x_continuous(name = options[["fixedFactors"]], breaks = 1:length(varLevels), labels = as.character(varLevels))
     p <- jaspGraphs::themeJasp(p)
     plot$plotObject <- p
