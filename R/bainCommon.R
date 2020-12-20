@@ -946,19 +946,15 @@
     return()
   
   if(type %in% c("independentTTest", "pairedTTest", "onesampleTTest")){
-    descriptivesPlots <- createJaspContainer(gettext("Descriptive Plots"))
-    descriptivesPlots$dependOn(options = c("variables", "pairs", "descriptivesPlots", "credibleInterval"))
-    descriptivesPlots$position <- position
-    
-    bainContainer[["descriptivesPlots"]] <- descriptivesPlots
+    container <- createJaspContainer(gettext("Descriptive Plots"))
+    container$dependOn(options = c("variables", "pairs", "descriptivesPlot", "credibleInterval"))
+    container$position <- position
+    bainContainer[["descriptivesPlots"]] <- container
   } else {
-    plotTitle <- ifelse(type == "anova", yes = gettext("Descriptives Plot"), no = gettext("Adjusted Means"))
-    
-    descriptivesPlots <- createJaspPlot(plot = NULL, title = plotTitle)
-    descriptivesPlots$dependOn(options = c("descriptivesPlot", "credibleInterval"))
-    descriptivesPlots$position <- position
-    
-    bainContainer[["descriptivesPlots"]] <- descriptivesPlots
+    plot <- createJaspPlot(plot = NULL, title = ifelse(type == "anova", yes = gettext("Descriptives Plot"), no = gettext("Adjusted Means")))
+    plot$dependOn(options = c("descriptivesPlot", "credibleInterval"))
+    plot$position <- position
+    bainContainer[["descriptivesPlots"]] <- plot
   }
   
   if (!ready || bainContainer$getError())
@@ -966,101 +962,72 @@
   
   if(type %in% c("independentTTest", "onesampleTTest")){
     for (variable in options[["variables"]]) {
-      
-      if(is.null(bainContainer[["descriptivesPlots"]][[variable]])){
-        
-        bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type, variable = variable)
-        
-        if(isTryError(bainAnalysis)){
-          
-          descriptivesPlots[[variable]] <- createJaspPlot(plot=NULL, title = variable)
-          descriptivesPlots[[variable]]$dependOn(optionContainsValue=list("variables" = variable))
-          descriptivesPlots[[variable]]$setError(gettextf("Results not computed: %1$s", JASP:::.extractErrorMessage(bainAnalysis)))
-          
+      if(is.null(bainContainer[["descriptivesPlots"]][[variable]])){  
+        bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type, variable = variable)
+        if(isTryError(bainResult)){
+          container[[variable]] <- createJaspPlot(plot=NULL, title = variable)
+          container[[variable]]$dependOn(optionContainsValue=list("variables" = variable))
+          container[[variable]]$setError(gettextf("Results not computed: %1$s", JASP:::.extractErrorMessage(bainAnalysis)))
         } else {
           if(type == "onesampleTTest"){
-            bainSummary <- summary(bainAnalysis, ci = options[["credibleInterval"]])
-            
-            # Descriptive statistics from bain
+            bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
             N <- bainSummary[["n"]]
             mu <- bainSummary[["Estimate"]]
             CiLower <- bainSummary[["lb"]]
             CiUpper <- bainSummary[["ub"]]
-            
             yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(options[["testValue"]], CiLower, CiUpper), min.n = 4)
-            d <- data.frame(v = variable, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1)
-            
-            p <- ggplot2::ggplot(d, ggplot2::aes(x=index, y=mean)) +
-              ggplot2::geom_segment(ggplot2::aes(x = -Inf, xend = Inf, y = options[["testValue"]], yend = options[["testValue"]]), linetype = 2, color = "darkgray") +
-              ggplot2::geom_errorbar(ggplot2::aes(ymin=lowerCI, ymax=upperCI), colour="black", width=.1, position = ggplot2::position_dodge(.2)) +
-              ggplot2::geom_point(position=ggplot2::position_dodge(.2), size=4) +
-              ggplot2::ylab("") +
-              ggplot2::xlab("") +
-              ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks)) +
-              ggplot2::scale_x_continuous(breaks = 0:2, labels = NULL)
+            plotData <- data.frame(v = variable, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1)
+            p <- ggplot2::ggplot(plotData, ggplot2::aes(x = index, y = mean)) +
+              		ggplot2::geom_segment(ggplot2::aes(x = -Inf, xend = Inf, y = options[["testValue"]], yend = options[["testValue"]]), linetype = 2, color = "darkgray") +
+              		ggplot2::geom_errorbar(ggplot2::aes(ymin = lowerCI, ymax = upperCI), colour="black", width = .1, position = ggplot2::position_dodge(.2)) +
+              		ggplot2::geom_point(position = ggplot2::position_dodge(.2), size = 4) +
+              		ggplot2::ylab("") +
+              		ggplot2::xlab("") +
+              		ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks)) +
+              		ggplot2::scale_x_continuous(breaks = 0:2, labels = NULL)
             p <- jaspGraphs::themeJasp(p, xAxis = FALSE) + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())
           } else if(type == "independentTTest"){
-            bainSummary <- summary(bainAnalysis, ci = options[["credibleInterval"]])
+            bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
             levels <- base::levels(dataset[[ .v(options[["groupingVariable"]]) ]])
             N <- bainSummary[["n"]]
             mu <- bainSummary[["Estimate"]]
             CiLower <- bainSummary[["lb"]]
             CiUpper <- bainSummary[["ub"]]
-            
             yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(CiLower, CiUpper), min.n = 4)
-            d <- data.frame(v = levels, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1:length(levels))
-            
-            p <- ggplot2::ggplot(d, ggplot2::aes(x=index, y=mean)) +
-              ggplot2::geom_errorbar(ggplot2::aes(ymin=lowerCI, ymax=upperCI), colour="black", width=.2, position = ggplot2::position_dodge(.2)) +
-              ggplot2::geom_line(position=ggplot2::position_dodge(.2), size = .7) +
-              ggplot2::geom_point(position=ggplot2::position_dodge(.2), size=4) +
+            plotData <- data.frame(v = levels, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1:length(levels))
+            p <- ggplot2::ggplot(plotData, ggplot2::aes(x = index, y = mean)) +
+              ggplot2::geom_errorbar(ggplot2::aes(ymin = lowerCI, ymax = upperCI), colour = "black", width = .2, position = ggplot2::position_dodge(.2)) +
+              ggplot2::geom_line(position = ggplot2::position_dodge(.2), size = .7) +
+              ggplot2::geom_point(position = ggplot2::position_dodge(.2), size = 4) +
               ggplot2::ylab(variable) +
               ggplot2::xlab(options[["groupingVariable"]]) +
               ggplot2::scale_x_continuous(breaks = 1:length(levels), labels = as.character(levels)) +
               ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks))
             p <- jaspGraphs::themeJasp(p)
           }
-          
-          descriptivesPlots[[variable]] <- createJaspPlot(plot=p, title = variable)
-          descriptivesPlots[[variable]]$dependOn(optionContainsValue=list("variables" = variable))
+          container[[variable]] <- createJaspPlot(plot = p, title = variable)
+          container[[variable]]$dependOn(optionContainsValue = list("variables" = variable))
         }
       }
     }
   } else if(type == "pairedTTest"){
     for (pair in options[["pairs"]]) {
-      
-      currentPair <- paste(pair, collapse=" - ")
-      
-      if (is.null(bainContainer[["descriptivesPlots"]][[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]){
-        
-        testType <- base::switch(options[["hypothesis"]],
-                                 "equalNotEqual"       = 1,
-                                 "equalBigger"         = 2,
-                                 "equalSmaller"        = 3,
-                                 "biggerSmaller"       = 4,
-                                 "equalBiggerSmaller"  = 5)
-        bainAnalysis <- .bainAnalysisState(dataset, options, bainContainer, ready, type = "pairedTTest", pair = pair, testType = testType)
-        
-        if(isTryError(bainAnalysis)){
-          
-          descriptivesPlots[[currentPair]] <- createJaspPlot(plot=NULL, title = currentPair)
-          descriptivesPlots[[currentPair]]$dependOn(optionContainsValue=list("variables" = currentPair))
-          descriptivesPlots[[currentPair]]$setError(.extractErrorMessage(bainAnalysis))
-          
+      currentPair <- paste(pair, collapse =" - ")
+      if (is.null(bainContainer[["descriptivesPlots"]][[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]){   
+        bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type, pair = pair)     
+        if(isTryError(bainResult)){ 
+          container[[currentPair]] <- createJaspPlot(plot = NULL, title = currentPair)
+          container[[currentPair]]$dependOn(optionContainsValue = list("variables" = currentPair))
+          container[[currentPair]]$setError(.extractErrorMessage(bainAnalysis))
         } else {
-          
-          bainSummary <- summary(bainAnalysis, ci = options[["credibleInterval"]])
-          
-          # Descriptive statistics from bain
+          bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
           N <- bainSummary[["n"]]
           mu <- bainSummary[["Estimate"]]
           CiLower <- bainSummary[["lb"]]
           CiUpper <- bainSummary[["ub"]]
-          
           yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, CiLower, CiUpper), min.n = 4)
-          d <- data.frame(v = gettext("Difference"), N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1)
-          
-          p <- ggplot2::ggplot(d, ggplot2::aes(x=index, y=mean)) +
+          plotData <- data.frame(v = gettext("Difference"), N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1)
+          p <- ggplot2::ggplot(plotData, ggplot2::aes(x=index, y=mean)) +
             ggplot2::geom_segment(ggplot2::aes(x = -Inf, xend = Inf, y = 0, yend = 0), linetype = 2, color = "darkgray") +
             ggplot2::geom_errorbar(ggplot2::aes(ymin=lowerCI, ymax=upperCI), colour="black", width=.1, position = ggplot2::position_dodge(.2)) +
             ggplot2::geom_point(position=ggplot2::position_dodge(.2), size=4) +
@@ -1068,55 +1035,37 @@
             ggplot2::xlab("") +
             ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks)) +
             ggplot2::scale_x_continuous(breaks = 0:2, labels = NULL)
-          p <- jaspGraphs::themeJasp(p, xAxis = FALSE) + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())
-          
-          descriptivesPlots[[currentPair]] <- createJaspPlot(plot=p, title = currentPair)
-          descriptivesPlots[[currentPair]]$dependOn(optionContainsValue=list("pairs" = pair))
+          p <- jaspGraphs::themeJasp(p, xAxis = FALSE) + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())  
+          container[[currentPair]] <- createJaspPlot(plot = p, title = currentPair)
+          container[[currentPair]]$dependOn(optionContainsValue = list("pairs" = pair))
         }
       }
     }
   } else if(type %in% c("anova", "ancova")){
-    bainBreaks <- function(x, plotErrorBars = TRUE) {
-      ci.pos <- c(x[,"mean"], x[,"lowerCI"], x[,"upperCI"])
-      b <- pretty(ci.pos)
-      d <- data.frame(x=-Inf, xend=-Inf, y=min(b), yend=max(b))
-      list(ggplot2::geom_segment(data=d, ggplot2::aes(x=x, y=y, xend=xend, yend=yend), inherit.aes=FALSE, size = 1),
-           ggplot2::scale_y_continuous(breaks=c(min(b),max(b))))
-    }
-    
     groupCol <- dataset[ , .v(options[["fixedFactors"]])]
     varLevels <- levels(groupCol)
-    
     bainResult <- bainContainer[["bainResult"]]$object
     bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
-    
-    # Remove covariates in ANCOVA
     if(type == "ancova")
       bainSummary <- bainSummary[1:length(varLevels), ]
-    
-    # Extract all but sd and se from bain result
     variable <- bainSummary[["Parameter"]]
     N <- bainSummary[["n"]]
     mu <- bainSummary[["Estimate"]]
     CiLower <- bainSummary[["lb"]]
     CiUpper <- bainSummary[["ub"]]
-    
-    d <- data.frame(v = variable, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1:length(variable))
-    
-    p <- ggplot2::ggplot(d, ggplot2::aes(x=index, y=mean)) +
-      ggplot2::geom_errorbar(ggplot2::aes(ymin=lowerCI, ymax=upperCI), colour="black", width=.2, position = ggplot2::position_dodge(.2)) +
-      ggplot2::geom_line(position=ggplot2::position_dodge(.2), size = .7) +
-      ggplot2::geom_point(position=ggplot2::position_dodge(.2), size=4) +
-      ggplot2::scale_fill_manual(values = c(rep(c("white","black"),5),rep("grey",100)), guide=ggplot2::guide_legend(nrow=10)) +
-      ggplot2::scale_shape_manual(values = c(rep(c(21:25),each=2),21:25,7:14,33:112), guide=ggplot2::guide_legend(nrow=10)) +
-      ggplot2::scale_color_manual(values = rep("black",200), guide=ggplot2::guide_legend(nrow=10)) +
-      ggplot2::ylab(options[["dependent"]]) +
-      ggplot2::xlab(options[["fixedFactors"]]) +
-      bainBreaks(d, TRUE) +
-      ggplot2::scale_x_continuous(breaks = 1:length(varLevels), labels = as.character(varLevels))
+	yBreaks <- jaspGraphs::getPrettyAxisBreaks(pretty(c(CiLower, CiUpper)), min.n = 4)
+    plotData <- data.frame(v = variable, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1:length(variable))
+    p <- ggplot2::ggplot(plotData, ggplot2::aes(x=index, y=mean)) +
+			ggplot2::geom_errorbar(ggplot2::aes(ymin=lowerCI, ymax=upperCI), colour="black", width=.2, position = ggplot2::position_dodge(.2)) +
+			ggplot2::geom_line(position=ggplot2::position_dodge(.2), size = .7) +
+			ggplot2::geom_point(position=ggplot2::position_dodge(.2), size=4) +
+			ggplot2::scale_fill_manual(values = c(rep(c("white","black"),5),rep("grey",100)), guide=ggplot2::guide_legend(nrow=10)) +
+			ggplot2::scale_shape_manual(values = c(rep(c(21:25),each=2),21:25,7:14,33:112), guide=ggplot2::guide_legend(nrow=10)) +
+			ggplot2::scale_color_manual(values = rep("black",200), guide=ggplot2::guide_legend(nrow=10)) +
+			ggplot2::scale_y_continuous(name = options[["dependent"]], breaks = yBreaks)
+			ggplot2::scale_x_continuous(name = options[["fixedFactors"]], breaks = 1:length(varLevels), labels = as.character(varLevels))
     p <- jaspGraphs::themeJasp(p)
-    
-    descriptivesPlots$plotObject <- p
+    plot$plotObject <- p
   }
 }
 
