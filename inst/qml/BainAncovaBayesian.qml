@@ -124,10 +124,9 @@ Form
 		TextArea
 		{
 			name: 						"model"
-			implicitHeight: 			200 * preferencesModel.uiScale 
 			text: 						""
-			textType: JASP.TextTypeLavaan//textType: 				JASP.TextTypeModel
-			//trim: 					true
+			textType: 				JASP.TextTypeModel
+			trim: 					true
 	   }
 	}
 }

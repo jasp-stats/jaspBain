@@ -22,7 +22,7 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
 
   # Read the data set
   dataList <- .bainReadDataset(options, type, dataset)
-  
+
   # Check if current options allow for analysis
   ready <- .bainOptionsReady(options, type, dataList[["dataset"]])
 
@@ -56,7 +56,6 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
     return(bainContainer[["lavaanResult"]]$object)
   } else if(ready){
     syntax <- .bainSemTranslateModel(options[["syntax"]], dataset)
-    colnames(dataset) <- decodeColNames(colnames(dataset))
     error <- try({
       fit <- lavaan::sem(model = syntax, data = dataset)
     })
@@ -70,7 +69,7 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   }
 }
 
-.bainSemGetUsedVars <- function(syntax, availablevars, decode = TRUE) {
+.bainSemGetUsedVars <- function(syntax, availablevars, decode = FALSE) {
   if(decode){
     vv <- decodeColNames(availablevars)
   } else {
@@ -111,7 +110,7 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
     return()
   
   plot <- createJaspPlot(title = gettext("Path Diagram"), width = 600, height = 400)
-  plot$dependOn(options = c("pathDiagram", "seed", "fraction", "pathDiagramEstimates", "pathDiagramLegend"))
+  plot$dependOn(options = c("pathDiagram", "seed", "pathDiagramEstimates", "pathDiagramLegend"))
   bainContainer[["pathDiagram"]] <- plot
   fit <- .bainLavaanState(dataset, options, bainContainer, ready, jaspResults)
   po <- .bainlavToPlotObj(fit)

@@ -194,11 +194,13 @@
       if (options[["model"]] == "") {
         rest.string <- NULL
         if(type == "sem")
-          rest.string <- .v(.bainCleanSemModelInput("ind60 =~ x2 = ind60 =~ x3 & dem60 =~ y2 = dem60 =~ y3 = dem60 =~ y4 & dem65 =~ y6 = dem65 =~ y7 = dem65 =~ y8")) # CHANGE DEFAULT HYPOTHESIS FOR SEM ONLY (NULL DOES NOT WORK; THERE IS NO WRAPPER LIKE bain_regression_cran)
+          rest.string <- encodeColNames(.bainCleanSemModelInput("ind60 =~ x2 = ind60 =~ x3 & dem60 =~ y2 = dem60 =~ y3 = dem60 =~ y4 & dem65 =~ y6 = dem65 =~ y7 = dem65 =~ y8")) # CHANGE DEFAULT HYPOTHESIS FOR SEM ONLY (NULL DOES NOT WORK; THERE IS NO WRAPPER LIKE bain_regression_cran)
       } else {
-        rest.string <- encodeColNames(.bainCleanModelInput(options[["model"]]))
-        if(type == "sem")
-          rest.string <- .v(.bainCleanSemModelInput(options[["model"]])) # Why does this only work with .v?
+		  if(type == "sem"){
+			rest.string <- encodeColNames(.bainCleanSemModelInput(options[["model"]]))
+		  } else {
+			rest.string <- encodeColNames(.bainCleanModelInput(options[["model"]]))  
+		  }
       }
       p <- try({
         if(type == "anova"){	
@@ -916,7 +918,7 @@
       width <- 600
     }
     plot <- createJaspPlot(plot = NULL, title = gettext("Posterior Probabilities"), height = height, width = width)
-    plot$dependOn(options = c("bayesFactorPlot", "fraction", "standardized"))
+    plot$dependOn(options = c("bayesFactorPlot", "standardized"))
     plot$position <- position
     bainContainer[["posteriorProbabilityPlot"]] <- plot
     if (!ready || bainContainer$getError())
