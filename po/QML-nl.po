@@ -1,0 +1,450 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Language: en_US\n"
+"X-Source-Language: American English\n"
+"X-Qt-Contexts: true\n"
+
+msgctxt "Description|"
+msgid "Bain"
+msgstr "Bain"
+
+msgctxt "Description|"
+msgid ""
+"A module for computing approximated adjusted fractional Bayes factors for "
+"equality, inequality, and about equality constrained hypotheses."
+msgstr ""
+"Een module voor het berekenen van benaderde aangepastte fractionele Bayes "
+"factoren voor gelijkheid, ongelijkheid, en over gelijkheids beperkte "
+"hypothesen."
+
+msgctxt "BainAncovaBayesian|"
+msgid "Dependent Variable"
+msgstr "Afhankelijke variabele"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Fixed Factors"
+msgstr "Gefixeerde factoren"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Covariates"
+msgstr "Covariaten"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Tables"
+msgstr "Tabellen"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Bayes factor matrix"
+msgstr "Bayes factormatrix"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Coefficients"
+msgstr "Coëfficiënten"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Credible interval"
+msgstr "Geloofwaardigheidsinterval"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Plots"
+msgstr "Grafieken"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Posterior probabilities"
+msgstr "Posterior kansen"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Adjusted means"
+msgstr "Bijgestelde gemiddelden"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Additional Options"
+msgstr "Aanvullende opties"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Seed"
+msgstr "Toevalsgenerator beginwaarde"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Model Constraints"
+msgstr "Modelbeperkingen"
+
+msgctxt "BainAncovaBayesian|"
+msgid ""
+"Place each hypothesis on a new line. For example:\n"
+"\n"
+"factorLow = factorMed = factorHigh\n"
+"factorLow < factorMed < factorHigh\n"
+"\n"
+"where factor is the factor name and Low/Med/High are the factor level "
+"names.\n"
+"Read the help file for further instructions."
+msgstr ""
+"Plaats iedere hypothese op een nieuwe regel. Bijvoorbeeld:\n"
+"\n"
+"factorLaag = factorMidden = factorHoog\n"
+"factorLaag < factorMidden < factorHoog\n"
+"\n"
+"waar factor de factor naam is en Laag/Midden/Hoog het niveau van de factor.\n"
+"Lees het help bestand voor verdere instructies."
+
+msgctxt "BainAnovaBayesian|"
+msgid "Dependent Variable"
+msgstr "Afhankelijke variabele"
+
+msgctxt "BainAnovaBayesian|"
+msgid "Fixed Factors"
+msgstr "Gefixeerde factoren"
+
+msgctxt "BainAnovaBayesian|"
+msgid "Tables"
+msgstr "Tabellen"
+
+msgctxt "BainAnovaBayesian|"
+msgid "Bayes factor matrix"
+msgstr "Bayes factormatrix"
+
+msgctxt "BainAnovaBayesian|"
+msgid "Descriptives"
+msgstr "Beschrijvende statistiek"
+
+msgctxt "BainAnovaBayesian|"
+msgid "Credible interval"
+msgstr "Geloofwaardigheidsinterval"
+
+msgctxt "BainAnovaBayesian|"
+msgid "Plots"
+msgstr "Grafieken"
+
+msgctxt "BainAnovaBayesian|"
+msgid "Posterior probabilities"
+msgstr "Posterior kansen"
+
+msgctxt "BainAnovaBayesian|"
+msgid "Descriptives plot"
+msgstr "Beschrijvend diagram"
+
+msgctxt "BainAnovaBayesian|"
+msgid "Additional Options"
+msgstr "Aanvullende opties"
+
+msgctxt "BainAnovaBayesian|"
+msgid "Seed"
+msgstr "Toevalsgenerator beginwaarde"
+
+msgctxt "BainAnovaBayesian|"
+msgid "Model Constraints"
+msgstr "Modelbeperkingen"
+
+msgctxt "BainAnovaBayesian|"
+msgid ""
+"Place each hypothesis on a new line. For example:\n"
+"\n"
+"factorLow = factorMed = factorHigh\n"
+"factorLow < factorMed < factorHigh\n"
+"\n"
+"where factor is the factor name and Low/Med/High are the factor level "
+"names.\n"
+"Read the help file for further instructions."
+msgstr ""
+"Plaats iedere hypothese op een nieuwe regel. Bijvoorbeeld:\n"
+"\n"
+"factorLaag = factorMidden = factorHoog\n"
+"factorLaag < factorMidden < factorHoog\n"
+"\n"
+"waar factor de factornaam is en Laag/Midden/Hoog het niveau van de factor.\n"
+"Lees het help bestand voor verdere instructies."
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Dependent Variable"
+msgstr "Afhankelijke variabele"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Covariates"
+msgstr "Covariaten"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Tables"
+msgstr "Tabellen"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Bayes factor matrix"
+msgstr "Bayes factormatrix"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Coefficients"
+msgstr "Coëfficiënten"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Credible interval"
+msgstr "Geloofwaardigheidsinterval"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Plots"
+msgstr "Grafieken"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Posterior probabilities"
+msgstr "Posterior kansen"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Additional Options"
+msgstr "Aanvullende opties"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Seed"
+msgstr "Toevalsgenerator beginwaarde"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Standardize"
+msgstr "Standaardiseer"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Model Constraints"
+msgstr "Modelbeperkingen"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid ""
+"Place each hypothesis on a new line. For example:\n"
+"\n"
+"age = length = weight\n"
+"age < length < weight,\n"
+"\n"
+"where age, length and weight are the names of the predictors.\n"
+"Read the help file for further instructions."
+msgstr ""
+"Plaats iedere hypothese op een nieuwe regel. Bijvoorbeeld:\n"
+"\n"
+"leeftijd = lengte = gewicht\n"
+"leeftijd < lengte < gewicht\n"
+"\n"
+"waar leeftijd, lengte en gewicht de namen van de voorspellers zijn.\n"
+"Lees het help bestand voor verdere instructies."
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Dependent Variables"
+msgstr "Afhankelijke variabelen"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Grouping Variable"
+msgstr "Groepen"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Hypothesis Test"
+msgstr "Hypothesetoets"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Equal vs. not equal"
+msgstr "Gelijk vs. ongelijk"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Equal vs. bigger"
+msgstr "Gelijk vs. groter"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Equal vs. smaller"
+msgstr "Gelijk vs. kleiner"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Bigger vs. smaller"
+msgstr "Groter vs. kleiner"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Equal vs. bigger vs. smaller"
+msgstr "Gelijk vs. groter vs. kleiner"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Bayes Factor"
+msgstr "Bayes factor"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "BF₀₁: Equal vs. other"
+msgstr "BF₀₁: Gelijk vs. anders"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "BF₁₀: Other vs. equal"
+msgstr "BF₁₀: Anders vs. gelijk"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Additional Options"
+msgstr "Aanvullende opties"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Seed"
+msgstr "Toevalsgenerator beginwaarde"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Tables"
+msgstr "Tabellen"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Descriptives"
+msgstr "Beschrijvende statistiek"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Credible interval"
+msgstr "Geloofwaardigheidsinterval"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Plots"
+msgstr "Grafieken"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Posterior probabilities"
+msgstr "Posterior kansen"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Descriptives plots"
+msgstr "Beschrijvende diagrammen"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Variables"
+msgstr "Variabelen"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Test value"
+msgstr "Toetswaarde"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Hypothesis Test"
+msgstr "Hypothesetoets"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Equal vs. not equal"
+msgstr "Gelijk vs. ongelijk"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Equal vs. bigger"
+msgstr "Gelijk vs. groter"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Equal vs. smaller"
+msgstr "Gelijk vs. kleiner"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Bigger vs. smaller"
+msgstr "Groter vs. kleiner"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Equal vs. bigger vs. smaller"
+msgstr "Gelijk vs. groter vs. kleiner"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Bayes Factor"
+msgstr "Bayes factor"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "BF₀₁: Equal vs. other"
+msgstr "BF₀₁: Gelijk vs. anders"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "BF₁₀: Other vs. equal"
+msgstr "BF₁₀: Anders vs. gelijk"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Additional Options"
+msgstr "Aanvullende opties"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Seed"
+msgstr "Toevalsgenerator beginwaarde"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Tables"
+msgstr "Tabellen"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Descriptives"
+msgstr "Beschrijvende statistiek"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Credible interval"
+msgstr "Geloofwaardigheidsinterval"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Plots"
+msgstr "Grafieken"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Posterior probabilities"
+msgstr "Posterior kansen"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Descriptives plots"
+msgstr "Beschrijvende diagrammen"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Pairs"
+msgstr "Paren"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Hypothesis Test"
+msgstr "Hypothesetoets"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Equal vs. not equal"
+msgstr "Gelijk vs. ongelijk"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Equal vs. bigger"
+msgstr "Gelijk vs. groter"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Equal vs. smaller"
+msgstr "Gelijk vs. kleiner"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Bigger vs. smaller"
+msgstr "Groter vs. kleiner"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Equal vs. bigger vs. smaller"
+msgstr "Gelijk vs. groter vs. kleiner"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Bayes Factor"
+msgstr "Bayes factor"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "BF₀₁: Equal vs. other"
+msgstr "BF₀₁: Gelijk vs. anders"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "BF₁₀: Other vs. equal"
+msgstr "BF₁₀: Anders vs. gelijk"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Additional Options"
+msgstr "Aanvullende opties"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Seed"
+msgstr "Toevalsgenerator beginwaarde"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Tables"
+msgstr "Tabellen"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Descriptives"
+msgstr "Beschrijvende statistiek"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Credible interval"
+msgstr "Geloofwaardigheidsinterval"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Plots"
+msgstr "Grafieken"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Posterior probabilities"
+msgstr "Posterior kansen"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Descriptives plots"
+msgstr "Beschrijvende diagrammen"
