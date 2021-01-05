@@ -1,0 +1,377 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: R 3.6.1\n"
+"Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
+"POT-Creation-Date: 2020-12-30 18:06\n"
+"PO-Revision-Date: 2020-12-02 21:29+0000\n"
+"Last-Translator: JASP Stats <F.A.M.Meerhoff@uva.nl>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jasp-engine/"
+"nl/>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n==0 ? 0 : n==1 ? 0 : 1;\n"
+"X-Generator: Weblate 4.4-dev\n"
+
+msgid "BF.c"
+msgstr "BF.c"
+
+msgid "PMP a"
+msgstr "PMP a"
+
+msgid "PMP b"
+msgstr "PMP b"
+
+msgid ""
+"BF.c denotes the Bayes factor of the hypothesis in the row versus its "
+"complement.\n"
+"Posterior model probabilities (a: excluding the unconstrained hypothesis, b: "
+"including the unconstrained hypothesis) are based on equal prior model "
+"probabilities."
+msgstr ""
+"BF.c geeft de Bayes factor van de hypothese in de rij versus zijn "
+"complement.\n"
+"Posterior modelkansen (a: de ongebonden hypothese is uitgesloten, b: de "
+"ongebonden hypothese is meegenomen) zijn gebaseerd op gelijke prior "
+"modelkansen."
+
+msgid ""
+"The variables %s contain missing values, the rows containing these values "
+"are removed in the analysis."
+msgstr ""
+"De variabelen %s bevatten ontbrekende waarden, de rijen die deze waarden "
+"bevatten, zijn niet meegenomen in de analyse."
+
+msgid "<b>Warning.</b>"
+msgstr "<b>Waarschuwing.</b>"
+
+msgid ""
+"The variable %s contains missing values, the rows containing these values "
+"are removed in the analysis."
+msgstr ""
+"De variabele %s bevat ontbrekende waarden, de rijen die deze waarden "
+"bevatten, zijn niet meegenomen in de analyse."
+
+msgid "The fixed factor has too many levels for a Bain analysis."
+msgstr "De gefixeerde factor heeft te veel niveaus voor een Bain analyse."
+
+msgid ""
+"An error occurred in the analysis:<br>%s<br><br>Please double check your "
+"variables and model constraints."
+msgstr ""
+"Fout opgetreden in de analyse:<br>%s<br><br>Controleer uw variabelen en uw "
+"model beperkingen."
+
+msgid "H%i"
+msgstr "H%i"
+
+msgid "Hu"
+msgstr "Hu"
+
+msgid "Bayes Factor Matrix"
+msgstr "Bayes Factormatrix"
+
+msgid "H1"
+msgstr "H1"
+
+msgid ""
+"Bain does not accept factor levels that contain spaces. Please remove the "
+"spaces from your factor levels to continue."
+msgstr ""
+"Bain accepteert geen factorniveaus die spaties bevatten. Verwijder deze "
+"spaties a.u.b. uit uw factorniveaus om door te gaan."
+
+msgid "Hypothesis Legend"
+msgstr "Hypothese Legenda"
+
+msgid "Hypothesis"
+msgstr "Hypothese"
+
+msgid "H"
+msgstr "H"
+
+msgid "Excluding Hu"
+msgstr "Sluit Hu uit"
+
+msgid "Including Hu"
+msgstr "Neem Hu mee"
+
+msgid "Bain ANOVA"
+msgstr "Bain ANOVA"
+
+msgid ""
+"The variables %1$s and %2$s contain missing values, the rows containing "
+"these values are removed in the analysis."
+msgstr ""
+"De variabelen %1$s en %2$s bevatten ontbrekende waarden, de rijen die deze "
+"waarden bevatten, zijn niet meegenomen in de analyse."
+
+msgid "Descriptive Statistics"
+msgstr "Beschrijvende Statistiek"
+
+msgid "Coefficients for Groups plus Covariates"
+msgstr "Coëfficiënten voor Groepen plus Covariaten"
+
+msgid "Mean"
+msgstr "Gemiddelde"
+
+msgid "Coefficient"
+msgstr "Coëfficiënt"
+
+msgid "N"
+msgstr "N"
+
+msgid "SD"
+msgstr "SD"
+
+msgid "SE"
+msgstr "Std. Fout"
+
+msgid "%.0f%% Credible Interval"
+msgstr "%.0f%% Geloofwaardigheidsinterval"
+
+msgid "Lower"
+msgstr "Onder"
+
+msgid "Upper"
+msgstr "Boven"
+
+msgid "Posterior Probabilities"
+msgstr "Posterior kansen"
+
+msgid "Descriptives Plot"
+msgstr "Beschrijvend Diagram"
+
+msgid "Adjusted Means"
+msgstr "Bijgestelde Gemiddelden"
+
+msgid "Bain Linear Regression"
+msgstr "Bain Lineaire Regressie"
+
+msgid "Coefficients"
+msgstr "Coëfficiënten"
+
+msgid "%i%% Credible Interval"
+msgstr "%i%% Geloofwaardigheidsinterval"
+
+msgid "Covariate"
+msgstr "Covariaat"
+
+msgid "The displayed coefficients are standardized."
+msgstr "De getoonde coëfficiënten zijn gestandaardiseerd."
+
+msgid "Bain Independent Samples Welch's T-Test"
+msgstr "Bain Onafhankelijke Steekproeven Welch's T-Toets"
+
+msgid "BF"
+msgstr "BF"
+
+msgid "Posterior probability"
+msgstr "Posterior kans"
+
+msgid ""
+"The alternative hypothesis H1 specifies that the mean of group 1 is unequal "
+"to the mean of group 2. The posterior probabilities are based on equal prior "
+"probabilities."
+msgstr ""
+"De alternatieve hypothese H1 zegt dat de gemiddelde van groep 1 ongelijk is "
+"aan het gemiddelde van groep 2. De posterior kansen zijn gebaseerd op "
+"gelijke prior kansen."
+
+msgid ""
+"The alternative hypothesis H1 specifies that the mean of group 1 is smaller "
+"than the mean of group 2. The posterior probabilities are based on equal "
+"prior probabilities."
+msgstr ""
+"De alternatieve hypothese zegt dat het gemiddelde van groep 1 kleiner is dan "
+"het gemiddelde van groep 2. De posterior kansen zijn gebaseerd op gelijke "
+"prior kansen."
+
+msgid ""
+"The alternative hypothesis H1 specifies that mean of group 1 is bigger than "
+"the mean of group 2. The posterior probabilities are based on equal prior "
+"probabilities."
+msgstr ""
+"De alternatieve hypothese H1 zegt dat het gemiddelde van groep 1 groter is "
+"dan het gemiddelde van groep 2. De posterior kansen zijn gebaseerd op "
+"gelijke prior kansen."
+
+msgid ""
+"The hypothesis H1 specifies that the mean of group 1 is bigger than the mean "
+"of group 2. The hypothesis H2 specifies that the mean in group 1 is smaller "
+"than the mean in group 2. The posterior probabilities are based on equal "
+"prior probabilities."
+msgstr ""
+"De hypothese H1 zegt dat het gemiddelde van groep 1 groter is dan de "
+"gemiddelde van groep 2. De hypothese H2 zegt dat het gemiddelde van groep 1 "
+"kleiner is dan het gemiddelde van groep 2. De posterior kansen zijn "
+"gebaseerd op gelijke prior kansen."
+
+msgid ""
+"The null hypothesis H0 (equal group means) is tested against H1 (first mean "
+"larger than second mean) and H2 (first mean smaller than second mean). The "
+"posterior probabilities are based on equal prior probabilities."
+msgstr ""
+"De nulhypothese H0 (gelijke groepsgemiddelden) is getest ten opzichte van H1 "
+"(eerste gemiddelde groter dan tweede gemiddelde) en H2 (eerste gemiddelde "
+"kleiner dan tweede gemiddelde). De posterior kansen zijn gebaseerd op "
+"gelijke prior kansen."
+
+msgid "Results not computed: %s"
+msgstr "Onberekende resultaten: %s"
+
+msgid ""
+"Variable contains missing values, the rows containing these values are "
+"removed in the analysis."
+msgstr ""
+"Variabele bevat ontbreknde waarden, de rijen die deze waarden bevatten, zijn "
+"uit de analyse gelaten."
+
+msgid "H0: Equal"
+msgstr "H0: Gelijk"
+
+msgid "H1: Not equal"
+msgstr "H1: Ongelijk"
+
+msgid "H1: Bigger"
+msgstr "H1: Groter"
+
+msgid "H1: Smaller"
+msgstr "H1: Kleiner"
+
+msgid "H2: Smaller"
+msgstr "H2: Kleiner"
+
+msgid "Group"
+msgstr "Groep"
+
+msgid "Descriptive Plots"
+msgstr "Beschrijvende diagrammen"
+
+msgid "Bain One Sample T-test"
+msgstr "Bain T-toets Voor Eén Steekproef"
+
+msgid ""
+"The alternative hypothesis H1 specifies that the mean is unequal to %s. The "
+"posterior probabilities are based on equal prior probabilities."
+msgstr ""
+"De alternatieve hypothese H1 zegt dat het gemiddelde ongelijk is aan %s. De "
+"posterior kansen zijn gebaseerd op gelijke prior kansen."
+
+msgid ""
+"The alternative hypothesis H1 specifies that the mean is bigger than %s. The "
+"posterior probabilities are based on equal prior probabilities."
+msgstr ""
+"De alternatieve hypothese H1 zegt dat het gemiddelde groter is dan %s. De "
+"posterior kansen zijn gebaseerd op gelijke prior kansen."
+
+msgid ""
+"The alternative hypothesis H1 specifies that the mean is smaller than %s. "
+"The posterior probabilities are based on equal prior probabilities."
+msgstr ""
+"De alternatieve hypothese H1 zegt dat het gemiddelde kleiner is dan %s. De "
+"posterior kansen zijn gebaseerd op gelijke prior kansen."
+
+msgid ""
+"The hypothesis H1 specifies that the mean is bigger than %1$s and the "
+"hypothesis H2 specifies that the mean is smaller than %1$s. The posterior "
+"probabilities are based on equal prior probabilities."
+msgstr ""
+"De hypothese H1 zegt dat het gemiddelde groter is dan %1$s en de hypothese "
+"H2 zegt dat het gemiddelde kleiner is dan %1$s. De posterior kansen zijn "
+"gebaseerd op gelijke prior kansen."
+
+msgid ""
+"The null hypothesis H0 with test value %1$s is tested against the other "
+"hypotheses. H1 states that the mean is bigger than %1$s and H2 states that "
+"the mean is smaller than %1$s. The posterior probabilities are based on "
+"equal prior probabilities."
+msgstr ""
+"De nulhypothese H0 met toetswaarde %1$s is getest ten opzichte van de andere "
+"hypotheses. H1 zegt dat het gemiddelde groter is dan %1$s en H2 zegt dat het "
+"gemiddelde kleiner is dan %1$s. De posterior kansen zijn gebaseerd op "
+"gelijke prior kansen."
+
+msgid "Plotting not possible: the results for this variable were not computed."
+msgstr ""
+"Grafiek maken niet mogelijk: de resultaten voor deze variabele zien niet "
+"berekend."
+
+msgid "Plotting not possible: %s"
+msgstr "Grafiek maken niet mogelijk: %s"
+
+msgid "H0"
+msgstr "H0"
+
+msgid "H2"
+msgstr "H2"
+
+msgid "Bain Paired Samples T-Test"
+msgstr "Bain Gepaarde T-Toets"
+
+msgid ""
+"The alternative hypothesis H1 specifies that the mean of variable 1 is "
+"unequal to the mean of variable 2. The posterior probabilities are based on "
+"equal prior probabilities."
+msgstr ""
+"De alternatieve hypothese H1 zegt dat het gemiddelde van variabele 1 "
+"ongelijk is aan het gemiddelde van variabele 2. De posterior kansen zijn "
+"gebaseerd op gelijke prior kansen."
+
+msgid ""
+"The alternative hypothesis H1 specifies that the mean of variable 1 is "
+"bigger than the mean of variable 2. The posterior probabilities are based on "
+"equal prior probabilities."
+msgstr ""
+"De alternatieve hypothese H1 zegt dat het gemiddelde van variabele 1 groter "
+"is dan het gemiddelde van variabele 2. De posterior kansen zijn gebaseerd op "
+"gelijke prior kansen."
+
+msgid ""
+"The alternative hypothesis H1 specifies that the mean of variable 1 is "
+"smaller than the mean of variable 2. The posterior probabilities are based "
+"on equal prior probabilities."
+msgstr ""
+"De alternatieve hypothese H1 zegt dat het gemiddelde van de variabele 1 "
+"kleiner is dan het gemiddelde van variabele 2. De posterior kansen zijn "
+"gebaseerd op gelijke prior kansen."
+
+msgid ""
+"The hypothesis H1 specifies that the mean of variable 1 is bigger than the "
+"mean of variable 2, while the hypothesis H2 specifies that it is smaller. "
+"The posterior probabilities are based on equal prior probabilities."
+msgstr ""
+"De hypotheses H1 zegt dat het gemiddelde van variabele 1 groter is dan het "
+"gemiddelde van variabele 2, terwijl de hypothese H2 zegt dat het kleiner is."
+"De posterior kansen zijn gebaseerd op gelijke prior kansen."
+
+msgid ""
+"The null hypothesis H0 with equal means is tested against the other "
+"hypotheses. The alternative hypothesis H1 states that the mean of variable 1 "
+"is bigger than the mean of variable 2. The alternative hypothesis H2 states "
+"that the mean of variable 1 is smaller than the mean of variable 2. The "
+"posterior probabilities are based on equal prior probabilities."
+msgstr ""
+"De nulhypothese H0 met gelijke gemiddeldes zijn getest ten opzichte van de "
+"andere hypotheses. De alternatieve hypothese H1 zegt dat het gemiddelde van "
+"variabele 1 groter is dan het gemiddelde van variabele 2. De alternatieve "
+"hypothese H2 zegt dat het gemiddelde van variabele 1 kleiner is dan het "
+"gemiddelde van variabele 2. De posterior kansen zijn gebaseerd op gelijke "
+"prior kansen."
+
+msgid ""
+"Both variables contain missing values, the rows containing these values are "
+"removed in the analysis."
+msgstr ""
+"Beide variabelen bevatten ontbrekende waarden, de rijen die deze waarden "
+"bevatten, zijn uit de analyse gelaten."
+
+msgid "Results not computed: The variables in this pair are the same."
+msgstr "Resultaten niet berekend: De variabelen van deze paar zijn hetzelfde."
+
+msgid "Results not computed: The pair is incomplete."
+msgstr "Resultaten niet berekend: De paar is incompleet."
+
+msgid "Difference"
+msgstr "Verschil"
