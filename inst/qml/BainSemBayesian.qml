@@ -98,6 +98,16 @@ Form
 			max: 						999999
 			fieldWidth: 				60 * preferencesModel.uiScale 
 		}
+
+		IntegerField  
+		{ 
+			name: 						"fraction"
+			text: 						qsTr("Fraction")
+			defaultValue: 				1
+			min: 						1
+			max: 						100
+			fieldWidth: 				60 * preferencesModel.uiScale 
+		}
 	}
 
 	Section

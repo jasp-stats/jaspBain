@@ -211,7 +211,7 @@
           bainResult <- bain:::bain_regression_cran(X = dataset, dep = .v(options[["dependent"]]), pred = paste(.v(options[["covariates"]]), collapse = " "), hyp = rest.string, std = options[["standardized"]], seed = options[["seed"]])
         } else if(type == "sem"){
           lavaanFit <- .bainLavaanState(dataset, options, bainContainer, ready, jaspResults)
-          bainResult <- bain::bain(x = lavaanFit, hypothesis = rest.string)
+          bainResult <- bain::bain(x = lavaanFit, hypothesis = rest.string, fraction = 1)
         }
       })
       if (isTryError(p)) {
