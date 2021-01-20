@@ -99,7 +99,7 @@ Form
 			fieldWidth: 				60 * preferencesModel.uiScale 
 		}
 
-		IntegerField  
+		DoubleField  
 		{ 
 			name: 						"fraction"
 			text: 						qsTr("Fraction")
