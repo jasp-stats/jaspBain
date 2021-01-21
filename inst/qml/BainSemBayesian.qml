@@ -108,6 +108,12 @@ Form
 			max: 						100
 			fieldWidth: 				60 * preferencesModel.uiScale 
 		}
+
+		CheckBox 
+		{ 
+			name: 						"standardized"
+			text: 						qsTr("Standardize")	
+		}
 	}
 
 	Section

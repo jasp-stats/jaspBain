@@ -30,7 +30,7 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   .bainDataReady(dataList[["dataset"]], options, type)
   
   # Create a container for the results
-  bainContainer <- .bainGetContainer(jaspResults, deps = c("syntax", "model", "seed", "fraction"))
+  bainContainer <- .bainGetContainer(jaspResults, deps = c("syntax", "model", "seed", "fraction", "standardized"))
   
   # Create a legend containing the order constrained hypotheses
   .bainLegend(dataList[["dataset"]], options, type, jaspResults, position = 0)

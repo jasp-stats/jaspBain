@@ -193,8 +193,6 @@
       }
       if (options[["model"]] == "") {
         rest.string <- NULL
-        if(type == "sem")
-          rest.string <- encodeColNames(.bainCleanSemModelInput("ind60 =~ x2 = ind60 =~ x3 & dem60 =~ y2 = dem60 =~ y3 = dem60 =~ y4 & dem65 =~ y6 = dem65 =~ y7 = dem65 =~ y8")) # CHANGE DEFAULT HYPOTHESIS FOR SEM ONLY (NULL DOES NOT WORK; THERE IS NO WRAPPER LIKE bain_regression_cran)
       } else {
 		  if(type == "sem"){
 			rest.string <- encodeColNames(.bainCleanSemModelInput(options[["model"]]))
@@ -211,8 +209,10 @@
           bainResult <- bain:::bain_regression_cran(X = dataset, dep = .v(options[["dependent"]]), pred = paste(.v(options[["covariates"]]), collapse = " "), hyp = rest.string, std = options[["standardized"]], seed = options[["seed"]])
         } else if(type == "sem"){
           lavaanFit <- .bainLavaanState(dataset, options, bainContainer, ready, jaspResults)
+		  if(options[["model"]] == "")
+		  	rest.string <- paste0(lavaanFit@ParTable$lhs[1], lavaanFit@ParTable$op[1], lavaanFit@ParTable$rhs[2], "= 0")
 		  fraction <- options[["fraction"]] # This has to be an object otherwise bain does not like it
-          bainResult <- bain::bain(x = lavaanFit, hypothesis = rest.string, fraction = fraction)
+          bainResult <- bain::bain(x = lavaanFit, hypothesis = rest.string, fraction = fraction, standardize = options[["standardized"]])
         }
       })
       if (isTryError(p)) {
@@ -272,15 +272,8 @@
         row <- list(number = gettext("H1"), hypothesis = "")
       }
     } else if(type == "sem"){
-      variables <- .bainSemGetUsedVars(options[["syntax"]], colnames(dataset))
-      if (length(variables) == 0) {
         row <- list(number = gettext("H1"), hypothesis = "")
-      } else if (length(variables) == 1) {
-        row <- list(number = gettext("H1"), hypothesis = paste(variables, "= 0")) # Needs to be adjusted
-      } else {
-        row <- list(number = gettext("H1"), hypothesis = paste0(paste0(variables, " = 0"), collapse = " & ")) # Needs to be adjusted
-      }
-    }
+	}
     legendTable$addRows(row)
   }
 }
@@ -366,7 +359,7 @@
   table$addCitation(.bainGetCitations())
   bainContainer[["mainResultsTable"]] <- table
   
-  if (!ready)
+  if (!ready || (type == "sem" && options[["model"]] == ""))
     return()
   
   if(type %in% c("onesampleTTest", "independentTTest")){
@@ -678,7 +671,7 @@
   bayesFactorMatrix$addColumnInfo(name = "H1",          title = gettext("H1"),  type = "number")
   bainContainer[["bayesFactorMatrix"]] <- bayesFactorMatrix
 
-  if (!ready || bainContainer$getError()) {
+  if (!ready || bainContainer$getError() || (type == "sem" && options[["model"]] == "")) {
     row <- data.frame(hypothesis = gettext("H1"), H1 = ".")
     bayesFactorMatrix$addRows(row)
     return()
@@ -729,7 +722,7 @@
   table$addColumnInfo(name = "lowerCI",          title = gettext("Lower"),   type = "number", overtitle = overTitle)
   table$addColumnInfo(name = "upperCI",          title = gettext("Upper"),   type = "number", overtitle = overTitle)
   bainContainer[["descriptivesTable"]] <- table
-  if(type == "regression")
+  if(type == "regression" || type == "sem")
     table$addFootnote(message = ifelse(options[["standardized"]], yes = gettext("The displayed coefficients are standardized."), no = gettext("The displayed coefficients are unstandardized.")))
   
   if (!ready || bainContainer$getError())
@@ -922,7 +915,7 @@
     plot$dependOn(options = c("bayesFactorPlot", "standardized"))
     plot$position <- position
     bainContainer[["posteriorProbabilityPlot"]] <- plot
-    if (!ready || bainContainer$getError())
+    if (!ready || bainContainer$getError()  || (type == "sem" && options[["model"]] == ""))
       return()
     bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type)
     if(type %in% c("anova", "ancova")){
@@ -951,7 +944,7 @@
     bainContainer[["descriptivesPlots"]] <- plot
   }
   
-  if (!ready || bainContainer$getError())
+  if (!ready || bainContainer$getError() || (type == "sem" && options[["model"]] == ""))
     return()
   
   if(type %in% c("independentTTest", "onesampleTTest")){
