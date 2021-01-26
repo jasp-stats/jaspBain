@@ -2,13 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspBain 0.1.0\n"
 "POT-Creation-Date: 2020-12-30 18:06\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-01-26 11:51+0000\n"
+"Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jaspbain-r/"
+"ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.5-dev\n"
 
 msgid "BF.c"
 msgstr ""
@@ -74,19 +77,19 @@ msgid "The variables %1$s and %2$s contain missing values, the rows containing t
 msgstr ""
 
 msgid "Descriptive Statistics"
-msgstr ""
+msgstr "記述統計"
 
 msgid "Coefficients for Groups plus Covariates"
 msgstr ""
 
 msgid "Mean"
-msgstr ""
+msgstr "平均値"
 
 msgid "Coefficient"
 msgstr ""
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "SD"
 msgstr ""
@@ -199,8 +202,9 @@ msgstr ""
 msgid "Plotting not possible: the results for this variable were not computed."
 msgstr ""
 
+#, fuzzy
 msgid "Plotting not possible: %s"
-msgstr ""
+msgstr "プロットできません：％s"
 
 msgid "H0"
 msgstr ""
