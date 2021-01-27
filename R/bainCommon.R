@@ -53,10 +53,10 @@
   if(type != "sem"){
     if (is.null(dataset)) {
       trydata	<- .readDataSetToEnd(columns.as.numeric = numerics, columns.as.factor = factors)
-      missing	<- .unv(names(which(apply(trydata, 2, function(x) { any(is.na(x))} ))))
+      missing	<- names(which(apply(trydata, 2, function(x) { any(is.na(x))} )))
       dataset	<- .readDataSetToEnd(columns.as.numeric = numerics, columns.as.factor = factors, exclude.na.listwise = vars)
       if((type == "anova" || type == "ancova") && options[["fixedFactors"]] != ""){
-        if(any(grepl(pattern = " ", x = levels(dataset[, .v(options[["fixedFactors"]])])))){
+        if(any(grepl(pattern = " ", x = levels(dataset[, options[["fixedFactors"]] ])))) {
           jaspBase:::.quitAnalysis(gettext("Bain does not accept factor levels that contain spaces. Please remove the spaces from your factor levels to continue."))
         }
       }
@@ -65,7 +65,7 @@
     } 
   } else {
     trydata 	<- .readDataSetToEnd(all.columns = TRUE)
-    missing		<- .unv(names(which(apply(trydata, 2, function(x) { any(is.na(x))} ))))
+    missing		<- names(which(apply(trydata, 2, function(x) { any(is.na(x))} )))
     dataset		<- .readDataSetToEnd(all.columns = TRUE, exclude.na.listwise = .bainSemGetUsedVars(options[["syntax"]], colnames(trydata)))
   }
 
@@ -126,13 +126,13 @@
   if(type %in% c("onesampleTTest", "independentTTest")){
     if(!is.null(bainContainer[[variable]]))
       return(bainContainer[[variable]]$object)
-    variableData <- dataset[[ .v(variable) ]]
+    variableData <- dataset[[variable]]
     testValue <- format(options[["testValue"]], scientific = FALSE)  
     p <- try({
       if(type == "onesampleTTest"){
         bainResult <- bain:::bain_ttest_cran(x = variableData, nu = testValue, type = testType, seed = options[["seed"]])
       } else if(type == "independentTTest"){
-        levels <- base::levels(dataset[[ .v(options[["groupingVariable"]]) ]])
+        levels <- base::levels(dataset[[options[["groupingVariable"]]]])
         if (length(levels) != 2) {
           g1 <- "1"
           g2 <- "2"
@@ -140,9 +140,9 @@
           g1 <- levels[1]
           g2 <- levels[2]
         } 
-        subDataSet <- dataset[, c(.v(variable), .v(options[["groupingVariable"]]))]
-        group1 <- subDataSet[subDataSet[[.v(options[["groupingVariable"]])]]== g1,.v(variable)]
-        group2 <- subDataSet[subDataSet[[.v(options[["groupingVariable"]])]]== g2,.v(variable)]
+        subDataSet <- dataset[, c(variable, options[["groupingVariable"]])]
+        group1 <- subDataSet[subDataSet[[options[["groupingVariable"]]]]== g1, variable]
+        group2 <- subDataSet[subDataSet[[options[["groupingVariable"]]]]== g2, variable]
         bainResult <- bain:::bain_ttest_cran(x = group1, y = group2, type = testType, seed = options[["seed"]])
       }
     })
@@ -158,9 +158,9 @@
     if(!is.null(bainContainer[[currentPair]]))
       return(bainContainer[[currentPair]]$object)
     if (pair[[2]] != "" && pair[[1]] != pair[[2]] && pair[[1]] != "") {
-      subDataSet <- subset(dataset, select=c(.v(pair[[1]]), .v(pair[[2]])) )
-      c1 <- subDataSet[[ .v(pair[[1]]) ]]
-      c2 <- subDataSet[[ .v(pair[[2]]) ]]    
+      subDataSet <- subset(dataset, select=c(pair[[1]], pair[[2]]) )
+      c1 <- subDataSet[[ pair[[1]] ]]
+      c2 <- subDataSet[[ pair[[2]] ]]    
       p <- try({
         bainResult <- bain:::bain_ttest_cran(x = c1, y = c2, type = testType, paired = TRUE, seed = options[["seed"]])
       })
@@ -177,7 +177,7 @@
       return(bainContainer[["bainResult"]]$object)
     } else if(ready){
       if(type == "anova" || type == "ancova"){
-        groupCol <- dataset[ , .v(options[["fixedFactors"]])]
+        groupCol <- dataset[ , options[["fixedFactors"]]]
         varLevels <- levels(groupCol)
         if (length(varLevels) > 15) {
           bainContainer$setError(gettext("The fixed factor has too many levels for a Bain analysis."))
@@ -191,11 +191,11 @@
       }
       p <- try({
         if(type == "anova"){	
-          bainResult <- bain:::bain_anova_cran(X = dataset, dep = .v(options[["dependent"]]), group = .v(options[["fixedFactors"]]), hyp = rest.string, seed = options[["seed"]])	
+          bainResult <- bain:::bain_anova_cran(X = dataset, dep = options[["dependent"]], group = options[["fixedFactors"]], hyp = rest.string, seed = options[["seed"]])	
         } else if(type == "ancova"){
-          bainResult <- bain:::bain_ancova_cran(X = dataset, dep = .v(options[["dependent"]]), cov = paste(.v(options[["covariates"]]), collapse = " "), group = .v(options[["fixedFactors"]]), hyp = rest.string, seed = options[["seed"]])
+          bainResult <- bain:::bain_ancova_cran(X = dataset, dep = options[["dependent"]], cov = paste(options[["covariates"]], collapse = " "), group = options[["fixedFactors"]], hyp = rest.string, seed = options[["seed"]])
         } else if(type == "regression"){
-          bainResult <- bain:::bain_regression_cran(X = dataset, dep = .v(options[["dependent"]]), pred = paste(.v(options[["covariates"]]), collapse = " "), hyp = rest.string, std = options[["standardized"]], seed = options[["seed"]])
+          bainResult <- bain:::bain_regression_cran(X = dataset, dep = options[["dependent"]], pred = paste(options[["covariates"]], collapse = " "), hyp = rest.string, std = options[["standardized"]], seed = options[["seed"]])
         } else if(type == "sem"){
           lavaanFit <- .bainLavaanState(dataset, options, bainContainer, ready, jaspResults)
 		  if(options[["model"]] == "")
@@ -255,7 +255,7 @@
       }
     } else if(type == "anova" || type == "ancova"){
       if (options[["fixedFactors"]] != "") {
-        string <- paste(paste(options[["fixedFactors"]], levels(dataset[, .v(options[["fixedFactors"]])]), sep = ""), collapse = " = ")
+        string <- paste(paste(options[["fixedFactors"]], levels(dataset[, options[["fixedFactors"]]]), sep = ""), collapse = " = ")
         row <- list(number = gettext("H1"), hypothesis = string)
       } else {
         row <- list(number = gettext("H1"), hypothesis = "")
@@ -342,7 +342,7 @@
     table$addColumnInfo(name = "PMP1",       type = "number", title = gettext("PMP a"))
     table$addColumnInfo(name = "PMP2",       type = "number", title = gettext("PMP b"))
     message <- gettext("Note. BF.u and BF.c denote the Bayes factors of the hypothesis in the row versus \
-						the unconstrained hypothesis and complement, respectively. Poster model probabilities \
+						the unconstrained hypothesis and complement, respectively. Posterior model probabilities \
 						(a: excluding the unconstrained hypothesis, b: including the unconstrained hypothesis) \
 						are based on equal prior model probabilities.")
   }
@@ -721,7 +721,7 @@
   
   if(type == "independentTTest"){
     table$setExpectedSize(length(options[["variables"]]) * 2)
-    levels <- base::levels(dataset[[ .v(options[["groupingVariable"]]) ]])
+    levels <- base::levels(dataset[[ options[["groupingVariable"]] ]])
     if (length(levels) != 2) {
       g1 <- "1"
       g2 <- "2"
@@ -740,7 +740,7 @@
         mu <- bainSummary[["Estimate"]]
         CiLower <- bainSummary[["lb"]]
         CiUpper <- bainSummary[["ub"]]
-        sd <- aggregate(dataset[, .v(variable)], list(dataset[, .v(options[["groupingVariable"]])]), sd)[, 2]
+        sd <- aggregate(dataset[, variable], list(dataset[, options[["groupingVariable"]]]), sd)[, 2]
         se <- sqrt(diag(bainResult[["posterior"]]))
         row <- data.frame(v = variable, group = g1, N = N[1], mean = mu[1], sd = sd[1], se = se[1], lowerCI = CiLower[1], upperCI = CiUpper[1])
         table$addRows(row)
@@ -752,9 +752,9 @@
     table$setExpectedSize(length(options[["pairs"]]))
     for (pair in options[["pairs"]]) {
       if (pair[[2]] != "" && pair[[1]] != pair[[2]]) {
-        subDataSet <- subset(dataset, select=c(.v(pair[[1]]), .v(pair[[2]])))
-        c1 <- subDataSet[[ .v(pair[[1]]) ]]
-        c2 <- subDataSet[[ .v(pair[[2]]) ]]
+        subDataSet <- subset(dataset, select=c(pair[[1]], pair[[2]]))
+        c1 <- subDataSet[[ pair[[1]] ]]
+        c2 <- subDataSet[[ pair[[2]] ]]
         difference <- c1 - c2
         currentPair <- paste(pair, collapse=" - ")
         testType <- base::switch(options[["hypothesis"]],
@@ -793,19 +793,19 @@
         mu <- bainSummary[["Estimate"]]
         CiLower <- bainSummary[["lb"]]
         CiUpper <- bainSummary[["ub"]]
-        sd <- sd(dataset[, .v(variable)])
+        sd <- sd(dataset[, variable])
         se <- sqrt(diag(bainResult[["posterior"]]))  
         row <- list(v = variable, N = N, mean = mu, sd = sd, se = se, lowerCI = CiLower, upperCI = CiUpper)
         table$addRows(row)
       }
     }
   } else if(type %in% c("anova", "ancova")){
-    groupCol <- dataset[ , .v(options[["fixedFactors"]])]
+    groupCol <- dataset[ , options[["fixedFactors"]]]
     varLevels <- levels(groupCol)
     bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type)
     bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
     sigma <- diag(bainResult[["posterior"]])
-    variable <- .unv(bainSummary[["Parameter"]])
+    variable <- bainSummary[["Parameter"]]
     N        <- bainSummary[["n"]]
     mu       <- bainSummary[["Estimate"]]
     CiLower  <- bainSummary[["lb"]]
@@ -813,14 +813,14 @@
     se <- sqrt(sigma)	
     row <- data.frame(v = variable, N = N, mean = mu, se = se, lowerCI = CiLower, upperCI = CiUpper)
     if(type == "anova"){
-      sd <- aggregate(dataset[, .v(options[["dependent"]])], list(dataset[, .v(options[["fixedFactors"]])]), sd)[, 2]
+      sd <- aggregate(dataset[, options[["dependent"]]], list(dataset[, options[["fixedFactors"]]]), sd)[, 2]
       row <- cbind(row, sd = sd)
     }
     table$addRows(row)
   } else if(type %in% c("regression", "sem")){
     bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type)
     bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
-    groups <- .unv(bainSummary[["Parameter"]])
+    groups <- bainSummary[["Parameter"]]
     N <- bainSummary[["n"]]
     mu <- bainSummary[["Estimate"]]
     CiLower <- bainSummary[["lb"]]
@@ -966,7 +966,7 @@
             p <- jaspGraphs::themeJasp(p, sides = "l") + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())
           } else if(type == "independentTTest"){
             bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
-            levels <- base::levels(dataset[[ .v(options[["groupingVariable"]]) ]])
+            levels <- base::levels(dataset[[ options[["groupingVariable"]] ]])
             N <- bainSummary[["n"]]
             mu <- bainSummary[["Estimate"]]
             CiLower <- bainSummary[["lb"]]
@@ -1020,7 +1020,7 @@
       }
     }
   } else if(type %in% c("anova", "ancova")){
-    groupCol <- dataset[ , .v(options[["fixedFactors"]])]
+    groupCol <- dataset[ , options[["fixedFactors"]]]
     varLevels <- levels(groupCol)
     bainResult <- bainContainer[["bainResult"]]$object
     bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
