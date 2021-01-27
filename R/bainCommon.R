@@ -147,7 +147,7 @@
       }
     })
     if (isTryError(p)) {
-      bainContainer$setError(gettextf("An error occurred in the analysis:<br>%1$s.", jaspBase:::.extractErrorMessage(p)))
+      bainContainer$setError(gettextf("An error occurred in the analysis:<br>%1$s.", jaspBase::.extractErrorMessage(p)))
       return()
     }
     bainContainer[[variable]] <- createJaspState(bainResult, dependencies = c("testValue", "hypothesis"))
@@ -165,7 +165,7 @@
         bainResult <- bain:::bain_ttest_cran(x = c1, y = c2, type = testType, paired = TRUE, seed = options[["seed"]])
       })
       if (isTryError(p)) {
-        bainContainer$setError(gettextf("An error occurred in the analysis:<br>%1$s.", jaspBase:::.extractErrorMessage(p)))
+        bainContainer$setError(gettextf("An error occurred in the analysis:<br>%1$s.", jaspBase::.extractErrorMessage(p)))
         return()
       }
       bainContainer[[currentPair]] <- createJaspState(bainResult, dependencies = "hypothesis")
@@ -205,7 +205,7 @@
         }
       })
       if (isTryError(p)) {
-        bainContainer$setError(gettextf("An error occurred in the analysis:<br>%1$s<br><br>Please double check if the variables in the 'Model Contraints' section match the variables in your data set.", jaspBase:::.extractErrorMessage(p)))
+        bainContainer$setError(gettextf("An error occurred in the analysis:<br>%1$s<br><br>Please double check if the variables in the 'Model Contraints' section match the variables in your data set.", jaspBase::.extractErrorMessage(p)))
         return()
       }
       bainContainer[["bainResult"]] <- createJaspState(bainResult)
@@ -370,7 +370,7 @@
       
       if (isTryError(bainAnalysis)){
         table$addRows(list(Variable=variable), rowNames=variable)
-        table$addFootnote(message = gettextf("Results not computed: %1$s.", jaspBase:::.extractErrorMessage(bainAnalysis)), colNames = "Variable", rowNames = variable)
+        table$addFootnote(message = gettextf("Results not computed: %1$s.", jaspBase::.extractErrorMessage(bainAnalysis)), colNames = "Variable", rowNames = variable)
         progressbarTick()
         next
       }
@@ -484,7 +484,7 @@
         
         if (isTryError(bainAnalysis)) {
           table$addRows(list(Variable = currentPair), rowNames = currentPair)
-          table$addFootnote(message = gettextf("Results not computed: %s", jaspBase:::.extractErrorMessage(bainAnalysis)), colNames = "Variable", rowNames = currentPair)
+          table$addFootnote(message = gettextf("Results not computed: %s", jaspBase::.extractErrorMessage(bainAnalysis)), colNames = "Variable", rowNames = currentPair)
           progressbarTick()
           next
         } 
@@ -733,7 +733,7 @@
       bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type, variable = variable) 
       if(isTryError(bainResult)){ 
         table$addRows(data.frame(v = variable), rowNames = variable)
-        table$addFootnote(message = gettextf("Results not computed: %s", jaspBase:::.extractErrorMessage(bainResult)), colNames = "v", rowNames = variable)
+        table$addFootnote(message = gettextf("Results not computed: %s", jaspBase::.extractErrorMessage(bainResult)), colNames = "v", rowNames = variable)
       } else {
         bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
         N <- bainSummary[["n"]]
@@ -766,7 +766,7 @@
         bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type, pair = pair, testType = testType)
         if(isTryError(bainResult)){
           table$addRows(data.frame(v = currentPair), rowNames = currentPair)
-          table$addFootnote(message = gettextf("Results not computed: %s", jaspBase:::.extractErrorMessage(bainResult)), colNames = "v", rowNames = currentPair)    
+          table$addFootnote(message = gettextf("Results not computed: %s", jaspBase::.extractErrorMessage(bainResult)), colNames = "v", rowNames = currentPair)    
         } else {     
           bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
           N <- bainSummary[["n"]]
@@ -786,7 +786,7 @@
       bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type, variable = variable)
       if(isTryError(bainResult)){
         table$addRows(data.frame(v = variable), rowNames = variable)
-        table$addFootnote(message = gettextf("Results not computed: %s", jaspBase:::.extractErrorMessage(bainResult)), colNames = "v", rowNames = variable)  
+        table$addFootnote(message = gettextf("Results not computed: %s", jaspBase::.extractErrorMessage(bainResult)), colNames = "v", rowNames = variable)  
       } else {   
         bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])   
         N <- bainSummary[["n"]]
@@ -867,7 +867,7 @@
               plot$plotObject <- .plot_bain_ttest_cran(bainResult, type = analysisType)
             })
             if(isTryError(p)){
-              plot$setError(gettextf("Plotting not possible: %1$s", jaspBase:::.extractErrorMessage(p)))
+              plot$setError(gettextf("Plotting not possible: %1$s", jaspBase::.extractErrorMessage(p)))
             }
           }    
           container[[variable]] <- plot
@@ -887,7 +887,7 @@
               plot$plotObject <- .plot_bain_ttest_cran(bainResult, type = analysisType)
             })
             if(isTryError(p)){
-              plot$setError(gettextf("Plotting not possible: %1$s", jaspBase:::.extractErrorMessage(p)))
+              plot$setError(gettextf("Plotting not possible: %1$s", jaspBase::.extractErrorMessage(p)))
             }
           }    
           container[[currentPair]] <- plot
@@ -945,7 +945,7 @@
         if(isTryError(bainResult)){
           container[[variable]] <- createJaspPlot(plot=NULL, title = variable)
           container[[variable]]$dependOn(optionContainsValue=list("variables" = variable))
-          container[[variable]]$setError(gettextf("Results not computed: %1$s", jaspBase:::.extractErrorMessage(bainAnalysis)))
+          container[[variable]]$setError(gettextf("Results not computed: %1$s", jaspBase::.extractErrorMessage(bainAnalysis)))
         } else {
           if(type == "onesampleTTest"){
             bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])

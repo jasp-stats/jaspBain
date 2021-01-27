@@ -60,7 +60,7 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
       fit <- lavaan::sem(model = syntax, data = dataset, std.lv = TRUE)
     })
     if(isTryError(error)){
-      bainContainer$setError(gettextf("An error occurred in the call to lavaan: %1$s", jaspBase:::.extractErrorMessage(error)))
+      bainContainer$setError(gettextf("An error occurred in the call to lavaan: %1$s", jaspBase::.extractErrorMessage(error)))
       return()
     }
     bainContainer[["lavaanResult"]] <- createJaspState(fit)
