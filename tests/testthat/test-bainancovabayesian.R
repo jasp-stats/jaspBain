@@ -47,10 +47,11 @@ test_that("Coefficients for Groups plus Covariates table results match", {
 test_that("Bain ANCOVA table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(0.000105084311355787, 0.0123829914149606, 0.00010420005082317,
-			 "H1", 0.00832657849517319, 0.987616517988685, 0.00831056793303529,
-			 "H2", 4.13483006346205e-09, 4.9059635434339e-07, 4.12825652083404e-09,
-			 "H3", "", "", 0.991585227887885, "Hu"))
+		list(0.000105084311355787, 0.000105084311355787, 0.0123829914149606,
+			 0.00010420005082317, "H1", 0.00832657849517319, 0.00838109292000762,
+			 0.987616517988685, 0.00831056793303529, "H2", 4.13483006346205e-09,
+			 4.1632896545135e-09, 4.9059635434339e-07, 4.12825652083404e-09,
+			 "H3", "", "", "", 0.991585227887885, "Hu"))
 })
 
 test_that("Posterior Probabilities plot matches", {

@@ -42,10 +42,11 @@ test_that("Descriptive Statistics table results match", {
 test_that("Bain ANOVA table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(404.653666701287, 0.992827040615495, 0.990397078695981, "H1",
-			 2.91811756517224, 0.0070507685056039, 0.00703351162371911, "H2",
-			 0.0494067240352438, 0.0001221908789008, 0.000121891814541657,
-			 "H3", "", "", 0.00244751786575824, "Hu"))
+		list(404.653666701287, 404.653666701287, 0.992827040615495, 0.990397078695981,
+			 "H1", 2.91811756517224, 2.87373249532547, 0.0070507685056039,
+			 0.00703351162371911, "H2", 0.0494067240352438, 0.0498022164605917,
+			 0.0001221908789008, 0.000121891814541657, "H3", "", "", "",
+			 0.00244751786575824, "Hu"))
 })
 
 test_that("Posterior Probabilities plot matches", {

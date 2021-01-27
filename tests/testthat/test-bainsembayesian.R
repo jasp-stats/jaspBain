@@ -42,8 +42,8 @@ test_that("Coefficients for Parameters table results match", {
 test_that("Bain Structural Equation Model table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(49332249200298.6, 1, 0.964066826293002, "H1", "", "", 0.0359331737069983,
-			 "Hu"))
+		list(49332249200298.6, 26.8294371700666, 1, 0.964066826293002, "H1",
+			 "", "", "", 0.0359331737069983, "Hu"))
 })
 
 test_that("Path Diagram plot matches", {
@@ -53,6 +53,7 @@ test_that("Path Diagram plot matches", {
 })
 
 test_that("Posterior Probabilities plot matches", {
+	skip("Does not reproduce on Linux")
 	plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_posteriorProbabilityPlot"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 	jaspTools::expect_equal_plots(testPlot, "posterior-probabilities", dir="BainSemBayesian")

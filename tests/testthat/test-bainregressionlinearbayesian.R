@@ -33,10 +33,11 @@ test_that("Coefficients for Parameters table results match", {
 test_that("Bain Linear Regression table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(1.29950533181896, 0.0304646728142417, 0.0297033594892114, "H1",
-			 35.3064243610644, 0.904922937589465, 0.882308879177836, "H2",
-			 3.88021871697742, 0.0646123895962929, 0.0629977235382773, "H3",
-			 "", "", 0.0249900377946751, "Hu"))
+		list(1.29950533181896, 1.18860802585663, 0.0304646728142417, 0.0297033594892114,
+			 "H1", 35.3064243610644, 35.3064243610644, 0.904922937589465,
+			 0.882308879177836, "H2", 3.88021871697742, 2.52091349584517,
+			 0.0646123895962929, 0.0629977235382773, "H3", "", "", "", 0.0249900377946751,
+			 "Hu"))
 })
 
 test_that("Posterior Probabilities plot matches", {
