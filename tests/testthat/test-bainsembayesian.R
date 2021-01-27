@@ -4,6 +4,7 @@ options <- jaspTools::analysisOptions("BainSemBayesian")
 options$syntax <- "A =~ Ab + Al + Af + An + Ar + Ac; B =~ Bb + Bl + Bf + Bn + Br + Bc"
 options$bayesFactorMatrix <- TRUE
 options$bayesFactorPlot <- TRUE
+options$descriptives <- TRUE
 options$pathDiagram <- TRUE
 options$pathDiagramEstimates <- TRUE
 options$pathDiagramLegend <- TRUE

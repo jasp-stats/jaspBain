@@ -47,7 +47,6 @@ Form
 		{
 			name: 						"descriptives"
 			text: 						qsTr("Coefficients")
-			checked:					true
 			
 			CIField 
 			{ 
