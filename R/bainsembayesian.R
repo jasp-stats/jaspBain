@@ -57,7 +57,7 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   } else if(ready){
     syntax <- .bainSemTranslateModel(options[["syntax"]], dataset)
     error <- try({
-      fit <- lavaan::sem(model = syntax, data = dataset)
+      fit <- lavaan::sem(model = syntax, data = dataset, std.lv = TRUE)
     })
     if(isTryError(error)){
       bainContainer$setError(gettextf("An error occurred in the call to lavaan: %1$s", jaspBase:::.extractErrorMessage(error)))

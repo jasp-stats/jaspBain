@@ -70,7 +70,7 @@ Description
 	Analysis
 	{
 		menu:   	"Structural Equation Modeling"
-		title:		"Bain Structural Equation Model"
+		title:		"Bain Structural Equation Modeling"
 		func:		"BainSemBayesian"
 	}
 }

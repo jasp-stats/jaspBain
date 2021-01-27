@@ -7,16 +7,6 @@
   return(gsub("\n+", ";", input))
 }
 
-# Clean the input for the order constraints
-.bainCleanSemModelInput <- function(input) {
-  result <- gsub("\n+", ";", input)
-  result <- gsub(" =~ ", "___by___", result)
-  result <- gsub("=~", "___by___", result)
-  result <- gsub(" ~ ", "___on___", result)
-  result <- gsub("~", "___on___", result)
-  return(result)
-}
-
 # Add the Bain citations
 .bainGetCitations <- function() {
   citations <- c(
@@ -39,6 +29,7 @@
 
 # Read the data set
 .bainReadDataset <- function(options, type, dataset){
+	
   numerics <- switch(type,
                      "onesampleTTest" = options[["variables"]],
                      "pairedTTest" = unique(unlist(options[["pairs"]])),
@@ -58,6 +49,7 @@
                     "sem" = NULL)
   factors <- factors[factors != ""]
   vars <- c(numerics, factors)
+
   if(type != "sem"){
     if (is.null(dataset)) {
       trydata	<- .readDataSetToEnd(columns.as.numeric = numerics, columns.as.factor = factors)
@@ -76,6 +68,7 @@
     missing		<- .unv(names(which(apply(trydata, 2, function(x) { any(is.na(x))} ))))
     dataset		<- .readDataSetToEnd(all.columns = TRUE, exclude.na.listwise = .bainSemGetUsedVars(options[["syntax"]], colnames(trydata)))
   }
+
   readList <- list()
   readList[["dataset"]] <- dataset
   readList[["missing"]] <- missing
@@ -194,11 +187,7 @@
       if (options[["model"]] == "") {
         rest.string <- NULL
       } else {
-		  if(type == "sem"){
-			rest.string <- encodeColNames(.bainCleanSemModelInput(options[["model"]]))
-		  } else {
-			rest.string <- encodeColNames(.bainCleanModelInput(options[["model"]]))  
-		  }
+		rest.string <- encodeColNames(.bainCleanModelInput(options[["model"]]))  
       }
       p <- try({
         if(type == "anova"){	
@@ -352,8 +341,10 @@
     table$addColumnInfo(name = "BF",         type = "number", title = gettext("BF.c"))
     table$addColumnInfo(name = "PMP1",       type = "number", title = gettext("PMP a"))
     table$addColumnInfo(name = "PMP2",       type = "number", title = gettext("PMP b"))
-    message <- gettext("BF.c denotes the Bayes factor of the hypothesis in the row versus its complement.\
-	Posterior model probabilities (a: excluding the unconstrained hypothesis, b: including the unconstrained hypothesis) are based on equal prior model probabilities.")
+    message <- gettext("Note. BF.u and BF.c denote the Bayes factors of the hypothesis in the row versus \
+						the unconstrained hypothesis and complement, respectively. Poster model probabilities \
+						(a: excluding the unconstrained hypothesis, b: including the unconstrained hypothesis) \
+						are based on equal prior model probabilities.")
   }
   table$addFootnote(message = message)
   table$addCitation(.bainGetCitations())

@@ -47,6 +47,7 @@ Form
 		{
 			name: 						"descriptives"
 			text: 						qsTr("Coefficients")
+			checked:					true
 			
 			CIField 
 			{ 
@@ -123,7 +124,7 @@ Form
 
 		Text 
 		{ 
-			text: 						qsTr("Place each hypothesis on a new line. For example:\n\nlatent1 =~ manifest1 = latent1 =~ manifest2\nlatent1 =~ manifest1 < latent` =~ manifest2\n\nwhere latent is the latent variable name and manifest are the manifest variable names.\nRead the help file for further instructions.") 
+			text: 						qsTr("Hypotheses can be formulated using the parameter names that appear if the 'Coefficients' box is ticked.\nDo NOT use spaces in the parameter names. Place each hypothesis on a new line. For example:\n\nA=~x1 = A=~x2 = A=~x3 = A=~x4\nA=~x1 > A=~x2 > A=~x3 = A=~x4\nA=~x1 > 0 & A=~x2 > 0 & A=~x3 > 0 & A=~x4 > 0\n\nRead the help file for further instructions about formulating hypotheses and what can and cannot be done\nwith Bain Structural Equation Modeling.")
 		}
 
 		TextArea
