@@ -338,10 +338,11 @@
                               "equalBiggerSmaller"  = gettext("The null hypothesis H0 with equal means is tested against the other hypotheses. The alternative hypothesis H1 states that the mean of variable 1 is bigger than the mean of variable 2. The alternative hypothesis H2 states that the mean of variable 1 is smaller than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."))
   } else if(type %in% c("anova", "ancova", "regression", "sem")){
     table$addColumnInfo(name = "hypotheses", type = "string", title = "")
-    table$addColumnInfo(name = "BF",         type = "number", title = gettext("BF.c"))
+    table$addColumnInfo(name = "BFu",        type = "number", title = gettext("BF.u"))
+	table$addColumnInfo(name = "BF",         type = "number", title = gettext("BF.c"))
     table$addColumnInfo(name = "PMP1",       type = "number", title = gettext("PMP a"))
     table$addColumnInfo(name = "PMP2",       type = "number", title = gettext("PMP b"))
-    message <- gettext("Note. BF.u and BF.c denote the Bayes factors of the hypothesis in the row versus \
+    message <- gettext("BF.u and BF.c denote the Bayes factors of the hypothesis in the row versus \
 						the unconstrained hypothesis and complement, respectively. Posterior model probabilities \
 						(a: excluding the unconstrained hypothesis, b: including the unconstrained hypothesis) \
 						are based on equal prior model probabilities.")
@@ -627,24 +628,24 @@
                         "ancova" = c(options[["dependent"]], options[["fixedFactors"]], unlist(options[["covariates"]])),
                         "regression" = c(options[["dependent"]], unlist(options[["covariates"]])),
                         "sem" = .bainSemGetUsedVars(.bainSemTranslateModel(options[["syntax"]], dataset), colnames(dataset)))
-    if (any(variables %in% missing)) {
+    if (any(variables %in% missing)){
       i <- which(variables %in% missing)
-      if (length(i) > 1) {
+      if (length(i) > 1){
         if(type == "regression" || type == "ancova" || type == "sem"){
-          table$addFootnote(message = gettextf("The variables %s contain missing values, the rows containing these values are removed in the analysis.", paste(variables[i], collapse = ", ")), symbol=gettext("<b>Warning.</b>"))
+          table$addFootnote(message = gettextf("The variables %1$s contain missing values, the rows containing these values are removed in the analysis.", paste(variables[i], collapse = ", ")), symbol=gettext("<b>Warning.</b>"))
         } else if(type == "anova"){
           table$addFootnote(message= gettextf("The variables %1$s and %2$s contain missing values, the rows containing these values are removed in the analysis.", variables[1], variables[2]), symbol=gettext("<b>Warning.</b>"))
         }
-      } else if (length(i) == 1) {
-        table$addFootnote(message = gettextf("The variable %s contains missing values, the rows containing these values are removed in the analysis.", variables[i]), symbol=gettext("<b>Warning.</b>"))
+      } else if (length(i) == 1){
+        table$addFootnote(message = gettextf("The variable %1$s contains missing values, the rows containing these values are removed in the analysis.", variables[i]), symbol=gettext("<b>Warning.</b>"))
       }
     }
     bainResult <- .bainAnalysisState(dataset, options, bainContainer, ready, type)
-    for (i in 1:(length(bainResult[["fit"]]$BF)-1)) {
-      row <- list(hypotheses = gettextf("H%i",i), BF = bainResult[["fit"]]$BF[i], PMP1 = bainResult[["fit"]]$PMPa[i], PMP2 = bainResult[["fit"]]$PMPb[i])
+    for (i in 1:(length(bainResult[["fit"]]$BF)-1)){
+      row <- list(hypotheses = gettextf("H%1$i", i), BFu = bainResult[["fit"]]$BF.u[i], BF = bainResult[["fit"]]$BF.c[i], PMP1 = bainResult[["fit"]]$PMPa[i], PMP2 = bainResult[["fit"]]$PMPb[i])
       table$addRows(row)
     }
-    row <- list(hypotheses = gettext("Hu"), BF = "", PMP1 = "", PMP2 = bainResult[["fit"]]$PMPb[length(bainResult[["fit"]]$BF)])
+    row <- list(hypotheses = gettext("Hu"), BFu = "", BF = "", PMP1 = "", PMP2 = bainResult[["fit"]]$PMPb[length(bainResult[["fit"]]$BF)])
     table$addRows(row) 
   }
 }
