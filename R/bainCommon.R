@@ -46,7 +46,7 @@
                     "anova" = options[["fixedFactors"]],
                     "ancova" = options[["fixedFactors"]],
                     "regression" = NULL,
-                    "sem" = NULL)
+                    "sem" = options[["groupingVariable"]])
   factors <- factors[factors != ""]
   vars <- c(numerics, factors)
   
@@ -229,6 +229,11 @@
   
   fraction <- options[["fraction"]] # This has to be an object otherwise bain does not like it
   standardized <- options[["standardized"]]
+  grouping <- NULL
+  if(options[["fixedFactors"]] != ""){
+	  grouping <- options[["fixedFactors"]]
+	  dataset[, grouping] <- as.factor(dataset[, grouping])
+  }
   
   if(!is.null(bainContainer[["lavaanResult"]])){
     
@@ -237,12 +242,13 @@
   } else if(ready){
     
     syntax <- .bainSemTranslateModel(options[["syntax"]], dataset)
+
     error <- try({
-      fit <- lavaan::sem(model = syntax, data = dataset, std.lv = TRUE)
+      fit <- lavaan::sem(model = syntax, data = dataset, std.lv = TRUE, group = grouping)
     })
     
     if(isTryError(error)){
-      bainContainer$setError(gettextf("An error occurred in the call to lavaan: %1$s", jaspBase::.extractErrorMessage(error)))
+      bainContainer$setError(gettextf("An error occurred in the call to lavaan: %1$s. Please double check if the variables in lavaan syntax match the variables in your data set.", jaspBase::.extractErrorMessage(error)))
       return()
     }
     
@@ -251,7 +257,11 @@
   }
   
   if(options[["model"]] == ""){
-    hypothesis <- paste0(fit@ParTable$lhs[1], fit@ParTable$op[1], fit@ParTable$rhs[2], "= 0")
+	  # We need to construct a 'default' hypothesis (the results of which will not be shown to the user)
+	  rhs <- fit@ParTable$rhs[2]
+	  if(options[["fixedFactors"]] != "")
+	  	rhs <- paste0(rhs, ".", levels(dataset[, options[["fixedFactors"]]])[1])
+    hypothesis <- paste0(fit@ParTable$lhs[1], fit@ParTable$op[1], rhs, "= 0")
   } else {
     hypothesis <- encodeColNames(.bainCleanModelInput(options[["model"]]))   
   }
@@ -941,7 +951,9 @@
     table$addRows(row)
   } else if(type %in% c("regression", "sem")){
     bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)
-    bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
+	if(is.null(bainResult))
+		return()
+	bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
     groups <- bainSummary[["Parameter"]]
     N <- bainSummary[["n"]]
     mu <- bainSummary[["Estimate"]]

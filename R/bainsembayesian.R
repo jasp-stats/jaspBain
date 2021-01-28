@@ -30,7 +30,7 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   .bainDataReady(dataList[["dataset"]], options, type)
   
   # Create a container for the results
-  bainContainer <- .bainGetContainer(jaspResults, deps = c("syntax", "model", "seed", "fraction", "standardized"))
+  bainContainer <- .bainGetContainer(jaspResults, deps = c("syntax", "model", "seed", "fraction", "standardized", "fixedFactors"))
   
   # Create a legend containing the order constrained hypotheses
   .bainLegend(dataList[["dataset"]], options, type, jaspResults, position = 0)
@@ -96,36 +96,55 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   
   if(!is.null(bainContainer[["pathDiagram"]]) || !options[["pathDiagram"]])
     return()
-  
-  plot <- createJaspPlot(title = gettext("Path Diagram"), width = 600, height = 400)
-  plot$dependOn(options = c("pathDiagram", "seed", "pathDiagramEstimates", "pathDiagramLegend"))
-  bainContainer[["pathDiagram"]] <- plot
+
+  if(options[["fixedFactors"]] == ""){
+	plot <- createJaspPlot(title = gettext("Path Diagram"), width = 600, height = 400)
+	plot$dependOn(options = c("pathDiagram", "seed", "pathDiagramEstimates", "pathDiagramLegend"))
+	bainContainer[["pathDiagram"]] <- plot
+  } else {
+	container <- createJaspContainer(title = gettext("Path Diagram"))
+	bainContainer[["pathDiagram"]] <- container
+	bainContainer$dependOn(options = c("pathDiagram", "seed", "pathDiagramEstimates", "pathDiagramLegend"))
+	groups <- levels(dataset[, options[["fixedFactors"]]])
+	for(i in 1:length(groups)){
+		plot <- createJaspPlot(title = gettextf("Group: %1$s", groups[i]), width = 600, height = 400)
+		container[[paste0("pathDiagram", groups[i])]] <- plot
+	}
+  }
   
   if(!ready || is.null(bainContainer[["lavaanResult"]]))
 	return()
-  
-  fit <- bainContainer[["lavaanResult"]]$object
-  po <- .bainlavToPlotObj(fit)
-  pp <- .suppressGrDevice(semPlot::semPaths(
-    object         = po,
-    layout         = "tree2",
-    intercepts     = FALSE,
-    reorder        = FALSE,
-    whatLabels     = ifelse(options[["pathDiagramEstimates"]], "par", "name"),
-    edge.color     = "black",
-    color          = list(lat = "#EAEAEA", man = "#EAEAEA", int = "#FFFFFF"),
-    title          = FALSE,
-    legend         = options[["pathDiagramLegend"]],
-    legend.mode    = "names",
-    legend.cex     = 0.6,
-    label.cex      = 1.3,
-    edge.label.cex = 0.9,
-    nodeNames      = decodeColNames(po@Vars$name),
-    nCharNodes     = 3,
-    rotation       = 2,
-    ask            = FALSE
-  ))
-  plot$plotObject <- pp
+
+	fit <- bainContainer[["lavaanResult"]]$object
+	po <- .bainlavToPlotObj(fit)
+	pp <- .suppressGrDevice(semPlot::semPaths(
+		object         = po,
+		layout         = "tree2",
+		intercepts     = FALSE,
+		reorder        = FALSE,
+		whatLabels     = ifelse(options[["pathDiagramEstimates"]], "par", "name"),
+		edge.color     = "black",
+		color          = list(lat = "#EAEAEA", man = "#EAEAEA", int = "#FFFFFF"),
+		title          = FALSE,
+		legend         = options[["pathDiagramLegend"]],
+		legend.mode    = "names",
+		legend.cex     = 0.6,
+		label.cex      = 1.3,
+		edge.label.cex = 0.9,
+		nodeNames      = decodeColNames(po@Vars$name),
+		nCharNodes     = 3,
+		rotation       = 2,
+		panelGroups    = TRUE,
+		ask            = FALSE
+	))
+
+	if(options[["fixedFactors"]] == ""){
+		plot$plotObject <- pp
+	} else {
+		for(i in 1:length(groups)){
+			container[[paste0("pathDiagram", groups[i])]]$plotObject <- pp[[i]]
+		}
+	}
 }
 
 .bainlavToPlotObj <- function(lavResult) {

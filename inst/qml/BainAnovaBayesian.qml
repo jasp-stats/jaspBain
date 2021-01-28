@@ -18,9 +18,9 @@
 
 import QtQuick							2.8
 import QtQuick.Layouts					1.3
+import QtQuick.Controls 				2.12
 import JASP.Controls					1.0
 import JASP								1.0
-
 Form
 {
 	VariablesForm
@@ -135,6 +135,7 @@ Form
 				text: 					""
 				textType: 				JASP.TextTypeModel
 				trim: 					true
+				implicitHeight:			200 * preferencesModel.uiScale
 		}
 	}
 }

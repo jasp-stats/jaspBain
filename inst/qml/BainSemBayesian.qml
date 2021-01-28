@@ -18,6 +18,7 @@
 
 import QtQuick							2.8
 import QtQuick.Layouts					1.3
+import QtQuick.Controls 				2.12
 import JASP.Controls					1.0
 import JASP								1.0
 
@@ -113,6 +114,29 @@ Form
 		{ 
 			name: 						"standardized"
 			text: 						qsTr("Standardize")	
+		}
+	}
+
+	Section
+	{
+		title:							qsTr("Multigroup SEM")
+
+		VariablesForm
+		{
+			implicitHeight:				150 * preferencesModel.uiScale
+
+			AvailableVariablesList 
+			{
+				name: 					"variablesList"
+			}
+
+			AssignedVariablesList 
+			{
+				name: 					"fixedFactors"
+				title: 					qsTr("Grouping variable")
+				singleVariable: 		true
+				allowedColumns: 		["ordinal", "nominal", "nominalText"]
+			}
 		}
 	}
 
