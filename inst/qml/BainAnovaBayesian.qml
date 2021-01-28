@@ -100,6 +100,23 @@ Form
 			max: 						999999
 			fieldWidth: 				60 * preferencesModel.uiScale 
 		}
+
+		DoubleField  
+		{ 
+			name: 						"fraction"
+			text: 						qsTr("Fraction")
+			defaultValue: 				1
+			min: 						1
+			max: 						100
+			fieldWidth: 				60 * preferencesModel.uiScale 
+		}
+
+		CheckBox 
+		{ 
+			name: 						"standardized"
+			checked:					false
+			visible:					false
+		}
 	}
 
 	Section

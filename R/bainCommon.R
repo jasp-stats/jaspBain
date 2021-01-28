@@ -94,7 +94,7 @@
 
 # Check if current data allow for analysis
 .bainDataReady <- function(dataset, options, type){
-
+  
   if(type == "independentTTest"){
     factors <- options[["groupingVariable"]]
     factors <- factors[factors != ""]
@@ -103,7 +103,7 @@
                  factorLevels.target = factors, factorLevels.amount = "!= 2",
                  exitAnalysisIfErrors = TRUE)
   }  
-
+  
   numerics <- switch(type,
                      "onesampleTTest" = options[["variables"]],
                      "pairedTTest" = unique(unlist(options[["pairs"]])),
@@ -120,18 +120,160 @@
                exitAnalysisIfErrors = TRUE)
 }
 
-##################
-### STATE ########
-##################
+############################
+### CALLS TO BAIN PACKAGE ##
+############################
 
-.bainGetResults <- function(dataset, options, bainContainer, ready, type, variable = NULL, pair = NULL, testType = NULL){
+# Call to bain for 't.test' objects (Welch t-test, Paired t-test, One sample t-test)
+.bainTTestRaw <- function(options, x, y = NULL, nu = 0, type = 1, paired = FALSE){
+  
+  fraction <- options[["fraction"]]
+  
+  if (is.null(y) && !paired) {
+    test <- bain::t_test(x = x)
+    hypothesis <- switch(type, 
+                         "1" = paste0("x=", nu), 
+                         "2" = paste0("x=", nu, "; x>", nu), 
+                         "3" = paste0("x=", nu, "; x<", nu), 
+                         "4" = paste0("x>", nu, "; x<", nu), 
+                         "5" = paste0("x=", nu, "; x>", nu, "; x<", nu))
+  }
+  
+  if (!is.null(y) && !paired) {
+    test <- bain::t_test(x = x, y = y, paired = FALSE, var.equal = FALSE)
+    hypothesis <- switch(type, 
+                         "1" = "x=y", 
+                         "2" = "x=y; x>y", 
+                         "3" = "x=y; x<y", 
+                         "4" = "x>y; x<y", 
+                         "5" = "x=y; x>y; x<y")
+  }
+  
+  if (!is.null(y) && paired) {
+    test <- bain::t_test(x = x, y = y, paired = TRUE)
+    hypothesis <- switch(type, 
+                         "1" = "difference=0", 
+                         "2" = "difference=0;difference>0", 
+                         "3" = "difference=0;difference<0", 
+                         "4" = "difference>0;difference<0", 
+                         "5" = "difference=0;difference>0;difference<0")
+  }
+  
+  bainResult <- bain::bain(x = test, hypothesis = hypothesis, fraction = fraction)
+  return(bainResult)
+}
+
+# Call to bain for 'lm' objects (ANOVA, ANCOVA, Regression)
+.bainRegressionRaw <- function(dataset, options, type){
+  
+  dependent <- options[["dependent"]]
+  fraction <- options[["fraction"]] # This has to be an object otherwise bain does not like it
+  standardized <- options[["standardized"]]
+  
+  hypothesis <- NULL
+  if (options[["model"]] != "")
+    hypothesis <- encodeColNames(.bainCleanModelInput(options[["model"]])) 
+  
+  if(type == "regression"){ 
+    
+    ncov <- length(options[["covariates"]])
+    covariates <- paste0(options[["covariates"]], collapse = "+")
+    formula <- as.formula(paste0(dependent, "~", covariates))
+    
+  } else if(type == "anova" || type == "ancova"){
+    
+    grouping <- options[["fixedFactors"]]
+    dataset[, options[["fixedFactors"]]] <- as.factor(dataset[, options[["fixedFactors"]]])
+    
+    if(type == "anova"){
+      formula <- as.formula(paste0(dependent, "~", grouping, "-1"))
+    } else {
+      ncov <- length(options[["covariates"]])
+      covariates <- paste0(options[["covariates"]], collapse = "+")
+      
+      for (i in 1:ncov) {
+        dataset[, (1 + i)] <- dataset[, (1 + i)] - mean(dataset[, (1 + i)])
+      }
+      
+      formula <- as.formula(paste0(dependent, "~", grouping, "+", covariates, "-1"))
+    }
+  }
+  
+  if(type == "regression"){
+    # I cannot find out why bain won't work in regression with stats::lm(formula = formula, data = dataset)
+    # Error: object of type 'closure' is not subsettable
+    args <- list(formula = as.formula(paste0(dependent, "~", covariates)), data = dataset)
+    fit <- do.call(stats::lm, args)
+  } else {
+    fit <- stats::lm(formula = formula, data = dataset)
+  }
+  
+  if(is.null(hypothesis)){
+    if(type == "regression"){
+      hypothesis <- paste0(paste0(names(stats::coef(fit))[-1], "=0"), collapse = " & ")
+    } else if(type == "anova"){
+      hypothesis <- paste0(names(stats::coef(fit)), collapse = "=")		  
+    } else if(type == "ancova"){
+      hypothesis <- names(stats::coef(fit))
+      hypothesis <- hypothesis[1:(length(hypothesis) - ncov)]
+      hypothesis <- paste0(hypothesis, collapse = "=")		  
+    }
+  }
+  
+  bainResult <- bain::bain(x = fit, hypothesis = hypothesis, fraction = fraction, standardize = standardized)
+  return(bainResult)
+}
+
+# Call to bain for 'lavaan' objects (SEM)
+.bainSemRaw <- function(dataset, options, bainContainer, ready){
+  
+  fraction <- options[["fraction"]] # This has to be an object otherwise bain does not like it
+  standardized <- options[["standardized"]]
+  
+  if(!is.null(bainContainer[["lavaanResult"]])){
+    
+    fit <- bainContainer[["lavaanResult"]]$object
+    
+  } else if(ready){
+    
+    syntax <- .bainSemTranslateModel(options[["syntax"]], dataset)
+    error <- try({
+      fit <- lavaan::sem(model = syntax, data = dataset, std.lv = TRUE)
+    })
+    
+    if(isTryError(error)){
+      bainContainer$setError(gettextf("An error occurred in the call to lavaan: %1$s", jaspBase::.extractErrorMessage(error)))
+      return()
+    }
+    
+    bainContainer[["lavaanResult"]] <- createJaspState(fit)
+    bainContainer[["lavaanResult"]]$dependOn(options = "syntax")
+  }
+  
+  if(options[["model"]] == ""){
+    hypothesis <- paste0(fit@ParTable$lhs[1], fit@ParTable$op[1], fit@ParTable$rhs[2], "= 0")
+  } else {
+    hypothesis <- encodeColNames(.bainCleanModelInput(options[["model"]]))   
+  }
+  
+  bainResult <- bain::bain(x = fit, hypothesis = hypothesis, fraction = fraction, standardize = standardized)
+  return(bainResult)
+}
+
+############################################
+### EXSTRACTING AND STORING RESULTS ########
+############################################
+
+.bainGetGeneralTestResults <- function(dataset, options, bainContainer, ready, type, variable = NULL, pair = NULL, testType = NULL){
+  
+  set.seed(options[["seed"]])
   
   if(type %in% c("onesampleTTest", "independentTTest")){
     result <- .bainGetTTestResults(dataset, options, bainContainer, ready, type, variable, testType)
   } else if(type == "pairedTTest"){
     result <- .bainGetPairedTTestResults(dataset, options, bainContainer, ready, type, pair, testType) 
   } else if (type %in% c("anova", "ancova", "regression", "sem")){
-    result <- .bainGetNonTTestResults(dataset, options, bainContainer, ready, type)
+    result <- .bainGetRegressionResults(dataset, options, bainContainer, ready, type)
   }
   
   return(result) 
@@ -147,7 +289,7 @@
   
   p <- try({
     if(type == "onesampleTTest"){
-      bainResult <- bain:::bain_ttest_cran(x = variableData, nu = testValue, type = testType, seed = options[["seed"]])
+      bainResult <- .bainTTestRaw(options, x = variableData, nu = testValue, type = testType)
     } else if(type == "independentTTest"){
       levels <- base::levels(dataset[[options[["groupingVariable"]]]])
       if (length(levels) != 2) {
@@ -160,7 +302,7 @@
       subDataSet <- dataset[, c(variable, options[["groupingVariable"]])]
       group1 <- subDataSet[subDataSet[[options[["groupingVariable"]]]]== g1, variable]
       group2 <- subDataSet[subDataSet[[options[["groupingVariable"]]]]== g2, variable]
-      bainResult <- bain:::bain_ttest_cran(x = group1, y = group2, type = testType, seed = options[["seed"]])
+      bainResult <- .bainTTestRaw(options, x = group1, y = group2, type = testType)
     }
   })
   
@@ -188,7 +330,7 @@
     c2 <- subDataSet[[ pair[[2]] ]]  
     
     p <- try({
-      bainResult <- bain:::bain_ttest_cran(x = c1, y = c2, type = testType, paired = TRUE, seed = options[["seed"]])
+      bainResult <- .bainTTestRaw(options, x = c1, y = c2, type = testType, paired = TRUE)
     })
     
     if(isTryError(p)){
@@ -202,7 +344,7 @@
   }
 }
 
-.bainGetNonTTestResults <- function(dataset, options, bainContainer, ready, type){
+.bainGetRegressionResults <- function(dataset, options, bainContainer, ready, type){
   
   if(!is.null(bainContainer[["bainResult"]])){
     return(bainContainer[["bainResult"]]$object)
@@ -218,25 +360,11 @@
       }
     }
     
-    if (options[["model"]] == "") {
-      rest.string <- NULL
-    } else {
-      rest.string <- encodeColNames(.bainCleanModelInput(options[["model"]]))  
-    }
-    
     p <- try({
-      if(type == "anova"){	
-        bainResult <- bain:::bain_anova_cran(X = dataset, dep = options[["dependent"]], group = options[["fixedFactors"]], hyp = rest.string, seed = options[["seed"]])	
-      } else if(type == "ancova"){
-        bainResult <- bain:::bain_ancova_cran(X = dataset, dep = options[["dependent"]], cov = paste(options[["covariates"]], collapse = " "), group = options[["fixedFactors"]], hyp = rest.string, seed = options[["seed"]])
-      } else if(type == "regression"){
-        bainResult <- bain:::bain_regression_cran(X = dataset, dep = options[["dependent"]], pred = paste(options[["covariates"]], collapse = " "), hyp = rest.string, std = options[["standardized"]], seed = options[["seed"]])
-      } else if(type == "sem"){
-        lavaanFit <- .bainLavaanState(dataset, options, bainContainer, ready, jaspResults)
-        if(options[["model"]] == "")
-          rest.string <- paste0(lavaanFit@ParTable$lhs[1], lavaanFit@ParTable$op[1], lavaanFit@ParTable$rhs[2], "= 0")
-        fraction <- options[["fraction"]] # This has to be an object otherwise bain does not like it
-        bainResult <- bain::bain(x = lavaanFit, hypothesis = rest.string, fraction = fraction, standardize = options[["standardized"]])
+      if(type == "sem"){
+        bainResult <- .bainSemRaw(dataset, options, bainContainer, ready)
+      } else {
+        bainResult <- .bainRegressionRaw(dataset, options, type)
       }
     })
     
@@ -250,43 +378,43 @@
   }
 }
 
-.bainExtractTableResultsFromObject <- function(options, bainResult, testType){
-
-	if (testType == 1) {
-		BF_0u <- bainResult$fit$BF[1]
-		PMP_u <- bainResult$fit$PMPb[2]
-		PMP_0 <- bainResult$fit$PMPb[1]
-		if (options$bayesFactorType == "BF10")
-			BF_0u <- 1/BF_0u
-		return(list(BF_0u = BF_0u, PMP_0 = PMP_0, PMP_u = PMP_u))
-	} else if (testType == 2) {
-		BF_01 <- bainResult$BFmatrix[1,2]
-		PMP_1 <- bainResult$fit$PMPa[2]
-		PMP_0 <- bainResult$fit$PMPa[1]
-		if (options$bayesFactorType == "BF10")
-			BF_01 <- 1/BF_01
-		return(list(BF_01 = BF_01, PMP_0 = PMP_0, PMP_1 = PMP_1))
-	} else if (testType == 3 || testType == 4) {
-		BF_01 <- bainResult$BFmatrix[1,2]
-		PMP_0 <- bainResult$fit$PMPa[1]
-		PMP_1 <- bainResult$fit$PMPa[2]
-		if (options$bayesFactorType == "BF10")
-			BF_01 <- 1/BF_01
-		return(list(BF_01 = BF_01, PMP_0 = PMP_0, PMP_1 = PMP_1))
-	} else if (testType == 5) {
-		BF_01 <- bainResult$BFmatrix[1,2]
-		BF_02 <- bainResult$BFmatrix[1,3]
-		BF_12 <- bainResult$BFmatrix[2,3]
-		PMP_0 <- bainResult$fit$PMPa[1]
-		PMP_1 <- bainResult$fit$PMPa[2]
-		PMP_2 <- bainResult$fit$PMPa[3]
-		if (options$bayesFactorType == "BF10"){
-		BF_01 <- 1/BF_01
-		BF_02 <- 1/BF_02
-		BF_12 <- 1/BF_12
-		}
-		return(list(BF_01 = BF_01, BF_02 = BF_02, BF_12 = BF_12, PMP_0 = PMP_0, PMP_1 = PMP_1, PMP_2 = PMP_2))
-	}
+.bainExtractTableValuesFromObject <- function(options, bainResult, testType){
+  
+  if (testType == 1) {
+    BF_0u <- bainResult$fit$BF[1]
+    PMP_u <- bainResult$fit$PMPb[2]
+    PMP_0 <- bainResult$fit$PMPb[1]
+    if (options$bayesFactorType == "BF10")
+      BF_0u <- 1/BF_0u
+    return(list(BF_0u = BF_0u, PMP_0 = PMP_0, PMP_u = PMP_u))
+  } else if (testType == 2) {
+    BF_01 <- bainResult$BFmatrix[1,2]
+    PMP_1 <- bainResult$fit$PMPa[2]
+    PMP_0 <- bainResult$fit$PMPa[1]
+    if (options$bayesFactorType == "BF10")
+      BF_01 <- 1/BF_01
+    return(list(BF_01 = BF_01, PMP_0 = PMP_0, PMP_1 = PMP_1))
+  } else if (testType == 3 || testType == 4) {
+    BF_01 <- bainResult$BFmatrix[1,2]
+    PMP_0 <- bainResult$fit$PMPa[1]
+    PMP_1 <- bainResult$fit$PMPa[2]
+    if (options$bayesFactorType == "BF10")
+      BF_01 <- 1/BF_01
+    return(list(BF_01 = BF_01, PMP_0 = PMP_0, PMP_1 = PMP_1))
+  } else if (testType == 5) {
+    BF_01 <- bainResult$BFmatrix[1,2]
+    BF_02 <- bainResult$BFmatrix[1,3]
+    BF_12 <- bainResult$BFmatrix[2,3]
+    PMP_0 <- bainResult$fit$PMPa[1]
+    PMP_1 <- bainResult$fit$PMPa[2]
+    PMP_2 <- bainResult$fit$PMPa[3]
+    if (options$bayesFactorType == "BF10"){
+      BF_01 <- 1/BF_01
+      BF_02 <- 1/BF_02
+      BF_12 <- 1/BF_12
+    }
+    return(list(BF_01 = BF_01, BF_02 = BF_02, BF_12 = BF_12, PMP_0 = PMP_0, PMP_1 = PMP_1, PMP_2 = PMP_2))
+  }
 }
 
 ##################
@@ -343,7 +471,7 @@
 }
 
 # Create a table containing the main analysis results
-.bainResultsTable <- function(dataset, options, bainContainer, missing, ready, type, position) {
+.bainTestResultsTable <- function(dataset, options, bainContainer, missing, ready, type, position) {
   
   if (!is.null(bainContainer[["mainResultsTable"]])) 
     return()
@@ -442,7 +570,7 @@
     startProgressbar(length(options[["variables"]]))
     for (variable in options[["variables"]]) {
       
-      bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type, variable = variable, testType = testType)
+      bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable, testType = testType)
       
       if (isTryError(bainResult)){
         table$addRows(list(Variable = variable), rowNames = variable)
@@ -455,7 +583,7 @@
         table$addFootnote(message = gettext("Variable contains missing values, the rows containing these values are removed in the analysis."), colNames = "Variable", rowNames = variable)
       }
       
-	  tableResults <- .bainExtractTableResultsFromObject(options, bainResult, testType)
+      tableResults <- .bainExtractTableValuesFromObject(options, bainResult, testType)
       
       if (options$bayesFactorType == "BF01") {
         if (options$hypothesis == "equalNotEqual") {
@@ -515,7 +643,7 @@
       
       if(pair[[1]] != "" || pair[[2]] != ""){
         
-        bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type, pair = pair, testType = testType)
+        bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, pair = pair, testType = testType)
         
         if (isTryError(bainResult)) {
           table$addRows(list(Variable = currentPair), rowNames = currentPair)
@@ -534,7 +662,7 @@
           table$addFootnote(message = message, colNames = "Variable", rowNames = currentPair)
         }
         
-		tableResults <- .bainExtractTableResultsFromObject(options, bainResult, testType)
+        tableResults <- .bainExtractTableValuesFromObject(options, bainResult, testType)
         
         if (options$bayesFactorType == "BF01") {
           if (options$hypothesis == "equalNotEqual") {
@@ -633,7 +761,7 @@
         table$addFootnote(message = gettextf("The variable %1$s contains missing values, the rows containing these values are removed in the analysis.", variables[i]), symbol=gettext("<b>Warning.</b>"))
       }
     }
-    bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type)
+    bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)
     for (i in 1:(length(bainResult[["fit"]]$BF)-1)){
       row <- list(hypotheses = gettextf("H%1$i", i), BFu = bainResult[["fit"]]$BF.u[i], BF = bainResult[["fit"]]$BF.c[i], PMP1 = bainResult[["fit"]]$PMPa[i], PMP2 = bainResult[["fit"]]$PMPb[i])
       table$addRows(row)
@@ -662,7 +790,7 @@
     return()
   }
   
-  bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type)
+  bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)
   BFmatrix <- bainResult[["BFmatrix"]]
   if (nrow(BFmatrix) > 1) {
     for (i in 2:nrow(BFmatrix))
@@ -724,7 +852,7 @@
       g2 <- levels[2]
     }
     for (variable in options[["variables"]]) {
-      bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type, variable = variable) 
+      bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable) 
       if(isTryError(bainResult)){ 
         table$addRows(data.frame(v = variable), rowNames = variable)
         table$addFootnote(message = gettextf("Results not computed: %s", jaspBase::.extractErrorMessage(bainResult)), colNames = "v", rowNames = variable)
@@ -757,7 +885,7 @@
                                  "equalSmaller"        = 3,
                                  "biggerSmaller"       = 4,
                                  "equalBiggerSmaller"  = 5)
-        bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type, pair = pair, testType = testType)
+        bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, pair = pair, testType = testType)
         if(isTryError(bainResult)){
           table$addRows(data.frame(v = currentPair), rowNames = currentPair)
           table$addFootnote(message = gettextf("Results not computed: %s", jaspBase::.extractErrorMessage(bainResult)), colNames = "v", rowNames = currentPair)    
@@ -777,7 +905,7 @@
   } else if(type == "onesampleTTest"){
     table$setExpectedSize(length(options[["variables"]]))
     for (variable in options[["variables"]]) {
-      bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type, variable = variable)
+      bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable)
       if(isTryError(bainResult)){
         table$addRows(data.frame(v = variable), rowNames = variable)
         table$addFootnote(message = gettextf("Results not computed: %s", jaspBase::.extractErrorMessage(bainResult)), colNames = "v", rowNames = variable)  
@@ -796,7 +924,7 @@
   } else if(type %in% c("anova", "ancova")){
     groupCol <- dataset[ , options[["fixedFactors"]]]
     varLevels <- levels(groupCol)
-    bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type)
+    bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)
     bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
     sigma <- diag(bainResult[["posterior"]])
     variable <- bainSummary[["Parameter"]]
@@ -812,7 +940,7 @@
     }
     table$addRows(row)
   } else if(type %in% c("regression", "sem")){
-    bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type)
+    bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)
     bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
     groups <- bainSummary[["Parameter"]]
     N <- bainSummary[["n"]]
@@ -851,14 +979,14 @@
     if(type == "onesampleTTest" || type == "independentTTest"){  
       for(variable in options[["variables"]]){     
         if (is.null(container[[variable]])){       
-          bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type, variable = variable)
+          bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable)
           plot <- createJaspPlot(plot = NULL, title = variable, height = 300, width = 400)
           plot$dependOn(optionContainsValue = list("variables" = variable))
           if(isTryError(bainResult)){
             plot$setError(gettext("Plotting not possible: the results for this variable were not computed."))
           } else {
             p <- try({
-              plot$plotObject <- .plotBainTTests(bainResult, type = analysisType)
+              plot$plotObject <- .plotModelProbabilitiesTTests(bainResult, type = analysisType)
             })
             if(isTryError(p)){
               plot$setError(gettextf("Plotting not possible: %1$s", jaspBase::.extractErrorMessage(p)))
@@ -871,14 +999,14 @@
       for(pair in options[["pairs"]]){   
         currentPair <- paste(pair, collapse=" - ")
         if (is.null(container[[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]){
-          bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type, pair = pair)
+          bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, pair = pair)
           plot <- createJaspPlot(plot = NULL, title = currentPair, height = 300, width = 400)
           plot$dependOn(optionContainsValue = list("pairs" = pair))
           if(isTryError(bainResult)){
             plot$setError(gettext("Plotting not possible: the results for this variable were not computed."))
           } else {
             p <- try({
-              plot$plotObject <- .plotBainTTests(bainResult, type = analysisType)
+              plot$plotObject <- .plotModelProbabilitiesTTests(bainResult, type = analysisType)
             })
             if(isTryError(p)){
               plot$setError(gettextf("Plotting not possible: %1$s", jaspBase::.extractErrorMessage(p)))
@@ -902,8 +1030,8 @@
     bainContainer[["posteriorProbabilityPlot"]] <- plot
     if (!ready || bainContainer$getError()  || (type == "sem" && options[["model"]] == ""))
       return()
-    bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type)
-    plot$plotObject <- .suppressGrDevice(.plotBainNonTTests(bainResult))
+    bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)
+    plot$plotObject <- .suppressGrDevice(.plotModelProbabilitiesRegression(bainResult))
   }
 }
 
@@ -929,21 +1057,21 @@
     return()
   
   if(type %in% c("independentTTest", "onesampleTTest")){
-
+    
     for (variable in options[["variables"]]) {
-
+      
       if(is.null(bainContainer[["descriptivesPlots"]][[variable]])){  
-
-        bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type, variable = variable)
+        
+        bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable)
         if(isTryError(bainResult)){
           container[[variable]] <- createJaspPlot(plot=NULL, title = variable)
           container[[variable]]$dependOn(optionContainsValue=list("variables" = variable))
           container[[variable]]$setError(gettextf("Results not computed: %1$s", jaspBase::.extractErrorMessage(bainAnalysis)))
-
+          
         } else {
-
+          
           if(type == "onesampleTTest"){
-
+            
             bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
             N <- bainSummary[["n"]]
             mu <- bainSummary[["Estimate"]]
@@ -960,9 +1088,9 @@
               ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks)) +
               ggplot2::scale_x_continuous(breaks = 0:2, labels = NULL)
             p <- jaspGraphs::themeJasp(p, sides = "l") + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())
-
+            
           } else if(type == "independentTTest"){
-
+            
             bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
             levels <- base::levels(dataset[[ options[["groupingVariable"]] ]])
             N <- bainSummary[["n"]]
@@ -986,21 +1114,21 @@
         }
       }
     }
-
+    
   } else if(type == "pairedTTest"){
-
+    
     for (pair in options[["pairs"]]) {
       currentPair <- paste(pair, collapse =" - ")
-	  
+      
       if (is.null(bainContainer[["descriptivesPlots"]][[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]){   
-        bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type, pair = pair)     
+        bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, pair = pair)     
         if(isTryError(bainResult)){ 
           container[[currentPair]] <- createJaspPlot(plot = NULL, title = currentPair)
           container[[currentPair]]$dependOn(optionContainsValue = list("variables" = currentPair))
           container[[currentPair]]$setError(.extractErrorMessage(bainAnalysis))
-
+          
         } else {
-
+          
           bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
           N <- bainSummary[["n"]]
           mu <- bainSummary[["Estimate"]]
@@ -1022,17 +1150,17 @@
         }
       }
     }
-
+    
   } else if(type %in% c("anova", "ancova")){
-
+    
     groupCol <- dataset[ , options[["fixedFactors"]]]
     varLevels <- levels(groupCol)
     bainResult <- bainContainer[["bainResult"]]$object
     bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
-
+    
     if(type == "ancova")
       bainSummary <- bainSummary[1:length(varLevels), ]
-	  
+    
     variable <- bainSummary[["Parameter"]]
     N <- bainSummary[["n"]]
     mu <- bainSummary[["Estimate"]]
@@ -1054,7 +1182,7 @@
   }
 }
 
-.plotBainTTests <- function(x, type){
+.plotModelProbabilitiesTTests <- function(x, type){
   
   if(type == 1 || type == 2 || type == 3){
     labs <- c(gettext("H0"), gettext("H1"))
@@ -1064,7 +1192,7 @@
     labs <- c(gettext("H0"), gettext("H1"), gettext("H2"))
   }
   labels <- rev(labs)
-
+  
   if(type == 1){
     values <- x$fit$PMPb
   } else {
@@ -1089,8 +1217,8 @@
   return(p)
 }
 
-.plotBainNonTTests <- function(x){
-
+.plotModelProbabilitiesRegression <- function(x){
+  
   PMPa <- na.omit(x$fit$PMPa)
   PMPb <- x$fit$PMPb
   numH <- length(PMPa)
@@ -1112,7 +1240,7 @@
                      plot.title = ggplot2::element_text(size=18, hjust = .5),
                      axis.ticks.y = ggplot2::element_blank()) +
       ggplot2::scale_fill_brewer(palette="Set1")
-
+    
     return(p)
     
   } else if (numH > 1) {

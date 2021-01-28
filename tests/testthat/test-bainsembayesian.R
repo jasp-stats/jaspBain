@@ -3,8 +3,8 @@ context("Bain SEM")
 options <- jaspTools::analysisOptions("BainSemBayesian")
 options$syntax <- "A =~ Ab + Al + Af + An + Ar + Ac; B =~ Bb + Bl + Bf + Bn + Br + Bc"
 options$bayesFactorMatrix <- TRUE
-options$bayesFactorPlot <- TRUE
 options$descriptives <- TRUE
+options$bayesFactorPlot <- TRUE
 options$pathDiagram <- TRUE
 options$pathDiagramEstimates <- TRUE
 options$pathDiagramLegend <- TRUE
@@ -43,8 +43,8 @@ test_that("Coefficients for Parameters table results match", {
 test_that("Bain Structural Equation Model table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(49332249200298.6, 26.8294371700666, 1, 0.964066826293002, "H1",
-			 "", "", "", 0.0359331737069983, "Hu"))
+		list(49921171838130.9, 27.1433283422162, 1, 0.964467599999537, "H1",
+			 "", "", "", 0.0355324000004633, "Hu"))
 })
 
 test_that("Path Diagram plot matches", {

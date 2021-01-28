@@ -30,13 +30,13 @@ BainAncovaBayesian <- function(jaspResults, dataset, options, ...) {
   .bainDataReady(dataList[["dataset"]], options, type)
   
   # Create a container for the results
-  bainContainer <- .bainGetContainer(jaspResults, deps = c("dependent", "fixedFactors", "covariates", "model", "seed"))
+  bainContainer <- .bainGetContainer(jaspResults, deps = c("dependent", "fixedFactors", "covariates", "model", "seed", "fraction"))
   
   # Create a legend containing the order constrained hypotheses
   .bainLegend(dataList[["dataset"]], options, type, jaspResults, position = 0)
   
   # Create a table containing the main analysis results
-  .bainResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type, position = 1)
+  .bainTestResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type, position = 1)
   
   # Create the Bayes factor matrix
   .bainBfMatrix(dataList[["dataset"]], options, bainContainer, ready, type, position = 2)

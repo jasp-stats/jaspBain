@@ -11,6 +11,7 @@ License: GPL (>= 3)
 Encoding: UTF-8
 Imports:
   bain (>= 0.2.4),
+  stats,
   lavaan,
   ggplot2,
   semPlot,

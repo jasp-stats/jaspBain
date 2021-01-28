@@ -36,7 +36,7 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   .bainLegend(dataList[["dataset"]], options, type, jaspResults, position = 0)
   
   # Create a table containing the main analysis results
-  .bainResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type, position = 1)
+  .bainTestResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type, position = 1)
   
   # Create the Bayes factor matrix
   .bainBfMatrix(dataList[["dataset"]], options, bainContainer, ready, type, position = 2)
@@ -49,24 +49,6 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   
   # Create the path diagram plot
   .bainSemPathDiagram(dataList[["dataset"]], options, bainContainer, ready, jaspResults, position = 5)
-}
-
-.bainLavaanState <- function(dataset, options, bainContainer, ready, jaspResults){
-  if(!is.null(bainContainer[["lavaanResult"]])){
-    return(bainContainer[["lavaanResult"]]$object)
-  } else if(ready){
-    syntax <- .bainSemTranslateModel(options[["syntax"]], dataset)
-    error <- try({
-      fit <- lavaan::sem(model = syntax, data = dataset, std.lv = TRUE)
-    })
-    if(isTryError(error)){
-      bainContainer$setError(gettextf("An error occurred in the call to lavaan: %1$s", jaspBase::.extractErrorMessage(error)))
-      return()
-    }
-    bainContainer[["lavaanResult"]] <- createJaspState(fit)
-    bainContainer[["lavaanResult"]]$dependOn(options = "syntax")
-    return(bainContainer[["lavaanResult"]]$object)
-  }
 }
 
 .bainSemGetUsedVars <- function(syntax, availablevars, decode = FALSE) {
@@ -118,7 +100,11 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   plot <- createJaspPlot(title = gettext("Path Diagram"), width = 600, height = 400)
   plot$dependOn(options = c("pathDiagram", "seed", "pathDiagramEstimates", "pathDiagramLegend"))
   bainContainer[["pathDiagram"]] <- plot
-  fit <- .bainLavaanState(dataset, options, bainContainer, ready, jaspResults)
+  
+  if(!ready || is.null(bainContainer[["lavaanResult"]]))
+	return()
+  
+  fit <- bainContainer[["lavaanResult"]]$object
   po <- .bainlavToPlotObj(fit)
   pp <- .suppressGrDevice(semPlot::semPaths(
     object         = po,
