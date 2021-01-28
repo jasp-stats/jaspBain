@@ -898,7 +898,7 @@
             plot$setError(gettext("Plotting not possible: the results for this variable were not computed."))
           } else {
             p <- try({
-              plot$plotObject <- .plot_bain_ttest_cran(bainResult, type = analysisType)
+              plot$plotObject <- .plotBainTTests(bainResult, type = analysisType)
             })
             if(isTryError(p)){
               plot$setError(gettextf("Plotting not possible: %1$s", jaspBase::.extractErrorMessage(p)))
@@ -918,7 +918,7 @@
             plot$setError(gettext("Plotting not possible: the results for this variable were not computed."))
           } else {
             p <- try({
-              plot$plotObject <- .plot_bain_ttest_cran(bainResult, type = analysisType)
+              plot$plotObject <- .plotBainTTests(bainResult, type = analysisType)
             })
             if(isTryError(p)){
               plot$setError(gettextf("Plotting not possible: %1$s", jaspBase::.extractErrorMessage(p)))
@@ -943,11 +943,7 @@
     if (!ready || bainContainer$getError()  || (type == "sem" && options[["model"]] == ""))
       return()
     bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type)
-    if(type %in% c("anova", "ancova")){
-      plot$plotObject <- .suppressGrDevice(.plot_bain_ancova_cran(bainResult))
-    } else if(type %in% c("regression", "sem")){
-      plot$plotObject <- .suppressGrDevice(.plot_bain_regression_cran(bainResult))
-    }
+    plot$plotObject <- .suppressGrDevice(.plotBainNonTTests(bainResult))
   }
 }
 
@@ -973,15 +969,21 @@
     return()
   
   if(type %in% c("independentTTest", "onesampleTTest")){
+
     for (variable in options[["variables"]]) {
+
       if(is.null(bainContainer[["descriptivesPlots"]][[variable]])){  
+
         bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type, variable = variable)
         if(isTryError(bainResult)){
           container[[variable]] <- createJaspPlot(plot=NULL, title = variable)
           container[[variable]]$dependOn(optionContainsValue=list("variables" = variable))
           container[[variable]]$setError(gettextf("Results not computed: %1$s", jaspBase::.extractErrorMessage(bainAnalysis)))
+
         } else {
+
           if(type == "onesampleTTest"){
+
             bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
             N <- bainSummary[["n"]]
             mu <- bainSummary[["Estimate"]]
@@ -998,7 +1000,9 @@
               ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks)) +
               ggplot2::scale_x_continuous(breaks = 0:2, labels = NULL)
             p <- jaspGraphs::themeJasp(p, sides = "l") + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())
+
           } else if(type == "independentTTest"){
+
             bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
             levels <- base::levels(dataset[[ options[["groupingVariable"]] ]])
             N <- bainSummary[["n"]]
@@ -1022,16 +1026,21 @@
         }
       }
     }
+
   } else if(type == "pairedTTest"){
+
     for (pair in options[["pairs"]]) {
       currentPair <- paste(pair, collapse =" - ")
+	  
       if (is.null(bainContainer[["descriptivesPlots"]][[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]){   
         bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type, pair = pair)     
         if(isTryError(bainResult)){ 
           container[[currentPair]] <- createJaspPlot(plot = NULL, title = currentPair)
           container[[currentPair]]$dependOn(optionContainsValue = list("variables" = currentPair))
           container[[currentPair]]$setError(.extractErrorMessage(bainAnalysis))
+
         } else {
+
           bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
           N <- bainSummary[["n"]]
           mu <- bainSummary[["Estimate"]]
@@ -1053,13 +1062,17 @@
         }
       }
     }
+
   } else if(type %in% c("anova", "ancova")){
+
     groupCol <- dataset[ , options[["fixedFactors"]]]
     varLevels <- levels(groupCol)
     bainResult <- bainContainer[["bainResult"]]$object
     bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
+
     if(type == "ancova")
       bainSummary <- bainSummary[1:length(varLevels), ]
+	  
     variable <- bainSummary[["Parameter"]]
     N <- bainSummary[["n"]]
     mu <- bainSummary[["Estimate"]]
@@ -1081,18 +1094,17 @@
   }
 }
 
-.plot_bain_ttest_cran <- function(x, type){
+.plotBainTTests <- function(x, type){
   
   if(type == 1 || type == 2 || type == 3){
     labs <- c(gettext("H0"), gettext("H1"))
-  }
-  if(type == 4){
+  } else if(type == 4){
     labs <- c(gettext("H1"), gettext("H2"))
-  }
-  if(type == 5){
+  } else if(type == 5){
     labs <- c(gettext("H0"), gettext("H1"), gettext("H2"))
   }
   labels <- rev(labs)
+
   if(type == 1){
     values <- x$fit$PMPb
   } else {
@@ -1117,8 +1129,8 @@
   return(p)
 }
 
-.plot_bain_regression_cran <- function(x)
-{
+.plotBainNonTTests <- function(x){
+
   PMPa <- na.omit(x$fit$PMPa)
   PMPb <- x$fit$PMPb
   numH <- length(PMPa)
@@ -1134,13 +1146,13 @@
       ggplot2::coord_polar(theta = "y", direction = -1) +
       ggplot2::labs(x = "", y = "", title = "") +
       ggplot2::theme(panel.grid = ggplot2::element_blank(), legend.position = "none") +
-      ggplot2::scale_y_continuous(breaks = cumsum(rev(PMPb)) - rev(PMPb)/2, labels = rev(c(P_lables, "Hu"))) +
+      ggplot2::scale_y_continuous(breaks = cumsum(rev(PMPb)) - rev(PMPb)/2, labels = rev(c(P_lables, gettext("Hu")))) +
       ggplot2::theme(panel.background = ggplot2::element_blank(),
                      axis.text=ggplot2::element_text(size=17, color = "black"),
                      plot.title = ggplot2::element_text(size=18, hjust = .5),
                      axis.ticks.y = ggplot2::element_blank()) +
       ggplot2::scale_fill_brewer(palette="Set1")
-    
+
     return(p)
     
   } else if (numH > 1) {
@@ -1149,7 +1161,7 @@
       ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
       ggplot2::geom_col() +
       ggplot2::coord_polar(theta = "y", direction = -1) +
-      ggplot2::labs(x = "", y = "", title = gettext("Excluding Hu")) +
+      ggplot2::labs(x = "", y = "", title = gettext("Excluding Hu"), size = 30) +
       ggplot2::theme(panel.grid = ggplot2::element_blank(),legend.position = "none") +
       ggplot2::scale_y_continuous(breaks = cumsum(rev(PMPa)) - rev(PMPa)/2, labels = rev(P_lables)) +            
       ggplot2::theme(panel.background = ggplot2::element_blank(),
@@ -1157,67 +1169,6 @@
                      plot.title = ggplot2::element_text(size=18, hjust = .5),
                      axis.ticks.y = ggplot2::element_blank()) +
       ggplot2::scale_fill_brewer(palette="Set1")
-    
-    p2 <- ggplot2::ggplot(data = ggdata2, mapping = ggplot2::aes(x = "", y = PMP, fill = lab)) +
-      ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
-      ggplot2::geom_col() + 
-      ggplot2::coord_polar(theta = "y", direction = -1) +
-      ggplot2::labs(x = "", y = "", title = gettext("Including Hu")) +
-      ggplot2::theme(panel.grid = ggplot2::element_blank(), legend.position = "none") +
-      ggplot2::scale_y_continuous(breaks = cumsum(rev(PMPb)) - rev(PMPb)/2, labels = rev(c(P_lables, "Hu"))) +
-      ggplot2::theme(panel.background = ggplot2::element_blank(),
-                     axis.text=ggplot2::element_text(size=17, color = "black"),
-                     plot.title = ggplot2::element_text(size=18, hjust = .5),
-                     axis.ticks.y = ggplot2::element_blank()) +
-      ggplot2::scale_fill_brewer(palette="Set1")
-    
-    plotMat <- list(p1 = p1, p2 = p2)
-    pp <- jaspGraphs::ggMatrixPlot(plotList = plotMat, layout = matrix(c(1, 2), ncol = 2))
-    
-    return(pp)
-  }
-}
-
-.plot_bain_ancova_cran <- function(x)
-{
-  PMPa <- na.omit(x$fit$PMPa)
-  PMPb <- x$fit$PMPb
-  numH <- length(PMPa)
-  P_lables <- paste(gettext("H"), 1:numH, sep = "")
-  ggdata1 <- data.frame(lab = P_lables, PMP = PMPa)
-  ggdata2 <- data.frame(lab = c(P_lables, gettext("Hu")), PMP = PMPb)
-  
-  if (numH == 1) {
-    
-    p <- ggplot2::ggplot(data = ggdata2, mapping = ggplot2::aes(x = "", y = PMP, fill = lab)) +
-      ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
-      ggplot2::geom_col() +
-      ggplot2::coord_polar(theta = "y", direction = -1) +
-      ggplot2::labs(x = "", y = "", title = "") + 
-      ggplot2::theme(panel.grid = ggplot2::element_blank(), legend.position = "none") + 
-      ggplot2::scale_y_continuous(breaks = cumsum(rev(PMPb)) - rev(PMPb)/2, labels = rev(c(P_lables, gettext("Hu")))) +
-      ggplot2::theme(panel.background = ggplot2::element_blank(), 
-                     axis.text=ggplot2::element_text(size=17, color = "black"),
-                     plot.title = ggplot2::element_text(size=18, hjust = .5),
-                     axis.ticks.y = ggplot2::element_blank()) +
-      ggplot2::scale_fill_brewer(palette="Set1")
-    
-    return(p)
-    
-  } else if (numH > 1) {
-    
-    p1 <- ggplot2::ggplot(data = ggdata1, mapping = ggplot2::aes(x = "", y = PMP, fill = lab)) +
-      ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
-      ggplot2::geom_col() + 
-      ggplot2::coord_polar(theta = "y", direction = -1) +
-      ggplot2::labs(x = "", y = "", title = gettext("Excluding Hu"), size = 30) +
-      ggplot2::theme(panel.grid = ggplot2::element_blank(), legend.position = "none") +
-      ggplot2::scale_y_continuous(breaks = cumsum(rev(PMPa)) - rev(PMPa)/2, labels = rev(P_lables)) +
-      ggplot2::theme(panel.background = ggplot2::element_blank(),
-                     axis.text=ggplot2::element_text(size=17, color = "black"),
-                     plot.title = ggplot2::element_text(size=18, hjust = .5),
-                     axis.ticks.y = ggplot2::element_blank()) +
-      ggplot2::scale_fill_brewer(palette="Set1") 
     
     p2 <- ggplot2::ggplot(data = ggdata2, mapping = ggplot2::aes(x = "", y = PMP, fill = lab)) +
       ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
