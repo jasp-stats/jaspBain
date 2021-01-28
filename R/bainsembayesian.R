@@ -75,6 +75,12 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   } else {
     vv <- availablevars
   }
+  # This regex will isolate all manifest variables in the SEM model
+  # Model:
+  # A =~ Ab + Al + Af + An + Ar + Ac 
+  # B =~ Bb + Bl + Bf + Bn + Br + Bc 
+  # Returns:
+  # Ab, Al, Af, An, Ar, Ac, Bb, Bl, Bf, Bn, Br, Bc
   findpattern <- paste0("(?<=[\\s\\+\\^\\=\\~\\<\\*\\>\\:\\%\\|\\+]|^)\\Q",
                         vv,
                         "\\E(?=[\\s\\+\\^\\=\\~\\<\\*\\>\\:\\%\\|\\+]|$)")

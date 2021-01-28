@@ -94,6 +94,7 @@
 
 # Check if current data allow for analysis
 .bainDataReady <- function(dataset, options, type){
+
   if(type == "independentTTest"){
     factors <- options[["groupingVariable"]]
     factors <- factors[factors != ""]
@@ -102,6 +103,7 @@
                  factorLevels.target = factors, factorLevels.amount = "!= 2",
                  exitAnalysisIfErrors = TRUE)
   }  
+
   numerics <- switch(type,
                      "onesampleTTest" = options[["variables"]],
                      "pairedTTest" = unique(unlist(options[["pairs"]])),
@@ -111,6 +113,7 @@
                      "regression" = c(options[["dependent"]], unlist(options[["covariates"]])),
                      "sem" = NULL)
   numerics <- numerics[numerics != ""]
+  
   if(length(numerics) > 0)
     .hasErrors(dataset, type = c("infinity", "variance", "observations"),
                all.target = numerics, observations.amount = "< 3",
@@ -245,6 +248,45 @@
     bainContainer[["bainResult"]] <- createJaspState(bainResult)
     return(bainContainer[["bainResult"]]$object)  
   }
+}
+
+.bainExtractTableResultsFromObject <- function(options, bainResult, testType){
+
+	if (testType == 1) {
+		BF_0u <- bainResult$fit$BF[1]
+		PMP_u <- bainResult$fit$PMPb[2]
+		PMP_0 <- bainResult$fit$PMPb[1]
+		if (options$bayesFactorType == "BF10")
+			BF_0u <- 1/BF_0u
+		return(list(BF_0u = BF_0u, PMP_0 = PMP_0, PMP_u = PMP_u))
+	} else if (testType == 2) {
+		BF_01 <- bainResult$BFmatrix[1,2]
+		PMP_1 <- bainResult$fit$PMPa[2]
+		PMP_0 <- bainResult$fit$PMPa[1]
+		if (options$bayesFactorType == "BF10")
+			BF_01 <- 1/BF_01
+		return(list(BF_01 = BF_01, PMP_0 = PMP_0, PMP_1 = PMP_1))
+	} else if (testType == 3 || testType == 4) {
+		BF_01 <- bainResult$BFmatrix[1,2]
+		PMP_0 <- bainResult$fit$PMPa[1]
+		PMP_1 <- bainResult$fit$PMPa[2]
+		if (options$bayesFactorType == "BF10")
+			BF_01 <- 1/BF_01
+		return(list(BF_01 = BF_01, PMP_0 = PMP_0, PMP_1 = PMP_1))
+	} else if (testType == 5) {
+		BF_01 <- bainResult$BFmatrix[1,2]
+		BF_02 <- bainResult$BFmatrix[1,3]
+		BF_12 <- bainResult$BFmatrix[2,3]
+		PMP_0 <- bainResult$fit$PMPa[1]
+		PMP_1 <- bainResult$fit$PMPa[2]
+		PMP_2 <- bainResult$fit$PMPa[3]
+		if (options$bayesFactorType == "BF10"){
+		BF_01 <- 1/BF_01
+		BF_02 <- 1/BF_02
+		BF_12 <- 1/BF_12
+		}
+		return(list(BF_01 = BF_01, BF_02 = BF_02, BF_12 = BF_12, PMP_0 = PMP_0, PMP_1 = PMP_1, PMP_2 = PMP_2))
+	}
 }
 
 ##################
@@ -400,11 +442,11 @@
     startProgressbar(length(options[["variables"]]))
     for (variable in options[["variables"]]) {
       
-      bainAnalysis <- .bainGetResults(dataset, options, bainContainer, ready, type, variable = variable, testType = testType)
+      bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type, variable = variable, testType = testType)
       
-      if (isTryError(bainAnalysis)){
-        table$addRows(list(Variable=variable), rowNames=variable)
-        table$addFootnote(message = gettextf("Results not computed: %1$s.", jaspBase::.extractErrorMessage(bainAnalysis)), colNames = "Variable", rowNames = variable)
+      if (isTryError(bainResult)){
+        table$addRows(list(Variable = variable), rowNames = variable)
+        table$addFootnote(message = gettextf("Results not computed: %1$s.", jaspBase::.extractErrorMessage(bainResult)), colNames = "Variable", rowNames = variable)
         progressbarTick()
         next
       }
@@ -413,84 +455,43 @@
         table$addFootnote(message = gettext("Variable contains missing values, the rows containing these values are removed in the analysis."), colNames = "Variable", rowNames = variable)
       }
       
-      if (testType == 1) {
-        BF_0u <- bainAnalysis$fit$BF[1]
-        PMP_u <- bainAnalysis$fit$PMPb[2]
-        PMP_0 <- bainAnalysis$fit$PMPb[1]
-        if (options$bayesFactorType == "BF10")
-          BF_0u <- 1/BF_0u
-      }
-      if (testType == 2) {
-        BF_01 <- bainAnalysis$BFmatrix[1,2]
-        PMP_1 <- bainAnalysis$fit$PMPa[2]
-        PMP_0 <- bainAnalysis$fit$PMPa[1]
-        if (options$bayesFactorType == "BF10")
-          BF_01 <- 1/BF_01
-      }
-      if (testType == 3) {
-        BF_01 <- bainAnalysis$BFmatrix[1,2]
-        PMP_0 <- bainAnalysis$fit$PMPa[1]
-        PMP_1 <- bainAnalysis$fit$PMPa[2]
-        if (options$bayesFactorType == "BF10")
-          BF_01 <- 1/BF_01
-      }
-      if (testType == 4) {
-        BF_01 <- bainAnalysis$BFmatrix[1,2]
-        PMP_0 <- bainAnalysis$fit$PMPa[1]
-        PMP_1 <- bainAnalysis$fit$PMPa[2]
-        if (options$bayesFactorType == "BF10")
-          BF_01 <- 1/BF_01
-      }
-      if (testType == 5) {
-        BF_01 <- bainAnalysis$BFmatrix[1,2]
-        BF_02 <- bainAnalysis$BFmatrix[1,3]
-        BF_12 <- bainAnalysis$BFmatrix[2,3]
-        PMP_0 <- bainAnalysis$fit$PMPa[1]
-        PMP_1 <- bainAnalysis$fit$PMPa[2]
-        PMP_2 <- bainAnalysis$fit$PMPa[3]
-        if (options$bayesFactorType == "BF10")
-        {
-          BF_01 <- 1/BF_01
-          BF_02 <- 1/BF_02
-          BF_12 <- 1/BF_12
-        }
-      }
+	  tableResults <- .bainExtractTableResultsFromObject(options, bainResult, testType)
       
       if (options$bayesFactorType == "BF01") {
         if (options$hypothesis == "equalNotEqual") {
-          row <- list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"),"BF[type1]"=BF_0u, "pmp[type1]" = PMP_0,
-                      "hypothesis[type2]" = gettext("H1: Not equal"), "BF[type2]" = "", "pmp[type2]" = PMP_u)
+          row <- list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"),"BF[type1]"= tableResults[["BF_0u"]], "pmp[type1]" = tableResults[["PMP_0"]],
+                      "hypothesis[type2]" = gettext("H1: Not equal"), "BF[type2]" = "", "pmp[type2]" = tableResults[["PMP_u"]])
         } else if (options$hypothesis == "equalBigger") {
-          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"=BF_01, "pmp[type1]" = PMP_0,
-                     "hypothesis[type2]" = gettext("H1: Bigger"), "BF[type2]" = "", "pmp[type2]" = PMP_1)
+          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"= tableResults[["BF_01"]], "pmp[type1]" = tableResults[["PMP_0"]],
+                     "hypothesis[type2]" = gettext("H1: Bigger"), "BF[type2]" = "", "pmp[type2]" = tableResults[["PMP_1"]])
         } else if (options$hypothesis == "equalSmaller") {
-          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"=BF_01, "pmp[type1]" = PMP_0,
-                     "hypothesis[type2]" = gettext("H1: Smaller"), "BF[type2]" = "", "pmp[type2]" = PMP_1)
+          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"= tableResults[["BF_01"]], "pmp[type1]" = tableResults[["PMP_0"]],
+                     "hypothesis[type2]" = gettext("H1: Smaller"), "BF[type2]" = "", "pmp[type2]" = tableResults[["PMP_1"]])
         } else if (options$hypothesis == "biggerSmaller") {
-          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H1: Bigger"), "BF[type1]"=BF_01, "pmp[type1]" = PMP_0,
-                     "hypothesis[type2]" = gettext("H2: Smaller"), "BF[type2]" = "", "pmp[type2]" = PMP_1)
+          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H1: Bigger"), "BF[type1]"= tableResults[["BF_01"]], "pmp[type1]" = tableResults[["PMP_0"]],
+                     "hypothesis[type2]" = gettext("H2: Smaller"), "BF[type2]" = "", "pmp[type2]" = tableResults[["PMP_1"]])
         } else if (options$hypothesis == "equalBiggerSmaller") {
-          row <-list(Variable=variable, "type[equal]" = gettext("H0: Equal"), "BF[equal]"= "", "pmp[equal]" = PMP_0,
-                     "type[greater]" =gettext( "H1: Bigger"), "BF[greater]" = BF_01, "pmp[greater]" = PMP_1,
-                     "type[less]" = gettext("H2: Smaller"), "BF[less]" = BF_02, "pmp[less]" = PMP_2)
+          row <-list(Variable=variable, "type[equal]" = gettext("H0: Equal"), "BF[equal]"= "", "pmp[equal]" = tableResults[["PMP_0"]],
+                     "type[greater]" =gettext( "H1: Bigger"), "BF[greater]" = tableResults[["BF_01"]], "pmp[greater]" = tableResults[["PMP_1"]],
+                     "type[less]" = gettext("H2: Smaller"), "BF[less]" = tableResults[["BF_02"]], "pmp[less]" = tableResults[["PMP_2"]])
         }
       } else if (options$bayesFactorType == "BF10") {
         if (options$hypothesis == "equalNotEqual") {
-          row <- list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"),"BF[type1]"="", "pmp[type1]" = PMP_0,
-                      "hypothesis[type2]" = gettext("H1: Not equal"), "BF[type2]" = BF_0u, "pmp[type2]" = PMP_u)
+          row <- list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"),"BF[type1]"="", "pmp[type1]" = tableResults[["PMP_0"]],
+                      "hypothesis[type2]" = gettext("H1: Not equal"), "BF[type2]" = tableResults[["BF_0u"]], "pmp[type2]" = tableResults[["PMP_u"]])
         } else if (options$hypothesis == "equalBigger") {
-          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"),"BF[type1]"="", "pmp[type1]" = PMP_0,
-                     "hypothesis[type2]" = gettext("H1: Bigger"), "BF[type2]" = BF_01, "pmp[type2]" = PMP_1)
+          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"),"BF[type1]"="", "pmp[type1]" = tableResults[["PMP_0"]],
+                     "hypothesis[type2]" = gettext("H1: Bigger"), "BF[type2]" = tableResults[["BF_01"]], "pmp[type2]" = tableResults[["PMP_1"]])
         } else if (options$hypothesis == "equalSmaller") {
-          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"="", "pmp[type1]" = PMP_0,
-                     "hypothesis[type2]" = gettext("H1: Smaller"), "BF[type2]" = BF_01, "pmp[type2]" = PMP_1)
+          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"="", "pmp[type1]" = tableResults[["PMP_0"]],
+                     "hypothesis[type2]" = gettext("H1: Smaller"), "BF[type2]" = tableResults[["BF_01"]], "pmp[type2]" = tableResults[["PMP_1"]])
         } else if (options$hypothesis == "biggerSmaller") {
-          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H1: Bigger"), "BF[type1]"= "", "pmp[type1]" = PMP_0,
-                     "hypothesis[type2]" = gettext("H2: Smaller"), "BF[type2]" = BF_01, "pmp[type2]" = PMP_1)
+          row <-list(Variable=variable, "hypothesis[type1]" = gettext("H1: Bigger"), "BF[type1]"= "", "pmp[type1]" = tableResults[["PMP_0"]],
+                     "hypothesis[type2]" = gettext("H2: Smaller"), "BF[type2]" = tableResults[["BF_01"]], "pmp[type2]" = tableResults[["PMP_1"]])
         } else if (options$hypothesis == "equalBiggerSmaller") {
-          row <-list(Variable=variable, "type[equal]" = gettext("H0: Equal"), "BF[equal]"= "", "pmp[equal]" = PMP_0,
-                     "type[greater]"= gettext("H1: Bigger"), "BF[greater]" = BF_01, "pmp[greater]" = PMP_1,
-                     "type[less]" = gettext("H2: Smaller"), "BF[less]" = BF_02, "pmp[less]" = PMP_2)
+          row <-list(Variable=variable, "type[equal]" = gettext("H0: Equal"), "BF[equal]"= "", "pmp[equal]" = tableResults[["PMP_0"]],
+                     "type[greater]"= gettext("H1: Bigger"), "BF[greater]" = tableResults[["BF_01"]], "pmp[greater]" = tableResults[["PMP_1"]],
+                     "type[less]" = gettext("H2: Smaller"), "BF[less]" = tableResults[["BF_02"]], "pmp[less]" = tableResults[["PMP_2"]])
         }
       }
       table$addRows(row, rowNames = variable)
@@ -514,11 +515,11 @@
       
       if(pair[[1]] != "" || pair[[2]] != ""){
         
-        bainAnalysis <- .bainGetResults(dataset, options, bainContainer, ready, type, pair = pair, testType = testType)
+        bainResult <- .bainGetResults(dataset, options, bainContainer, ready, type, pair = pair, testType = testType)
         
-        if (isTryError(bainAnalysis)) {
+        if (isTryError(bainResult)) {
           table$addRows(list(Variable = currentPair), rowNames = currentPair)
-          table$addFootnote(message = gettextf("Results not computed: %s", jaspBase::.extractErrorMessage(bainAnalysis)), colNames = "Variable", rowNames = currentPair)
+          table$addFootnote(message = gettextf("Results not computed: %s", jaspBase::.extractErrorMessage(bainResult)), colNames = "Variable", rowNames = currentPair)
           progressbarTick()
           next
         } 
@@ -533,106 +534,65 @@
           table$addFootnote(message = message, colNames = "Variable", rowNames = currentPair)
         }
         
-        if (testType == 1) {
-          BF_0u <- bainAnalysis$fit$BF[1]
-          PMP_u <- bainAnalysis$fit$PMPb[2]
-          PMP_0 <- bainAnalysis$fit$PMPb[1]
-          if (options$bayesFactorType == "BF10")
-            BF_0u <- 1/BF_0u
-        }
-        if (testType == 2) {
-          BF_01 <- bainAnalysis$BFmatrix[1,2]
-          PMP_1 <- bainAnalysis$fit$PMPa[2]
-          PMP_0 <- bainAnalysis$fit$PMPa[1]
-          if (options$bayesFactorType == "BF10")
-            BF_01 <- 1/BF_01
-        }
-        if (testType == 3) {
-          BF_01 <- bainAnalysis$BFmatrix[1,2]
-          PMP_0 <- bainAnalysis$fit$PMPa[1]
-          PMP_1 <- bainAnalysis$fit$PMPa[2]
-          if (options$bayesFactorType == "BF10")
-            BF_01 <- 1/BF_01
-        }
-        if (testType == 4) {
-          BF_01 <- bainAnalysis$BFmatrix[1,2]
-          PMP_0 <- bainAnalysis$fit$PMPa[1]
-          PMP_1 <- bainAnalysis$fit$PMPa[2]
-          if (options$bayesFactorType == "BF10")
-            BF_01 <- 1/BF_01
-        }
-        if (testType == 5) {
-          BF_01 <- bainAnalysis$BFmatrix[1,2]
-          BF_02 <- bainAnalysis$BFmatrix[1,3]
-          BF_12 <- bainAnalysis$BFmatrix[2,3]
-          PMP_0 <- bainAnalysis$fit$PMPa[1]
-          PMP_1 <- bainAnalysis$fit$PMPa[2]
-          PMP_2 <- bainAnalysis$fit$PMPa[3]
-          if (options$bayesFactorType == "BF10")
-          {
-            BF_01 <- 1/BF_01
-            BF_02 <- 1/BF_02
-            BF_12 <- 1/BF_12
-          }
-        }
+		tableResults <- .bainExtractTableResultsFromObject(options, bainResult, testType)
         
         if (options$bayesFactorType == "BF01") {
           if (options$hypothesis == "equalNotEqual") {
-            row <- list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"=BF_0u, "pmp[type1]" = PMP_0,
-                        "hypothesis[type2]" = gettext("H1: Not equal"), "BF[type2]" = "", "pmp[type2]" = PMP_u)
+            row <- list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"= tableResults[["BF_0u"]], "pmp[type1]" = tableResults[["PMP_0"]],
+                        "hypothesis[type2]" = gettext("H1: Not equal"), "BF[type2]" = "", "pmp[type2]" = tableResults[["PMP_u"]])
           }
           if (options$hypothesis == "equalSmaller") {
-            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"= BF_01, "pmp[type1]" = PMP_0,
-                       "hypothesis[type2]" = gettext("H1: Smaller"), "BF[type2]" = "", "pmp[type2]" = PMP_1)
+            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"= tableResults[["BF_01"]], "pmp[type1]" = tableResults[["PMP_0"]],
+                       "hypothesis[type2]" = gettext("H1: Smaller"), "BF[type2]" = "", "pmp[type2]" = tableResults[["PMP_1"]])
           }
           if (options$hypothesis == "equalBigger") {
-            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"= BF_01, "pmp[type1]" = PMP_0,
-                       "hypothesis[type2]" = gettext("H1: Bigger"), "BF[type2]" = "", "pmp[type2]" = PMP_1)
+            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"= tableResults[["BF_01"]], "pmp[type1]" = tableResults[["PMP_0"]],
+                       "hypothesis[type2]" = gettext("H1: Bigger"), "BF[type2]" = "", "pmp[type2]" = tableResults[["PMP_1"]])
           }
           if (options$hypothesis == "biggerSmaller") {
-            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H1: Bigger"), "BF[type1]"= BF_01, "pmp[type1]" = PMP_0,
-                       "hypothesis[type2]" = gettext("H2: Smaller"), "BF[type2]" = "", "pmp[type2]" = PMP_1)
+            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H1: Bigger"), "BF[type1]"= tableResults[["BF_01"]], "pmp[type1]" = tableResults[["PMP_0"]],
+                       "hypothesis[type2]" = gettext("H2: Smaller"), "BF[type2]" = "", "pmp[type2]" = tableResults[["PMP_1"]])
           }
           if (options$hypothesis == "equalBiggerSmaller") {
             row <-list(Variable=currentPair,
                        "type[equal]" = gettext("H0: Equal"),
                        "BF[equal]"= "",
-                       "pmp[equal]" = PMP_0,
+                       "pmp[equal]" = tableResults[["PMP_0"]],
                        "type[greater]"= gettext("H1: Bigger"),
-                       "BF[greater]" = BF_01,
-                       "pmp[greater]" = PMP_1,
+                       "BF[greater]" = tableResults[["BF_01"]],
+                       "pmp[greater]" = tableResults[["PMP_1"]],
                        "type[less]" = gettext("H2: Smaller"),
-                       "BF[less]" = BF_02,
-                       "pmp[less]" = PMP_2)
+                       "BF[less]" = tableResults[["BF_02"]],
+                       "pmp[less]" = tableResults[["PMP_2"]])
           }
         } else if (options$bayesFactorType == "BF10") {
           if (options$hypothesis == "equalNotEqual") {
-            row <- list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"),"BF[type1]"="", "pmp[type1]" = PMP_0,
-                        "hypothesis[type2]" = gettext("H1: Not equal"), "BF[type2]" = BF_0u, "pmp[type2]" = PMP_u)
+            row <- list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"),"BF[type1]"="", "pmp[type1]" = tableResults[["PMP_0"]],
+                        "hypothesis[type2]" = gettext("H1: Not equal"), "BF[type2]" = tableResults[["BF_0u"]], "pmp[type2]" = tableResults[["PMP_u"]])
           }
           if (options$hypothesis == "equalSmaller") {
-            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"= "", "pmp[type1]" = PMP_0,
-                       "hypothesis[type2]" = gettext("H1: Smaller"), "BF[type2]" = BF_01, "pmp[type2]" = PMP_1)
+            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"= "", "pmp[type1]" = tableResults[["PMP_0"]],
+                       "hypothesis[type2]" = gettext("H1: Smaller"), "BF[type2]" = tableResults[["BF_01"]], "pmp[type2]" = tableResults[["PMP_1"]])
           }
           if (options$hypothesis == "equalBigger") {
-            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"= "", "pmp[type1]" = PMP_0,
-                       "hypothesis[type2]" = gettext("H1: Bigger"), "BF[type2]" = BF_01, "pmp[type2]" = PMP_1)
+            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]"= "", "pmp[type1]" = tableResults[["PMP_0"]],
+                       "hypothesis[type2]" = gettext("H1: Bigger"), "BF[type2]" = tableResults[["BF_01"]], "pmp[type2]" = tableResults[["PMP_1"]])
           }
           if (options$hypothesis == "biggerSmaller") {
-            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H1: Bigger"), "BF[type1]"= "", "pmp[type1]" = PMP_0,
-                       "hypothesis[type2]" = gettext("H2: Smaller"), "BF[type2]" = BF_01, "pmp[type2]" = PMP_1)
+            row <-list(Variable=currentPair, "hypothesis[type1]" = gettext("H1: Bigger"), "BF[type1]"= "", "pmp[type1]" = tableResults[["PMP_0"]],
+                       "hypothesis[type2]" = gettext("H2: Smaller"), "BF[type2]" = tableResults[["BF_01"]], "pmp[type2]" = tableResults[["PMP_1"]])
           }
           if (options$hypothesis == "equalBiggerSmaller") {
             row <-list(Variable=currentPair,
                        "type[equal]" = gettext("H0: Equal"),
                        "BF[equal]"= "",
-                       "pmp[equal]" = PMP_0,
+                       "pmp[equal]" = tableResults[["PMP_0"]],
                        "type[greater]"= gettext("H1: Bigger"),
-                       "BF[greater]" = BF_01,
-                       "pmp[greater]" = PMP_1,
+                       "BF[greater]" = tableResults[["BF_01"]],
+                       "pmp[greater]" = tableResults[["PMP_1"]],
                        "type[less]" = gettext("H2: Smaller"),
-                       "BF[less]" = BF_02,
-                       "pmp[less]" = PMP_2)
+                       "BF[less]" = tableResults[["BF_02"]],
+                       "pmp[less]" = tableResults[["PMP_2"]])
           }
         }
       } else {
