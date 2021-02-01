@@ -1,7 +1,7 @@
 bain One Sample t-test
 ==========================
 
-The bain (Bayesian informative hypotheses evaluation) One Sample t-test allows you test the nulthypothesis that the mean of a variable is zero versus one-sided and two-sided alternative hypotheses.
+The bain (Bayesian informative hypotheses evaluation) One Sample t-test allows you test the null-hypothesis that the mean of a variable is zero versus one-sided and two-sided alternative hypotheses.
 
 ### Specification of the bain One Sample t-test
 

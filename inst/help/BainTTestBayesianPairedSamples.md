@@ -1,7 +1,7 @@
 bain Paired Samples t-test
 ==============================
 
-The bain (Bayesian informative hypotheses evaluation) Paired Samples t-test allows you test the nulthypothesis that means of two repeated measures are equal versus one-sided and two-sided alternative hypotheses.
+The bain (Bayesian informative hypotheses evaluation) Paired Samples t-test allows you test the null-hypothesis that means of two repeated measures are equal versus one-sided and two-sided alternative hypotheses.
 
 ### Specification of the bain Paired Samples t-test
 
