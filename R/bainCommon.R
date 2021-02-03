@@ -244,7 +244,7 @@
     syntax <- .bainSemTranslateModel(options[["syntax"]], dataset)
 
     error <- try({
-      fit <- lavaan::sem(model = syntax, data = dataset, std.lv = TRUE, group = grouping)
+      fit <- lavaan::sem(model = syntax, data = dataset, group = grouping, std.lv = (options[["factorStandardisation"]] == "std.lv"))
     })
     
     if(isTryError(error)){

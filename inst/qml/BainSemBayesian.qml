@@ -110,10 +110,22 @@ Form
 			fieldWidth: 				60 * preferencesModel.uiScale 
 		}
 
+		DropDown
+		{
+			name: 						"factorStandardisation"
+			label: 						qsTr("Factor scaling")
+			indexDefaultValue: 			0
+			values:
+			[
+				{ label: qsTr("Factor variance"), value: "std.lv"			},
+				{ label: qsTr("Factor loading"),  value: "auto.fix.first"	}
+			]
+		}
+
 		CheckBox 
 		{ 
 			name: 						"standardized"
-			text: 						qsTr("Standardize")	
+			text: 						qsTr("Standardize coefficients")	
 		}
 	}
 

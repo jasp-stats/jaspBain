@@ -108,7 +108,7 @@ Form
 		CheckBox 
 		{ 
 			name: 						"standardized"
-			text: 						qsTr("Standardize")	
+			text: 						qsTr("Standardize coefficients")	
 		}
 	}
 
