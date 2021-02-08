@@ -27,6 +27,12 @@ Form
 {
 	columns: 							2
 
+	AvailableVariablesList 
+	{ 
+		name: 							"variablesList"
+		visible:						false
+	}
+
 	TextArea 
 	{ 
 		name: 							"syntax"
@@ -57,6 +63,7 @@ Form
 			label: 						qsTr("Grouping variable")
 			showVariableTypeIcon: 		true
 			addEmptyValue: 				true
+			source: 					[ { name: "variablesList", use: "type=ordinal|nominal|nominalText"} ]
 		}
 	}
 
