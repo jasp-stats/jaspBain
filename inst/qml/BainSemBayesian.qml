@@ -21,6 +21,7 @@ import QtQuick.Layouts					1.3
 import QtQuick.Controls 				2.12
 import JASP.Controls					1.0
 import JASP								1.0
+import JASP.Widgets						1.0
 
 Form
 {
@@ -36,54 +37,77 @@ Form
 
 	Group
 	{
-		title: 							qsTr("Tables")
-
-		CheckBox 
-		{ 	
-			name: 						"bayesFactorMatrix"
-			text: 						qsTr("Bayes factor matrix") 
+		title:							qsTr("Model Options")	
+		
+		DropDown
+		{
+			name: 						"factorStandardisation"
+			label: 						qsTr("Factor scaling")
+			indexDefaultValue: 			0
+			values:
+			[
+				{ label: qsTr("Factor variance"), value: "std.lv"			},
+				{ label: qsTr("Factor loading"),  value: "auto.fix.first"	}
+			]
 		}
 
-		CheckBox
+		DropDown 
+		{ 
+			name: 						"fixedFactors"
+			label: 						qsTr("Grouping variable")
+			showVariableTypeIcon: 		true
+			addEmptyValue: 				true
+		}
+	}
+
+	ColumnLayout
+	{
+		spacing: 						1 * preferencesModel.uiScale
+		
+		Group
 		{
-			name: 						"descriptives"
-			text: 						qsTr("Coefficients")
-			
-			CIField 
+			title: 						qsTr("Tables")
+
+			CheckBox
+			{
+				name: 					"descriptives"
+				text: 					qsTr("Coefficients")
+				
+				CIField 
+				{ 
+					name: 				"credibleInterval"
+					text: 				qsTr("Credible interval") 
+				}
+			}
+		}
+
+		Group
+		{
+			title: 						qsTr("Plots")
+
+			CheckBox 
 			{ 
-				name: 					"credibleInterval"
-				text: 					qsTr("Credible interval") 
+				name: 					"pathDiagram"
+				text: 					qsTr("Path diagram")	
+
+				CheckBox
+				{
+					name:				"pathDiagramEstimates"
+					text:				qsTr("Show parameter estimates")
+				}
+
+				CheckBox
+				{
+					name:				"pathDiagramLegend"
+					text:				qsTr("Show legend")
+				}		
 			}
 		}
 	}
 
-	Group
-	{
-		title: 							qsTr("Plots")
-
-		CheckBox 
-		{ 
-			name: 						"bayesFactorPlot"
-			text: 						qsTr("Posterior probabilities")	
-		}
-
-		CheckBox 
-		{ 
-			name: 						"pathDiagram"
-			text: 						qsTr("Path diagram")	
-
-			CheckBox
-			{
-				name:					"pathDiagramEstimates"
-				text:					qsTr("Show parameter estimates")
-			}	
-
-			CheckBox
-			{
-				name:					"pathDiagramLegend"
-				text:					qsTr("Show legend")
-			}		
-		}
+	Divider 
+	{ 
+		width: 							parent.width 
 	}
 
 	Group
@@ -105,21 +129,9 @@ Form
 			name: 						"fraction"
 			text: 						qsTr("Fraction")
 			defaultValue: 				1
-			min: 						1
+			min: 						0.01
 			max: 						100
 			fieldWidth: 				60 * preferencesModel.uiScale 
-		}
-
-		DropDown
-		{
-			name: 						"factorStandardisation"
-			label: 						qsTr("Factor scaling")
-			indexDefaultValue: 			0
-			values:
-			[
-				{ label: qsTr("Factor variance"), value: "std.lv"			},
-				{ label: qsTr("Factor loading"),  value: "auto.fix.first"	}
-			]
 		}
 
 		CheckBox 
@@ -129,25 +141,27 @@ Form
 		}
 	}
 
-	Section
+	ColumnLayout
 	{
-		title:							qsTr("Multigroup SEM")
-
-		VariablesForm
+		Group
 		{
-			implicitHeight:				150 * preferencesModel.uiScale
+			title: 						qsTr("Tables")
 
-			AvailableVariablesList 
-			{
-				name: 					"variablesList"
+			CheckBox 
+			{ 	
+				name: 					"bayesFactorMatrix"
+				text: 					qsTr("Bayes factor matrix") 
 			}
+		}
 
-			AssignedVariablesList 
-			{
-				name: 					"fixedFactors"
-				title: 					qsTr("Grouping variable")
-				singleVariable: 		true
-				allowedColumns: 		["ordinal", "nominal", "nominalText"]
+		Group
+		{
+			title: 						qsTr("Plots")
+
+			CheckBox 
+			{ 
+				name: 					"bayesFactorPlot"
+				text: 					qsTr("Posterior probabilities")	
 			}
 		}
 	}

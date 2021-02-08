@@ -46,7 +46,7 @@
                     "anova" = options[["fixedFactors"]],
                     "ancova" = options[["fixedFactors"]],
                     "regression" = NULL,
-                    "sem" = options[["groupingVariable"]])
+                    "sem" = NULL)
   factors <- factors[factors != ""]
   vars <- c(numerics, factors)
   
@@ -231,8 +231,8 @@
   standardized <- options[["standardized"]]
   grouping <- NULL
   if(options[["fixedFactors"]] != ""){
-	  grouping <- options[["fixedFactors"]]
-	  dataset[, grouping] <- as.factor(dataset[, grouping])
+    grouping <- encodeColNames(options[["fixedFactors"]])
+    dataset[, grouping] <- as.factor(dataset[, grouping])
   }
   
   if(!is.null(bainContainer[["lavaanResult"]])){
@@ -242,7 +242,7 @@
   } else if(ready){
     
     syntax <- .bainSemTranslateModel(options[["syntax"]], dataset)
-
+    
     error <- try({
       fit <- lavaan::sem(model = syntax, data = dataset, group = grouping, std.lv = (options[["factorStandardisation"]] == "std.lv"))
     })
@@ -257,10 +257,12 @@
   }
   
   if(options[["model"]] == ""){
-	  # We need to construct a 'default' hypothesis (the results of which will not be shown to the user)
-	  rhs <- fit@ParTable$rhs[2]
-	  if(options[["fixedFactors"]] != "")
-	  	rhs <- paste0(rhs, ".", levels(dataset[, options[["fixedFactors"]]])[1])
+    # We need to construct a 'default' hypothesis (the results of which will not be shown to the user)
+    rhs <- switch(options[["factorStandardisation"]], # If the first loading is standardized the second is taken
+                  "std.lv" = fit@ParTable$rhs[1],
+                  "auto.fix.first" = fit@ParTable$rhs[2])
+    if(options[["fixedFactors"]] != "")
+      rhs <- paste0(rhs, ".", levels(dataset[, encodeColNames(options[["fixedFactors"]])])[1])
     hypothesis <- paste0(fit@ParTable$lhs[1], fit@ParTable$op[1], rhs, "= 0")
   } else {
     hypothesis <- encodeColNames(.bainCleanModelInput(options[["model"]]))   
@@ -951,9 +953,9 @@
     table$addRows(row)
   } else if(type %in% c("regression", "sem")){
     bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)
-	if(is.null(bainResult))
-		return()
-	bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
+    if(is.null(bainResult))
+      return()
+    bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
     groups <- bainSummary[["Parameter"]]
     N <- bainSummary[["n"]]
     mu <- bainSummary[["Estimate"]]

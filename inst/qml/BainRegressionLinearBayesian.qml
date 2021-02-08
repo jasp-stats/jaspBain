@@ -100,7 +100,7 @@ Form
 			name: 						"fraction"
 			text: 						qsTr("Fraction")
 			defaultValue: 				1
-			min: 						1
+			min: 						0.01
 			max: 						100
 			fieldWidth: 				60 * preferencesModel.uiScale 
 		}

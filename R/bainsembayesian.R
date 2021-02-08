@@ -16,16 +16,16 @@
 #
 
 BainSemBayesian <- function(jaspResults, dataset, options, ...) {
-
+  
   # What type of Bain analysis is being conducted?
   type <- "sem"
-
+  
   # Read the data set
   dataList <- .bainReadDataset(options, type, dataset)
-
+  
   # Check if current options allow for analysis
   ready <- .bainOptionsReady(options, type, dataList[["dataset"]])
-
+  
   # Check if current data allow for analysis
   .bainDataReady(dataList[["dataset"]], options, type)
   
@@ -96,55 +96,64 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   
   if(!is.null(bainContainer[["pathDiagram"]]) || !options[["pathDiagram"]])
     return()
-
+  
   if(options[["fixedFactors"]] == ""){
-	plot <- createJaspPlot(title = gettext("Path Diagram"), width = 600, height = 400)
-	plot$dependOn(options = c("pathDiagram", "seed", "pathDiagramEstimates", "pathDiagramLegend"))
-	bainContainer[["pathDiagram"]] <- plot
+    plot <- createJaspPlot(title = gettext("Path Diagram"), width = 600, height = 400)
+    plot$dependOn(options = c("pathDiagram", "seed", "pathDiagramEstimates", "pathDiagramLegend"))
+    bainContainer[["pathDiagram"]] <- plot
   } else {
-	container <- createJaspContainer(title = gettext("Path Diagram"))
-	bainContainer[["pathDiagram"]] <- container
-	bainContainer$dependOn(options = c("pathDiagram", "seed", "pathDiagramEstimates", "pathDiagramLegend"))
-	groups <- levels(dataset[, options[["fixedFactors"]]])
-	for(i in 1:length(groups)){
-		plot <- createJaspPlot(title = gettextf("Group: %1$s", groups[i]), width = 600, height = 400)
-		container[[paste0("pathDiagram", groups[i])]] <- plot
-	}
+    container <- createJaspContainer(title = gettext("Path Diagram"))
+    bainContainer[["pathDiagram"]] <- container
+    container$dependOn(options = c("pathDiagram", "seed", "pathDiagramEstimates", "pathDiagramLegend"))
+    groups <- levels(as.factor(dataset[, encodeColNames(options[["fixedFactors"]])]))
+    for(i in 1:length(groups)){
+      plot <- createJaspPlot(title = gettextf("Group: %1$s", groups[i]), width = 600, height = 400)
+      container[[paste0("pathDiagram", groups[i])]] <- plot
+    }
   }
   
   if(!ready || is.null(bainContainer[["lavaanResult"]]))
-	return()
-
-	fit <- bainContainer[["lavaanResult"]]$object
-	po <- .bainlavToPlotObj(fit)
-	pp <- .suppressGrDevice(semPlot::semPaths(
-		object         = po,
-		layout         = "tree2",
-		intercepts     = FALSE,
-		reorder        = FALSE,
-		whatLabels     = ifelse(options[["pathDiagramEstimates"]], "par", "name"),
-		edge.color     = "black",
-		color          = list(lat = "#EAEAEA", man = "#EAEAEA", int = "#FFFFFF"),
-		title          = FALSE,
-		legend         = options[["pathDiagramLegend"]],
-		legend.mode    = "names",
-		legend.cex     = 0.6,
-		label.cex      = 1.3,
-		edge.label.cex = 0.9,
-		nodeNames      = decodeColNames(po@Vars$name),
-		nCharNodes     = 3,
-		rotation       = 2,
-		panelGroups    = TRUE,
-		ask            = FALSE
-	))
-
-	if(options[["fixedFactors"]] == ""){
-		plot$plotObject <- pp
-	} else {
-		for(i in 1:length(groups)){
-			container[[paste0("pathDiagram", groups[i])]]$plotObject <- pp[[i]]
-		}
-	}
+    return()
+  
+  labels <- ifelse(options[["pathDiagramEstimates"]], "par", "name")
+  labels <- ifelse(options[["standardized"]], "stand", labels)
+  
+  fit <- bainContainer[["lavaanResult"]]$object
+  po <- .bainlavToPlotObj(fit)
+  error <- try({
+    pp <- .suppressGrDevice(semPlot::semPaths(
+      object         = po,
+      layout         = "tree2",
+      intercepts     = FALSE,
+      reorder        = FALSE,
+      whatLabels     = labels,
+      edge.color     = "black",
+      color          = list(lat = "#EAEAEA", man = "#EAEAEA", int = "#FFFFFF"),
+      title          = FALSE,
+      legend         = options[["pathDiagramLegend"]],
+      legend.mode    = "names",
+      legend.cex     = 0.6,
+      label.cex      = 1.3,
+      edge.label.cex = 0.9,
+      nodeNames      = decodeColNames(po@Vars$name),
+      nCharNodes     = 3,
+      rotation       = 2,
+      panelGroups    = TRUE,
+      ask            = FALSE
+    ))
+  })
+  
+  if(isTryError(error)){
+    plot$setError(gettextf("An error occurred while creating this plot:<br>%1$s.", jaspBase::.extractErrorMessage(error)))
+  } else {
+    if(options[["fixedFactors"]] == ""){
+      plot$plotObject <- pp
+    } else {
+      for(i in 1:length(groups)){
+        container[[paste0("pathDiagram", groups[i])]]$plotObject <- pp[[i]]
+      }
+    }
+  }
 }
 
 .bainlavToPlotObj <- function(lavResult) {

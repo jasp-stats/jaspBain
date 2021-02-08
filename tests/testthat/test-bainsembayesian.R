@@ -5,6 +5,7 @@ options$syntax <- "A =~ Ab + Al + Af + An + Ar + Ac; B =~ Bb + Bl + Bf + Bn + Br
 options$bayesFactorMatrix <- TRUE
 options$descriptives <- TRUE
 options$bayesFactorPlot <- TRUE
+options$fixedFactors <- ""
 options$pathDiagram <- TRUE
 options$pathDiagramEstimates <- TRUE
 options$pathDiagramLegend <- TRUE
