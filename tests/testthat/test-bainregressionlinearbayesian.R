@@ -1,5 +1,7 @@
 context("Bain Linear Regression")
 
+# ==================================================================================================
+
 options <- jaspTools::analysisOptions("BainRegressionLinearBayesian")
 options$dependent <- "age"
 options$covariates <- list("peabody", "prenumb", "postnumb", "funumb")
@@ -53,3 +55,100 @@ test_that("Hypothesis Legend table results match", {
 		list("peabody &lt; 0 &amp; prenumb &gt; 0", "H1", "peabody = 0 &amp; postnumb = 0",
 			 "H2", "postnumb &gt; 0 &amp; funumb &gt; 0", "H3"))
 })
+
+# ==================================================================================================
+
+options <- jaspTools::analysisOptions("BainRegressionLinearBayesian")
+options$dependent <- "postnumb"
+options$covariates <- list("prenumb", "funumb", "peabody")
+options$bayesFactorMatrix <- TRUE
+options$descriptives <- TRUE
+options$seed <- 900
+options$fraction <- 2
+options$model <- "prenumb = funumb = peabody = 0;prenumb > 0 & funumb > 0 & peabody > 0"
+set.seed(1)
+results <- jaspTools::runAnalysis("BainRegressionLinearBayesian", "sesame.csv", options)
+
+
+test_that("Bayes Factor Matrix table results match", {
+	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
+	jaspTools::expect_equal_tables(table,
+		list(1, 4.89942014782784e-63, "H1", 2.04105785955783e+62, 1, "H2"
+			))
+})
+
+test_that("Coefficients for Parameters table results match", {
+	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_descriptivesTable"]][["data"]]
+	jaspTools::expect_equal_tables(table,
+		list(240, 0.494098974883347, 0.621254756578271, 0.0648765909465239,
+			 0.748410538273195, "prenumb", 240, 0.131783988339985, 0.187566866610198,
+			 0.0284611751594524, 0.24334974488041, "funumb", 240, -0.00151905887489465,
+			 0.0818592041766284, 0.0425407118238907, 0.165237467228151, "peabody"
+			))
+})
+
+test_that("Bain Linear Regression table results match", {
+	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
+	jaspTools::expect_equal_tables(table,
+		list(8.64985149525717e-62, 8.64985149525717e-62, 4.89942014782784e-63,
+			 4.6367849169709e-63, "H1", 615.089712026728, 17.6548473784027,
+			 1, 0.946394629786265, "H2", "", "", "", 0.053605370213735, "Hu"
+			))
+})
+
+test_that("Hypothesis Legend table results match", {
+	table <- results[["results"]][["legendTable"]][["data"]]
+	jaspTools::expect_equal_tables(table,
+		list("prenumb = funumb = peabody = 0", "H1", "prenumb &gt; 0 &amp; funumb &gt; 0 &amp; peabody &gt; 0",
+			 "H2"))
+})
+
+# ==================================================================================================
+
+options <- jaspTools::analysisOptions("BainRegressionLinearBayesian")
+options$dependent <- "postnumb"
+options$covariates <- list("prenumb", "funumb", "peabody")
+options$bayesFactorMatrix <- TRUE
+options$descriptives <- TRUE
+options$seed <- 900
+options$fraction <- 3
+options$standardized <- TRUE
+options$model <- "prenumb = funumb = peabody = 0;prenumb > 0 & funumb > 0 & peabody > 0"
+set.seed(1)
+results <- jaspTools::runAnalysis("BainRegressionLinearBayesian", "sesame.csv", options)
+
+
+test_that("Bayes Factor Matrix table results match", {
+	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
+	jaspTools::expect_equal_tables(table,
+		list(1, 2.78911650280699e-164, "H1", 3.58536475257878e+163, 1, "H2"
+			))
+})
+
+test_that("Coefficients for Parameters table results match", {
+	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_descriptivesTable"]][["data"]]
+	jaspTools::expect_equal_tables(table,
+		list(240, 0.425136718359189, 0.523997033619579, 0.0504398632016645,
+			 0.622857348879968, "prenumb", 240, 0.214535343365428, 0.30273821649852,
+			 0.0450022928119215, 0.390941089631612, "funumb", 240, -0.000932877627412801,
+			 0.104533362133665, 0.0538102947773436, 0.209999601894742, "peabody"
+			))
+})
+
+test_that("Bain Linear Regression table results match", {
+	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
+	jaspTools::expect_equal_tables(table,
+		list(1.05833115528427e-162, 1.05833115528427e-162, 2.78911650280699e-164,
+			 2.71749975620954e-164, "H1", 1360.87407219717, 37.9450322071219,
+			 1, 0.974322784105513, "H2", "", "", "", 0.0256772158944865,
+			 "Hu"))
+})
+
+test_that("Hypothesis Legend table results match", {
+	table <- results[["results"]][["legendTable"]][["data"]]
+	jaspTools::expect_equal_tables(table,
+		list("prenumb = funumb = peabody = 0", "H1", "prenumb &gt; 0 &amp; funumb &gt; 0 &amp; peabody &gt; 0",
+			 "H2"))
+})
+
+# ==================================================================================================
