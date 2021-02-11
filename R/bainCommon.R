@@ -190,11 +190,6 @@
     } else {
       ncov <- length(options[["covariates"]])
       covariates <- paste0(options[["covariates"]], collapse = "+")
-      
-      for (i in 1:ncov) {
-        dataset[, (1 + i)] <- dataset[, (1 + i)] - mean(dataset[, (1 + i)])
-      }
-      
       formula <- as.formula(paste0(dependent, "~", grouping, "+", covariates, "-1"))
     }
   }
