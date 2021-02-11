@@ -1,5 +1,7 @@
 context("Bain Independent Samples T-Test")
 
+# ==================================================================================================
+
 options <- jaspTools::analysisOptions("BainTTestBayesianIndependentSamples")
 options$variables <- list("age")
 options$groupingVariable <- "sex"
@@ -40,3 +42,107 @@ test_that("age plot matches", {
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 	jaspTools::expect_equal_plots(testPlot, "age", dir="BainTTestBayesianIndependentSamples")
 })
+
+# ==================================================================================================
+
+options <- jaspTools::analysisOptions("BainTTestBayesianIndependentSamples")
+options$variables <- list("postnumb")
+options$groupingVariable <- "sex"
+options$seed <- 900
+options$fraction <- 4
+options$descriptives <- TRUE
+options$hypothesis <- "equalNotEqual"
+options$bayesFactorType <- "BF01"
+set.seed(1)
+results <- jaspTools::runAnalysis("BainTTestBayesianIndependentSamples", "sesame.csv", options)
+
+
+test_that("Descriptive Statistics table results match", {
+	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_descriptivesTable"]][["data"]]
+	jaspTools::expect_equal_tables(table,
+		list(115, 1, 27.7090944056749, 30.095652173913, 13.0578832229393, 1.21765388908315,
+			 32.4822099421511, "postnumb", 125, 2, 26.7239441460813, 28.856,
+			 12.1620138400333, 1.08780358758431, 30.9880558539187, ""))
+})
+
+test_that("Bain Independent Samples Welch's T-Test table results match", {
+	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
+	jaspTools::expect_equal_tables(table,
+		list(5.79280615163151, "", "postnumb", "H0: Equal", "H1: Not equal",
+			 0.852785435403627, 0.147214564596373))
+})
+
+# ==================================================================================================
+
+test_that("Bain Independent Samples Welch's T-Test table results match", {
+	options <- jaspTools::analysisOptions("BainTTestBayesianIndependentSamples")
+	options$variables <- list("postnumb")
+	options$groupingVariable <- "sex"
+	options$seed <- 900
+	options$fraction <- 4
+	options$hypothesis <- "equalBigger"
+	options$bayesFactorType <- "BF01"
+	set.seed(1)
+	results <- jaspTools::runAnalysis("BainTTestBayesianIndependentSamples", "sesame.csv", options)
+	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
+	jaspTools::expect_equal_tables(table,
+		list(3.73180139745868, "", "postnumb", "H0: Equal", "H1: Bigger", 0.788663995801457,
+			 0.211336004198543))
+})
+
+# ==================================================================================================
+
+test_that("Bain Independent Samples Welch's T-Test table results match", {
+	options <- jaspTools::analysisOptions("BainTTestBayesianIndependentSamples")
+	options$variables <- list("postnumb")
+	options$groupingVariable <- "sex"
+	options$seed <- 900
+	options$fraction <- 4
+	options$hypothesis <- "equalSmaller"
+	options$bayesFactorType <- "BF01"
+	set.seed(1)
+	results <- jaspTools::runAnalysis("BainTTestBayesianIndependentSamples", "sesame.csv", options)
+	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
+	jaspTools::expect_equal_tables(table,
+		list(12.9384998340372, "", "postnumb", "H0: Equal", "H1: Smaller",
+			 0.928256267754293, 0.0717437322457074))
+})
+
+# ==================================================================================================
+
+test_that("Bain Independent Samples Welch's T-Test table results match", {
+	options <- jaspTools::analysisOptions("BainTTestBayesianIndependentSamples")
+	options$variables <- list("postnumb")
+	options$groupingVariable <- "sex"
+	options$seed <- 900
+	options$fraction <- 4
+	options$hypothesis <- "biggerSmaller"
+	options$bayesFactorType <- "BF01"
+	set.seed(1)
+	results <- jaspTools::runAnalysis("BainTTestBayesianIndependentSamples", "sesame.csv", options)
+	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
+	jaspTools::expect_equal_tables(table,
+		list(3.46709228493461, "", "postnumb", "H1: Bigger", "H2: Smaller",
+			 0.77614073401337, 0.22385926598663))
+})
+
+# ==================================================================================================
+
+test_that("Bain Independent Samples Welch's T-Test table results match", {
+	options <- jaspTools::analysisOptions("BainTTestBayesianIndependentSamples")
+	options$variables <- list("postnumb")
+	options$groupingVariable <- "sex"
+	options$seed <- 900
+	options$fraction <- 4
+	options$hypothesis <- "equalBiggerSmaller"
+	options$bayesFactorType <- "BF01"
+	set.seed(1)
+	results <- jaspTools::runAnalysis("BainTTestBayesianIndependentSamples", "sesame.csv", options)
+	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
+	jaspTools::expect_equal_tables(table,
+		list("", 3.73180139745868, 12.9384998340372, "postnumb", 0.743353041114553,
+			 0.19919415905165, 0.057452799833797, "H0: Equal", "H1: Bigger",
+			 "H2: Smaller"))
+})
+
+# ==================================================================================================
