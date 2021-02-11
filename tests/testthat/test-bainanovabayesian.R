@@ -2,6 +2,15 @@ context("Bain ANOVA")
 
 # ==================================================================================================
 
+# library(bain)
+# data("sesamesim")
+# set.seed(100)
+# sesamesim$site <- as.factor(sesamesim$site)
+# tt <- lm(age ~ site -1, sesamesim)
+# bainResult <- bain(tt,"site1 = site2 = site3 = site4 = site5;
+#                         site1 < site2 < site3 < site4 < site5;
+#                         site1 > site2 > site3 > site4 > site5", fraction = 1)
+
 options <- jaspTools::analysisOptions("BainAnovaBayesian")
 options$dependent <- "age"
 options$fixedFactors <- "site"
@@ -67,6 +76,14 @@ test_that("Hypothesis Legend table results match", {
 })
 
 # ==================================================================================================
+
+# library(bain)
+# data("sesamesim")
+# set.seed(900)
+# sesamesim$site <- as.factor(sesamesim$site)
+# tt <- lm(postnumb ~ site -1, sesamesim)
+# bainResult <- bain(tt,"site1 =site2=site3=site4=site5;
+#               site3 < site4 < site1 < site5 < site2", fraction = 4)
 
 options <- jaspTools::analysisOptions("BainAnovaBayesian")
 options$dependent <- "postnumb"

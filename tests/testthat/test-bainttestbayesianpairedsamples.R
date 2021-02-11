@@ -2,6 +2,12 @@ context("Bain Paired Samples T-Test")
 
 # ==================================================================================================
 
+# library(bain)
+# data("sesamesim")
+# set.seed(100)
+# tt <- t_test(sesamesim$prenumb,sesamesim$postnumb,paired = TRUE)
+# bainAnalysis <- bain(tt,"difference=0;difference>0;difference<0", fraction = 1)
+
 options <- jaspTools::analysisOptions("BainTTestBayesianPairedSamples")
 options$descriptives <- TRUE
 options$bayesFactorPlot <- TRUE
@@ -43,6 +49,12 @@ test_that("prenumb - postnumb plot matches", {
 
 # ==================================================================================================
 
+# library(bain)
+# data("sesamesim")
+# set.seed(900)
+# tt <- t_test(sesamesim$postnumb,sesamesim$prenumb,paired = TRUE)
+# bainAnalysis <- bain(tt,"difference=0", fraction = 4)
+
 test_that("Bain Paired Samples T-Test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianPairedSamples")
 	options$seed <- 900
@@ -59,6 +71,12 @@ test_that("Bain Paired Samples T-Test table results match", {
 })
 
 # ==================================================================================================
+
+# library(bain)
+# data("sesamesim")
+# set.seed(900)
+# tt <- t_test(sesamesim$postnumb,sesamesim$prenumb,paired = TRUE)
+# bainAnalysis <- bain(tt,"difference=0;difference>0", fraction = 4)
 
 test_that("Bain Paired Samples T-Test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianPairedSamples")
@@ -77,6 +95,12 @@ test_that("Bain Paired Samples T-Test table results match", {
 
 # ==================================================================================================
 
+# library(bain)
+# data("sesamesim")
+# set.seed(900)
+# tt <- t_test(sesamesim$postnumb,sesamesim$prenumb,paired = TRUE)
+# bainAnalysis <- bain(tt,"difference=0;difference<0", fraction = 4)
+
 test_that("Bain Paired Samples T-Test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianPairedSamples")
 	options$seed <- 900
@@ -94,6 +118,12 @@ test_that("Bain Paired Samples T-Test table results match", {
 
 # ==================================================================================================
 
+# library(bain)
+# data("sesamesim")
+# set.seed(900)
+# tt <- t_test(sesamesim$postnumb,sesamesim$prenumb,paired = TRUE)
+# bainAnalysis <- bain(tt,"difference>0;difference<0", fraction = 4)
+
 test_that("Bain Paired Samples T-Test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianPairedSamples")
 	options$seed <- 900
@@ -110,6 +140,12 @@ test_that("Bain Paired Samples T-Test table results match", {
 })
 
 # ==================================================================================================
+
+# library(bain)
+# data("sesamesim")
+# set.seed(900)
+# tt <- t_test(sesamesim$postnumb,sesamesim$prenumb,paired = TRUE)
+# bainAnalysis <- bain(tt,"difference=0;difference>0;difference<0", fraction = 4)
 
 test_that("Bain Paired Samples T-Test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianPairedSamples")

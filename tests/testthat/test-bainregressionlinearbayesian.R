@@ -2,6 +2,13 @@ context("Bain Linear Regression")
 
 # ==================================================================================================
 
+# library(bain)
+# data("sesamesim")
+# set.seed(100)
+# tt <- lm(age ~ peabody + prenumb + postnumb + funumb, sesamesim)
+# bainResult <- bain(tt,"peabody < 0 & prenumb > 0;peabody = 0 & postnumb = 0;postnumb > 0 & funumb > 0",
+#                standardize = FALSE, fraction = 1)
+
 options <- jaspTools::analysisOptions("BainRegressionLinearBayesian")
 options$dependent <- "age"
 options$covariates <- list("peabody", "prenumb", "postnumb", "funumb")
@@ -58,6 +65,13 @@ test_that("Hypothesis Legend table results match", {
 
 # ==================================================================================================
 
+# library(bain)
+# data("sesamesim")
+# set.seed(900)
+# tt <- lm(postnumb ~ prenumb + funumb + peabody, sesamesim)
+# bainResult <- bain(tt,"prenumb = funumb = peabody = 0;prenumb > 0 & funumb > 0 & peabody > 0 ",
+#                standardize = FALSE, fraction = 2)
+
 options <- jaspTools::analysisOptions("BainRegressionLinearBayesian")
 options$dependent <- "postnumb"
 options$covariates <- list("prenumb", "funumb", "peabody")
@@ -104,6 +118,13 @@ test_that("Hypothesis Legend table results match", {
 })
 
 # ==================================================================================================
+
+# library(bain)
+# data("sesamesim")
+# set.seed(900)
+# tt <- lm(postnumb ~ prenumb + funumb + peabody, sesamesim)
+# bainResult <- bain(tt,"prenumb = funumb = peabody = 0;prenumb > 0 & funumb > 0 & peabody > 0 ",
+#                standardize = TRUE, fraction = 3)
 
 options <- jaspTools::analysisOptions("BainRegressionLinearBayesian")
 options$dependent <- "postnumb"

@@ -2,6 +2,12 @@ context("Bain One Sample T-Test")
 
 # ==================================================================================================
 
+# library(bain)
+# data("sesamesim")
+# set.seed(100)
+# tt <- t_test(sesamesim$age)
+# bainResult <- bain(tt,"x=51;x>51;x<51", fraction = 1)
+
 options <- jaspTools::analysisOptions("BainTTestBayesianOneSample")
 options$variables <- list("age")
 options$testValue <- 51
@@ -44,6 +50,12 @@ test_that("age plot matches", {
 
 # ==================================================================================================
 
+# library(bain)
+# data("sesamesim")
+# set.seed(900)
+# tt <- t_test(sesamesim$postnumb)
+# bainResult <- bain(tt,"x=30",fraction = 4)
+
 test_that("Bain One Sample T-test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianOneSample")
 	options$variables <- list("postnumb")
@@ -60,6 +72,12 @@ test_that("Bain One Sample T-test table results match", {
 })
 
 # ==================================================================================================
+
+# library(bain)
+# data("sesamesim")
+# set.seed(900)
+# tt <- t_test(sesamesim$postnumb)
+# bainResult <- bain(tt,"x=30;x>30",fraction = 4)
 
 test_that("Bain One Sample T-test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianOneSample")
@@ -78,6 +96,12 @@ test_that("Bain One Sample T-test table results match", {
 
 # ==================================================================================================
 
+# library(bain)
+# data("sesamesim")
+# set.seed(900)
+# tt <- t_test(sesamesim$postnumb)
+# bainResult <- bain(tt,"x=30;x<30", fraction = 4)
+
 test_that("Bain One Sample T-test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianOneSample")
 	options$variables <- list("postnumb")
@@ -95,6 +119,12 @@ test_that("Bain One Sample T-test table results match", {
 
 # ==================================================================================================
 
+# library(bain)
+# data("sesamesim")
+# set.seed(900)
+# tt <- t_test(sesamesim$postnumb)
+# bainResult <- bain(tt,"x>30;x<30", fraction = 4)
+
 test_that("Bain One Sample T-test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianOneSample")
 	options$variables <- list("postnumb")
@@ -111,6 +141,12 @@ test_that("Bain One Sample T-test table results match", {
 })
 
 # ==================================================================================================
+
+# library(bain)
+# data("sesamesim")
+# set.seed(900)
+# tt <- t_test(sesamesim$postnumb)
+# bainResult <- bain(tt,"x=30;x>30;x<30", fraction = 4)
 
 test_that("Bain One Sample T-test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianOneSample")

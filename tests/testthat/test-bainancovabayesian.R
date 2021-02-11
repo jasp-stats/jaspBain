@@ -4,10 +4,10 @@ context("Bain ANCOVA")
 
 # library(bain)
 # data("sesamesim")
-# set.seed(900)
+# set.seed(100)
 # sesamesim$site <- as.factor(sesamesim$site)
 # tt <- lm(age ~ site+peabody+prenumb+postnumb+funumb-1, sesamesim)
-# bainResult <-  bain(tt,"site1 = site2 = site3 = site4 = site5;
+# bainResult <- bain(tt,"site1 = site2 = site3 = site4 = site5;
 #                         site1 < site2 < site3 < site4 < site5;
 #                         site1 > site2 > site3 > site4 > site5", fraction = 1)
 
@@ -87,7 +87,7 @@ test_that("Hypothesis Legend table results match", {
 # set.seed(900)
 # sesamesim$site <- as.factor(sesamesim$site)
 # tt <- lm(postnumb ~ site+prenumb+funumb-1, sesamesim)
-# bainResult <-  bain(tt,"site1 = site2 = site3 = site4 = site5; 
+# bainResult <- bain(tt,"site1 = site2 = site3 = site4 = site5; 
 #               (site1, site3, site4) < (site2, site5)", fraction = 1)
 
 options <- jaspTools::analysisOptions("BainAncovaBayesian")

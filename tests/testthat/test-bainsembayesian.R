@@ -2,6 +2,20 @@ context("Bain SEM")
 
 # ==================================================================================================
 
+# library(bain)
+# library(lavaan)
+# data("sesamesim")
+# model1 <- '
+#     A =~ Ab + Al + Af + An + Ar + Ac 
+#     B =~ Bb + Bl + Bf + Bn + Br + Bc 
+# '
+# fit1 <- sem(model1, data = sesamesim, std.lv = TRUE)
+# hypotheses1 <-
+#   " A=~Ab > .6 & A=~Al > .6 & A=~Af > .6 & A=~An > .6 & A=~Ar > .6 & A=~Ac >.6 & 
+#     B=~Bb > .6 & B=~Bl > .6 & B=~Bf > .6 & B=~Bn > .6 & B=~Br > .6 & B=~Bc >.6"
+# set.seed(100)
+# bainResult <- bain(fit1,hypotheses1,fraction=3,standardize=FALSE)
+
 options <- jaspTools::analysisOptions("BainSemBayesian")
 options$syntax <- "A =~ Ab + Al + Af + An + Ar + Ac; B =~ Bb + Bl + Bf + Bn + Br + Bc"
 options$bayesFactorMatrix <- TRUE
@@ -72,6 +86,20 @@ test_that("Hypothesis Legend table results match", {
 
 # ==================================================================================================
 
+# library(bain)
+# library(lavaan)
+# data("sesamesim")
+# model1 <- '
+#     A =~ Ab + Al + Af + An + Ar + Ac 
+#     B =~ Bb + Bl + Bf + Bn + Br + Bc 
+# '
+# fit1 <- sem(model1, data = sesamesim, std.lv = TRUE)
+# hypotheses1 <-
+#   " A=~Ab > .6 & A=~Al > .6 & A=~Af > .6 & A=~An > .6 & A=~Ar > .6 & A=~Ac >.6 & 
+#     B=~Bb > .6 & B=~Bl > .6 & B=~Bf > .6 & B=~Bn > .6 & B=~Br > .6 & B=~Bc >.6"
+# set.seed(100)
+# bainResult <- bain(fit1,hypotheses1,fraction=3,standardize=TRUE)
+
 options <- jaspTools::analysisOptions("BainSemBayesian")
 options$syntax <- "A =~ Ab + Al + Af + An + Ar + Ac;B =~ Bb + Bl + Bf + Bn + Br + Bc"
 options$fixedFactors <- ""
@@ -136,6 +164,21 @@ test_that("Hypothesis Legend table results match", {
 })
 
 # ==================================================================================================
+
+# library(bain)
+# library(lavaan)
+# data("sesamesim")
+# model2 <- '
+#     A  =~ Ab + Al + Af + An + Ar + Ac 
+#     B =~ Bb + Bl + Bf + Bn + Br + Bc
+#     A ~ B + age + peabody
+# '
+# fit2 <- sem(model2, data = sesamesim, std.lv = TRUE)
+# hypotheses2 <- "A~B > A~peabody = A~age = 0; 
+#                 A~B > A~peabody > A~age = 0; 
+#                 A~B > A~peabody > A~age > 0"
+# set.seed(100)
+# bainResult <- bain(fit2, hypotheses2, fraction = 3, standardize = TRUE)
 
 options <- jaspTools::analysisOptions("BainSemBayesian")
 options$syntax <- "A  =~ Ab + Al + Af + An + Ar + Ac;B =~ Bb + Bl + Bf + Bn + Br + Bc;A ~ B + age + peabody"
@@ -202,6 +245,21 @@ test_that("Hypothesis Legend table results match", {
 
 # ==================================================================================================
 
+# library(bain)
+# library(lavaan)
+# data("sesamesim")
+# model2 <- '
+#     A  =~ Ab + Al + Af + An + Ar + Ac 
+#     B =~ Bb + Bl + Bf + Bn + Br + Bc
+#     A ~ B + age + peabody
+# '
+# fit2 <- sem(model2, data = sesamesim, std.lv = TRUE)
+# hypotheses2 <- "A~B > A~peabody = A~age = 0; 
+#                 A~B > A~peabody > A~age = 0; 
+#                 A~B > A~peabody > A~age > 0"
+# set.seed(100)
+# bainResult <- bain(fit2, hypotheses2, fraction = 3, standardize = FALSE)
+
 options <- jaspTools::analysisOptions("BainSemBayesian")
 options$syntax <- "A  =~ Ab + Al + Af + An + Ar + Ac;B =~ Bb + Bl + Bf + Bn + Br + Bc;A ~ B + age + peabody"
 options$fixedFactors <- ""
@@ -265,6 +323,20 @@ test_that("Hypothesis Legend table results match", {
 
 # ==================================================================================================
 
+# library(bain)
+# library(lavaan)
+# data("sesamesim")
+# model3 <- '
+#     postnumb ~ prenumb + peabody 
+# '
+# sesamesim$sex <- factor(sesamesim$sex, labels = c("boy", "girl"))
+# fit3 <- sem(model3, data = sesamesim, std.lv = TRUE, group = "sex")
+# hypotheses3 <-
+#   "postnumb~prenumb.boy = postnumb~prenumb.girl & postnumb~peabody.boy = postnumb~peabody.girl;
+#    postnumb~prenumb.boy < postnumb~prenumb.girl & postnumb~peabody.boy < postnumb~peabody.girl"
+# set.seed(100)
+# bainResult <- bain(fit3, hypotheses3, fraction = 3, standardize = TRUE)
+
 options <- jaspTools::analysisOptions("BainSemBayesian")
 options$syntax <- "postnumb ~ prenumb + peabody"
 options$fixedFactors <- "sex"
@@ -316,6 +388,20 @@ test_that("Hypothesis Legend table results match", {
 })
 
 # ==================================================================================================
+
+# library(bain)
+# library(lavaan)
+# data("sesamesim")
+# model3 <- '
+#     postnumb ~ prenumb + peabody 
+# '
+# sesamesim$sex <- factor(sesamesim$sex, labels = c("boy", "girl"))
+# fit3 <- sem(model3, data = sesamesim, std.lv = TRUE, group = "sex")
+# hypotheses3 <-
+#   "postnumb~prenumb.boy = postnumb~prenumb.girl & postnumb~peabody.boy = postnumb~peabody.girl;
+#    postnumb~prenumb.boy < postnumb~prenumb.girl & postnumb~peabody.boy < postnumb~peabody.girl"
+# set.seed(100)
+# bainResult <- bain(fit3, hypotheses3, fraction = 3, standardize = FALSE)
 
 options <- jaspTools::analysisOptions("BainSemBayesian")
 options$syntax <- "postnumb ~ prenumb + peabody"
