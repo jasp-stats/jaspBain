@@ -314,8 +314,7 @@
   })
   
   if (isTryError(p)) {
-    bainContainer$setError(gettextf("An error occurred in the analysis:<br>%1$s.", jaspBase::.extractErrorMessage(p)))
-    return()
+    return(p)
   }
   
   bainContainer[[variable]] <- createJaspState(bainResult, dependencies = c("testValue", "hypothesis"))
@@ -341,8 +340,7 @@
     })
     
     if(isTryError(p)){
-      bainContainer$setError(gettextf("An error occurred in the analysis:<br>%1$s.", jaspBase::.extractErrorMessage(p)))
-      return()
+      return(p)
     }
     
     bainContainer[[currentPair]] <- createJaspState(bainResult, dependencies = "hypothesis")
@@ -575,6 +573,7 @@
     
     table$setExpectedSize(length(options[["variables"]]))
     startProgressbar(length(options[["variables"]]))
+    
     for (variable in options[["variables"]]) {
       
       bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable, testType = testType)
@@ -751,6 +750,8 @@
       progressbarTick()
     }
   } else if (type %in% c("anova", "ancova", "regression", "sem")){
+	if(bainContainer$getError())
+		return()
     variables <- switch(type,
                         "anova" = c(options[["dependent"]], options[["fixedFactors"]]),
                         "ancova" = c(options[["dependent"]], options[["fixedFactors"]], unlist(options[["covariates"]])),
@@ -768,7 +769,7 @@
         table$addFootnote(message = gettextf("The variable %1$s contains missing values, the rows containing these values are removed in the analysis.", variables[i]), symbol=gettext("<b>Warning.</b>"))
       }
     }
-    bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)
+    bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)  
     for (i in 1:(length(bainResult[["fit"]]$BF)-1)){
       row <- list(hypotheses = gettextf("H%1$i", i), BFu = bainResult[["fit"]]$BF.u[i], BF = bainResult[["fit"]]$BF.c[i], PMP1 = bainResult[["fit"]]$PMPa[i], PMP2 = bainResult[["fit"]]$PMPb[i])
       table$addRows(row)
@@ -861,8 +862,8 @@
     for (variable in options[["variables"]]) {
       bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable) 
       if(isTryError(bainResult)){ 
-        table$addRows(data.frame(v = variable), rowNames = variable)
-        table$addFootnote(message = gettextf("Results not computed: %s", jaspBase::.extractErrorMessage(bainResult)), colNames = "v", rowNames = variable)
+        table$addRows(list(v = variable), rowNames = variable)
+        table$addFootnote(message = gettext("The results for this variable were not computed."), colNames = "v", rowNames = variable)
       } else {
         bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
         N <- bainSummary[["n"]]
@@ -894,8 +895,8 @@
                                  "equalBiggerSmaller"  = 5)
         bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, pair = pair, testType = testType)
         if(isTryError(bainResult)){
-          table$addRows(data.frame(v = currentPair), rowNames = currentPair)
-          table$addFootnote(message = gettextf("Results not computed: %s", jaspBase::.extractErrorMessage(bainResult)), colNames = "v", rowNames = currentPair)    
+          table$addRows(list(v = currentPair), rowNames = currentPair)
+          table$addFootnote(message = gettext("The results for this variable were not computed."), colNames = "v", rowNames = currentPair)
         } else {     
           bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
           N <- bainSummary[["n"]]
@@ -914,8 +915,8 @@
     for (variable in options[["variables"]]) {
       bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable)
       if(isTryError(bainResult)){
-        table$addRows(data.frame(v = variable), rowNames = variable)
-        table$addFootnote(message = gettextf("Results not computed: %s", jaspBase::.extractErrorMessage(bainResult)), colNames = "v", rowNames = variable)  
+        table$addRows(list(v = variable), rowNames = variable)
+        table$addFootnote(message = gettext("The results for this variable were not computed."), colNames = "v", rowNames = variable) 
       } else {   
         bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])   
         N <- bainSummary[["n"]]
@@ -1040,7 +1041,16 @@
     if (!ready || bainContainer$getError()  || (type == "sem" && options[["model"]] == ""))
       return()
     bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)
-    plot$plotObject <- .suppressGrDevice(.plotModelProbabilitiesRegression(bainResult))
+    if(is.null(bainResult)){
+      plot$setError(gettext("Plotting not possible: the results could not be computed."))
+    } else {
+      p <- try({
+        plot$plotObject <- .suppressGrDevice(.plotModelProbabilitiesRegression(bainResult))
+      })
+      if(isTryError(p)){
+        plot$setError(gettextf("Plotting not possible: %1$s", jaspBase::.extractErrorMessage(p)))
+      }
+    }   
   }
 }
 
@@ -1075,7 +1085,7 @@
         if(isTryError(bainResult)){
           container[[variable]] <- createJaspPlot(plot=NULL, title = variable)
           container[[variable]]$dependOn(optionContainsValue=list("variables" = variable))
-          container[[variable]]$setError(gettextf("Results not computed: %1$s", jaspBase::.extractErrorMessage(bainAnalysis)))
+          container[[variable]]$setError(gettext("Plotting not possible: the results for this variable were not computed."))
           
         } else {
           
@@ -1134,7 +1144,7 @@
         if(isTryError(bainResult)){ 
           container[[currentPair]] <- createJaspPlot(plot = NULL, title = currentPair)
           container[[currentPair]]$dependOn(optionContainsValue = list("variables" = currentPair))
-          container[[currentPair]]$setError(.extractErrorMessage(bainAnalysis))
+          container[[currentPair]]$setError(gettext("Plotting not possible: the results for this variable were not computed."))
           
         } else {
           
