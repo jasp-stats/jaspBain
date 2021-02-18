@@ -52,7 +52,7 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
 }
 
 .bainSemGetUsedVars <- function(syntax, availablevars, decode = FALSE) {
-  if(decode){
+  if (decode) {
     vv <- decodeColNames(availablevars)
   } else {
     vv <- availablevars
@@ -94,10 +94,10 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
 
 .bainSemPathDiagram <- function(dataset, options, bainContainer, ready, jaspResults, position) {
   
-  if(!is.null(bainContainer[["pathDiagram"]]) || !options[["pathDiagram"]])
+  if (!is.null(bainContainer[["pathDiagram"]]) || !options[["pathDiagram"]])
     return()
   
-  if(options[["fixedFactors"]] == ""){
+  if (options[["fixedFactors"]] == "") {
     plot <- createJaspPlot(title = gettext("Path Diagram"), width = 600, height = 400)
     plot$dependOn(options = c("pathDiagram", "seed", "pathDiagramEstimates", "pathDiagramLegend"))
     bainContainer[["pathDiagram"]] <- plot
@@ -106,13 +106,13 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
     bainContainer[["pathDiagram"]] <- container
     container$dependOn(options = c("pathDiagram", "seed", "pathDiagramEstimates", "pathDiagramLegend"))
     groups <- levels(as.factor(dataset[, encodeColNames(options[["fixedFactors"]])]))
-    for(i in 1:length(groups)){
+    for(i in 1:length(groups)) {
       plot <- createJaspPlot(title = gettextf("Group: %1$s", groups[i]), width = 600, height = 400)
       container[[paste0("pathDiagram", groups[i])]] <- plot
     }
   }
   
-  if(!ready || is.null(bainContainer[["lavaanResult"]]))
+  if (!ready || is.null(bainContainer[["lavaanResult"]]))
     return()
   
   labels <- ifelse(options[["pathDiagramEstimates"]], "par", "name")
@@ -143,13 +143,13 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
     ))
   })
   
-  if(isTryError(error)){
+  if (isTryError(error)) {
     plot$setError(gettextf("An error occurred while creating this plot:<br>%1$s.", jaspBase::.extractErrorMessage(error)))
   } else {
-    if(options[["fixedFactors"]] == ""){
+    if (options[["fixedFactors"]] == "") {
       plot$plotObject <- pp
     } else {
-      for(i in 1:length(groups)){
+      for(i in 1:length(groups)) {
         container[[paste0("pathDiagram", groups[i])]]$plotObject <- pp[[i]]
       }
     }

@@ -28,7 +28,7 @@
 }
 
 # Read the data set
-.bainReadDataset <- function(options, type, dataset){
+.bainReadDataset <- function(options, type, dataset) {
   
   numerics <- switch(type,
                      "onesampleTTest" = options[["variables"]],
@@ -50,13 +50,13 @@
   factors <- factors[factors != ""]
   vars <- c(numerics, factors)
   
-  if(type != "sem"){
+  if (type != "sem") {
     if (is.null(dataset)) {
       trydata	<- .readDataSetToEnd(columns.as.numeric = numerics, columns.as.factor = factors)
       missing	<- names(which(apply(trydata, 2, function(x) { any(is.na(x))} )))
       dataset	<- .readDataSetToEnd(columns.as.numeric = numerics, columns.as.factor = factors, exclude.na.listwise = vars)
-      if((type == "anova" || type == "ancova") && options[["fixedFactors"]] != ""){
-        if(any(grepl(pattern = " ", x = levels(dataset[, options[["fixedFactors"]] ])))) {
+      if ((type == "anova" || type == "ancova") && options[["fixedFactors"]] != "") {
+        if (any(grepl(pattern = " ", x = levels(dataset[, options[["fixedFactors"]] ])))) {
           jaspBase:::.quitAnalysis(gettext("Bain does not accept factor levels that contain spaces. Please remove the spaces from your factor levels to continue."))
         }
       }
@@ -80,7 +80,7 @@
 ##################
 
 # Check if current options allow for analysis
-.bainOptionsReady <- function(options, type, dataset = NULL){
+.bainOptionsReady <- function(options, type, dataset = NULL) {
   ready <- switch(type,
                   "independentTTest" = length(options[["variables"]][options[["variables"]] != ""] > 0) && options[["groupingVariable"]] != "",
                   "pairedTTest" = !is.null(unlist(options[["pairs"]])),
@@ -93,12 +93,12 @@
 }
 
 # Check if current data allow for analysis
-.bainDataReady <- function(dataset, options, type){
+.bainDataReady <- function(dataset, options, type) {
   
-  if(type == "independentTTest"){
+  if (type == "independentTTest") {
     factors <- options[["groupingVariable"]]
     factors <- factors[factors != ""]
-    if(length(factors) > 0)
+    if (length(factors) > 0)
       .hasErrors(dataset, type = "factorLevels",
                  factorLevels.target = factors, factorLevels.amount = "!= 2",
                  exitAnalysisIfErrors = TRUE)
@@ -114,7 +114,7 @@
                      "sem" = NULL)
   numerics <- numerics[numerics != ""]
   
-  if(length(numerics) > 0)
+  if (length(numerics) > 0)
     .hasErrors(dataset, type = c("infinity", "variance", "observations"),
                all.target = numerics, observations.amount = "< 3",
                exitAnalysisIfErrors = TRUE)
@@ -125,7 +125,7 @@
 ############################
 
 # Call to bain for 't.test' objects (Welch t-test, Paired t-test, One sample t-test)
-.bainTTestRaw <- function(options, x, y = NULL, nu = 0, type = 1, paired = FALSE){
+.bainTTestRaw <- function(options, x, y = NULL, nu = 0, type = 1, paired = FALSE) {
   
   fraction <- options[["fraction"]]
   
@@ -164,7 +164,7 @@
 }
 
 # Call to bain for 'lm' objects (ANOVA, ANCOVA, Regression)
-.bainRegressionRaw <- function(dataset, options, type){
+.bainRegressionRaw <- function(dataset, options, type) {
   
   dependent <- options[["dependent"]]
   fraction <- options[["fraction"]] # This has to be an object otherwise bain does not like it
@@ -174,18 +174,18 @@
   if (options[["model"]] != "")
     hypothesis <- encodeColNames(.bainCleanModelInput(options[["model"]])) 
   
-  if(type == "regression"){ 
+  if (type == "regression") { 
     
     ncov <- length(options[["covariates"]])
     covariates <- paste0(options[["covariates"]], collapse = "+")
     formula <- as.formula(paste0(dependent, "~", covariates))
     
-  } else if(type == "anova" || type == "ancova"){
+  } else if (type == "anova" || type == "ancova") {
     
     grouping <- options[["fixedFactors"]]
     dataset[, options[["fixedFactors"]]] <- as.factor(dataset[, options[["fixedFactors"]]])
     
-    if(type == "anova"){
+    if (type == "anova") {
       formula <- as.formula(paste0(dependent, "~", grouping, "-1"))
     } else {
       ncov <- length(options[["covariates"]])
@@ -194,7 +194,7 @@
     }
   }
   
-  if(type == "regression"){
+  if (type == "regression") {
     # I cannot find out why bain won't work in regression with stats::lm(formula = formula, data = dataset)
     # Error: object of type 'closure' is not subsettable
     args <- list(formula = as.formula(paste0(dependent, "~", covariates)), data = dataset)
@@ -203,12 +203,12 @@
     fit <- stats::lm(formula = formula, data = dataset)
   }
   
-  if(is.null(hypothesis)){
-    if(type == "regression"){
+  if (is.null(hypothesis)) {
+    if (type == "regression") {
       hypothesis <- paste0(paste0(names(stats::coef(fit))[-1], "=0"), collapse = " & ")
-    } else if(type == "anova"){
+    } else if (type == "anova") {
       hypothesis <- paste0(names(stats::coef(fit)), collapse = "=")		  
-    } else if(type == "ancova"){
+    } else if (type == "ancova") {
       hypothesis <- names(stats::coef(fit))
       hypothesis <- hypothesis[1:(length(hypothesis) - ncov)]
       hypothesis <- paste0(hypothesis, collapse = "=")		  
@@ -220,21 +220,21 @@
 }
 
 # Call to bain for 'lavaan' objects (SEM)
-.bainSemRaw <- function(dataset, options, bainContainer, ready){
+.bainSemRaw <- function(dataset, options, bainContainer, ready) {
   
   fraction <- options[["fraction"]] # This has to be an object otherwise bain does not like it
   standardized <- options[["standardized"]]
   grouping <- NULL
-  if(options[["fixedFactors"]] != ""){
+  if (options[["fixedFactors"]] != "") {
     grouping <- encodeColNames(options[["fixedFactors"]])
     dataset[, grouping] <- as.factor(dataset[, grouping])
   }
   
-  if(!is.null(bainContainer[["lavaanResult"]])){
+  if (!is.null(bainContainer[["lavaanResult"]])) {
     
     fit <- bainContainer[["lavaanResult"]]$object
     
-  } else if(ready){
+  } else if (ready) {
     
     syntax <- .bainSemTranslateModel(options[["syntax"]], dataset)
     
@@ -242,7 +242,7 @@
       fit <- lavaan::sem(model = syntax, data = dataset, group = grouping, std.lv = (options[["factorStandardisation"]] == "std.lv"))
     })
     
-    if(isTryError(error)){
+    if (isTryError(error)) {
       bainContainer$setError(gettextf("An error occurred in the call to lavaan: %1$s. Please double check if the variables in lavaan syntax match the variables in your data set.", jaspBase::.extractErrorMessage(error)))
       return()
     }
@@ -251,12 +251,12 @@
     bainContainer[["lavaanResult"]]$dependOn(options = "syntax")
   }
   
-  if(options[["model"]] == ""){
+  if (options[["model"]] == "") {
     # We need to construct a 'default' hypothesis (the results of which will not be shown to the user)
     rhs <- switch(options[["factorStandardisation"]], # If the first loading is standardized the second is taken
                   "std.lv" = fit@ParTable$rhs[1],
                   "auto.fix.first" = fit@ParTable$rhs[2])
-    if(options[["fixedFactors"]] != "")
+    if (options[["fixedFactors"]] != "")
       rhs <- paste0(rhs, ".", levels(dataset[, encodeColNames(options[["fixedFactors"]])])[1])
     hypothesis <- paste0(fit@ParTable$lhs[1], fit@ParTable$op[1], rhs, "= 0")
   } else {
@@ -271,33 +271,33 @@
 ### EXSTRACTING AND STORING RESULTS ########
 ############################################
 
-.bainGetGeneralTestResults <- function(dataset, options, bainContainer, ready, type, variable = NULL, pair = NULL, testType = NULL){
+.bainGetGeneralTestResults <- function(dataset, options, bainContainer, ready, type, variable = NULL, pair = NULL, testType = NULL) {
   
   set.seed(options[["seed"]])
   
-  if(type %in% c("onesampleTTest", "independentTTest")){
+  if (type %in% c("onesampleTTest", "independentTTest")) {
     result <- .bainGetTTestResults(dataset, options, bainContainer, ready, type, variable, testType)
-  } else if(type == "pairedTTest"){
+  } else if (type == "pairedTTest") {
     result <- .bainGetPairedTTestResults(dataset, options, bainContainer, ready, type, pair, testType) 
-  } else if (type %in% c("anova", "ancova", "regression", "sem")){
+  } else if (type %in% c("anova", "ancova", "regression", "sem")) {
     result <- .bainGetRegressionResults(dataset, options, bainContainer, ready, type)
   }
   
   return(result) 
 }
 
-.bainGetTTestResults <- function(dataset, options, bainContainer, ready, type, variable, testType){
+.bainGetTTestResults <- function(dataset, options, bainContainer, ready, type, variable, testType) {
   
-  if(!is.null(bainContainer[[variable]]))
+  if (!is.null(bainContainer[[variable]]))
     return(bainContainer[[variable]]$object)
   
   variableData <- dataset[[variable]]
   testValue <- format(options[["testValue"]], scientific = FALSE)  
   
   p <- try({
-    if(type == "onesampleTTest"){
+    if (type == "onesampleTTest") {
       bainResult <- .bainTTestRaw(options, x = variableData, nu = testValue, type = testType)
-    } else if(type == "independentTTest"){
+    } else if (type == "independentTTest") {
       levels <- base::levels(dataset[[options[["groupingVariable"]]]])
       if (length(levels) != 2) {
         g1 <- "1"
@@ -322,11 +322,11 @@
   return(bainContainer[[variable]]$object)
 }
 
-.bainGetPairedTTestResults <- function(dataset, options, bainContainer, ready, type, pair, testType){
+.bainGetPairedTTestResults <- function(dataset, options, bainContainer, ready, type, pair, testType) {
   
   currentPair <- paste(pair, collapse = " - ")
   
-  if(!is.null(bainContainer[[currentPair]]))
+  if (!is.null(bainContainer[[currentPair]]))
     return(bainContainer[[currentPair]]$object)
   
   if (pair[[2]] != "" && pair[[1]] != pair[[2]] && pair[[1]] != "") {
@@ -339,7 +339,7 @@
       bainResult <- .bainTTestRaw(options, x = c1, y = c2, type = testType, paired = TRUE)
     })
     
-    if(isTryError(p)){
+    if (isTryError(p)) {
       return(p)
     }
     
@@ -349,14 +349,14 @@
   }
 }
 
-.bainGetRegressionResults <- function(dataset, options, bainContainer, ready, type){
+.bainGetRegressionResults <- function(dataset, options, bainContainer, ready, type) {
   
-  if(!is.null(bainContainer[["bainResult"]])){
+  if (!is.null(bainContainer[["bainResult"]])) {
     return(bainContainer[["bainResult"]]$object)
     
-  } else if (ready){
+  } else if (ready) {
     
-    if(type == "anova" || type == "ancova"){
+    if (type == "anova" || type == "ancova") {
       groupCol <- dataset[ , options[["fixedFactors"]]]
       varLevels <- levels(groupCol)
       if (length(varLevels) > 15) {
@@ -366,7 +366,7 @@
     }
     
     p <- try({
-      if(type == "sem"){
+      if (type == "sem") {
         bainResult <- .bainSemRaw(dataset, options, bainContainer, ready)
       } else {
         bainResult <- .bainRegressionRaw(dataset, options, type)
@@ -383,7 +383,7 @@
   }
 }
 
-.bainExtractTableValuesFromObject <- function(options, bainResult, testType){
+.bainExtractTableValuesFromObject <- function(options, bainResult, testType) {
   
   if (testType == 1) {
     BF_0u <- bainResult$fit$BF[1]
@@ -413,7 +413,7 @@
     PMP_0 <- bainResult$fit$PMPa[1]
     PMP_1 <- bainResult$fit$PMPa[2]
     PMP_2 <- bainResult$fit$PMPa[3]
-    if (options$bayesFactorType == "BF10"){
+    if (options$bayesFactorType == "BF10") {
       BF_01 <- 1/BF_01
       BF_02 <- 1/BF_02
       BF_12 <- 1/BF_12
@@ -452,7 +452,7 @@
       legendTable$addRows(row)
     }
   } else {
-    if(type == "regression"){
+    if (type == "regression") {
       variables <- options[["covariates"]]
       if (length(variables) == 0) {
         row <- list(number = gettext("H1"), hypothesis = "")
@@ -461,14 +461,14 @@
       } else {
         row <- list(number = gettext("H1"), hypothesis = paste0(paste0(variables, " = 0"), collapse = " & "))
       }
-    } else if(type == "anova" || type == "ancova"){
+    } else if (type == "anova" || type == "ancova") {
       if (options[["fixedFactors"]] != "") {
         string <- paste(paste(options[["fixedFactors"]], levels(dataset[, options[["fixedFactors"]]]), sep = ""), collapse = " = ")
         row <- list(number = gettext("H1"), hypothesis = string)
       } else {
         row <- list(number = gettext("H1"), hypothesis = "")
       }
-    } else if(type == "sem"){
+    } else if (type == "sem") {
       row <- list(number = gettext("H1"), hypothesis = "")
     }
     legendTable$addRows(row)
@@ -500,7 +500,7 @@
   table <- createJaspTable(title)
   table$dependOn(options = deps)
   table$position <- position
-  if(type %in% c("independentTTest", "pairedTTest", "onesampleTTest")){
+  if (type %in% c("independentTTest", "pairedTTest", "onesampleTTest")) {
     bf.type <- options[["bayesFactorType"]]
     BFH1H0 <- FALSE
     if (options$hypothesis == "equalBiggerSmaller") {
@@ -523,28 +523,28 @@
       table$addColumnInfo(name="BF[type2]",         type="number",                title=gettext("BF"))
       table$addColumnInfo(name="pmp[type2]",        type="number", format="dp:3", title=gettext("Posterior probability"))
     }
-    if(type == "onesampleTTest")
+    if (type == "onesampleTTest")
       message <- base::switch(options[["hypothesis"]],
                               "equalNotEqual"     = gettextf("The alternative hypothesis H1 specifies that the mean is unequal to %s. The posterior probabilities are based on equal prior probabilities.", options[["testValue"]]),
                               "equalBigger"       = gettextf("The alternative hypothesis H1 specifies that the mean is bigger than %s. The posterior probabilities are based on equal prior probabilities.", options[["testValue"]]),
                               "equalSmaller"      = gettextf("The alternative hypothesis H1 specifies that the mean is smaller than %s. The posterior probabilities are based on equal prior probabilities.", options[["testValue"]]),
                               "biggerSmaller"     = gettextf("The hypothesis H1 specifies that the mean is bigger than %1$s and the hypothesis H2 specifies that the mean is smaller than %1$s. The posterior probabilities are based on equal prior probabilities.", options[["testValue"]]),
                               "equalBiggerSmaller"= gettextf("The null hypothesis H0 with test value %1$s is tested against the other hypotheses. H1 states that the mean is bigger than %1$s and H2 states that the mean is smaller than %1$s. The posterior probabilities are based on equal prior probabilities.", options[["testValue"]]))
-    if(type == "independentTTest")
+    if (type == "independentTTest")
       message <- base::switch(options[["hypothesis"]],
                               "equalNotEqual"     = gettext("The alternative hypothesis H1 specifies that the mean of group 1 is unequal to the mean of group 2. The posterior probabilities are based on equal prior probabilities."),
                               "equalSmaller"      = gettext("The alternative hypothesis H1 specifies that the mean of group 1 is smaller than the mean of group 2. The posterior probabilities are based on equal prior probabilities."),
                               "equalBigger"       = gettext("The alternative hypothesis H1 specifies that mean of group 1 is bigger than the mean of group 2. The posterior probabilities are based on equal prior probabilities."),
                               "biggerSmaller"     = gettext("The hypothesis H1 specifies that the mean of group 1 is bigger than the mean of group 2. The hypothesis H2 specifies that the mean in group 1 is smaller than the mean in group 2. The posterior probabilities are based on equal prior probabilities."),
                               "equalBiggerSmaller"= gettext("The null hypothesis H0 (equal group means) is tested against H1 (first mean larger than second mean) and H2 (first mean smaller than second mean). The posterior probabilities are based on equal prior probabilities."))
-    if(type == "pairedTTest")
+    if (type == "pairedTTest")
       message <- base::switch(options[["hypothesis"]],
                               "equalNotEqual"       = gettext("The alternative hypothesis H1 specifies that the mean of variable 1 is unequal to the mean of variable 2. The posterior probabilities are based on equal prior probabilities."),
                               "equalBigger"         = gettext("The alternative hypothesis H1 specifies that the mean of variable 1 is bigger than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."),
                               "equalSmaller"        = gettext("The alternative hypothesis H1 specifies that the mean of variable 1 is smaller than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."),
                               "biggerSmaller"       = gettext("The hypothesis H1 specifies that the mean of variable 1 is bigger than the mean of variable 2, while the hypothesis H2 specifies that it is smaller. The posterior probabilities are based on equal prior probabilities."),
                               "equalBiggerSmaller"  = gettext("The null hypothesis H0 with equal means is tested against the other hypotheses. The alternative hypothesis H1 states that the mean of variable 1 is bigger than the mean of variable 2. The alternative hypothesis H2 states that the mean of variable 1 is smaller than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."))
-  } else if(type %in% c("anova", "ancova", "regression", "sem")){
+  } else if (type %in% c("anova", "ancova", "regression", "sem")) {
     table$addColumnInfo(name = "hypotheses", type = "string", title = "")
     table$addColumnInfo(name = "BFu",        type = "number", title = gettext("BF.u"))
     table$addColumnInfo(name = "BF",         type = "number", title = gettext("BF.c"))
@@ -562,7 +562,7 @@
   if (!ready || (type == "sem" && options[["model"]] == ""))
     return()
   
-  if(type %in% c("onesampleTTest", "independentTTest")){
+  if (type %in% c("onesampleTTest", "independentTTest")) {
     
     testType <- base::switch(options[["hypothesis"]],
                              "equalNotEqual"       = 1,
@@ -578,7 +578,7 @@
       
       bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable, testType = testType)
       
-      if (isTryError(bainResult)){
+      if (isTryError(bainResult)) {
         table$addRows(list(Variable = variable), rowNames = variable)
         table$addFootnote(message = gettextf("Results not computed: %1$s.", jaspBase::.extractErrorMessage(bainResult)), colNames = "Variable", rowNames = variable)
         progressbarTick()
@@ -631,7 +631,7 @@
       table$addRows(row, rowNames = variable)
       progressbarTick()
     }
-  } else if(type == "pairedTTest"){
+  } else if (type == "pairedTTest") {
     testType <- base::switch(options[["hypothesis"]],
                              "equalNotEqual"       = 1,
                              "equalBigger"         = 2,
@@ -643,11 +643,11 @@
     
     startProgressbar(length(options[["pairs"]]))
     
-    for (pair in options[["pairs"]]){
+    for (pair in options[["pairs"]]) {
       
       currentPair <- paste(pair, collapse=" - ")
       
-      if(pair[[1]] != "" || pair[[2]] != ""){
+      if (pair[[1]] != "" || pair[[2]] != "") {
         
         bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, pair = pair, testType = testType)
         
@@ -741,36 +741,36 @@
       }
       table$addRows(row, rowNames = currentPair)
       
-      if(pair[[1]] == pair[[2]]){
+      if (pair[[1]] == pair[[2]]) {
         table$addFootnote(message=gettext("Results not computed: The variables in this pair are the same."), colNames="Variable", rowNames=currentPair)
       }
-      if(pair[[1]] == "" || pair[[2]] == ""){
+      if (pair[[1]] == "" || pair[[2]] == "") {
         table$addFootnote(message=gettext("Results not computed: The pair is incomplete."), colNames="Variable", rowNames=currentPair)
       }
       progressbarTick()
     }
-  } else if (type %in% c("anova", "ancova", "regression", "sem")){
-	if(bainContainer$getError())
+  } else if (type %in% c("anova", "ancova", "regression", "sem")) {
+	if (bainContainer$getError())
 		return()
     variables <- switch(type,
                         "anova" = c(options[["dependent"]], options[["fixedFactors"]]),
                         "ancova" = c(options[["dependent"]], options[["fixedFactors"]], unlist(options[["covariates"]])),
                         "regression" = c(options[["dependent"]], unlist(options[["covariates"]])),
                         "sem" = .bainSemGetUsedVars(.bainSemTranslateModel(options[["syntax"]], dataset), colnames(dataset)))
-    if (any(variables %in% missing)){
+    if (any(variables %in% missing)) {
       i <- which(variables %in% missing)
-      if (length(i) > 1){
-        if(type == "regression" || type == "ancova" || type == "sem"){
+      if (length(i) > 1) {
+        if (type == "regression" || type == "ancova" || type == "sem") {
           table$addFootnote(message = gettextf("The variables %1$s contain missing values, the rows containing these values are removed in the analysis.", paste(variables[i], collapse = ", ")), symbol=gettext("<b>Warning.</b>"))
-        } else if(type == "anova"){
+        } else if (type == "anova") {
           table$addFootnote(message= gettextf("The variables %1$s and %2$s contain missing values, the rows containing these values are removed in the analysis.", variables[1], variables[2]), symbol=gettext("<b>Warning.</b>"))
         }
-      } else if (length(i) == 1){
+      } else if (length(i) == 1) {
         table$addFootnote(message = gettextf("The variable %1$s contains missing values, the rows containing these values are removed in the analysis.", variables[i]), symbol=gettext("<b>Warning.</b>"))
       }
     }
     bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)  
-    for (i in 1:(length(bainResult[["fit"]]$BF)-1)){
+    for (i in 1:(length(bainResult[["fit"]]$BF)-1)) {
       row <- list(hypotheses = gettextf("H%1$i", i), BFu = bainResult[["fit"]]$BF.u[i], BF = bainResult[["fit"]]$BF.c[i], PMP1 = bainResult[["fit"]]$PMPa[i], PMP2 = bainResult[["fit"]]$PMPb[i])
       table$addRows(row)
     }
@@ -815,14 +815,14 @@
 }
 
 # Create the descriptive statistics table
-.bainDescriptivesTable <- function(dataset, options, bainContainer, ready, type, position){
+.bainDescriptivesTable <- function(dataset, options, bainContainer, ready, type, position) {
   
   if (!is.null(bainContainer[["descriptivesTable"]]) || !options[["descriptives"]]) 
     return()
   
-  if(type == "ancova"){
+  if (type == "ancova") {
     title <- gettext("Coefficients for Groups plus Covariates")
-  } else if(type == "regression" || type == "sem"){
+  } else if (type == "regression" || type == "sem") {
     title <- gettext("Coefficients for Parameters")
   } else {
     title <- gettext("Descriptive Statistics")
@@ -833,23 +833,23 @@
   table$position <- position
   overTitle <- gettextf("%.0f%% Credible Interval", 100 * options[["credibleInterval"]])
   table$addColumnInfo(name = "v",                title = "",                 type = "string")
-  if(type == "independentTTest")
+  if (type == "independentTTest")
     table$addColumnInfo(name = "group",          title = gettext("Group"),   type = "string")
   table$addColumnInfo(name = "N",                title = gettext("N"),       type = "integer")
   table$addColumnInfo(name = "mean",             title = meanTitle,          type = "number")
-  if(type %in% c("independentTTest", "pairedTTest", "onesampleTTest", "anova"))
+  if (type %in% c("independentTTest", "pairedTTest", "onesampleTTest", "anova"))
     table$addColumnInfo(name = "sd",             title = gettext("SD"),      type = "number")
   table$addColumnInfo(name = "se",               title = gettext("SE"),      type = "number")
   table$addColumnInfo(name = "lowerCI",          title = gettext("Lower"),   type = "number", overtitle = overTitle)
   table$addColumnInfo(name = "upperCI",          title = gettext("Upper"),   type = "number", overtitle = overTitle)
   bainContainer[["descriptivesTable"]] <- table
-  if(type == "regression" || type == "sem")
+  if (type == "regression" || type == "sem")
     table$addFootnote(message = ifelse(options[["standardized"]], yes = gettext("The displayed coefficients are standardized."), no = gettext("The displayed coefficients are unstandardized.")))
   
   if (!ready || bainContainer$getError())
     return()
   
-  if(type == "independentTTest"){
+  if (type == "independentTTest") {
     table$setExpectedSize(length(options[["variables"]]) * 2)
     levels <- base::levels(dataset[[ options[["groupingVariable"]] ]])
     if (length(levels) != 2) {
@@ -861,7 +861,7 @@
     }
     for (variable in options[["variables"]]) {
       bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable) 
-      if(isTryError(bainResult)){ 
+      if (isTryError(bainResult)) { 
         table$addRows(list(v = variable), rowNames = variable)
         table$addFootnote(message = gettext("The results for this variable were not computed."), colNames = "v", rowNames = variable)
       } else {
@@ -878,7 +878,7 @@
         table$addRows(row) 
       }
     }
-  } else if(type == "pairedTTest"){
+  } else if (type == "pairedTTest") {
     table$setExpectedSize(length(options[["pairs"]]))
     for (pair in options[["pairs"]]) {
       if (pair[[2]] != "" && pair[[1]] != pair[[2]]) {
@@ -894,7 +894,7 @@
                                  "biggerSmaller"       = 4,
                                  "equalBiggerSmaller"  = 5)
         bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, pair = pair, testType = testType)
-        if(isTryError(bainResult)){
+        if (isTryError(bainResult)) {
           table$addRows(list(v = currentPair), rowNames = currentPair)
           table$addFootnote(message = gettext("The results for this variable were not computed."), colNames = "v", rowNames = currentPair)
         } else {     
@@ -910,11 +910,11 @@
         }
       }
     }
-  } else if(type == "onesampleTTest"){
+  } else if (type == "onesampleTTest") {
     table$setExpectedSize(length(options[["variables"]]))
     for (variable in options[["variables"]]) {
       bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable)
-      if(isTryError(bainResult)){
+      if (isTryError(bainResult)) {
         table$addRows(list(v = variable), rowNames = variable)
         table$addFootnote(message = gettext("The results for this variable were not computed."), colNames = "v", rowNames = variable) 
       } else {   
@@ -929,7 +929,7 @@
         table$addRows(row)
       }
     }
-  } else if(type %in% c("anova", "ancova")){
+  } else if (type %in% c("anova", "ancova")) {
     groupCol <- dataset[ , options[["fixedFactors"]]]
     varLevels <- levels(groupCol)
     bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)
@@ -942,14 +942,14 @@
     CiUpper  <- bainSummary[["ub"]]
     se <- sqrt(sigma)	
     row <- data.frame(v = variable, N = N, mean = mu, se = se, lowerCI = CiLower, upperCI = CiUpper)
-    if(type == "anova"){
+    if (type == "anova") {
       sd <- aggregate(dataset[, options[["dependent"]]], list(dataset[, options[["fixedFactors"]]]), sd)[, 2]
       row <- cbind(row, sd = sd)
     }
     table$addRows(row)
-  } else if(type %in% c("regression", "sem")){
+  } else if (type %in% c("regression", "sem")) {
     bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)
-    if(is.null(bainResult))
+    if (is.null(bainResult))
       return()
     bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
     groups <- bainSummary[["Parameter"]]
@@ -968,12 +968,12 @@
 ##################
 
 # Create the posterior probability plots
-.bainPosteriorProbabilityPlot <- function(dataset, options, bainContainer, ready, type, position){
+.bainPosteriorProbabilityPlot <- function(dataset, options, bainContainer, ready, type, position) {
   
   if (!is.null(bainContainer[["posteriorProbabilityPlot"]]) || !options[["bayesFactorPlot"]]) 
     return()
   
-  if(type %in% c("independentTTest", "pairedTTest", "onesampleTTest")){
+  if (type %in% c("independentTTest", "pairedTTest", "onesampleTTest")) {
     container <- createJaspContainer(gettext("Posterior Probabilities"))
     container$dependOn(options = c("variables", "bayesFactorPlot", "hypothesis", "pairs"))
     container$position <- position
@@ -986,39 +986,39 @@
                                  "equalSmaller"	= 3,
                                  "biggerSmaller" = 4,
                                  "equalBiggerSmaller" = 5)
-    if(type == "onesampleTTest" || type == "independentTTest"){  
-      for(variable in options[["variables"]]){     
-        if (is.null(container[[variable]])){       
+    if (type == "onesampleTTest" || type == "independentTTest") {  
+      for(variable in options[["variables"]]) {     
+        if (is.null(container[[variable]])) {       
           bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable)
           plot <- createJaspPlot(plot = NULL, title = variable, height = 300, width = 400)
           plot$dependOn(optionContainsValue = list("variables" = variable))
-          if(isTryError(bainResult)){
+          if (isTryError(bainResult)) {
             plot$setError(gettext("Plotting not possible: the results for this variable were not computed."))
           } else {
             p <- try({
               plot$plotObject <- .plotModelProbabilitiesTTests(bainResult, type = analysisType)
             })
-            if(isTryError(p)){
+            if (isTryError(p)) {
               plot$setError(gettextf("Plotting not possible: %1$s", jaspBase::.extractErrorMessage(p)))
             }
           }    
           container[[variable]] <- plot
         }
       } 
-    } else if (type == "pairedTTest"){
-      for(pair in options[["pairs"]]){   
+    } else if (type == "pairedTTest") {
+      for(pair in options[["pairs"]]) {   
         currentPair <- paste(pair, collapse=" - ")
-        if (is.null(container[[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]){
+        if (is.null(container[[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]) {
           bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, pair = pair)
           plot <- createJaspPlot(plot = NULL, title = currentPair, height = 300, width = 400)
           plot$dependOn(optionContainsValue = list("pairs" = pair))
-          if(isTryError(bainResult)){
+          if (isTryError(bainResult)) {
             plot$setError(gettext("Plotting not possible: the results for this variable were not computed."))
           } else {
             p <- try({
               plot$plotObject <- .plotModelProbabilitiesTTests(bainResult, type = analysisType)
             })
-            if(isTryError(p)){
+            if (isTryError(p)) {
               plot$setError(gettextf("Plotting not possible: %1$s", jaspBase::.extractErrorMessage(p)))
             }
           }    
@@ -1026,8 +1026,8 @@
         }
       }
     }
-  } else if(type %in% c("anova", "ancova", "regression", "sem")){
-    if(options[["model"]] == ""){
+  } else if (type %in% c("anova", "ancova", "regression", "sem")) {
+    if (options[["model"]] == "") {
       height <- 300
       width <- 400
     } else {
@@ -1041,13 +1041,13 @@
     if (!ready || bainContainer$getError()  || (type == "sem" && options[["model"]] == ""))
       return()
     bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)
-    if(is.null(bainResult)){
+    if (is.null(bainResult)) {
       plot$setError(gettext("Plotting not possible: the results could not be computed."))
     } else {
       p <- try({
         plot$plotObject <- .suppressGrDevice(.plotModelProbabilitiesRegression(bainResult))
       })
-      if(isTryError(p)){
+      if (isTryError(p)) {
         plot$setError(gettextf("Plotting not possible: %1$s", jaspBase::.extractErrorMessage(p)))
       }
     }   
@@ -1055,12 +1055,12 @@
 }
 
 # Create the descriptive plot(s)
-.bainDescriptivePlots <- function(dataset, options, bainContainer, ready, type, position){
+.bainDescriptivePlots <- function(dataset, options, bainContainer, ready, type, position) {
   
   if (!is.null(bainContainer[["descriptivesPlots"]]) || !options[["descriptivesPlot"]]) 
     return()
   
-  if(type %in% c("independentTTest", "pairedTTest", "onesampleTTest")){
+  if (type %in% c("independentTTest", "pairedTTest", "onesampleTTest")) {
     container <- createJaspContainer(gettext("Descriptive Plots"))
     container$dependOn(options = c("variables", "pairs", "descriptivesPlot", "credibleInterval"))
     container$position <- position
@@ -1075,21 +1075,21 @@
   if (!ready || bainContainer$getError() || (type == "sem" && options[["model"]] == ""))
     return()
   
-  if(type %in% c("independentTTest", "onesampleTTest")){
+  if (type %in% c("independentTTest", "onesampleTTest")) {
     
     for (variable in options[["variables"]]) {
       
-      if(is.null(bainContainer[["descriptivesPlots"]][[variable]])){  
+      if (is.null(bainContainer[["descriptivesPlots"]][[variable]])) {  
         
         bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable)
-        if(isTryError(bainResult)){
+        if (isTryError(bainResult)) {
           container[[variable]] <- createJaspPlot(plot=NULL, title = variable)
           container[[variable]]$dependOn(optionContainsValue=list("variables" = variable))
           container[[variable]]$setError(gettext("Plotting not possible: the results for this variable were not computed."))
           
         } else {
           
-          if(type == "onesampleTTest"){
+          if (type == "onesampleTTest") {
             
             bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
             N <- bainSummary[["n"]]
@@ -1108,7 +1108,7 @@
               ggplot2::scale_x_continuous(breaks = 0:2, labels = NULL)
             p <- jaspGraphs::themeJasp(p, sides = "l") + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())
             
-          } else if(type == "independentTTest"){
+          } else if (type == "independentTTest") {
             
             bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
             levels <- base::levels(dataset[[ options[["groupingVariable"]] ]])
@@ -1134,14 +1134,14 @@
       }
     }
     
-  } else if(type == "pairedTTest"){
+  } else if (type == "pairedTTest") {
     
     for (pair in options[["pairs"]]) {
       currentPair <- paste(pair, collapse =" - ")
       
-      if (is.null(bainContainer[["descriptivesPlots"]][[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]){   
+      if (is.null(bainContainer[["descriptivesPlots"]][[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]) {   
         bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, pair = pair)     
-        if(isTryError(bainResult)){ 
+        if (isTryError(bainResult)) { 
           container[[currentPair]] <- createJaspPlot(plot = NULL, title = currentPair)
           container[[currentPair]]$dependOn(optionContainsValue = list("variables" = currentPair))
           container[[currentPair]]$setError(gettext("Plotting not possible: the results for this variable were not computed."))
@@ -1170,14 +1170,14 @@
       }
     }
     
-  } else if(type %in% c("anova", "ancova")){
+  } else if (type %in% c("anova", "ancova")) {
     
     groupCol <- dataset[ , options[["fixedFactors"]]]
     varLevels <- levels(groupCol)
     bainResult <- bainContainer[["bainResult"]]$object
     bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
     
-    if(type == "ancova")
+    if (type == "ancova")
       bainSummary <- bainSummary[1:length(varLevels), ]
     
     variable <- bainSummary[["Parameter"]]
@@ -1201,18 +1201,18 @@
   }
 }
 
-.plotModelProbabilitiesTTests <- function(x, type){
+.plotModelProbabilitiesTTests <- function(x, type) {
   
-  if(type == 1 || type == 2 || type == 3){
+  if (type == 1 || type == 2 || type == 3) {
     labs <- c(gettext("H0"), gettext("H1"))
-  } else if(type == 4){
+  } else if (type == 4) {
     labs <- c(gettext("H1"), gettext("H2"))
-  } else if(type == 5){
+  } else if (type == 5) {
     labs <- c(gettext("H0"), gettext("H1"), gettext("H2"))
   }
   labels <- rev(labs)
   
-  if(type == 1){
+  if (type == 1) {
     values <- x$fit$PMPb
   } else {
     values <- na.omit(x$fit$PMPa)
@@ -1236,7 +1236,7 @@
   return(p)
 }
 
-.plotModelProbabilitiesRegression <- function(x){
+.plotModelProbabilitiesRegression <- function(x) {
   
   PMPa <- na.omit(x$fit$PMPa)
   PMPb <- x$fit$PMPb
