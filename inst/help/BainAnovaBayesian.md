@@ -1,13 +1,16 @@
 bain ANOVA
 ==========================
 
-bain (Bayesian informative hypotheses evaluation) ANOVA allows you to evaluate (informative) hypotheses using the Bayes factor. A simple example would be the Bayesian evaluation of H0: m1 = m2 = m3 versus H1: m1 > m2 > m3 versus Hu: no restrictions on the three means.
+bain (Bayesian informative hypotheses evaluation) ANOVA allows you to evaluate (informative) hypotheses using the Bayes factor. A simple example would be the Bayesian evaluation of H0: m1 = m2 = m3 versus H1: m1 > m2 > m3 versus Hu: no restrictions on the three means. Read Hoijtink, Mulder, van Lissa, and Gu (2019) for an introduction to bain. Bain has been thoroughly debugged, if nevertheless problems are detected they will be posted at https://informative-hypotheses.sites.uu.nl/software/bain/.
 
 ### Specification of the bain ANOVA
 
 - Choose the dependent variable from the variable list and move it to the Dependent Variable box. Note that, the name of the dependent variable has to start with a letter and may further consist of letters, numbers and _
 - Choose the factor from the variable list and move it to the Fixed Factors box. Note that, the factor name has to start with a letter and may further consist of letters, numbers and _ Note furthermore that, all groups have to be collected in ONE factor. If you have, for example, a factor with the levels young-old and a factor with the levels female-male, you have to create ONE new factor with the levels youngfemale, oldfemale, youngmale, oldmale. The levels are indicated by numbers or have names that start with a letter and may further consist of letters, numbers and _
 - Set the seed equal to an integer number to create a repeatable random number sequence. It is recommended to run analyses with two different seeds to ensure stability of the results.
+- The default value for fraction is equal to 1. It renders a Bayes factor that
+somewhat favors the null-hypothesis. If, additionally, values of 2 and 3 
+are used, you execute a so-called sensitivity analysis (see the tutorial by Hoijtink, Mulder, van Lissa, and Gu, 2019).
 - When you execute bain ANOVA for the first time tick both additional statistics and both plots. When you return to bain ANOVA you will know what each of these four options renders and you can tick only the options you need.
 - By default 95% credible intervals will be presented in the results. If desired the degree of belief (by default 95%) can be changed.
 - When you tick model constraints a box opens in which you can specify the hypotheses you want to evaluate. You need to adhere to the following specification rules:
@@ -16,7 +19,7 @@ bain (Bayesian informative hypotheses evaluation) ANOVA allows you to evaluate (
 2. The levels of the ONE factor are referred to as follows: `factorlevelname`. If, for example, there is a factor age with levels y, m, o. They are reffered to using `agey`, `agem`, and `ageo`, respectively.
 3. Linear combinations of parameters must be specified adhering to the following rules:
 - Each parameter name is used at most once.
-- Each parameter name may or may not be pre-multiplied with a number.
+- Each parameter name may or may not be pre-multiplied with a number. This number cannot (yet) start with a decimal point, that is, use 0.8 and not .8.
 - A constant may be added or subtracted from each parameter name.
 - A linear combination can also be a single number.
 
@@ -40,13 +43,16 @@ Hypotheses have to be compatible, non-redundant and possible. What these terms m
 
 ### Results obtained after running bain ANOVA
 
-- To be able to properly interpret the results of a bain ANOVA, you are required to read the TUTORIAL by Hoijtink, Mulder, van Lissa, and Gu (2018) that can be retrieved from the Psychological Methods website or from the bain website at https://informative-hypotheses.sites.uu.nl/software/bain/
-- If you want to understand the technical background of bain you should read Gu, Mulder, and Hoijtink (2017) and Hoijtink, Gu, and Mulder (2018) that can be retrieved from the British Journal of Mathematical and Statistical Psychology website or from the bain website at https://informative-hypotheses.sites.uu.nl/software/bain/
+- To be able to properly interpret the results of a bain ANOVA, you are required to read the tutorial by Hoijtink, Mulder, van Lissa, and Gu (2019) that can be retrieved from the Psychological Methods website or from the bain website at https://informative-hypotheses.sites.uu.nl/software/bain/
+- If you want to understand the technical background of bain you should read Gu, Mulder, and Hoijtink (2018) and Hoijtink, Gu, and Mulder (2019) that can be retrieved from the British Journal of Mathematical and Statistical Psychology website or from the bain website at https://informative-hypotheses.sites.uu.nl/software/bain/
 - Five pieces of results are obtained after running a Bayesian ANOVA:
 
-1. The table in which the Bayes facor of each hypothesis specified versus its complement (that is, not the hypothesis) is presented. This table also contains the posterior model probabilies of each hypothesis. Both for a set excluding and a set including the unconstrained hypothesis.
+1. The table in which the Bayes factor of each hypothesis specified versus the 
+unconstrained hypothesis and its complement (that is, not the hypothesis),
+respectively, is presented. This table also contains the posterior model probabilities of each hypothesis. Both for a set excluding and a set including the unconstrained hypothesis.
 2. The Bayes factor matrix in which the mutual Bayes factors of the hypotheses specified in the Model Constraints box are presented.
-3. A desriptives table containing for each group in the ANOVA the sample size, sample mean, sample standard deviation (sd), standard error (se) and 95% credible interval.
+3. A descriptives table containing for each group in the ANOVA the sample size, sample mean, sample standard deviation (sd), standard error (se) and 
+95% credible interval.
 4. A plot of the pmp's (excluding and including the unconstrained hypothesis) visually highlighting the support in the data for each hypothesis entertained.
 5. A plot of the sample means and their credible intervals.
 

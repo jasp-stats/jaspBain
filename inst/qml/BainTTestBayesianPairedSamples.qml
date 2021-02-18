@@ -15,53 +15,112 @@
 // License along with this program.  If not, see
 // <http://www.gnu.org/licenses/>.
 //
-import QtQuick 2.8
-import QtQuick.Layouts 1.3
-import JASP.Controls 1.0
+
+import QtQuick							2.8
+import QtQuick.Layouts					1.3
+import QtQuick.Controls 				2.12
+import JASP.Controls					1.0
+import JASP								1.0
 
 Form
 {
 	VariablesForm
 	{
-		preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
-		AvailableVariablesList { name: "allVariablesList" }
-		AssignedPairsVariablesList { name: "pairs"; title: qsTr("Pairs"); suggestedColumns: ["scale"] }
+		preferredHeight: 				jaspTheme.smallDefaultVariablesFormHeight
+
+		AvailableVariablesList 
+		{ 
+			name: 						"allVariablesList" 
+		}
+
+		AssignedPairsVariablesList 
+		{ 
+			name: 						"pairs"
+			title: 						qsTr("Pairs")
+			suggestedColumns: 			["scale"] 
+		}
 	}
 
 	ColumnLayout
 	{
 		RadioButtonGroup
 		{
-			title: qsTr("Hypothesis Test")
-			name: "hypothesis"
+			name: 						"hypothesis"
+			title: 						qsTr("Hypothesis Test")
 
-			RadioButton { text: qsTr("Equal vs. not equal")                     ; name: "equalNotEqual" ; checked: true}
-			RadioButton { text: qsTr("Equal vs. bigger")                        ; name: "equalBigger" }
-			RadioButton { text: qsTr("Equal vs. smaller")                       ; name: "equalSmaller" }
-			RadioButton { text: qsTr("Bigger vs. smaller")                      ; name: "biggerSmaller" }
-			RadioButton { text: qsTr("Equal vs. bigger vs. smaller")            ; name: "equalBiggerSmaller" }
+			RadioButton 
+			{ 
+				name: 					"equalNotEqual"
+				text: 					qsTr("Equal vs. not equal")
+				checked: 				true
+			}
+
+			RadioButton 
+			{ 
+				name: 					"equalBigger" 
+				text: 					qsTr("Equal vs. bigger")
+			}
+
+			RadioButton 
+			{ 
+				name: 					"equalSmaller" 
+				text: 					qsTr("Equal vs. smaller")
+			}
+
+			RadioButton 
+			{ 
+				name: 					"biggerSmaller" 
+				text: 					qsTr("Bigger vs. smaller")
+			}
+
+			RadioButton 
+			{ 
+				name: 					"equalBiggerSmaller" 
+				text: 					qsTr("Equal vs. bigger vs. smaller")
+			}
 		}
 
 		RadioButtonGroup
 		{
-			title: qsTr("Bayes Factor")
-			name: "bayesFactorType"
+			name: 						"bayesFactorType"
+			title: 						qsTr("Bayes Factor")
 
-			RadioButton { text: qsTr("BF\u2080\u2081: Equal vs. other")         ; name: "BF01" ; checked: true}
-			RadioButton { text: qsTr("BF\u2081\u2080: Other vs. equal")         ; name: "BF10" }
+			RadioButton 
+			{ 
+				name: 					"BF01"
+				text: 					qsTr("BF\u2080\u2081: Equal vs. other")
+				checked: 				true
+			}
+
+			RadioButton 
+			{ 
+				name: 					"BF10" 
+				text: 					qsTr("BF\u2081\u2080: Other vs. equal")
+			}
 		}
 
 		Group
 		{
-			title: qsTr("Additional Options")
+			title: 						qsTr("Additional Options")
 
-			DoubleField  {
-				name: "seed"
-				text: qsTr("Seed")
-				defaultValue: 100
-				min: -999999
-				max: 999999
-				fieldWidth: 60
+			DoubleField  
+			{
+				name: 					"seed"
+				text: 					qsTr("Seed")
+				defaultValue: 			100
+				min: 					-999999
+				max: 					999999
+				fieldWidth: 			60 * preferencesModel.uiScale
+			}
+
+			DoubleField  
+			{ 
+				name: 					"fraction"
+				text: 					qsTr("Fraction")
+				defaultValue: 			1
+				min: 					0.01
+				max: 					100
+				fieldWidth: 			60 * preferencesModel.uiScale 
 			}
 		}
 	}
@@ -70,18 +129,36 @@ Form
 	{
 		Group
 		{
-			title: qsTr("Tables")
-			CheckBox { name: "descriptives"; text: qsTr("Descriptives") 
-				CIField { name: "credibleInterval"; text: qsTr("Credible interval") }
+			title: 						qsTr("Tables")
+
+			CheckBox 
+			{ 
+				name: 					"descriptives"
+				text: 					qsTr("Descriptives") 
+				
+				CIField 
+				{ 
+					name: 				"credibleInterval"
+					text: 				qsTr("Credible interval") 
+				}
 			}
 		}
 
 		Group
 		{
-			title: qsTr("Plots")
+			title: 						qsTr("Plots")
 
-			CheckBox { name: "bayesFactorPlot"; text: qsTr("Posterior probabilities") }
-			CheckBox { name: "descriptivesPlots"; text: qsTr("Descriptives plots") }
+			CheckBox 
+			{ 
+				name: 					"bayesFactorPlot"
+				text: 					qsTr("Posterior probabilities") 
+			}
+
+			CheckBox 
+			{ 
+				name: 					"descriptivesPlot"
+				text: 					qsTr("Descriptives plots") 
+			}
 		}
 	}
 }
