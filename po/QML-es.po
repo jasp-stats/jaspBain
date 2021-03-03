@@ -242,11 +242,6 @@ msgstr "Semilla"
 
 #, fuzzy
 msgctxt "BainRegressionLinearBayesian|"
-msgid "Standardize"
-msgstr "Estandarizar"
-
-#, fuzzy
-msgctxt "BainRegressionLinearBayesian|"
 msgid "Model Constraints"
 msgstr "Restricciones del modelo"
 
@@ -548,3 +543,132 @@ msgstr "Probabilidades posteriores"
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Descriptives plots"
 msgstr "Parcelas descriptivas"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Fraction"
+msgstr ""
+
+msgctxt "BainAnovaBayesian|"
+msgid "Fraction"
+msgstr ""
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Fraction"
+msgstr ""
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Standardize coefficients"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Model Options"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Factor scaling"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Factor variance"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Factor loading"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Grouping variable"
+msgstr ""
+
+#, fuzzy
+msgctxt "BainSemBayesian|"
+msgid "Tables"
+msgstr "Mesas"
+
+#, fuzzy
+msgctxt "BainSemBayesian|"
+msgid "Coefficients"
+msgstr "Coeficientes"
+
+#, fuzzy
+msgctxt "BainSemBayesian|"
+msgid "Credible interval"
+msgstr "Intervalo creíble"
+
+#, fuzzy
+msgctxt "BainSemBayesian|"
+msgid "Plots"
+msgstr "Parcelas"
+
+msgctxt "BainSemBayesian|"
+msgid "Path diagram"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Show parameter estimates"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Show legend"
+msgstr ""
+
+#, fuzzy
+msgctxt "BainSemBayesian|"
+msgid "Additional Options"
+msgstr "Opciones adicionales"
+
+#, fuzzy
+msgctxt "BainSemBayesian|"
+msgid "Seed"
+msgstr "Semilla"
+
+msgctxt "BainSemBayesian|"
+msgid "Fraction"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Standardize coefficients"
+msgstr ""
+
+#, fuzzy
+msgctxt "BainSemBayesian|"
+msgid "Bayes factor matrix"
+msgstr "Matriz de factores de Bayes"
+
+#, fuzzy
+msgctxt "BainSemBayesian|"
+msgid "Posterior probabilities"
+msgstr "Probabilidades posteriores"
+
+#, fuzzy
+msgctxt "BainSemBayesian|"
+msgid "Model Constraints"
+msgstr "Restricciones del modelo"
+
+msgctxt "BainSemBayesian|"
+msgid ""
+"Hypotheses can be formulated using the parameter names that appear if the "
+"'Coefficients' box is ticked.\n"
+"Do NOT use spaces in the parameter names. Place each hypothesis on a new "
+"line. For example:\n"
+"\n"
+"A=~x1 = A=~x2 = A=~x3 = A=~x4\n"
+"A=~x1 > A=~x2 > A=~x3 = A=~x4\n"
+"A=~x1 > 0 & A=~x2 > 0 & A=~x3 > 0 & A=~x4 > 0\n"
+"\n"
+"Read the help file for further instructions about formulating hypotheses and "
+"what can and cannot be done\n"
+"with Bain Structural Equation Modeling."
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Fraction"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Fraction"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Fraction"
+msgstr ""
