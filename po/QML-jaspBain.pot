@@ -180,10 +180,6 @@ msgid "Seed"
 msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
-msgid "Standardize"
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
 msgid "Model Constraints"
 msgstr ""
 
@@ -420,4 +416,124 @@ msgstr ""
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Descriptives plots"
+msgstr ""
+
+msgctxt "BainAncovaBayesian|"
+msgid "Fraction"
+msgstr ""
+
+msgctxt "BainAnovaBayesian|"
+msgid "Fraction"
+msgstr ""
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Fraction"
+msgstr ""
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Standardize coefficients"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Model Options"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Factor scaling"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Factor variance"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Factor loading"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Grouping variable"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Tables"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Coefficients"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Credible interval"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Path diagram"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Show parameter estimates"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Show legend"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Additional Options"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Seed"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Fraction"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Standardize coefficients"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Bayes factor matrix"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Posterior probabilities"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Model Constraints"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid ""
+"Hypotheses can be formulated using the parameter names that appear if the "
+"'Coefficients' box is ticked.\n"
+"Do NOT use spaces in the parameter names. Place each hypothesis on a new "
+"line. For example:\n"
+"\n"
+"A=~x1 = A=~x2 = A=~x3 = A=~x4\n"
+"A=~x1 > A=~x2 > A=~x3 = A=~x4\n"
+"A=~x1 > 0 & A=~x2 > 0 & A=~x3 > 0 & A=~x4 > 0\n"
+"\n"
+"Read the help file for further instructions about formulating hypotheses and "
+"what can and cannot be done\n"
+"with Bain Structural Equation Modeling."
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Fraction"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Fraction"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Fraction"
 msgstr ""
