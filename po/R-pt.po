@@ -6,7 +6,7 @@ msgstr ""
 "PO-Revision-Date: 2020-12-02 21:29+0000\n"
 "Last-Translator: JASP Stats <b.boutin@uva.nl>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
-"jaspBain/pt/>\n"
+"jaspAnova/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -355,3 +355,2443 @@ msgstr ""
 
 msgid "An error occurred while creating this plot:<br>%1$s."
 msgstr ""
+
+#~ msgctxt "jasp-qml-style-example|"
+#~ msgid "A nice grouping of elements"
+#~ msgstr "Um bom agrupamento de elementos"
+
+#~ msgctxt "jasp-qml-style-example|"
+#~ msgid "This is an incredibly useful tooltip right?"
+#~ msgstr "Esta é uma dica incrivelmente útil, certo?"
+
+#~ msgctxt "jasp-qml-style-example|"
+#~ msgid "The first checkbox"
+#~ msgstr "A primeira caixa de seleção"
+
+#~ msgctxt "jasp-qml-style-example|"
+#~ msgid "The second checkbox"
+#~ msgstr "A segunda caixa de seleção"
+
+#~ msgctxt "jasp-qml-style-example|"
+#~ msgid "The last checkbox"
+#~ msgstr "A última caixa de seleção"
+
+#~ msgctxt "jasp-qml-style-example|"
+#~ msgid "Variables"
+#~ msgstr "Variáveis"
+
+#~ msgctxt "jasp-qml-style-example|"
+#~ msgid "Split"
+#~ msgstr "Dividir"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Second-order Factor"
+#~ msgstr "Fator de segunda ordem"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Model Options"
+#~ msgstr "Opções do modelo"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Additional Fit Measures"
+#~ msgstr "Medidas Adicionais de Ajuste"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "AIC"
+#~ msgstr "AIC"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "BIC"
+#~ msgstr "BIC"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "SRMR"
+#~ msgstr "SRMR"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "TLI"
+#~ msgstr "TLI"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "CFI"
+#~ msgstr "CFI"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "RMSEA"
+#~ msgstr "RMSEA"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Include mean structure"
+#~ msgstr "Incluir estrutura média"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Assume factors uncorrelated"
+#~ msgstr "Assumir fatores não correlacionados"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Fix exogenous covariates"
+#~ msgstr "Fixar covariáveis exógenas"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Residual Covariances"
+#~ msgstr "Covariâncias Residuais"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Additional Output"
+#~ msgstr "Saída Adicional"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Implied covariance matrix"
+#~ msgstr "Matriz de covariância implícita"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Residual covariance matrix"
+#~ msgstr "Matriz de covariância residual"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Modification indices"
+#~ msgstr "Índices de modificação"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Cutoff"
+#~ msgstr "Ponto de corte"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Show lavaan syntax"
+#~ msgstr "Exibir a sintaxe do lavaan"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Multigroup CFA"
+#~ msgstr "Análise Fatorial Confirmatória Multigrupo"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Grouping variable"
+#~ msgstr "Variáveis de agrupamento"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Invariance testing"
+#~ msgstr "Teste de invariância"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Configural"
+#~ msgstr "Configural"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Metric"
+#~ msgstr "Métrica"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Scalar"
+#~ msgstr "Escalar"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Strict"
+#~ msgstr "Estrita"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Plots"
+#~ msgstr "Diagramas"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Model plot"
+#~ msgstr "Gráfico do modelo"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Show parameters"
+#~ msgstr "Exibir parâmetros"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Show means"
+#~ msgstr "Exibir médias"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Advanced"
+#~ msgstr "Avançado"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Options"
+#~ msgstr "Opções"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Fix manifest intercepts to zero"
+#~ msgstr "Fixar os interceptos manifestantes em zero"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Fix latent intercepts to zero"
+#~ msgstr "Fixar os interceptos latentes em zero"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Omit residual single indicator"
+#~ msgstr "Omitir indicador único residual"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Residual variances"
+#~ msgstr "Variâncias residual"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Correlate exogenous latents"
+#~ msgstr "Correlacionar latentes exógenas"
+
+#~| msgid "Add thresholdds"
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Add thresholds"
+#~ msgstr "Adicionar limites"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Add scalings parameters"
+#~ msgstr "Adicionar parâmetros de escala"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Correlate dependent variables"
+#~ msgstr "Correlacionar variáveis dependentes"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Emulation"
+#~ msgstr "Emulação"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "None"
+#~ msgstr "Nenhum"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Mplus"
+#~ msgstr "Mplus"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "EQS"
+#~ msgstr "EQS"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Error Calculation"
+#~ msgstr "Cálculo de erro"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Standard"
+#~ msgstr "Padrão"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Robust"
+#~ msgstr "Robusto"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Bootstrap"
+#~ msgstr "Bootstrap"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Bootstrap samples"
+#~ msgstr "Amostras de Bootstrap"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Estimator"
+#~ msgstr "Estimador"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Auto"
+#~ msgstr "Auto"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "ML"
+#~ msgstr "ML"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "GLS"
+#~ msgstr "GLS"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "WLS"
+#~ msgstr "WLS"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "ULS"
+#~ msgstr "ULS"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "DWLS"
+#~ msgstr "DWLS"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Standardization"
+#~ msgstr "Padronização"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "Latents"
+#~ msgstr "Latentes"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "All"
+#~ msgstr "Todas"
+
+#~ msgctxt "ConfirmatoryFactorAnalysis|"
+#~ msgid "No X"
+#~ msgstr "Sem X"
+
+#~ msgctxt "FactorsForm|"
+#~ msgid "+"
+#~ msgstr "+"
+
+#~ msgctxt "FactorsForm|"
+#~ msgid "-"
+#~ msgstr "-"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Latent variables"
+#~ msgstr "Variáveis latentes"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Dependent Variable"
+#~ msgstr "Variável Dependente"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Covariates"
+#~ msgstr "Covariáveis"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Factors"
+#~ msgstr "Fatores"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "WLS Weights (optional)"
+#~ msgstr "WLS Ponderada (opcional)"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Model options"
+#~ msgstr "Opções de modelo"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Additional Fit Measures"
+#~ msgstr "Medidas Adicionais de Ajuste"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "AIC"
+#~ msgstr "AIC"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "BIC"
+#~ msgstr "BIC"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "SRMR"
+#~ msgstr "SRMR"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "TLI"
+#~ msgstr "TLI"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "CFI"
+#~ msgstr "CFI"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "RMSEA"
+#~ msgstr "RMSEA"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Model Options"
+#~ msgstr "Opções do Modelo"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Include mean structure"
+#~ msgstr "Incluir a estrutura média"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Assume factors uncorrelated"
+#~ msgstr "Assumir fatores não correlacionados"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Fix exogenous covariates"
+#~ msgstr "Fixar covariáveis exógenas"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Residual Covariances"
+#~ msgstr "Covariâncias residual"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Additional output"
+#~ msgstr "Saída adicional"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Implied covariance matrix"
+#~ msgstr "Matriz de covariância implícita"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Residual covariance matrix"
+#~ msgstr "Matriz de covariância residual"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Modification indices"
+#~ msgstr "Índices de modificação"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Cutoff"
+#~ msgstr "Ponto de corte"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Show lavaan syntax"
+#~ msgstr "Exibir a syntax do lavaan"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Multigroup CFA"
+#~ msgstr "AFC Multigrupo"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Grouping variable"
+#~ msgstr "Agrupar variáveis"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Invariance testing"
+#~ msgstr "Teste de invariância"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Configural"
+#~ msgstr "Configural"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Metric"
+#~ msgstr "Métrica"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Scalar"
+#~ msgstr "Escalar"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Strict"
+#~ msgstr "Estrita"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Plots"
+#~ msgstr "Diagramas"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Model plot"
+#~ msgstr "Modelo do gráfico"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Show parameters"
+#~ msgstr "Exibir parâmetros"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Show means"
+#~ msgstr "Exibir médias"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Advanced"
+#~ msgstr "Avançado"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Options"
+#~ msgstr "Opções"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Fix manifest intercepts to zero"
+#~ msgstr "Fixar os interceptos manifestos em zero"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Fix latent intercepts to zero"
+#~ msgstr "Fixar os interceptos latentes em zero"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Omit residual single indicator"
+#~ msgstr "Omitir indicador único residual"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Residual variances"
+#~ msgstr "Variâncias residual"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Correlate exogenous latents"
+#~ msgstr "Correlacionar latentes exogenas"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Correlate dependent variables"
+#~ msgstr "Correlacionar variáveis dependentes"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Emulation"
+#~ msgstr "Emulação"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "None"
+#~ msgstr "Nenhum"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Mplus"
+#~ msgstr "Mplus"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "EQS"
+#~ msgstr "EQS"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Error Calculation"
+#~ msgstr "Cálculo de erro"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Standard"
+#~ msgstr "Padrão"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Robust"
+#~ msgstr "Robusto"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Bootstrap"
+#~ msgstr "Bootstrap"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Estimator"
+#~ msgstr "Estimador"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Auto"
+#~ msgstr "Auto"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "ML"
+#~ msgstr "ML"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "GLS"
+#~ msgstr "GLS"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "WLS"
+#~ msgstr "WLS"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "ULS"
+#~ msgstr "ULS"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "DWLS"
+#~ msgstr "DWLS"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Standardization"
+#~ msgstr "Padronização"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "Latents"
+#~ msgstr "Latentes"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "All"
+#~ msgstr "Todos"
+
+#~ msgctxt "LatentRegression|"
+#~ msgid "No X"
+#~ msgstr "Sem X"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Data"
+#~ msgstr "Dados"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "raw"
+#~ msgstr "bruto"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Variance-covariance matrix"
+#~ msgstr "Matriz de variância-covariância"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Sample size"
+#~ msgstr "Tamanho da amostra"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Statistics"
+#~ msgstr "Estatísticas"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Error Calculation"
+#~ msgstr "Cálculo de erro"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Standard"
+#~ msgstr "Padrão"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Robust"
+#~ msgstr "Robusto"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Bootstrap"
+#~ msgstr "Bootstrap"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Additional fit measures"
+#~ msgstr "Medidas adicionais de ajuste"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Fitted covariances / correlations"
+#~ msgstr "Covariâncias / correlações ajustadas"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Observed covariances / correlations"
+#~ msgstr "Covariâncias / correlações observadas"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Residual covariances / correlations"
+#~ msgstr "Covariâncias / correlações residual"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Modification indices"
+#~ msgstr "Índices de modificação"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Hide low indices"
+#~ msgstr "Ocultar índices baixos"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Threshold"
+#~ msgstr "Limites"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Options"
+#~ msgstr "Opções"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Grouping Variable"
+#~ msgstr "Agrupar variáveis"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Loadings"
+#~ msgstr "Cargas"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Intercepts"
+#~ msgstr "Interceptos"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Residuals"
+#~ msgstr "Resíduos"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Residual covariances"
+#~ msgstr "Covariâncias residual"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Regressions"
+#~ msgstr "Regressões"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Latent variances"
+#~ msgstr "Variâncias latentes"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Latent covariances"
+#~ msgstr "Covariâncias latentes"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Estimator"
+#~ msgstr "Estimador"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Auto"
+#~ msgstr "Auto"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "ML"
+#~ msgstr "ML"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "GLS"
+#~ msgstr "GLS"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "WLS"
+#~ msgstr "WLS"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "ULS"
+#~ msgstr "ULS"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "DWLS"
+#~ msgstr "DWLS"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Model Options"
+#~ msgstr "Opões do modelo"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Include mean structure"
+#~ msgstr "Incluir estrutura média"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Assume factors uncorrelated"
+#~ msgstr "Assumir fatores não correlacionados"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Fix exogenous covariates"
+#~ msgstr "Fixar covariáveis exógenas"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Advanced"
+#~ msgstr "Avançado"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Fix manifest intercepts to zero"
+#~ msgstr "Fixar os interceptos manifestantes em zero"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Fix latent intercepts to zero"
+#~ msgstr "Fixar os interceptos latente em zero"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Omit residual single indicator"
+#~ msgstr "Omitir indicador único residual"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Residual variances"
+#~ msgstr "Variâncias residual"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Correlate exogenous latents"
+#~ msgstr "Correlacionar latentes exógenos"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Correlate dependent variables"
+#~ msgstr "Correlacionar variáveis dependentes"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Emulation"
+#~ msgstr "Emulação"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "None"
+#~ msgstr "Nenhuma"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Mplus"
+#~ msgstr "Mplus"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "EQS"
+#~ msgstr "EQS"
+
+#~ msgctxt "SEMSimple|"
+#~ msgid "Model Name"
+#~ msgstr "Nome do modelo"
+
+#~ msgctxt "ComboBox|"
+#~ msgid "<no choice>"
+#~ msgstr "<nenhum>"
+
+#~ msgctxt "TextField|"
+#~ msgid "Restoring last correct value: %1"
+#~ msgstr "Restaur o último valor correto:% 1"
+
+#~ msgctxt "AboutWindow|"
+#~ msgid "Version:"
+#~ msgstr "Versão:"
+
+#~ msgctxt "AboutWindow|"
+#~ msgid "About JASP"
+#~ msgstr "Sobre JASP"
+
+#~ msgctxt "AboutWindow|"
+#~ msgid "Built on:"
+#~ msgstr "Elaborado:"
+
+#~ msgctxt "AboutWindow|"
+#~ msgid "Source:"
+#~ msgstr "Fonte:"
+
+#~ msgctxt "AboutWindow|"
+#~ msgid "Access the sources here"
+#~ msgstr "Acesse as fontes aqui"
+
+#~ msgctxt "AboutWindow|"
+#~ msgid "Download:"
+#~ msgstr "Baixar:"
+
+#~ msgctxt "AboutWindow|"
+#~ msgid "Citation:"
+#~ msgstr "Citação:"
+
+#~ msgctxt "AboutWindow|"
+#~ msgid "Select All"
+#~ msgstr "Selecionar tudo"
+
+#~ msgctxt "AboutWindow|"
+#~ msgid "Copy Selection"
+#~ msgstr "Copiar Seleção"
+
+#~ msgctxt "AboutWindow|"
+#~ msgid "Close"
+#~ msgstr "Fechar"
+
+#~ msgctxt "AnalysisFormExpander|"
+#~ msgid "Drag to reorder the analyses"
+#~ msgstr "Arraste para reordenar as análises"
+
+#~ msgctxt "AnalysisFormExpander|"
+#~ msgid "Edit the title of this analysis"
+#~ msgstr "Edite o título desta análise"
+
+#~ msgctxt "AnalysisFormExpander|"
+#~ msgid "Duplicate this analysis"
+#~ msgstr "Duplique esta análise"
+
+#~ msgctxt "AnalysisForms|"
+#~ msgid "Resize data/results"
+#~ msgstr "Redimensionar dados / resultados"
+
+#~ msgctxt "AnalysisForms|"
+#~ msgid "Drag to show data"
+#~ msgstr "Arraste para exibir os dados"
+
+#~ msgctxt "AnalysisForms|"
+#~ msgid "Hide input options"
+#~ msgstr "Oculte as opções de entrada"
+
+#~ msgctxt "AnalysisForms|"
+#~ msgid "Show input options"
+#~ msgstr "Exibir as opções de entrada"
+
+#~ msgctxt "BayesFactorType|"
+#~ msgid "BFâ‚â‚€"
+#~ msgstr "BFâ‚â‚€"
+
+#~ msgctxt "BayesFactorType|"
+#~ msgid "BFâ‚€â‚"
+#~ msgstr "BFâ‚€â‚"
+
+#~ msgctxt "BayesFactorType|"
+#~ msgid "Log(BFâ‚â‚€)"
+#~ msgstr "Log(BFâ‚â‚€)"
+
+#~ msgctxt "Chi2TestTableView|"
+#~ msgid "Add Column"
+#~ msgstr "Adicionar Coluna"
+
+#~ msgctxt "Chi2TestTableView|"
+#~ msgid "Delete Column"
+#~ msgstr "Deletar Coluna"
+
+#~ msgctxt "Chi2TestTableView|"
+#~ msgid "Reset"
+#~ msgstr "Redefinir"
+
+#~ msgctxt "ContrastsList|"
+#~ msgid "Factors"
+#~ msgstr "Fatores"
+
+#~ msgctxt "ContrastsList|"
+#~ msgid "Custom contrast for %1"
+#~ msgstr "Contraste personalizado para% 1"
+
+#~ msgctxt "BreadCrumbs|"
+#~ msgid "You are here"
+#~ msgstr "Você está aqui"
+
+#~ msgctxt "Computer|"
+#~ msgid "Recent Folders"
+#~ msgstr "Pastas recentes"
+
+#~ msgctxt "Computer|"
+#~ msgid "Browse"
+#~ msgstr "Procurar"
+
+#~ msgctxt "CurrentFile|"
+#~ msgid "Current data file for synchronization"
+#~ msgstr "Arquivo de dados atual para sincronização"
+
+#~ msgctxt "DataLibrary|"
+#~ msgid "Data Library"
+#~ msgstr "Acervo de dados"
+
+#~ msgctxt "ListItem|"
+#~ msgid "Synchronize with this Data File"
+#~ msgstr "Sincronizar com este arquivo de dados"
+
+#~ msgctxt "ListItem|"
+#~ msgid "Navigate to folder"
+#~ msgstr "Ir até a pasta"
+
+#~ msgctxt "ListItem|"
+#~ msgid "Open JASP file"
+#~ msgstr "Abri arquivo JASP"
+
+#~ msgctxt "ListItem|"
+#~ msgid "Open data file"
+#~ msgstr "Abrir arquivo de dados"
+
+#~ msgctxt "MenuHeader|"
+#~ msgid "Show info about these preferences"
+#~ msgstr "Exibir informação sobre estas preferências"
+
+#~ msgctxt "OSF|"
+#~ msgid "Open Science Framework"
+#~ msgstr "Open Science Framework"
+
+#~ msgctxt "OSF|"
+#~ msgid "Logout"
+#~ msgstr "Sair"
+
+#~ msgctxt "OSF|"
+#~ msgid "Create Folder"
+#~ msgstr "Criar pasta"
+
+#~ msgctxt "OSF|"
+#~ msgid "Foldername"
+#~ msgstr "Nome da pasta"
+
+#~ msgctxt "OSF|"
+#~ msgid "Filename"
+#~ msgstr "Nome do arquivo"
+
+#~ msgctxt "OSF|"
+#~ msgid "Save"
+#~ msgstr "Salvae"
+
+#~ msgctxt "OSFLogin|"
+#~ msgid "OSF"
+#~ msgstr "OSF"
+
+#~ msgctxt "OSFLogin|"
+#~ msgid "Sign in with your OSF account to continue"
+#~ msgstr "Faça login com sua conta OSF para continuar"
+
+#~ msgctxt "OSFLogin|"
+#~ msgid "Sign in"
+#~ msgstr "Entrar"
+
+#~ msgctxt "OSFLogin|"
+#~ msgid "Remember me"
+#~ msgstr "Lembrar"
+
+#~ msgctxt "OSFLogin|"
+#~ msgid "About the OSF"
+#~ msgstr "Sobre OSF"
+
+#~ msgctxt "OSFLogin|"
+#~ msgid "Register"
+#~ msgstr "Registrar"
+
+#~ msgctxt "PrefsAdvanced|"
+#~ msgid "Advanced Preferences"
+#~ msgstr "Preferências Avançadas"
+
+#~ msgctxt "PrefsAdvanced|"
+#~ msgid "Remember Enabled Modules"
+#~ msgstr "Lembrar dos módulos ativados"
+
+#~ msgctxt "PrefsAdvanced|"
+#~ msgid ""
+#~ "Continue where you left of the next time JASP starts.\n"
+#~ "Enabling this option makes JASP remember which Modules you've enabled."
+#~ msgstr ""
+#~ "Continue de onde saiu da próxima vez que o JASP iniciar.\n"
+#~ "Ativar esta opção faz o JASP lembrar quais Módulos você ativou."
+
+#~ msgctxt "PrefsAdvanced|"
+#~ msgid "Modules options"
+#~ msgstr "Opções de Módulos"
+
+#~ msgctxt "PrefsAdvanced|"
+#~ msgid "Developer mode (Beta version)"
+#~ msgstr "Modo Desenvolvedor (versão Beta)"
+
+#~ msgctxt "PrefsAdvanced|"
+#~ msgid "To use JASP Modules enable this option."
+#~ msgstr "Para usar os Módulos JASP, habilite esta opção."
+
+#~ msgctxt "PrefsAdvanced|"
+#~ msgid "Select developer folder"
+#~ msgstr "Selecione a pasta do desenvolvedor"
+
+#~ msgctxt "PrefsAdvanced|"
+#~ msgid "Browse to your JASP Module folder."
+#~ msgstr "Ir até a pasta do módulo JASP."
+
+#~ msgctxt "PrefsAdvanced|"
+#~ msgid "Regenerate package metadata every time (DESCRIPTION & NAMESPACE)"
+#~ msgstr ""
+#~ "Gerar novamente os metadados do pacote todas as vezes (DESCRIPTION & "
+#~ "NAMESPACE)"
+
+#~ msgctxt "PrefsAdvanced|"
+#~ msgid ""
+#~ "Disable this option if you are transforming your R-package to a JASP "
+#~ "Module or simply want to keep manual changes to DESCRIPTION and NAMESPACE."
+#~ msgstr ""
+#~ "Desative esta opção se você está transformando seu pacote R em um Módulo "
+#~ "JASP ou simplesmente deseja manter as alterações manuais em DESCRIPTION e "
+#~ "NAMESPACE."
+
+#~ msgctxt "PrefsAdvanced|"
+#~ msgid "Change the CRAN repository: "
+#~ msgstr "Altere o repositório CRAN: "
+
+#~ msgctxt "PrefsAdvanced|"
+#~ msgid "Logging options"
+#~ msgstr "Opções de registro"
+
+#~ msgctxt "PrefsAdvanced|"
+#~ msgid "Log to file"
+#~ msgstr "Registar no arquivo"
+
+#~ msgctxt "PrefsAdvanced|"
+#~ msgid "To store debug-logs of JASP in a file, check this box."
+#~ msgstr ""
+#~ "Para armazenar logs de depuração do JASP em um arquivo, marque esta caixa."
+
+#~ msgctxt "PrefsAdvanced|"
+#~ msgid "Max logfiles to keep: "
+#~ msgstr "Máximo de arquivos de registro a serem mantidos:"
+
+#~ msgctxt "PrefsAdvanced|"
+#~ msgid "Show logs"
+#~ msgstr "Mostrar registros"
+
+#~ msgctxt "PrefsData|"
+#~ msgid "Synchronize automatically on data file save"
+#~ msgstr "Sincronizar automaticamente ao salvar o arquivo de dados"
+
+#~ msgctxt "PrefsData|"
+#~ msgid "Use default spreadsheet editor"
+#~ msgstr "Usar o editor de planilha padrão"
+
+#~ msgctxt "PrefsData|"
+#~ msgid "Select custom editor"
+#~ msgstr "Selecionar o editor personalizado"
+
+#~ msgctxt "PrefsData|"
+#~ msgid "Import threshold between Categorical or Scale"
+#~ msgstr "Importar o limite entre Categórico ou Escala"
+
+#~ msgctxt "PrefsData|"
+#~ msgid ""
+#~ "Threshold number of unique integers before classifying a variable as "
+#~ "'scale'.\n"
+#~ "You need to reload your data to take effect! Check help for more info."
+#~ msgstr ""
+#~ "Número limite de inteiros únicos antes de classificar uma variável "
+#~ "como'escala'.\n"
+#~ "Você precisa recarregar seus dados para ter efeito! Verifique a ajuda "
+#~ "para obter mais informações."
+
+#~ msgctxt "PrefsMissingValues|"
+#~ msgid "Missing Value List"
+#~ msgstr "Lista de Valores Faltantes"
+
+#~ msgctxt "PrefsMissingValues|"
+#~ msgid "Remove missing value"
+#~ msgstr "Remover valores faltantes"
+
+#~ msgctxt "PrefsMissingValues|"
+#~ msgid "Reset"
+#~ msgstr "Redefinir"
+
+#~ msgctxt "PrefsResults|"
+#~ msgid "Results Preferences"
+#~ msgstr "Preferências sobre os resultados"
+
+#~ msgctxt "PrefsResults|"
+#~ msgid "Table options"
+#~ msgstr "Opções de Tabela"
+
+#~ msgctxt "PrefsResults|"
+#~ msgid "Display exact p-values"
+#~ msgstr "Exibir valores exatos de p"
+
+#~ msgctxt "PrefsResults|"
+#~ msgid "Fix the number of decimals"
+#~ msgstr "Ficar o número de decimais"
+
+#~ msgctxt "PrefsResults|"
+#~ msgid "Plot options"
+#~ msgstr "Opções de Diagramas"
+
+#~ msgctxt "PrefsResults|"
+#~ msgid "Use PPI of screen in plots: "
+#~ msgstr "Usar PPI de tela em Diagramas:"
+
+#~ msgctxt "PrefsResults|"
+#~ msgid "Use the Pixels Per Inch of your screen to render your plots."
+#~ msgstr ""
+#~ "Use os Pixels Por Polegada de sua tela para renderizar seus Diagramas."
+
+#~ msgctxt "PrefsResults|"
+#~ msgid "Custom PPI: "
+#~ msgstr "PPI customizado"
+
+#~ msgctxt "PrefsResults|"
+#~ msgid "Image background color"
+#~ msgstr "Cor de fundo da imagem"
+
+#~ msgctxt "PrefsResults|"
+#~ msgid "White"
+#~ msgstr "Branco"
+
+#~ msgctxt "PrefsResults|"
+#~ msgid ""
+#~ "This makes the background of all plots white, quite useful if you want to "
+#~ "use it in LaTeX or submit it to a journal."
+#~ msgstr ""
+#~ "Isso torna o fundo de todos os Diagramas branco, bastante útil se você "
+#~ "quiseruse no LaTeX ou envie para um periódico."
+
+#~ msgctxt "PrefsResults|"
+#~ msgid "Transparent"
+#~ msgstr "Transparente"
+
+#~ msgctxt "PrefsResults|"
+#~ msgid ""
+#~ "This makes the background of all plots transparent, quite useful if you "
+#~ "want to use it seamlessly on any background that isn't white."
+#~ msgstr ""
+#~ "Isso torna o fundo de todos os diagramas transparente, bastante útil se "
+#~ "você quiser usá-lo perfeitamente em qualquer fundo que não seja branco."
+
+#~ msgctxt "RecentFiles|"
+#~ msgid "Recent Files"
+#~ msgstr "Arquivos Recentes"
+
+#~ msgctxt "MainPage|"
+#~ msgid "Hide data"
+#~ msgstr "Ocultar dados"
+
+#~ msgctxt "MainPage|"
+#~ msgid "Show data"
+#~ msgstr "Exibir dados"
+
+#~ msgctxt "MainPage|"
+#~ msgid "Resize data/results"
+#~ msgstr "Redimensionar dados / resultados"
+
+#~ msgctxt "MainPage|"
+#~ msgid "Drag to show data"
+#~ msgstr "Arraste para mostrar os dados"
+
+#~ msgctxt "ModuleInstaller|"
+#~ msgid "Browse for JASP Module"
+#~ msgstr "Procure pelo Módulo JASP"
+
+#~ msgctxt "ModuleInstaller|"
+#~ msgid "Select a JASP Module"
+#~ msgstr "Selecione um Módulo JASP"
+
+#~ msgctxt "ModulesMenu|"
+#~ msgid "Install Module"
+#~ msgstr "Instalar Módulo"
+
+#~ msgctxt "ModulesMenu|"
+#~ msgid "Install a module"
+#~ msgstr "Instalar um módulo"
+
+#~ msgctxt "ModulesMenu|"
+#~ msgid "Install Developer Module"
+#~ msgstr "Instalar Módulo Desenvolvedor"
+
+#~ msgctxt "ModulesMenu|"
+#~ msgid "Installing Developer Module"
+#~ msgstr "Instalando Módulo Desenvolvedor"
+
+#~ msgctxt "ModulesMenu|"
+#~ msgid "Select a Developer Module"
+#~ msgstr "Selecionar Módulo Desenvolvedor"
+
+#~ msgctxt "ModulesMenu|"
+#~ msgid "Install selected developer module"
+#~ msgstr "Instalar módulo de desenvolvedor selecionado"
+
+#~ msgctxt "ModulesMenu|"
+#~ msgid "Installing developer module now"
+#~ msgstr "Instalando módulo de desenvolvedor agora"
+
+#~ msgctxt "ModulesMenu|"
+#~ msgid "Select a developer module under Left menu->Preference->Advanced"
+#~ msgstr ""
+#~ "Selecione um módulo de desenvolvedor no menu esquerdo-> Preferência-> "
+#~ "Avançado"
+
+#~ msgctxt "ModulesMenu|"
+#~ msgid "Installing:"
+#~ msgstr "Instalando:"
+
+#~ msgctxt "ModulesMenu|"
+#~ msgid "Loading:"
+#~ msgstr "Carregando:"
+
+#~ msgctxt "ModulesMenu|"
+#~ msgid "Loaded and ready for use!"
+#~ msgstr "Carregado e pronto para usar!"
+
+#~ msgctxt "ModulesMenu|"
+#~ msgid "Error occurred!"
+#~ msgstr "Ocorreu um erro!"
+
+#~ msgctxt "ModulesMenu|"
+#~ msgid "Not ready for use?"
+#~ msgstr "Não está pronto para usar?"
+
+#~ msgctxt "ModulesMenu|"
+#~ msgid "Uninstall module "
+#~ msgstr "Desinstalar módulo "
+
+#~ msgctxt "RibbonBar|"
+#~ msgid "Show Modules Menu"
+#~ msgstr "Exibir Menu de Módulos"
+
+#~ msgctxt "SortMenuButton|"
+#~ msgid "Sort the items"
+#~ msgstr "Classifique os itens"
+
+#~ msgctxt "SubjectivePriors|"
+#~ msgid "Prior"
+#~ msgstr "Anterior"
+
+#~ msgctxt "SubjectivePriors|"
+#~ msgid "Standardized effect size"
+#~ msgstr "Tamanho de efeito padronizado"
+
+#~ msgctxt "SubjectivePriors|"
+#~ msgid "Default"
+#~ msgstr "Padrão"
+
+#~ msgctxt "SubjectivePriors|"
+#~ msgid "Cauchy"
+#~ msgstr "Cauchy"
+
+#~ msgctxt "SubjectivePriors|"
+#~ msgid "scale"
+#~ msgstr "escala"
+
+#~ msgctxt "SubjectivePriors|"
+#~ msgid "Informed"
+#~ msgstr "Informado"
+
+#~ msgctxt "SubjectivePriors|"
+#~ msgid "location:"
+#~ msgstr "localização:"
+
+#~ msgctxt "SubjectivePriors|"
+#~ msgid "scale:"
+#~ msgstr "escala:"
+
+#~ msgctxt "SubjectivePriors|"
+#~ msgid "Normal"
+#~ msgstr "Normal"
+
+#~ msgctxt "SubjectivePriors|"
+#~ msgid "mean:"
+#~ msgstr "média:"
+
+#~ msgctxt "SubjectivePriors|"
+#~ msgid "std:"
+#~ msgstr "padrão:"
+
+#~ msgctxt "SubjectivePriors|"
+#~ msgid "t"
+#~ msgstr "t"
+
+#~ msgctxt "SubjectivePriors|"
+#~ msgid "df:"
+#~ msgstr "gl:"
+
+#~ msgctxt "SubjectivePriors|"
+#~ msgid "Raw effect size (Dienes)"
+#~ msgstr "Tamanho de efeito bruto (Dienes)"
+
+#~ msgctxt "SubjectivePriors|"
+#~ msgid "Uniform"
+#~ msgstr "Uniforme"
+
+#~ msgctxt "SubjectivePriors|"
+#~ msgid "lower bound:"
+#~ msgstr "limite inferior:"
+
+#~ msgctxt "SubjectivePriors|"
+#~ msgid "upper bound:"
+#~ msgstr "limite superior:"
+
+#~ msgctxt "VariablesWindow|"
+#~ msgid "Filter"
+#~ msgstr "Filtro"
+
+#~ msgctxt "VariablesWindow|"
+#~ msgid "Value"
+#~ msgstr "Valor"
+
+#~ msgctxt "VariablesWindow|"
+#~ msgid "Label"
+#~ msgstr "Rótulo"
+
+#~ msgctxt "VariablesWindow|"
+#~ msgid "Move selected labels up"
+#~ msgstr "Mover rótulos selecionados para cima"
+
+#~ msgctxt "VariablesWindow|"
+#~ msgid "Move selected labels down"
+#~ msgstr "Mover rótulos selecionados para baixo"
+
+#~ msgctxt "VariablesWindow|"
+#~ msgid "Reverse order of all labels"
+#~ msgstr "Reverter a ordem de todos os rótulos"
+
+#~ msgctxt "VariablesWindow|"
+#~ msgid "Reset all filter checkmarks for this column"
+#~ msgstr "Redefinir todas as marcas de seleção de filtro para esta coluna"
+
+#~ msgctxt "VariablesWindow|"
+#~ msgid "Reset all filter checkmarks for all columns"
+#~ msgstr ""
+#~ "Redefinir todas as marcas de seleção de filtro para todas as colunas"
+
+#~ msgctxt "VariablesWindow|"
+#~ msgid "Close this view"
+#~ msgstr "Fechar esta janela"
+
+#~ msgctxt "WelcomePage|"
+#~ msgid "Welcome to JASP"
+#~ msgstr "Bem-vindo ao JASP"
+
+#~ msgctxt "WelcomePage|"
+#~ msgid "A Fresh Way to Do Statistics: Free, Friendly, and Flexible"
+#~ msgstr "Uma nova maneira de fazer estatísticas: grátis, amigável e flexível"
+
+#~ msgctxt "WelcomePage|"
+#~ msgid "Free:"
+#~ msgstr "Grátis:"
+
+#~ msgctxt "WelcomePage|"
+#~ msgid ""
+#~ "JASP is an open-source project with structural support from the "
+#~ "University of Amsterdam."
+#~ msgstr ""
+#~ "JASP é um projeto de código aberto com apoio estrutural da Universidade "
+#~ "de Amsterdã."
+
+#~ msgctxt "WelcomePage|"
+#~ msgid "Friendly:"
+#~ msgstr "Amigável:"
+
+#~ msgctxt "WelcomePage|"
+#~ msgid ""
+#~ "JASP has an intuitive interface that was designed with the user in mind."
+#~ msgstr ""
+#~ "JASP possui uma interface intuitiva a qual foi projetada tendo o usuário "
+#~ "em mente."
+
+#~ msgctxt "WelcomePage|"
+#~ msgid "Flexible:"
+#~ msgstr "Flexível:"
+
+#~ msgctxt "WelcomePage|"
+#~ msgid ""
+#~ "JASP offers standard analysis procedures in both their classical and "
+#~ "Bayesian manifestations."
+#~ msgstr ""
+#~ "O JASP oferece procedimentos de análise padrão em ambas manifestações: "
+#~ "clássicas e Manifestações bayesianas."
+
+#~ msgctxt "WelcomePage|"
+#~ msgid "So open a data file and take JASP for a spin!"
+#~ msgstr "Então, abra um arquivo de dados e experimente o JASP!"
+
+#~ msgctxt "WelcomePage|"
+#~ msgid "Click to get latest version"
+#~ msgstr "Clique para obter a última versão"
+
+#~ msgctxt "WelcomePage|"
+#~ msgid ""
+#~ "Please keep in mind that this is a preview release and a number of "
+#~ "features are still missing.\n"
+#~ "\n"
+#~ "If JASP doesn't do all you want today, then check back tomorrow: JASP is "
+#~ "being developed at break-neck speed!"
+#~ msgstr ""
+#~ "Lembre-se de que esta é uma versão prévia e uma série de recursos ainda "
+#~ "estão faltando. \n"
+#~ "\n"
+#~ "Se o JASP não fizer tudo o que você deseja hoje, verifique novamente "
+#~ "amanhã: o JASP está sendo aprimorado a uma velocidade íncrivel!"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Dependent Variable"
+#~ msgstr "Variável Dependente"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Fixed Factors"
+#~ msgstr "Fatores Fixos"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Random Factors"
+#~ msgstr "Fatores Aleatórios"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Covariates"
+#~ msgstr "Covariáveis"
+
+#~ msgctxt "Ancova|"
+#~ msgid "WLS Weights"
+#~ msgstr "WLS Ponderado"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Model"
+#~ msgstr "Modelo"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Components"
+#~ msgstr "Componentes"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Model Terms"
+#~ msgstr "Termos do Modelo"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Sum of squares"
+#~ msgstr "Soma dos quadrados"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Assumption Checks"
+#~ msgstr "Verificar pressupostos"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Homogeneity tests"
+#~ msgstr "Testes de homogeneidade"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Q-Q plot of residuals"
+#~ msgstr "Gráfico Q-Q dos resíduos"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Factor covariate independence check"
+#~ msgstr "Verificação da independência de covariável de fator"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Contrasts"
+#~ msgstr "Contrastes"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Confidence intervals"
+#~ msgstr "Intervalos de Confiança"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Post Hoc Tests"
+#~ msgstr "Testes Post Hoc"
+
+#~ msgctxt "Ancova|"
+#~ msgid "From"
+#~ msgstr "A partir de"
+
+#~ msgctxt "Ancova|"
+#~ msgid "bootstraps"
+#~ msgstr "bootstraps"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Effect size"
+#~ msgstr "Tamanho do efeito"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Correction"
+#~ msgstr "Correção"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Tukey"
+#~ msgstr "Tukey"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Scheffe"
+#~ msgstr "Scheffe"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Bonferroni"
+#~ msgstr "Bonferroni"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Holm"
+#~ msgstr "Holm"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Type"
+#~ msgstr "Type"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Standard"
+#~ msgstr "Padrão"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Games-Howell"
+#~ msgstr "Games-Howell"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Dunnett"
+#~ msgstr "Dunnett"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Dunn"
+#~ msgstr "Dunn"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Horizontal Axis"
+#~ msgstr "Eixo Horizontal"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Separate Lines"
+#~ msgstr "Linhas separadas"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Separate Plots"
+#~ msgstr "Diagramas Separados"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Display"
+#~ msgstr "Exibir"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Display error bars"
+#~ msgstr "Exibir barras de erro"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Standard error"
+#~ msgstr "Erro padrão"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Marginal Means"
+#~ msgstr "Médias marginais"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Compare marginal means to 0"
+#~ msgstr "Comparar médias marginais com 0"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Confidence interval adjustment"
+#~ msgstr "Ajuste do intervalo de confiança"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Estimates of effect size"
+#~ msgstr "Estimativas de tamanho de efeito"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Vovk-Sellke maximum p-ratio"
+#~ msgstr "Razão p máxima de Vovk-Sellke"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Simple Main Effects"
+#~ msgstr "Efeitos principais simples"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Factors"
+#~ msgstr "Fatores"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Simple Effect Factor"
+#~ msgstr "Efeito Simples de Fator"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Moderator Factor 1"
+#~ msgstr "Moderador Fator 1"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Moderator Factor 2"
+#~ msgstr "Moderador Fator 2"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Nonparametrics"
+#~ msgstr "Não paramétricos"
+
+#~ msgctxt "Ancova|"
+#~ msgid "Kruskal-Wallis Test"
+#~ msgstr "Teste Kruskal-Wallis"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Dependent Variable"
+#~ msgstr "Variável Dependente"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Fixed Factors"
+#~ msgstr "Fatores Fixos"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Random Factors"
+#~ msgstr "Fatores Aleatórios"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Covariates"
+#~ msgstr "Covariáveis"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Tables"
+#~ msgstr "Tabelas"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Effects"
+#~ msgstr "Efeitos"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Across all models"
+#~ msgstr "Em todos os modelos"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Across matched models"
+#~ msgstr "Em modelos correspondentes"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Estimates"
+#~ msgstr "Estimativas"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Model averaged RÂ²"
+#~ msgstr "Média do modelo"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Order"
+#~ msgstr "Ordem"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Compare to best model"
+#~ msgstr "Comparar com o melhor modelo"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Compare to null model"
+#~ msgstr "Comparar com o modelo nulo"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Plots"
+#~ msgstr "Diagramas"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Model averaged posteriors"
+#~ msgstr "Modelo médio posterior"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Group levels in single plot"
+#~ msgstr "Níveis de grupo em um único diagrama"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Individual plot per level"
+#~ msgstr "Diagrama individual por nível"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Q-Q plot of residuals"
+#~ msgstr "Diagrama Q-Q dos resíduos"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Posterior RÂ²"
+#~ msgstr "RÂ² Posterior"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Model"
+#~ msgstr "Modelo"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Components"
+#~ msgstr "Componentes"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Single Model Inference"
+#~ msgstr "Inferência de modelo único"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Specific Model Terms"
+#~ msgstr "Termos específicos do modelo"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "R²"
+#~ msgstr "R²"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Marginal posteriors"
+#~ msgstr "Posteriores marginal"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Post Hoc Tests"
+#~ msgstr "Testes Post Hoc"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Correction"
+#~ msgstr "Correção"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Null control"
+#~ msgstr "Controle nulo"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Descriptives Plots"
+#~ msgstr "Diagramas descritivos"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Horizontal Axis"
+#~ msgstr "Eixo horizontal"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Separate Lines"
+#~ msgstr "Linhas separadas"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Separate Plots"
+#~ msgstr "Diagramas Separados"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Display"
+#~ msgstr "Exibir"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Additional Options"
+#~ msgstr "Opções Adicionais"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Prior"
+#~ msgstr "Prévio"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "r scale fixed effects"
+#~ msgstr "efeitos fixos da escala r"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "r scale random effects"
+#~ msgstr "efeitos aleatórios da escala r"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "r scale covariates"
+#~ msgstr "covariáveis da escala r"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Numerical Accuracy"
+#~ msgstr "Acuracia numerica"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Auto"
+#~ msgstr "Auto"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "Manual"
+#~ msgstr "Manual"
+
+#~ msgctxt "AncovaBayesian|"
+#~ msgid "No. samples"
+#~ msgstr "No. de amostras"
+
+#~ msgctxt "Anova|"
+#~ msgid "Dependent Variable"
+#~ msgstr "Variável Dependente"
+
+#~ msgctxt "Anova|"
+#~ msgid "Fixed Factors"
+#~ msgstr "Fatores Fixos"
+
+#~ msgctxt "Anova|"
+#~ msgid "Random Factors"
+#~ msgstr "Fatores Randômicos"
+
+#~ msgctxt "Anova|"
+#~ msgid "WLS Weights"
+#~ msgstr "WLS Ponderado"
+
+#~ msgctxt "Anova|"
+#~ msgid "Model"
+#~ msgstr "Modelo"
+
+#~ msgctxt "Anova|"
+#~ msgid "Components"
+#~ msgstr "Componentes"
+
+#~ msgctxt "Anova|"
+#~ msgid "Model Terms"
+#~ msgstr "Termos do modelo"
+
+#~ msgctxt "Anova|"
+#~ msgid "Sum of squares"
+#~ msgstr "Soma dos quadrados"
+
+#~ msgctxt "Anova|"
+#~ msgid "Assumption Checks"
+#~ msgstr "Verificação dos pressupostos"
+
+#~ msgctxt "Anova|"
+#~ msgid "Homogeneity tests"
+#~ msgstr "Teste de homogeneidade"
+
+#~ msgctxt "Anova|"
+#~ msgid "Homogeneity corrections"
+#~ msgstr "Correções de Homogeneidade"
+
+#~ msgctxt "Anova|"
+#~ msgid "None"
+#~ msgstr "Nenhum"
+
+#~ msgctxt "Anova|"
+#~ msgid "Brown-Forsythe"
+#~ msgstr "Brown-Forsythe"
+
+#~ msgctxt "Anova|"
+#~ msgid "Welch"
+#~ msgstr "Welch"
+
+#~ msgctxt "Anova|"
+#~ msgid "Q-Q plot of residuals"
+#~ msgstr "Diagrama Q-Q dos resíduos"
+
+#~ msgctxt "Anova|"
+#~ msgid "Contrasts"
+#~ msgstr "Contrastes"
+
+#~ msgctxt "Anova|"
+#~ msgid "Confidence intervals"
+#~ msgstr "Intervalos de confiança"
+
+#~ msgctxt "Anova|"
+#~ msgid "Post Hoc Tests"
+#~ msgstr "Testes Post Hoc"
+
+#~ msgctxt "Anova|"
+#~ msgid "From"
+#~ msgstr "A partir de"
+
+#~ msgctxt "Anova|"
+#~ msgid "bootstraps"
+#~ msgstr "bootstraps"
+
+#~ msgctxt "Anova|"
+#~ msgid "Correction"
+#~ msgstr "Correção"
+
+#~ msgctxt "Anova|"
+#~ msgid "Tukey"
+#~ msgstr "Tukey"
+
+#~ msgctxt "Anova|"
+#~ msgid "Scheffe"
+#~ msgstr "Scheffe"
+
+#~ msgctxt "Anova|"
+#~ msgid "Bonferroni"
+#~ msgstr "Bonferroni"
+
+#~ msgctxt "Anova|"
+#~ msgid "Holm"
+#~ msgstr "Holm"
+
+#~ msgctxt "Anova|"
+#~ msgid "Type"
+#~ msgstr "Tipo"
+
+#~ msgctxt "Anova|"
+#~ msgid "Standard"
+#~ msgstr "Padrão"
+
+#~ msgctxt "Anova|"
+#~ msgid "Games-Howell"
+#~ msgstr "Games-Howell"
+
+#~ msgctxt "Anova|"
+#~ msgid "Dunnett"
+#~ msgstr "Dunnett"
+
+#~ msgctxt "Anova|"
+#~ msgid "Dunn"
+#~ msgstr "Dunn"
+
+#~ msgctxt "Anova|"
+#~ msgid "Descriptives Plots"
+#~ msgstr "Diagramas Descritivos"
+
+#~ msgctxt "Anova|"
+#~ msgid "Factors"
+#~ msgstr "Fatores"
+
+#~ msgctxt "Anova|"
+#~ msgid "Horizontal Axis"
+#~ msgstr "Eixos Horizontal"
+
+#~ msgctxt "Anova|"
+#~ msgid "Separate Lines"
+#~ msgstr "Linhas Separadas"
+
+#~ msgctxt "Anova|"
+#~ msgid "Separate Plots"
+#~ msgstr "Diagramas Separados"
+
+#~ msgctxt "Anova|"
+#~ msgid "Display"
+#~ msgstr "Exibir"
+
+#~ msgctxt "Anova|"
+#~ msgid "Display error bars"
+#~ msgstr "Exibir barras de erro"
+
+#~ msgctxt "Anova|"
+#~ msgid "Confidence interval"
+#~ msgstr "Intervalo de Confiança"
+
+#~ msgctxt "Anova|"
+#~ msgid "Standard error"
+#~ msgstr "Erro padrão"
+
+#~ msgctxt "Anova|"
+#~ msgid "Marginal Means"
+#~ msgstr "Médias marginais"
+
+#~ msgctxt "Anova|"
+#~ msgid "Compare marginal means to 0"
+#~ msgstr "Comparar médias marginais com 0"
+
+#~ msgctxt "Anova|"
+#~ msgid "Confidence interval adjustment"
+#~ msgstr "Ajuste do intervalo de confiança"
+
+#~ msgctxt "Anova|"
+#~ msgid "Descriptive statistics"
+#~ msgstr "Estatísticas Descritivas"
+
+#~ msgctxt "Anova|"
+#~ msgid "Estimates of effect size"
+#~ msgstr "Estimativas de tamanho de efeito"
+
+#~ msgctxt "Anova|"
+#~ msgid "Vovk-Sellke maximum p-ratio"
+#~ msgstr "Razão p máxima de Vovk-Sellke"
+
+#~ msgctxt "Anova|"
+#~ msgid "Simple Main Effects"
+#~ msgstr "Efeitos principais simples"
+
+#~ msgctxt "Anova|"
+#~ msgid "Simple Effect Factor"
+#~ msgstr "Efeito Simples de Fator"
+
+#~ msgctxt "Anova|"
+#~ msgid "Moderator Factor 1"
+#~ msgstr "Moderador Fator 1"
+
+#~ msgctxt "Anova|"
+#~ msgid "Moderator Factor 2"
+#~ msgstr "Moderador Fator 2"
+
+#~ msgctxt "Anova|"
+#~ msgid "Nonparametrics"
+#~ msgstr "Não paramétricos"
+
+#~ msgctxt "Anova|"
+#~ msgid "Kruskal-Wallis Test"
+#~ msgstr "Teste Kruskal-Wallis"
+
+#~ msgctxt "AnovaBayesian|"
+#~ msgid "Dependent Variable"
+#~ msgstr "Variável Dependente"
+
+#~ msgctxt "AnovaBayesian|"
+#~ msgid "Fixed Factors"
+#~ msgstr "Fatores Fixos"
+
+#~ msgctxt "AnovaBayesian|"
+#~ msgid "Random Factors"
+#~ msgstr "Fatores aleatórios"
+
+#~ msgctxt "AnovaBayesian|"
+#~ msgid "Tables"
+#~ msgstr "Tabelas"
+
+#~ msgctxt "AnovaBayesian|"
+#~ msgid "Effects"
+#~ msgstr "Efeitos"
+
+#~ msgctxt "AnovaBayesian|"
+#~ msgid "Across all models"
+#~ msgstr "Em todos os modelos"
+
+#~ msgctxt "AnovaBayesian|"
+#~ msgid "Across matched models"
+#~ msgstr "Em modelos correspondentes"
+
+#~ msgctxt "AnovaBayesian|"
+#~ msgid "Estimates"
+#~ msgstr "Estimativas"
+
+#~ msgctxt "AnovaBayesian|"
+#~ msgid "Model averaged R²"
+#~ msgstr "Modelo médio"
+
+#~ msgctxt "AnovaBayesian|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "AnovaBayesian|"
+#~ msgid "Credible interval"
+#~ msgstr "Intervalo de credibilidade"
+
+#~ msgctxt "AnovaBayesian|"
+#~ msgid "Order"
+#~ msgstr "Ordem"
+
+#~ msgctxt "AnovaBayesian|"
+#~ msgid "Compare to best model"
+#~ msgstr "Comparar com o melhor modelo"
+
+#~ msgctxt "AnovaBayesian|"
+#~ msgid "Compare to null model"
+#~ msgstr "Comparar com o modelo nulo"
+
+#~ msgctxt "AnovaBayesian|"
+#~ msgid "Plots"
+#~ msgstr "Diagramas"
+
+#~ msgctxt "AnovaBayesian|"
+#~ msgid "Descriptives Plots"
+#~ msgstr "Diagramas Descritivos"
+
+#~ msgctxt "AnovaRepeatedMeasures|"
+#~ msgid "Effect size"
+#~ msgstr "Tamanho de efeito"
+
+#~ msgctxt "AnovaRepeatedMeasures|"
+#~ msgid "Descriptives Plots"
+#~ msgstr "Diagramas Descritivos"
+
+#~ msgctxt "AnovaRepeatedMeasures|"
+#~ msgid "Estimates of effect size"
+#~ msgstr "Estimativas de tamanho de efeito"
+
+#~ msgctxt "AnovaRepeatedMeasuresBayesian|"
+#~ msgid "Descriptives Plots"
+#~ msgstr "Diagramas Descritivos"
+
+#~ msgctxt "BainAnovaBayesian|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "BainTTestBayesianIndependentSamples|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "BainTTestBayesianIndependentSamples|"
+#~ msgid "Descriptives plots"
+#~ msgstr "Diagramas Descritivos"
+
+#~ msgctxt "BainTTestBayesianOneSample|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "BainTTestBayesianOneSample|"
+#~ msgid "Descriptives plots"
+#~ msgstr "Diagramas Descritivos"
+
+#~ msgctxt "BainTTestBayesianPairedSamples|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "BainTTestBayesianPairedSamples|"
+#~ msgid "Descriptives plots"
+#~ msgstr "Diagramas Descritivos"
+
+#~ msgctxt "MultinomialTestBayesian|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "ClassicalMetaAnalysis|"
+#~ msgid "Effect Size"
+#~ msgstr "Tamanho de efeito"
+
+#~ msgctxt "MultilevelMetaAnalysis|"
+#~ msgid "Effect Size"
+#~ msgstr "Tamanho de efeito"
+
+#~ msgctxt "LinearMixedModels|"
+#~ msgid "Descriptives Plots"
+#~ msgstr "Diagramas Descritivos"
+
+#~ msgctxt "RegressionLinearBayesian|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "RegressionLogistic|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "TTestBayesianIndependentSamples|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "TTestBayesianOneSample|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "TTestBayesianPairedSamples|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "TTestIndependentSamples|"
+#~ msgid "Effect Size"
+#~ msgstr "Tamanho de efeito"
+
+#~ msgctxt "TTestIndependentSamples|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~| msgid "DEscriptives plots"
+#~ msgctxt "TTestIndependentSamples|"
+#~ msgid "Descriptives plots"
+#~ msgstr "Diagramas Descritivos"
+
+#~ msgctxt "TTestOneSample|"
+#~ msgid "Effect Size"
+#~ msgstr "Tamanho de efeito"
+
+#~ msgctxt "TTestOneSample|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "TTestOneSample|"
+#~ msgid "Descriptives plots"
+#~ msgstr "Diagramas Descritivos"
+
+#~ msgctxt "TTestPairedSamples|"
+#~ msgid "Effect Size"
+#~ msgstr "Tamanho de efeito"
+
+#~ msgctxt "TTestPairedSamples|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "TTestPairedSamples|"
+#~ msgid "Descriptives plots"
+#~ msgstr "Diagramas Descritivos"
+
+#~ msgctxt "Anova|"
+#~ msgid "Effect size"
+#~ msgstr "Tamano de efeito"
+
+#~ msgctxt "EquivalenceBayesianIndependentSamplesTTest|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "EquivalenceBayesianOneSampleTTest|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "EquivalenceBayesianPairedSamplesTTest|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "EquivalenceIndependentSamplesTTest|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "EquivalenceOneSampleTTest|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "EquivalencePairedSamplesTTest|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "BayesianMetaAnalysis|"
+#~ msgid "Effect Size"
+#~ msgstr "Tamanho de efeito"
+
+#~ msgctxt "BayesianMetaAnalysis|"
+#~ msgid "Effect size"
+#~ msgstr "Tamanho de efeito"
+
+#~ msgctxt "LDGenerateDisplayData|"
+#~ msgid "Descriptives"
+#~ msgstr "Descritivas"
+
+#~ msgctxt "LDGenerateDisplayData|"
+#~ msgid "First"
+#~ msgstr "Primeiro"
+
+#~ msgctxt "LDGenerateDisplayData|"
+#~ msgid "observed moments"
+#~ msgstr "momentos observados"
+
+#~ msgctxt "LDGenerateDisplayData|"
+#~ msgid "Plots"
+#~ msgstr "Diagramas"
+
+#~ msgctxt "LDGenerateDisplayData|"
+#~ msgid "Histogram with"
+#~ msgstr "Histograma com"
+
+#~ msgctxt "LDGenerateDisplayData|"
+#~ msgid "bins"
+#~ msgstr "bins"
+
+#~ msgctxt "LDGenerateDisplayData|"
+#~ msgid "Empirical cumulative distribution"
+#~ msgstr "Distribuição cumulativa empírica"
+
+#~ msgctxt "LDGenerateDisplayData|"
+#~ msgid "Generate new variable from %1"
+#~ msgstr "Gerar nova variável a parte de %1"
+
+#~ msgctxt "LDGenerateDisplayData|"
+#~ msgid "e.g., random %1"
+#~ msgstr "ex., aleatório %1"
+
+#~ msgctxt "LDGenerateDisplayData|"
+#~ msgid "Bar plot"
+#~ msgstr "Diagrama de barra"
+
+#~ msgctxt "ReliabilityAnalysis|"
+#~ msgid "McDonald's Ï‰ (if item dropped)"
+#~ msgstr "McDonald's  (se o item for excluído)"
+
+#~ msgctxt "testEncoding|"
+#~ msgid "Selected"
+#~ msgstr "Selecionada"
+
+#~ msgctxt "ColumnTypesModel|"
+#~ msgid "Scale"
+#~ msgstr "Escala"
+
+#~ msgctxt "ColumnTypesModel|"
+#~ msgid "Ordinal"
+#~ msgstr "Ordinal"
+
+#~ msgctxt "ColumnTypesModel|"
+#~ msgid "Nominal"
+#~ msgstr "Nominal"
+
+#~ msgctxt "BoundQMLComboBox|"
+#~ msgid "Unknown option %1 in DropDown %2"
+#~ msgstr "Opção desconhecida% 1 no DropDown% 2"
+
+#~ msgctxt "Descriptives|"
+#~ msgid "Label outliers"
+#~ msgstr "Rótulo outliers"
+
+#~ msgctxt "NetworkAnalysis|"
+#~ msgid "Legend to plot ratio"
+#~ msgstr "Legenda para proporção do diagrama"
+
+#~ msgctxt "Correlation|"
+#~ msgid "Sample Correlation Coefficient"
+#~ msgstr "Coeficiente de Correlação Amostra"
+
+#~ msgctxt "Correlation|"
+#~ msgid "Pearson's r"
+#~ msgstr "r de Pearson"
+
+#~ msgctxt "Correlation|"
+#~ msgid "Spearman's rho"
+#~ msgstr "rho de Spearman"
+
+#~ msgctxt "CorrelationBayesian|"
+#~ msgid "Population Correlation Coefficient"
+#~ msgstr "Coeficiente de Correlação População"
+
+#~ msgctxt "CorrelationBayesian|"
+#~ msgid "Pearson's rho"
+#~ msgstr "rho de Pearson"
+
+#~ msgctxt "SummaryStatsCorrelationBayesianPairs|"
+#~ msgid "Sample Correlation Coefficient"
+#~ msgstr "Coeficiente de Correlação Amostra"
+
+#~ msgctxt "SummaryStatsCorrelationBayesianPairs|"
+#~ msgid "Pearson's r"
+#~ msgstr "r de Pearson"
+
+#~ msgctxt "AnalysisFormExpander|"
+#~ msgid "Show info for this analysis"
+#~ msgstr "Exibir informação sobre esta análise"
+
+#~ msgctxt "AnalysisFormExpander|"
+#~ msgid "Remove this analysis"
+#~ msgstr "Removar esta análise"
+
+#~ msgctxt "PrefsUI|"
+#~ msgid "Disable Animations"
+#~ msgstr "Desativar Animações"
+
+#~ msgctxt "PrefsUI|"
+#~ msgid ""
+#~ "Turns off all animations, this is implied when \"Safe Graphics Mode\" is "
+#~ "on."
+#~ msgstr ""
+#~ "Desativa todas as animações, o que está implícito quando o \"Modo Gráfico "
+#~ "Seguro\" está ativado."
+
+#~ msgctxt "PrefsUI|"
+#~ msgid "Already disabled animations because \"Safe Graphics Mode\" is on"
+#~ msgstr ""
+#~ "As animações já estão desativadas porque o \"Modo de gráficos seguros \" "
+#~ "está ativado"
+
+#~ msgctxt "EngineRepresentation|"
+#~ msgid "The engine crashed while trying to run the filter..."
+#~ msgstr "O sistema travou enquanto tentava executar o filtro..."
+
+#~ msgctxt "EngineRepresentation|"
+#~ msgid "The engine crashed while trying to compute this column..."
+#~ msgstr "O sistema travou enquanto tentava computar esta coluna..."
+
+#~ msgctxt "EngineRepresentation|"
+#~ msgid "The engine crashed while trying to run rscript..."
+#~ msgstr "O sistema travou ao tentar executar o script do r ..."
+
+#~ msgctxt "EngineRepresentation|"
+#~ msgid "The engine crashed while trying to run this analysis..."
+#~ msgstr "O sistema travou ao tentar executar esta análise ..."
+
+#~ msgctxt "auditBayesianWorkflow|"
+#~ msgid "Column name selection result: "
+#~ msgstr "Nome da coluna seleção do resultado"
+
+#~ msgctxt "auditBayesianWorkflow|"
+#~ msgid "Column name audit result: "
+#~ msgstr "Nome da coluna resultado da auditoria"
+
+#~ msgctxt "auditClassicalWorkflow|"
+#~ msgid "Column name selection result: "
+#~ msgstr "Nome da coluna seleção do resultado"
+
+#~ msgctxt "auditClassicalWorkflow|"
+#~ msgid "Column name audit result: "
+#~ msgstr "Nome da coluna resultado da auditoria"
+
+#~ msgctxt "mlRegressionBoosting|"
+#~ msgid "Column name: "
+#~ msgstr "Nome da coluna: "
+
+#~ msgctxt "mlClassificationBoosting|"
+#~ msgid "Column name: "
+#~ msgstr "Nome da coluna: "
+
+#~ msgctxt "mlClassificationKnn|"
+#~ msgid "Column name: "
+#~ msgstr "Nome da coluna: "
+
+#~ msgctxt "mlClassificationLda|"
+#~ msgid "Column name: "
+#~ msgstr "Nome da coluna: "
+
+#~ msgctxt "mlClassificationRandomForest|"
+#~ msgid "Column name: "
+#~ msgstr "Nome da coluna: "
+
+#~ msgctxt "mlClusteringDensityBased|"
+#~ msgid "Column name: "
+#~ msgstr "Nome da coluna: "
+
+#~ msgctxt "mlClusteringFuzzyCMeans|"
+#~ msgid "Column name: "
+#~ msgstr "Nome da coluna: "
+
+#~ msgctxt "mlClusteringKMeans|"
+#~ msgid "Column name: "
+#~ msgstr "Nome da coluna: "
+
+#~ msgctxt "mlClusteringRandomForest|"
+#~ msgid "Column name: "
+#~ msgstr "Nome da coluna: "
+
+#~ msgctxt "mlRegressionKnn|"
+#~ msgid "Column name: "
+#~ msgstr "Nome da coluna: "
+
+#~ msgctxt "mlRegressionRandomForest|"
+#~ msgid "Column name: "
+#~ msgstr "Nome da coluna: "
+
+#~ msgctxt "mlRegressionRegularized|"
+#~ msgid "Column name: "
+#~ msgstr "Nome da coluna: "
+
+#~ msgctxt "DataSplit|"
+#~ msgid "Column name: "
+#~ msgstr "Nome da coluna: "
+
+#~ msgctxt "LDnegbinomial|"
+#~ msgid "Parameters"
+#~ msgstr "Parâmetros"
+
+#~ msgctxt "EquivalenceBayesianIndependentSamplesTTest|"
+#~ msgid "from"
+#~ msgstr "de"
+
+#~ msgctxt "EquivalenceBayesianIndependentSamplesTTest|"
+#~ msgid "to"
+#~ msgstr "para"
+
+#~ msgctxt "EquivalenceBayesianIndependentSamplesTTest|"
+#~ msgid "from %1"
+#~ msgstr "de %1"
+
+#~ msgctxt "EquivalenceBayesianIndependentSamplesTTest|"
+#~ msgid "to %1"
+#~ msgstr "para %1"
+
+#~ msgctxt "EquivalenceBayesianOneSampleTTest|"
+#~ msgid "from"
+#~ msgstr "de"
+
+#~ msgctxt "EquivalenceBayesianOneSampleTTest|"
+#~ msgid "to"
+#~ msgstr "para"
+
+#~ msgctxt "EquivalenceBayesianOneSampleTTest|"
+#~ msgid "from %1"
+#~ msgstr "de %1"
+
+#~ msgctxt "EquivalenceBayesianOneSampleTTest|"
+#~ msgid "to %1"
+#~ msgstr "para %1"
+
+#~ msgctxt "EquivalenceBayesianPairedSamplesTTest|"
+#~ msgid "from"
+#~ msgstr "de"
+
+#~ msgctxt "EquivalenceBayesianPairedSamplesTTest|"
+#~ msgid "to"
+#~ msgstr "para"
+
+#~ msgctxt "EquivalenceBayesianPairedSamplesTTest|"
+#~ msgid "from %1"
+#~ msgstr "de %1"
+
+#~ msgctxt "EquivalenceBayesianPairedSamplesTTest|"
+#~ msgid "to %1"
+#~ msgstr "para %1"
+
+#~ msgctxt "EquivalenceIndependentSamplesTTest|"
+#~ msgid "from"
+#~ msgstr "de"
+
+#~ msgctxt "EquivalenceIndependentSamplesTTest|"
+#~ msgid "to"
+#~ msgstr "para"
+
+#~ msgctxt "EquivalenceIndependentSamplesTTest|"
+#~ msgid "from %1"
+#~ msgstr "de %1"
+
+#~ msgctxt "EquivalenceIndependentSamplesTTest|"
+#~ msgid "to %1"
+#~ msgstr "para %1"
+
+#~ msgctxt "EquivalenceOneSampleTTest|"
+#~ msgid "from"
+#~ msgstr "de"
+
+#~ msgctxt "EquivalenceOneSampleTTest|"
+#~ msgid "to"
+#~ msgstr "para"
+
+#~ msgctxt "EquivalenceOneSampleTTest|"
+#~ msgid "from %1"
+#~ msgstr "de %1"
+
+#~ msgctxt "EquivalencePairedSamplesTTest|"
+#~ msgid "from"
+#~ msgstr "de"
+
+#~ msgctxt "EquivalencePairedSamplesTTest|"
+#~ msgid "to"
+#~ msgstr "para"
+
+#~ msgctxt "EquivalencePairedSamplesTTest|"
+#~ msgid "from %1"
+#~ msgstr "de %1"
+
+#~ msgctxt "EquivalencePairedSamplesTTest|"
+#~ msgid "to %1"
+#~ msgstr "para %1"
