@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2021-03-03 14:07\n"
-"PO-Revision-Date: 2021-03-10 10:02+0000\n"
+"PO-Revision-Date: 2021-03-18 05:18+0000\n"
 "Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/jaspbain-r/"
 "de/>\n"
@@ -21,25 +21,25 @@ msgstr ""
 "Bain akzeptiert keine Faktorstufen, die Leerzeichen enthalten. Bitte "
 "entferne die Leerzeichen aus deinen Faktorstufen, um fortzufahren."
 
-#, fuzzy
 msgid ""
 "An error occurred in the call to lavaan: %1$s. Please double check if the "
 "variables in lavaan syntax match the variables in your data set."
 msgstr ""
-"In der Analyse ist ein Fehler aufgetreten:<br>%s<br><br>>Bitte überprüfe "
-"noch einmal deine Variablen und Modellbedingungen."
+"Beim Aufruf von Lavaan ist ein Fehler aufgetreten: %1$s. Bitte überprüfe, ob "
+"die Variablen in der Lavaan-Syntax mit den Variablen im Datensatz "
+"übereinstimmen."
 
 msgid "The fixed factor has too many levels for a Bain analysis."
 msgstr "Der feste Faktor hat zu viele Stufen für eine Bain-Analyse."
 
-#, fuzzy
 msgid ""
 "An error occurred in the analysis:<br>%1$s<br><br>Please double check if the "
 "variables in the 'Model Contraints' section match the variables in your data "
 "set."
 msgstr ""
-"In der Analyse ist ein Fehler aufgetreten:<br>%s<br><br>>Bitte überprüfe "
-"noch einmal deine Variablen und Modellbedingungen."
+"In der Analyse ist ein Fehler aufgetreten:<br>%1$s<br><br>Bitte überprüfe, "
+"ob die Variablen im Abschnitt 'Model Contraints' mit den Variablen im "
+"Datensatz übereinstimmen."
 
 msgid "Hypothesis"
 msgstr "Hypothese"
@@ -62,15 +62,14 @@ msgstr "Bain T-Test für eine Stichprobe"
 msgid "Bain ANOVA"
 msgstr "Bain ANOVA"
 
-#, fuzzy
 msgid "Bain ANCOVA"
-msgstr "Bain ANOVA"
+msgstr "Bain ANCOVA"
 
 msgid "Bain Linear Regression"
 msgstr "Bain Lineare Regression"
 
 msgid "Bain Structural Equation Model"
-msgstr ""
+msgstr "Bain Strukturgleichungsmodell"
 
 msgid "BF"
 msgstr "BF"
@@ -223,7 +222,7 @@ msgstr ""
 "basieren auf gleichen Prior-Wahrscheinlichkeiten."
 
 msgid "BF.u"
-msgstr ""
+msgstr "BF.u"
 
 msgid "BF.c"
 msgstr "BF.c"
@@ -234,7 +233,6 @@ msgstr "PMP a"
 msgid "PMP b"
 msgstr "PMP b"
 
-#, fuzzy
 msgid ""
 "BF.u and BF.c denote the Bayes factors of the hypothesis in the row versus \n"
 "\t\t\t\t\t\tthe unconstrained hypothesis and complement, respectively. "
@@ -243,11 +241,13 @@ msgid ""
 "unconstrained hypothesis) \n"
 "\t\t\t\t\t\tare based on equal prior model probabilities."
 msgstr ""
-"BF.c bezeichnet den Bayesfaktor der Hypothese in der Zeile gegenüber ihrem "
-"Gegenteil/Komplement.\n"
-"Posterior-Modellwahrscheinlichkeiten (a: exklusive der uneingeschränkte "
-"Hypothese, b: inklusive der uneingeschränkten Hypothese) basieren auf "
-"gleichen Prior-Modellwahrscheinlichkeiten."
+"BF.u und BF.c bezeichnen die Bayes-Faktoren der Hypothese in der Zeile "
+"gegenüber\n"
+"\t\t\t\t\t\tder uneingeschränkten Hypothese bzw. dem Gegenteil/Komplement. A-"
+"posteriori Modellwahrscheinlichkeiten\n"
+"\t\t\t\t\t\t(a: ohne die uneingeschränkte Hypothese, b: mit der "
+"uneingeschränkten-Hypothese)\n"
+"\t\t\t\t\t\tbasieren auf gleichen a-priori Modellwahrscheinlichkeiten."
 
 msgid "Results not computed: %1$s."
 msgstr "Ergebnisse nicht berechnet: %1$s."
@@ -298,13 +298,12 @@ msgstr ""
 msgid "Results not computed: The pair is incomplete."
 msgstr "Ergebnisse nicht berechnet: Das Paar ist unvollständig."
 
-#, fuzzy
 msgid ""
 "The variables %1$s contain missing values, the rows containing these values "
 "are removed in the analysis."
 msgstr ""
-"Die Variablen %s enthalten fehlende Werte; die Zeilen mit diesen Werten sind "
-"in der Analyse entfernt."
+"Die Variablen %1$s enthalten fehlende Werte; die Zeilen mit diesen Werten "
+"sind aus der Analyse entfernt."
 
 msgid "<b>Warning.</b>"
 msgstr "<b>Warnung.</b>"
@@ -316,16 +315,15 @@ msgstr ""
 "Die Variablen %1$s und %2$s enthalten fehlende Werte, die Zeilen mit diesen "
 "Werten sind in der Analyse entfernt."
 
-#, fuzzy
 msgid ""
 "The variable %1$s contains missing values, the rows containing these values "
 "are removed in the analysis."
 msgstr ""
-"Die Variable %s enthält fehlende Werte; die Zeilen mit diesen Werten sind in "
-"der Analyse entfernt."
+"Die Variable %1$s enthält fehlende Werte; die Zeilen mit diesen Werten sind "
+"aus der Analyse entfernt."
 
 msgid "H%1$i"
-msgstr ""
+msgstr "H%1$i"
 
 msgid "Hu"
 msgstr "Hu"
@@ -336,9 +334,8 @@ msgstr "Bayes Faktormatrix"
 msgid "Coefficients for Groups plus Covariates"
 msgstr "Koeffizienten für Gruppen plus Kovariaten"
 
-#, fuzzy
 msgid "Coefficients for Parameters"
-msgstr "Koeffizienten für Gruppen plus Kovariaten"
+msgstr "Koeffizienten für Parameter"
 
 msgid "Descriptive Statistics"
 msgstr "Deskriptive Statistik"
@@ -373,15 +370,11 @@ msgstr "Obere"
 msgid "The displayed coefficients are standardized."
 msgstr "Die angezeigten Koeffizienten sind standardisiert."
 
-#, fuzzy
 msgid "The displayed coefficients are unstandardized."
-msgstr "Die angezeigten Koeffizienten sind standardisiert."
+msgstr "Die angezeigten Koeffizienten sind nicht standardisiert."
 
-#, fuzzy
 msgid "The results for this variable were not computed."
-msgstr ""
-"Abbilden nicht möglich: Die Ergebnisse für diese Variable wurden nicht "
-"berechnet."
+msgstr "Die Ergebnisse für diese Variable wurden nicht berechnet."
 
 msgid "Posterior Probabilities"
 msgstr "Posterior Wahrscheinlichkeiten"
@@ -391,15 +384,11 @@ msgstr ""
 "Abbilden nicht möglich: Die Ergebnisse für diese Variable wurden nicht "
 "berechnet."
 
-#, fuzzy
 msgid "Plotting not possible: %1$s"
-msgstr "Abbilden nicht möglich: %s"
+msgstr "Abbilden nicht möglich: %1$s"
 
-#, fuzzy
 msgid "Plotting not possible: the results could not be computed."
-msgstr ""
-"Abbilden nicht möglich: Die Ergebnisse für diese Variable wurden nicht "
-"berechnet."
+msgstr "Abbilden nicht möglich: Die Ergebnisse konnten nicht berechnet werden."
 
 msgid "Descriptive Plots"
 msgstr "Deskriptive Abbildungen"
@@ -431,12 +420,11 @@ msgstr "Hu einbeziehen"
 msgid "Path Diagram"
 msgstr "Pfaddiagramm"
 
-#, fuzzy
 msgid "Group: %1$s"
-msgstr "Gruppe"
+msgstr "Gruppe: %1$s"
 
 msgid "An error occurred while creating this plot:<br>%1$s."
-msgstr ""
+msgstr "Beim Erstellen dieses Plots ist ein Fehler aufgetreten:<br>%1$s."
 
 #~ msgid "Hypothesis Legend"
 #~ msgstr "Hypothese Legende"
