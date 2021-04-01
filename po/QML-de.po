@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2021-04-02 15:26+0000\n"
+"Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/jasp/jaspbain-qml/"
+"de/>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.6-dev\n"
 "X-Language: en_US\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -461,11 +467,11 @@ msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Standardize coefficients"
-msgstr ""
+msgstr "Koeffizienten standardisieren"
 
 msgctxt "BainSemBayesian|"
 msgid "Model Options"
-msgstr ""
+msgstr "Modell-Optionen"
 
 msgctxt "BainSemBayesian|"
 msgid "Factor scaling"
@@ -473,53 +479,48 @@ msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Factor variance"
-msgstr ""
+msgstr "Faktorvarianz"
 
 msgctxt "BainSemBayesian|"
 msgid "Factor loading"
-msgstr ""
+msgstr "Faktorladung"
 
 msgctxt "BainSemBayesian|"
 msgid "Grouping variable"
-msgstr ""
+msgstr "Gruppierungsvariable"
 
-#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Tables"
 msgstr "Tabellen"
 
 msgctxt "BainSemBayesian|"
 msgid "Coefficients"
-msgstr ""
+msgstr "Koeffzienten"
 
-#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Credible interval"
 msgstr "Glaubwürdigkeitsintervall"
 
-#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Plots"
 msgstr "Abbildungen"
 
 msgctxt "BainSemBayesian|"
 msgid "Path diagram"
-msgstr ""
+msgstr "Pfaddiagramm"
 
 msgctxt "BainSemBayesian|"
 msgid "Show parameter estimates"
-msgstr ""
+msgstr "Parameterschätzungen anzeigen"
 
 msgctxt "BainSemBayesian|"
 msgid "Show legend"
-msgstr ""
+msgstr "Legende anzeigen"
 
-#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Additional Options"
 msgstr "Weitere Optionen"
 
-#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Seed"
 msgstr "Startwert für Zufallszahlen"
@@ -530,14 +531,12 @@ msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Standardize coefficients"
-msgstr ""
+msgstr "Koeffizienten standardisieren"
 
-#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Bayes factor matrix"
 msgstr "Bayesfaktormatrix"
 
-#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Posterior probabilities"
 msgstr "Posterior-Wahrscheinlichkeiten"
@@ -561,6 +560,18 @@ msgid ""
 "what can and cannot be done\n"
 "with Bain Structural Equation Modeling."
 msgstr ""
+"Hypothesen können mit den Parameternamen formuliert werden, die erscheinen, "
+"wenn das Feld \"Koeffizienten\" angekreuzt ist.\n"
+"Verwende KEINE Leerzeichen in den Parameternamen. Jede Hypothese muss in "
+"eine eigene Zeile. Zum Beispiel:\n"
+"\n"
+"A=~x1 = A=~x2 = A=~x3 = A=~x4\n"
+"A=~x1 > A=~x2 > A=~x3 = A=~x4\n"
+"A=~x1 > 0 & A=~x2 > 0 & A=~x3 > 0 & A=~x4 > 0\n"
+"\n"
+"Lies die Hilfedatei für weitere Anweisungen zur Formulierung von Hypothesen "
+"und was\n"
+"mit Bain Strukturgleichungsmodellierung möglich ist."
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Fraction"
