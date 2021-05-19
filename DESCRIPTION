@@ -15,6 +15,7 @@ Imports:
   lavaan,
   ggplot2,
   semPlot,
+  stringr,
   jaspBase,
   jaspGraphs
 Remotes:
