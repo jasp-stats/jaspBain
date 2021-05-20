@@ -27,17 +27,16 @@ Form
 {
 	columns: 							2
 
-	TextArea 
-	{ 
+	TextArea
+	{
 		name: 							"syntax"
-		text:							""
-		textType: 						JASP.TextTypeLavaan 
+		textType: 						JASP.TextTypeLavaan
 		Layout.columnSpan: 				2
 	}
 
 	Group
 	{
-		title:							qsTr("Model Options")	
+		title:							qsTr("Model Options")
 		
 		DropDown
 		{
@@ -45,14 +44,14 @@ Form
 			label: 						qsTr("Factor scaling")
 			indexDefaultValue: 			0
 			values:
-			[
+				[
 				{ label: qsTr("Factor variance"), value: "std.lv"			},
 				{ label: qsTr("Factor loading"),  value: "auto.fix.first"	}
 			]
 		}
 
-		DropDown 
-		{ 
+		DropDown
+		{
 			name: 						"fixedFactors"
 			label: 						qsTr("Grouping variable")
 			showVariableTypeIcon: 		true
@@ -74,10 +73,10 @@ Form
 				name: 					"descriptives"
 				text: 					qsTr("Coefficients")
 				
-				CIField 
-				{ 
+				CIField
+				{
 					name: 				"credibleInterval"
-					text: 				qsTr("Credible interval") 
+					text: 				qsTr("Credible interval")
 				}
 			}
 		}
@@ -86,10 +85,10 @@ Form
 		{
 			title: 						qsTr("Plots")
 
-			CheckBox 
-			{ 
+			CheckBox
+			{
 				name: 					"pathDiagram"
-				text: 					qsTr("Path diagram")	
+				text: 					qsTr("Path diagram")
 
 				CheckBox
 				{
@@ -101,44 +100,44 @@ Form
 				{
 					name:				"pathDiagramLegend"
 					text:				qsTr("Show legend")
-				}		
+				}
 			}
 		}
 	}
 
-	Divider 
-	{ 
-		width: 							parent.width 
+	Divider
+	{
+		width: 							parent.width
 	}
 
 	Group
 	{
 		title: 							qsTr("Additional Options")
 		
-		DoubleField  
-		{ 
+		DoubleField
+		{
 			name: 						"seed"
 			text: 						qsTr("Seed")
 			defaultValue: 				100
 			min: 						-999999
 			max: 						999999
-			fieldWidth: 				60 * preferencesModel.uiScale 
+			fieldWidth: 				60 * preferencesModel.uiScale
 		}
 
-		DoubleField  
-		{ 
+		DoubleField
+		{
 			name: 						"fraction"
 			text: 						qsTr("Fraction")
 			defaultValue: 				1
 			min: 						0.01
 			max: 						100
-			fieldWidth: 				60 * preferencesModel.uiScale 
+			fieldWidth: 				60 * preferencesModel.uiScale
 		}
 
-		CheckBox 
-		{ 
+		CheckBox
+		{
 			name: 						"standardized"
-			text: 						qsTr("Standardize coefficients")	
+			text: 						qsTr("Standardize coefficients")
 		}
 	}
 
@@ -148,10 +147,10 @@ Form
 		{
 			title: 						qsTr("Tables")
 
-			CheckBox 
-			{ 	
+			CheckBox
+			{
 				name: 					"bayesFactorMatrix"
-				text: 					qsTr("Bayes factor matrix") 
+				text: 					qsTr("Bayes factor matrix")
 			}
 		}
 
@@ -159,10 +158,10 @@ Form
 		{
 			title: 						qsTr("Plots")
 
-			CheckBox 
-			{ 
+			CheckBox
+			{
 				name: 					"bayesFactorPlot"
-				text: 					qsTr("Posterior probabilities")	
+				text: 					qsTr("Posterior probabilities")
 			}
 		}
 	}
@@ -172,17 +171,17 @@ Form
 		text: 							qsTr("Model Constraints")
 		columns:						1
 
-		Text 
-		{ 
+		Text
+		{
 			text: 						qsTr("Hypotheses can be formulated using the parameter names that appear if the 'Coefficients' box is ticked.\nDo NOT use spaces in the parameter names. Place each hypothesis on a new line. For example:\n\nA=~x1 = A=~x2 = A=~x3 = A=~x4\nA=~x1 > A=~x2 > A=~x3 = A=~x4\nA=~x1 > 0 & A=~x2 > 0 & A=~x3 > 0 & A=~x4 > 0\n\nRead the help file for further instructions about formulating hypotheses and what can and cannot be done\nwith Bain Structural Equation Modeling.")
 		}
 
 		TextArea
 		{
-				name: 					"model"
-				text: 					""
-				textType: 				JASP.TextTypeModel
-				trim: 					true
+			name: 					"model"
+			text: 					""
+			textType: 				JASP.TextTypeModel
+			trim: 					true
 		}
 	}
 }

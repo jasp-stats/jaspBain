@@ -19,7 +19,6 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   
   # What type of Bain analysis is being conducted?
   type <- "sem"
-  
   # Read the data set
   dataList <- .bainReadDataset(options, type, dataset)
   
@@ -51,12 +50,8 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   .bainSemPathDiagram(dataList[["dataset"]], options, bainContainer, ready, jaspResults, position = 5)
 }
 
-.bainSemGetUsedVars <- function(syntax, availablevars, decode = FALSE) {
-  if (decode) {
-    vv <- decodeColNames(availablevars)
-  } else {
-    vv <- availablevars
-  }
+.bainSemGetUsedVars <- function(syntax, availablevars) {
+  vv <- availablevars
   # This regex will isolate all manifest variables in the SEM model
   # Model:
   # A =~ Ab + Al + Af + An + Ar + Ac 
