@@ -74,7 +74,7 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   usedvars <- usedvars[order(nchar(usedvars), decreasing = TRUE)]
   withSingleQuotes <- paste("\\b'", usedvars, "'\\b", sep="")
   withDoubleQuotes <- paste('\\b"', usedvars, '"\\b', sep="")
-  newNames <- .v(usedvars)
+  newNames <- usedvars
   for (i in 1:length(usedvars)) {
     syntax <- gsub(withDoubleQuotes[i], newNames[i], syntax)
   }
