@@ -66,7 +66,7 @@
   } else {
     trydata 	<- .readDataSetToEnd(all.columns = TRUE)
     missing		<- names(which(apply(trydata, 2, function(x) { any(is.na(x))} )))
-    dataset		<- .readDataSetToEnd(all.columns = TRUE, exclude.na.listwise = .bainSemGetUsedVars(options[["syntax"]], colnames(trydata)))
+    dataset		<- .readDataSetToEnd(all.columns = TRUE, exclude.na.listwise = .bainSemGetUsedVars(options[["syntax"]]$model, colnames(trydata)))
   }
   
   readList <- list()
@@ -88,7 +88,7 @@
                   "anova" = options[["fixedFactors"]] != "" && options[["dependent"]] != "",
                   "ancova" = options[["dependent"]] != "" && options[["fixedFactors"]] != ""  && !is.null(unlist(options[["covariates"]])),
                   "regression" = (options[["dependent"]] != "" && unlist(options[["covariates"]]) != "" && !is.null(unlist(options[["covariates"]]))),
-                  "sem" = length(.bainSemGetUsedVars(options[["syntax"]], colnames(dataset))) > 1)
+                  "sem" = length(.bainSemGetUsedVars(options[["syntax"]]$model, colnames(dataset))) > 1)
   return(ready)
 }
 
@@ -236,7 +236,7 @@
     
   } else if (ready) {
     
-    syntax <- .bainSemTranslateModel(options[["syntax"]], dataset)
+    syntax <- .bainSemTranslateModel(options[["syntax"]]$model, dataset)
     
     error <- try({
       fit <- lavaan::sem(model = syntax, data = dataset, group = grouping, std.lv = (options[["factorStandardisation"]] == "std.lv"))
@@ -750,13 +750,13 @@
       progressbarTick()
     }
   } else if (type %in% c("anova", "ancova", "regression", "sem")) {
-	if (bainContainer$getError())
-		return()
+    if (bainContainer$getError())
+      return()
     variables <- switch(type,
                         "anova" = c(options[["dependent"]], options[["fixedFactors"]]),
                         "ancova" = c(options[["dependent"]], options[["fixedFactors"]], unlist(options[["covariates"]])),
                         "regression" = c(options[["dependent"]], unlist(options[["covariates"]])),
-                        "sem" = .bainSemGetUsedVars(.bainSemTranslateModel(options[["syntax"]], dataset), colnames(dataset)))
+                        "sem" = .bainSemGetUsedVars(.bainSemTranslateModel(options[["syntax"]]$model, dataset), colnames(dataset)))
     if (any(variables %in% missing)) {
       i <- which(variables %in% missing)
       if (length(i) > 1) {
