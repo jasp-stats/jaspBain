@@ -27,8 +27,8 @@ results <- jaspTools::runAnalysis("BainAncovaBayesian", "sesame.csv", options)
 test_that("Bayes Factor Matrix table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(1, 0.0125382587162236, 25240.6918749615, "H1", 79.7558913588277,
-			 1, 2013093.87900107, "H2", 3.96185653291061e-05, 4.96747822061937e-07,
+		list(1, 0.0145099077084855, 28921.6664220172, "H1", 68.918425953543,
+			 1, 1993235.72575887, "H2", 3.457615427162e-05, 5.01696807395563e-07,
 			 1, "H3"))
 })
 
@@ -58,11 +58,11 @@ test_that("Coefficients for Groups plus Covariates table results match", {
 test_that("Bain ANCOVA table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(0.000105084311355764, 0.000105084311355764, 0.012382991414958,
-			 0.000104200050823146, "H1", 0.00832657849517309, 0.00838109292000752,
-			 0.987616517988688, 0.00831056793303519, "H2", 4.13483006346101e-09,
-			 4.16328965451245e-09, 4.90596354343274e-07, 4.12825652083301e-09,
-			 "H3", "", "", "", 0.991585227887885, "Hu"))
+		list(0.000105084311355764, 0.000105084311355764, 0.0143023744004669,
+			 0.000104317853320798, "H1", 0.00719537689377166, 0.00724224533105126,
+			 0.985697131078429, 0.00718942224972197, "H2", 3.60742104437074e-09,
+			 3.63341136096384e-09, 4.94521103721013e-07, 3.60691018970414e-09,
+			 "H3", "", "", "", 0.992706256290047, "Hu"))
 })
 
 test_that("Posterior Probabilities plot matches", {
@@ -105,7 +105,7 @@ results <- jaspTools::runAnalysis("BainAncovaBayesian", "sesame.csv", options)
 test_that("Bayes Factor Matrix table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(1, 0.000151817953145536, "H1", 6586.83626857606, 1, "H2"))
+		list(1, 0.000148187711582985, "H1", 6748.19787226418, 1, "H2"))
 })
 
 test_that("Coefficients for Groups plus Covariates table results match", {
@@ -125,9 +125,9 @@ test_that("Coefficients for Groups plus Covariates table results match", {
 test_that("Bain ANCOVA table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(0.00140342160354946, 0.00140342160354946, 0.000151794907953313,
-			 0.000136979161135984, "H1", 172.600145394316, 9.24410831836275,
-			 0.999848205092047, 0.902259306609623, "H2", "", "", "", 0.0976037142292406,
+		list(0.00140342160354946, 0.00140342160354946, 0.000148165755238781,
+			 0.000134016960521465, "H1", 200.402822510065, 9.47056667896204,
+			 0.999851834244761, 0.904372967838261, "H2", "", "", "", 0.095493015201217,
 			 "Hu"))
 })
 

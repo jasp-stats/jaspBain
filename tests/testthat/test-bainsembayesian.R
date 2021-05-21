@@ -17,7 +17,7 @@ context("Bain SEM")
 # bainResult <- bain(fit1,hypotheses1,fraction=3,standardize=FALSE)
 
 options <- jaspTools::analysisOptions("BainSemBayesian")
-options$syntax <- "A =~ Ab + Al + Af + An + Ar + Ac; B =~ Bb + Bl + Bf + Bn + Br + Bc"
+options$syntax <- list("", model = "A =~ Ab + Al + Af + An + Ar + Ac; B =~ Bb + Bl + Bf + Bn + Br + Bc")
 options$bayesFactorMatrix <- TRUE
 options$descriptives <- TRUE
 options$bayesFactorPlot <- TRUE
@@ -60,8 +60,8 @@ test_that("Coefficients for Parameters table results match", {
 test_that("Bain Structural Equation Model table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(49921171838130.9, 27.1433283422162, 1, 0.964467599999537, "H1",
-			 "", "", "", 0.0355324000004633, "Hu"))
+		list(48171725616844.4, 26.2218088646654, 1, 0.963264748313694, "H1",
+			 "", "", "", 0.0367352516863061, "Hu"))
 })
 
 test_that("Path Diagram plot matches", {
@@ -101,7 +101,7 @@ test_that("Hypothesis Legend table results match", {
 # bainResult <- bain(fit1,hypotheses1,fraction=3,standardize=TRUE)
 
 options <- jaspTools::analysisOptions("BainSemBayesian")
-options$syntax <- "A =~ Ab + Al + Af + An + Ar + Ac;B =~ Bb + Bl + Bf + Bn + Br + Bc"
+options$syntax <- list("", model = "A =~ Ab + Al + Af + An + Ar + Ac;B =~ Bb + Bl + Bf + Bn + Br + Bc")
 options$fixedFactors <- ""
 options$descriptives <- TRUE
 options$pathDiagram <- TRUE
@@ -126,19 +126,19 @@ test_that("Coefficients for Parameters table results match", {
 	jaspTools::expect_equal_tables(table,
 		list(240, 0.643333953778611, 0.710450838060891, 0.034243937547674,
 			 0.777567722343171, "A=~Ab", 240, 0.763294389351268, 0.811402927163143,
-			 0.0245456233845871, 0.859511464975018, "A=~Al", 240, 0.7941225785561,
-			 0.837093624928896, 0.0219244061175337, 0.880064671301692, "A=~Af",
+			 0.0245456233845871, 0.859511464975018, "A=~Al", 240, 0.794122578556101,
+			 0.837093624928896, 0.0219244061175334, 0.880064671301691, "A=~Af",
 			 240, 0.876972738651191, 0.906133263733766, 0.0148780923081191,
-			 0.935293788816342, "A=~An", 240, 0.628742928228994, 0.698041432162551,
-			 0.0353570292516469, 0.767339936096108, "A=~Ar", 240, 0.837424920259227,
-			 0.873117007119152, 0.0182105830216572, 0.908809093979076, "A=~Ac",
-			 240, 0.707618804453302, 0.765839653093138, 0.0297050604496174,
+			 0.935293788816342, "A=~An", 240, 0.628742928228992, 0.698041432162551,
+			 0.0353570292516478, 0.76733993609611, "A=~Ar", 240, 0.837424920259227,
+			 0.873117007119152, 0.0182105830216571, 0.908809093979076, "A=~Ac",
+			 240, 0.707618804453302, 0.765839653093138, 0.0297050604496175,
 			 0.824060501732973, "B=~Bb", 240, 0.568799849404187, 0.647669783233517,
-			 0.040240501586481, 0.726539717062846, "B=~Bl", 240, 0.760416045819062,
-			 0.810184863734924, 0.0253927206359054, 0.859953681650785, "B=~Bf",
+			 0.0402405015864809, 0.726539717062846, "B=~Bl", 240, 0.760416045819063,
+			 0.810184863734924, 0.0253927206359049, 0.859953681650784, "B=~Bf",
 			 240, 0.853115564416809, 0.887898658040638, 0.0177468024403481,
 			 0.922681751664468, "B=~Bn", 240, 0.654077823365769, 0.720567689980902,
-			 0.0339240246961663, 0.787057556596036, "B=~Br", 240, 0.781930330642664,
+			 0.0339240246961662, 0.787057556596036, "B=~Br", 240, 0.781930330642664,
 			 0.828200406721732, 0.0236076154684682, 0.874470482800801, "B=~Bc"
 			))
 })
@@ -146,8 +146,8 @@ test_that("Coefficients for Parameters table results match", {
 test_that("Bain Structural Equation Model table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(747.720859826139, 92.0564262392383, 1, 0.989253831890888, "H1",
-			 "", "", "", 0.0107461681091116, "Hu"))
+		list(771.69635840001, 91.2565818546314, 1, 0.989160664963984, "H1",
+			 "", "", "", 0.0108393350360162, "Hu"))
 })
 
 test_that("Path Diagram plot matches", {
@@ -181,7 +181,7 @@ test_that("Hypothesis Legend table results match", {
 # bainResult <- bain(fit2, hypotheses2, fraction = 3, standardize = TRUE)
 
 options <- jaspTools::analysisOptions("BainSemBayesian")
-options$syntax <- "A  =~ Ab + Al + Af + An + Ar + Ac;B =~ Bb + Bl + Bf + Bn + Br + Bc;A ~ B + age + peabody"
+options$syntax <- list("", model = "A  =~ Ab + Al + Af + An + Ar + Ac;B =~ Bb + Bl + Bf + Bn + Br + Bc;A ~ B + age + peabody")
 options$fixedFactors <- ""
 options$descriptives <- TRUE
 options$fraction <- 3
@@ -195,45 +195,45 @@ results <- jaspTools::runAnalysis("BainSemBayesian", "sesame.csv", options)
 test_that("Bayes Factor Matrix table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(1, 2.66966766300948, 7.77535590230378, "H1", 0.374578459280102,
-			 1, 2.9124808342394, "H2", 0.128611476125962, 0.343349898905396,
+		list(1, 2.1893136378749, 8.03128665963527, "H1", 0.456764157816451,
+			 1, 3.6684038872708, "H2", 0.124513050321804, 0.272598119162929,
 			 1, "H3"))
 })
 
 test_that("Coefficients for Parameters table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_descriptivesTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(240, 0.644241710170201, 0.711205262171606, 0.0341657053545905,
-			 0.77816881417301, "A=~Ab", 240, 0.763763717887125, 0.811775527594914,
-			 0.0244962714042199, 0.859787337302704, "A=~Al", 240, 0.79496008853169,
-			 0.837770094339869, 0.0218422410543558, 0.880580100148049, "A=~Af",
-			 240, 0.877193065789862, 0.906287870649154, 0.0148445609658073,
-			 0.935382675508445, "A=~An", 240, 0.629537994391315, 0.698701975059689,
-			 0.0352883936714812, 0.767865955728064, "A=~Ar", 240, 0.837895313363849,
-			 0.873484275245374, 0.0181579672699324, 0.909073237126898, "A=~Ac",
-			 240, 0.707718712745665, 0.765919627657576, 0.0296948899933839,
-			 0.824120542569488, "B=~Bb", 240, 0.568915624824277, 0.647765958992103,
-			 0.0402305015754307, 0.726616293159929, "B=~Bl", 240, 0.760495386365103,
+		list(240, 0.644241392094585, 0.711205262171606, 0.0341658676410501,
+			 0.778169132248626, "A=~Ab", 240, 0.763763442715732, 0.811775527594914,
+			 0.0244964118003675, 0.859787612474097, "A=~Al", 240, 0.794959837125205,
+			 0.837770094339869, 0.0218423693253273, 0.880580351554533, "A=~Af",
+			 240, 0.877192910467839, 0.906287870649154, 0.0148446402131938,
+			 0.935382830830469, "A=~An", 240, 0.629537675303866, 0.698701975059689,
+			 0.0352885564741916, 0.767866274815513, "A=~Ar", 240, 0.837895105614058,
+			 0.873484275245374, 0.0181580732666716, 0.909073444876689, "A=~Ac",
+			 240, 0.707718712745665, 0.765919627657576, 0.0296948899933838,
+			 0.824120542569487, "B=~Bb", 240, 0.568915624824277, 0.647765958992103,
+			 0.0402305015754306, 0.726616293159929, "B=~Bl", 240, 0.760495386365103,
 			 0.810246502727717, 0.02538368906523, 0.859997619090331, "B=~Bf",
-			 240, 0.853011515371342, 0.88780309732995, 0.0177511333029788,
-			 0.922594679288558, "B=~Bn", 240, 0.653863673320625, 0.720382072541199,
-			 0.0339385824154234, 0.786900471761773, "B=~Br", 240, 0.782027722437893,
-			 0.828276665034914, 0.0235968328815362, 0.874525607631935, "B=~Bc",
-			 240, 0.729997143600828, 0.788751775228554, 0.0299774037131166,
-			 0.847506406856279, "A~B", 240, -0.0926531058198714, -0.00047860604697559,
-			 0.0470286701694299, 0.0916958937259202, "A~age", 240, -0.107692732546606,
-			 -0.0155271511198026, 0.04702411990924, 0.0766384303070007, "A~peabody"
-			))
+			 240, 0.853011515371342, 0.88780309732995, 0.0177511333029787,
+			 0.922594679288557, "B=~Bn", 240, 0.653863673320625, 0.720382072541199,
+			 0.0339385824154233, 0.786900471761773, "B=~Br", 240, 0.782027722437893,
+			 0.828276665034914, 0.0235968328815361, 0.874525607631935, "B=~Bc",
+			 240, 0.72999531837755, 0.788751775228554, 0.0299783349665949,
+			 0.847508232079557, "A~B", 240, -0.0926668076510411, -0.00047860604697559,
+			 0.0470356610280772, 0.0917095955570899, "A~age", 240, -0.114880361597769,
+			 -0.0155271511198026, 0.0506913449745261, 0.0838260593581639,
+			 "A~peabody"))
 })
 
 test_that("Bain Structural Equation Model table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(50.2904553875014, 50.2904553875014, 0.665251926217737, 0.656566733750254,
-			 "H1", 18.837721295545, 18.837721295545, 0.24918904155576, 0.245935755542739,
-			 "H2", 6.88331301723576, 6.46792970243339, 0.0855590322265027,
-			 0.0844420168028215, "H3", "", "", "", 0.0130554939041858, "Hu"
-			))
+		list(50.7340137842172, 50.7340137842172, 0.632400185655852, 0.624614359005541,
+			 "H1", 23.1734790787962, 23.1734790787962, 0.288857738204063,
+			 0.285301451651228, "H2", 6.70877672858425, 6.31704681134133,
+			 0.0787420761400853, 0.0777726391145783, "H3", "", "", "", 0.0123115502286526,
+			 "Hu"))
 })
 
 test_that("Hypothesis Legend table results match", {
@@ -261,7 +261,7 @@ test_that("Hypothesis Legend table results match", {
 # bainResult <- bain(fit2, hypotheses2, fraction = 3, standardize = FALSE)
 
 options <- jaspTools::analysisOptions("BainSemBayesian")
-options$syntax <- "A  =~ Ab + Al + Af + An + Ar + Ac;B =~ Bb + Bl + Bf + Bn + Br + Bc;A ~ B + age + peabody"
+options$syntax <- list("", model = "A  =~ Ab + Al + Af + An + Ar + Ac;B =~ Bb + Bl + Bf + Bn + Br + Bc;A ~ B + age + peabody")
 options$fixedFactors <- ""
 options$descriptives <- TRUE
 options$fraction <- 3
@@ -274,8 +274,8 @@ results <- jaspTools::runAnalysis("BainSemBayesian", "sesame.csv", options)
 test_that("Bayes Factor Matrix table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(1, 6.45562211785348, 33.5880193629889, "H1", 0.154903738438226,
-			 1, 5.20290976606249, "H2", 0.029772520647702, 0.192200142797554,
+		list(1, 6.43739309620418, 41.8063151520964, "H1", 0.155342385505346,
+			 1, 6.49429272491492, "H2", 0.0239198311633513, 0.153981355993327,
 			 1, "H3"))
 })
 
@@ -307,10 +307,10 @@ test_that("Coefficients for Parameters table results match", {
 test_that("Bain Structural Equation Model table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(50.2923775087579, 50.2923775087579, 0.844112467292609, 0.830178662728147,
-			 "H1", 7.79047729105315, 7.79047729105315, 0.13075617684594,
-			 0.128597778428237, "H2", 1.51588884790657, 1.49733084780152,
-			 0.0251313558614518, 0.0247165113773554, "H3", "", "", "", 0.0165070474662603,
+		list(50.2923775087579, 50.2923775087579, 0.84798782311953, 0.833926849102382,
+			 "H1", 7.81253789494585, 7.81253789494585, 0.131728451322873,
+			 0.12954418607652, "H2", 1.20949091885259, 1.20298517881302,
+			 0.020283725557597, 0.0199473894331145, "H3", "", "", "", 0.0165815753879832,
 			 "Hu"))
 })
 
@@ -338,7 +338,7 @@ test_that("Hypothesis Legend table results match", {
 # bainResult <- bain(fit3, hypotheses3, fraction = 3, standardize = TRUE)
 
 options <- jaspTools::analysisOptions("BainSemBayesian")
-options$syntax <- "postnumb ~ prenumb + peabody"
+options$syntax <- list("", model = "postnumb ~ prenumb + peabody")
 options$fixedFactors <- "sex"
 options$descriptives <- TRUE
 options$fraction <- 3
@@ -352,30 +352,30 @@ results <- jaspTools::runAnalysis("BainSemBayesian", "sesame.csv", options)
 test_that("Bayes Factor Matrix table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(1, 75.9494713459911, "H1", 0.0131666485925156, 1, "H2"))
+		list(1, 83.8870391279608, "H1", 0.0119207926563555, 1, "H2"))
 })
 
 test_that("Coefficients for Parameters table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_descriptivesTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(115, 0.381341177023541, 0.531813744965293, 0.0767731290618909,
-			 0.682286312907045, "postnumb~prenumb.1", 115, 0.0651184116547296,
-			 0.230979720646418, 0.0846246718306974, 0.396841029638106, "postnumb~peabody.1",
-			 115, 0.181822705410796, 0.611842507581534, 0.219401889811588,
-			 1.04186230975227, "postnumb~1.1", 125, 0.515320235478543, 0.637881043527746,
-			 0.0625321735582629, 0.760441851576949, "postnumb~prenumb.2",
-			 125, -0.0907111288570204, 0.0629819901353651, 0.0784162975466372,
-			 0.216675109127751, "postnumb~peabody.2", 125, 0.474400149623446,
-			 0.966070065783862, 0.250856607590061, 1.45773998194428, "postnumb~1.2"
+		list(115, 0.381341177023559, 0.531813744965293, 0.076773129061882,
+			 0.682286312907027, "postnumb~prenumb.1", 115, 0.0651184116548649,
+			 0.230979720646418, 0.0846246718306284, 0.396841029637971, "postnumb~peabody.1",
+			 115, 0.181822705410805, 0.611842507581534, 0.219401889811583,
+			 1.04186230975226, "postnumb~1.1", 125, 0.515320235478557, 0.637881043527746,
+			 0.0625321735582553, 0.760441851576934, "postnumb~prenumb.2",
+			 125, -0.0907111288568488, 0.0629819901353651, 0.0784162975465497,
+			 0.216675109127579, "postnumb~peabody.2", 125, 0.474400149623455,
+			 0.966070065783862, 0.250856607590056, 1.45773998194427, "postnumb~1.2"
 			))
 })
 
 test_that("Bain Structural Equation Model table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(13.7330955509952, 13.7330955509952, 0.987004459127423, 0.920824351542047,
-			 "H1", 0.164399335184221, 0.180818843207394, 0.0129955408725767,
-			 0.0121241706521852, "H2", "", "", "", 0.0670514778057679, "Hu"
+		list(13.7330955509639, 13.7330955509639, 0.988219638589437, 0.921881947865523,
+			 "H1", 0.147562929074564, 0.163709384592958, 0.0117803614105632,
+			 0.010989563554142, "H2", "", "", "", 0.0671284885803346, "Hu"
 			))
 })
 
@@ -404,7 +404,7 @@ test_that("Hypothesis Legend table results match", {
 # bainResult <- bain(fit3, hypotheses3, fraction = 3, standardize = FALSE)
 
 options <- jaspTools::analysisOptions("BainSemBayesian")
-options$syntax <- "postnumb ~ prenumb + peabody"
+options$syntax <- list("", model = "postnumb ~ prenumb + peabody")
 options$fixedFactors <- "sex"
 options$descriptives <- TRUE
 options$fraction <- 3
@@ -417,7 +417,7 @@ results <- jaspTools::runAnalysis("BainSemBayesian", "sesame.csv", options)
 test_that("Bayes Factor Matrix table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(1, 103.655723422517, "H1", 0.00964732063972815, 1, "H2"))
+		list(1, 109.118677436861, "H1", 0.00916433394804139, 1, "H2"))
 })
 
 test_that("Coefficients for Parameters table results match", {
@@ -437,9 +437,9 @@ test_that("Coefficients for Parameters table results match", {
 test_that("Bain Structural Equation Model table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(15.521998977601, 15.521998977601, 0.990444860851396, 0.931036269852737,
-			 "H1", 0.130005379320635, 0.14974570110645, 0.00955513914860434,
-			 0.00898200542248581, "H2", "", "", "", 0.0599817247247771, "Hu"
+		list(15.521998977601, 15.521998977601, 0.99091888839136, 0.931455124849424,
+			 "H1", 0.12273462966041, 0.142248782171893, 0.00908111160864037,
+			 0.00853616582173471, "H2", "", "", "", 0.0600087093288408, "Hu"
 			))
 })
 

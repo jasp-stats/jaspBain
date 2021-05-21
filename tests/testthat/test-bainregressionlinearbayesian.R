@@ -23,8 +23,8 @@ results <- jaspTools::runAnalysis("BainRegressionLinearBayesian", "sesame.csv", 
 test_that("Bayes Factor Matrix table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(1, 0.0336654885723126, 0.471498933944235, "H1", 29.7040097265193,
-			 1, 14.0054089199231, "H2", 2.12089556944422, 0.0714009855561927,
+		list(1, 0.0330714146533409, 0.453860786138191, "H1", 30.2375937189908,
+			 1, 13.7236580562284, "H2", 2.20331879409278, 0.0728668694529412,
 			 1, "H3"))
 })
 
@@ -42,10 +42,10 @@ test_that("Coefficients for Parameters table results match", {
 test_that("Bain Linear Regression table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(1.29950533181896, 1.18860802585663, 0.0304646728142417, 0.0297033594892114,
-			 "H1", 35.3064243610644, 35.3064243610644, 0.904922937589465,
-			 0.882308879177836, "H2", 3.88021871697742, 2.52091349584517,
-			 0.0646123895962929, 0.0629977235382773, "H3", "", "", "", 0.0249900377946751,
+		list(1.26536373845463, 1.16763339997158, 0.0299034902115412, 0.0291567752383641,
+			 "H1", 35.3064243610644, 35.3064243610644, 0.904209587796401,
+			 0.881630723813583, "H2", 4.00115272103433, 2.57266861476783,
+			 0.0658869219920581, 0.0642416708578264, "H3", "", "", "", 0.0249708300902267,
 			 "Hu"))
 })
 
@@ -87,7 +87,7 @@ results <- jaspTools::runAnalysis("BainRegressionLinearBayesian", "sesame.csv", 
 test_that("Bayes Factor Matrix table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(1, 4.89942014782784e-63, "H1", 2.04105785955783e+62, 1, "H2"
+		list(1, 4.77369802413396e-63, "H1", 2.09481201983114e+62, 1, "H2"
 			))
 })
 
@@ -104,9 +104,9 @@ test_that("Coefficients for Parameters table results match", {
 test_that("Bain Linear Regression table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(8.64985149525717e-62, 8.64985149525717e-62, 4.89942014782784e-63,
-			 4.6367849169709e-63, "H1", 615.089712026728, 17.6548473784027,
-			 1, 0.946394629786265, "H2", "", "", "", 0.053605370213735, "Hu"
+		list(8.64985149525717e-62, 8.64985149525717e-62, 4.77369802413396e-63,
+			 4.52402518195759e-63, "H1", 595.136041110726, 18.1198128820191,
+			 1, 0.947698232918355, "H2", "", "", "", 0.052301767081645, "Hu"
 			))
 })
 
@@ -142,7 +142,7 @@ results <- jaspTools::runAnalysis("BainRegressionLinearBayesian", "sesame.csv", 
 test_that("Bayes Factor Matrix table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(1, 2.78911650280699e-164, "H1", 3.58536475257878e+163, 1, "H2"
+		list(1, 2.66173007733809e-164, "H1", 3.75695495390001e+163, 1, "H2"
 			))
 })
 
@@ -159,9 +159,9 @@ test_that("Coefficients for Parameters table results match", {
 test_that("Bain Linear Regression table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(1.05833115528427e-162, 1.05833115528427e-162, 2.78911650280699e-164,
-			 2.71749975620954e-164, "H1", 1360.87407219717, 37.9450322071219,
-			 1, 0.974322784105513, "H2", "", "", "", 0.0256772158944865,
+		list(1.05833115528427e-162, 1.05833115528427e-162, 2.66173007733809e-164,
+			 2.59642921474827e-164, "H1", 1309.7405575344, 39.7610247671194,
+			 1, 0.975466760079922, "H2", "", "", "", 0.0245332399200784,
 			 "Hu"))
 })
 
