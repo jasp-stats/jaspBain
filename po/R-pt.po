@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2021-03-03 14:07\n"
-"PO-Revision-Date: 2021-04-20 13:29+0000\n"
-"Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
+"PO-Revision-Date: 2021-05-15 20:50+0000\n"
+"Last-Translator: Alex França <alex.tonante@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspbain-r/pt/>\n"
 "Language: pt\n"
@@ -280,14 +280,12 @@ msgstr "Intervalo de credibilidade"
 msgid "Group"
 msgstr ""
 
-#, fuzzy
 msgid "N"
 msgstr "N"
 
 msgid "SD"
 msgstr "DP"
 
-#, fuzzy
 msgid "SE"
 msgstr "EP"
 
@@ -323,7 +321,6 @@ msgstr ""
 msgid "Descriptive Plots"
 msgstr "Diagramas Descritivos"
 
-#, fuzzy
 msgid "Descriptives Plot"
 msgstr "Diagramas Descritivos"
 
