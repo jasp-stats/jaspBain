@@ -54,7 +54,11 @@
     if (is.null(dataset)) {
       trydata	<- .readDataSetToEnd(columns.as.numeric = numerics, columns.as.factor = factors)
       missing	<- names(which(apply(trydata, 2, function(x) { any(is.na(x))} )))
-      dataset	<- .readDataSetToEnd(columns.as.numeric = numerics, columns.as.factor = factors, exclude.na.listwise = vars)
+      if (type == "onesampleTTest") { # For the one sample t test we do not remove the NA's listwise
+        dataset	<- .readDataSetToEnd(columns.as.numeric = numerics, columns.as.factor = factors)
+      } else {
+        dataset	<- .readDataSetToEnd(columns.as.numeric = numerics, columns.as.factor = factors, exclude.na.listwise = vars)
+      }
       if ((type == "anova" || type == "ancova") && options[["fixedFactors"]] != "") {
         if (any(grepl(pattern = " ", x = levels(dataset[, options[["fixedFactors"]] ])))) {
           jaspBase:::.quitAnalysis(gettext("Bain does not accept factor levels that contain spaces. Please remove the spaces from your factor levels to continue."))
@@ -130,6 +134,7 @@
   fraction <- options[["fraction"]]
   
   if (is.null(y) && !paired) {
+    x <- x[!is.na(x)] # Here we remove the missing values per dependent variable
     test <- bain::t_test(x = x)
     hypothesis <- switch(type, 
                          "1" = paste0("x=", nu), 
@@ -904,7 +909,7 @@
           CiLower <- bainSummary[["lb"]]
           CiUpper <- bainSummary[["ub"]]
           se <- sqrt(diag(bainResult[["posterior"]]))
-          sd <- sd(difference)   
+          sd <- sd(difference, na.rm = TRUE)   
           row <- list(v = currentPair, N = N, mean = mu, sd = sd, se = se, lowerCI = CiLower, upperCI = CiUpper)
           table$addRows(row)
         }
@@ -923,7 +928,7 @@
         mu <- bainSummary[["Estimate"]]
         CiLower <- bainSummary[["lb"]]
         CiUpper <- bainSummary[["ub"]]
-        sd <- sd(dataset[, variable])
+        sd <- sd(dataset[, variable], na.rm = TRUE)
         se <- sqrt(diag(bainResult[["posterior"]]))  
         row <- list(v = variable, N = N, mean = mu, sd = sd, se = se, lowerCI = CiLower, upperCI = CiUpper)
         table$addRows(row)
