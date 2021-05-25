@@ -8,7 +8,7 @@ The Bain module is an graphical interface around the `R` package `Bain`, which i
 
 ## Module Structure
 
-The analyses in the Machine Learning module are structured in JASP in the following way:
+The analyses in the Bain module are structured in JASP in the following way:
 
 ```
 --- Bain
