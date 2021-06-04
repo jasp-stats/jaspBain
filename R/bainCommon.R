@@ -782,6 +782,9 @@
     row <- list(hypotheses = gettext("Hu"), BFu = "", BF = "", PMP1 = "", PMP2 = bainResult[["fit"]]$PMPb[length(bainResult[["fit"]]$BF)])
     table$addRows(row) 
   }
+  
+  if(any(is.nan(unlist(bainResult[["fit"]]))))
+    table$addFootnote(symbol = gettext("<b>Warning</b>"), message = gettext("The entered model contraints are incompatible with the data and therefore the computed results contain NaN's."))
 }
 
 # Create the Bayes factor matrix
@@ -997,7 +1000,7 @@
           bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable)
           plot <- createJaspPlot(plot = NULL, title = variable, height = 300, width = 400)
           plot$dependOn(optionContainsValue = list("variables" = variable))
-          if (isTryError(bainResult)) {
+          if (isTryError(bainResult) || any(is.nan(unlist(bainResult[["fit"]])))) {
             plot$setError(gettext("Plotting not possible: the results for this variable were not computed."))
           } else {
             p <- try({
@@ -1017,7 +1020,7 @@
           bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, pair = pair)
           plot <- createJaspPlot(plot = NULL, title = currentPair, height = 300, width = 400)
           plot$dependOn(optionContainsValue = list("pairs" = pair))
-          if (isTryError(bainResult)) {
+          if (isTryError(bainResult) || any(is.nan(unlist(bainResult[["fit"]])))) {
             plot$setError(gettext("Plotting not possible: the results for this variable were not computed."))
           } else {
             p <- try({
@@ -1046,7 +1049,7 @@
     if (!ready || bainContainer$getError()  || (type == "sem" && options[["model"]] == ""))
       return()
     bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)
-    if (is.null(bainResult)) {
+    if (is.null(bainResult) || any(is.nan(unlist(bainResult[["fit"]])))) {
       plot$setError(gettext("Plotting not possible: the results could not be computed."))
     } else {
       p <- try({
