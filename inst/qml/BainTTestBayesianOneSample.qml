@@ -28,12 +28,12 @@ Form
 	{
 		preferredHeight: 				jaspTheme.smallDefaultVariablesFormHeight
 
-		AvailableVariablesList 
-		{ 
-			name: 						"variablesList" 
+		AvailableVariablesList
+		{
+			name: 						"variablesList"
 		}
 
-		AssignedVariablesList 
+		AssignedVariablesList
 		{
 			name: 						"variables"
 			title: 						qsTr("Variables")
@@ -57,34 +57,34 @@ Form
 			name: 						"hypothesis"
 			title: 						qsTr("Hypothesis Test")
 
-			RadioButton 
-			{ 
+			RadioButton
+			{
 				name: 					"equalNotEqual"
 				text: 					qsTr("Equal vs. not equal")
 				checked: 				true
 			}
 
-			RadioButton 
-			{ 
-				name: 					"equalBigger" 
+			RadioButton
+			{
+				name: 					"equalBigger"
 				text: 					qsTr("Equal vs. bigger")
 			}
 
-			RadioButton 
-			{ 
-				name: 					"equalSmaller" 
+			RadioButton
+			{
+				name: 					"equalSmaller"
 				text: 					qsTr("Equal vs. smaller")
 			}
 
-			RadioButton 
-			{ 
-				name: 					"biggerSmaller" 
+			RadioButton
+			{
+				name: 					"biggerSmaller"
 				text: 					qsTr("Bigger vs. smaller")
 			}
 
-			RadioButton 
-			{ 
-				name: 					"equalBiggerSmaller" 
+			RadioButton
+			{
+				name: 					"equalBiggerSmaller"
 				text: 					qsTr("Equal vs. bigger vs. smaller")
 			}
 		}
@@ -94,17 +94,17 @@ Form
 			title: 						qsTr("Bayes Factor")
 			name: 						"bayesFactorType"
 
-			RadioButton 
-			{ 
+			RadioButton
+			{
 				name: 					"BF01"
 				text: 					qsTr("BF\u2080\u2081: Equal vs. other")
 				checked: 				true
 			}
 
-			RadioButton 
-			{ 
+			RadioButton
+			{
 				name: 					"BF10"
-				text: 					qsTr("BF\u2081\u2080: Other vs. equal") 
+				text: 					qsTr("BF\u2081\u2080: Other vs. equal")
 			}
 		}
 
@@ -112,24 +112,24 @@ Form
 		{
 			title: 						qsTr("Additional Options")
 
-			DoubleField  
-			{ 
+			DoubleField
+			{
 				name: 					"seed"
 				text: 					qsTr("Seed")
 				defaultValue: 			100
 				min: 					-999999
 				max: 					999999
-				fieldWidth: 			60 * preferencesModel.uiScale 
+				fieldWidth: 			60 * preferencesModel.uiScale
 			}
 
-			DoubleField  
-			{ 
+			DoubleField
+			{
 				name: 					"fraction"
 				text: 					qsTr("Fraction")
 				defaultValue: 			1
 				min: 					0.01
 				max: 					100
-				fieldWidth: 			60 * preferencesModel.uiScale 
+				fieldWidth: 			60 * preferencesModel.uiScale
 			}
 		}
 	}
@@ -140,13 +140,13 @@ Form
 		{
 			title: 						qsTr("Tables")
 
-			CheckBox 
-			{ 
+			CheckBox
+			{
 				name: 					"descriptives"
-				text:					qsTr("Descriptives") 
+				text:					qsTr("Descriptives")
 
-				CIField 
-				{ 
+				CIField
+				{
 					name: 				"credibleInterval"
 					text: 				qsTr("Credible interval")
 				}
@@ -157,16 +157,16 @@ Form
 		{
 			title:						qsTr("Plots")
 
-			CheckBox 
-			{ 
+			CheckBox
+			{
 				name: 					"bayesFactorPlot"
-				text: 					qsTr("Posterior probabilities") 
+				text: 					qsTr("Posterior probabilities")
 			}
 
-			CheckBox 
-			{ 
+			CheckBox
+			{
 				name: 					"descriptivesPlot"
-				text: 					qsTr("Descriptives plots") 
+				text: 					qsTr("Descriptives plots")
 			}
 		}
 	}

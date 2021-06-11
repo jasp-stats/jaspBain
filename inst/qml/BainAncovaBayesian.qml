@@ -28,12 +28,12 @@ Form
 	VariablesForm
 	{
 
-		AvailableVariablesList 
-		{ 
+		AvailableVariablesList
+		{
 			name: 						"variablesList"
 		}
 
-		AssignedVariablesList 
+		AssignedVariablesList
 		{
 			name: 						"dependent"
 			title: 						qsTr("Dependent Variable")
@@ -41,7 +41,7 @@ Form
 			allowedColumns: 			["scale"]
 		}
 
-		AssignedVariablesList 
+		AssignedVariablesList
 		{
 			name: 						"fixedFactors"
 			title: 						qsTr("Fixed Factors")
@@ -49,7 +49,7 @@ Form
 			allowedColumns: 			["ordinal", "nominal", "nominalText"]
 		}
 
-		AssignedVariablesList 
+		AssignedVariablesList
 		{
 			name: 						"covariates"
 			title: 						qsTr("Covariates")
@@ -61,22 +61,22 @@ Form
 	{
 		title: 							qsTr("Tables")
 
-		CheckBox 
-		{ 
+		CheckBox
+		{
 			name: 						"bayesFactorMatrix"
-			text: 						qsTr("Bayes factor matrix")	
+			text: 						qsTr("Bayes factor matrix")
 		}
 
-		CheckBox 
-		{ 
+		CheckBox
+		{
 			name: 						"descriptives"
-			text: 						qsTr("Coefficients")			
+			text: 						qsTr("Coefficients")
 
-			CIField 
-			{ 
+			CIField
+			{
 				name: 					"credibleInterval"
 				text: 					qsTr("Credible interval")
-			} 
+			}
 		}
 	}
 
@@ -84,16 +84,16 @@ Form
 	{
 		title: 							qsTr("Plots")
 
-		CheckBox 
-		{ 
+		CheckBox
+		{
 			name: 						"bayesFactorPlot"
-			text: 						qsTr("Posterior probabilities")	
+			text: 						qsTr("Posterior probabilities")
 		}
 
-		CheckBox 
-		{ 
+		CheckBox
+		{
 			name: 						"descriptivesPlot"
-			text: 						qsTr("Adjusted means")			
+			text: 						qsTr("Adjusted means")
 		}
 	}
 
@@ -101,28 +101,28 @@ Form
 	{
 		title: 							qsTr("Additional Options")
 
-		DoubleField  
-		{ 
+		DoubleField
+		{
 			name: 						"seed"
 			text: 						qsTr("Seed")
 			defaultValue: 				100
 			min: 						-999999
 			max: 						999999
-			fieldWidth: 				60 * preferencesModel.uiScale 
+			fieldWidth: 				60 * preferencesModel.uiScale
 		}
 
-		DoubleField  
-		{ 
+		DoubleField
+		{
 			name: 						"fraction"
 			text: 						qsTr("Fraction")
 			defaultValue: 				1
 			min: 						0.01
 			max: 						100
-			fieldWidth: 				60 * preferencesModel.uiScale 
+			fieldWidth: 				60 * preferencesModel.uiScale
 		}
 
-		CheckBox 
-		{ 
+		CheckBox
+		{
 			name: 						"standardized"
 			checked:					false
 			visible:					false
@@ -134,9 +134,9 @@ Form
 		text: 							qsTr("Model Constraints")
 		columns: 						1
 
-		Text 
-		{ 
-			text: 						qsTr("Place each hypothesis on a new line. For example:\n\nfactorLow = factorMed = factorHigh\nfactorLow < factorMed < factorHigh\n\nwhere factor is the factor name and Low/Med/High are the factor level names.\nRead the help file for further instructions.") 
+		Text
+		{
+			text: 						qsTr("Place each hypothesis on a new line. For example:\n\nfactorLow = factorMed = factorHigh\nfactorLow < factorMed < factorHigh\n\nwhere factor is the factor name and Low/Med/High are the factor level names.\nRead the help file for further instructions.")
 		}
 
 		TextArea
@@ -146,6 +146,6 @@ Form
 			textType: 					JASP.TextTypeModel
 			trim: 						true
 			implicitHeight:				200 * preferencesModel.uiScale
-	   }
+		}
 	}
 }

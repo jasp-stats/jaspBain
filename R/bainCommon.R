@@ -783,7 +783,7 @@
     table$addRows(row) 
   }
   
-  if(any(is.nan(unlist(bainResult[["fit"]]))))
+  if (any(is.nan(unlist(bainResult[["fit"]]))))
     table$addFootnote(symbol = gettext("<b>Warning</b>"), message = gettext("The entered model contraints are incompatible with the data and therefore the computed results contain NaN's."))
 }
 
@@ -995,7 +995,7 @@
                                  "biggerSmaller" = 4,
                                  "equalBiggerSmaller" = 5)
     if (type == "onesampleTTest" || type == "independentTTest") {  
-      for(variable in options[["variables"]]) {     
+      for (variable in options[["variables"]]) {     
         if (is.null(container[[variable]])) {       
           bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable)
           plot <- createJaspPlot(plot = NULL, title = variable, height = 300, width = 400)
@@ -1014,7 +1014,7 @@
         }
       } 
     } else if (type == "pairedTTest") {
-      for(pair in options[["pairs"]]) {   
+      for (pair in options[["pairs"]]) {   
         currentPair <- paste(pair, collapse=" - ")
         if (is.null(container[[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]) {
           bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, pair = pair)

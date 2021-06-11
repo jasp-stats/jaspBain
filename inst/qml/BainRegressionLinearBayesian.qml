@@ -26,8 +26,8 @@ Form
 {
 	VariablesForm
 	{
-		AvailableVariablesList 
-		{ 
+		AvailableVariablesList
+		{
 			name: 						"variablesList"
 		}
 		
@@ -51,22 +51,22 @@ Form
 	{
 		title: 							qsTr("Tables")
 
-		CheckBox 
-		{ 
+		CheckBox
+		{
 			name: 						"bayesFactorMatrix"
-			text:					 	qsTr("Bayes factor matrix")	
+			text:					 	qsTr("Bayes factor matrix")
 		}
 
-		CheckBox 
-		{ 
+		CheckBox
+		{
 			name: 						"descriptives"
-			text: 						qsTr("Coefficients")	
+			text: 						qsTr("Coefficients")
 
-			CIField 
-			{ 
+			CIField
+			{
 				name: 					"credibleInterval"
 				text: 					qsTr("Credible interval")
-			} 
+			}
 		}
 	}
 
@@ -74,10 +74,10 @@ Form
 	{
 		title: 							qsTr("Plots")
 
-		CheckBox 
-		{ 
+		CheckBox
+		{
 			name: 						"bayesFactorPlot"
-			text: 						qsTr("Posterior probabilities") 
+			text: 						qsTr("Posterior probabilities")
 		}
 	}
 
@@ -85,30 +85,30 @@ Form
 	{
 		title: 							qsTr("Additional Options")
 
-		DoubleField  
-		{ 
+		DoubleField
+		{
 			name: 						"seed"
 			text: 						qsTr("Seed")
 			defaultValue: 				100
 			min: 						-999999
 			max: 						999999
-			fieldWidth: 				60 * preferencesModel.uiScale 
+			fieldWidth: 				60 * preferencesModel.uiScale
 		}
 
-		DoubleField  
-		{ 
+		DoubleField
+		{
 			name: 						"fraction"
 			text: 						qsTr("Fraction")
 			defaultValue: 				1
 			min: 						0.01
 			max: 						100
-			fieldWidth: 				60 * preferencesModel.uiScale 
+			fieldWidth: 				60 * preferencesModel.uiScale
 		}
 
-		CheckBox 
-		{ 
+		CheckBox
+		{
 			name: 						"standardized"
-			text: 						qsTr("Standardize coefficients")	
+			text: 						qsTr("Standardize coefficients")
 		}
 	}
 
@@ -118,9 +118,9 @@ Form
 		text: 							qsTr("Model Constraints")
 		columns: 						1
 
-		Text 
-		{ 
-			text: 						qsTr("Place each hypothesis on a new line. For example:\n\nage = length = weight\nage < length < weight,\n\nwhere age, length and weight are the names of the predictors.\nRead the help file for further instructions.") 
+		Text
+		{
+			text: 						qsTr("Place each hypothesis on a new line. For example:\n\nage = length = weight\nage < length < weight,\n\nwhere age, length and weight are the names of the predictors.\nRead the help file for further instructions.")
 		}
 
 		TextArea
