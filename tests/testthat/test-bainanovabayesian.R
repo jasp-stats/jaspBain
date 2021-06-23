@@ -34,7 +34,7 @@ test_that("Bayes Factor Matrix table results match", {
 test_that("Descriptives Plot matches", {
 	plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_descriptivesPlots"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-	jaspTools::expect_equal_plots(testPlot, "descriptives-plot", dir="BainAnovaBayesian")
+	jaspTools::expect_equal_plots(testPlot, "descriptives-plot")
 })
 
 test_that("Descriptive Statistics table results match", {
@@ -64,7 +64,7 @@ test_that("Posterior Probabilities plot matches", {
 	skip("Does not reproduce on Linux")
 	plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_posteriorProbabilityPlot"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-	jaspTools::expect_equal_plots(testPlot, "posterior-probabilities", dir="BainAnovaBayesian")
+	jaspTools::expect_equal_plots(testPlot, "posterior-probabilities")
 })
 
 test_that("Hypothesis Legend table results match", {

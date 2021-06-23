@@ -67,14 +67,14 @@ test_that("Bain Structural Equation Model table results match", {
 test_that("Path Diagram plot matches", {
 	plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_pathDiagram"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-	jaspTools::expect_equal_plots(testPlot, "path-diagram", dir="BainSemBayesian")
+	jaspTools::expect_equal_plots(testPlot, "path-diagram")
 })
 
 test_that("Posterior Probabilities plot matches", {
 	skip("Does not reproduce on Linux")
 	plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_posteriorProbabilityPlot"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-	jaspTools::expect_equal_plots(testPlot, "posterior-probabilities", dir="BainSemBayesian")
+	jaspTools::expect_equal_plots(testPlot, "posterior-probabilities")
 })
 
 test_that("Hypothesis Legend table results match", {
@@ -153,7 +153,7 @@ test_that("Bain Structural Equation Model table results match", {
 test_that("Path Diagram plot matches", {
 	plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_pathDiagram"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-	jaspTools::expect_equal_plots(testPlot, "path-diagram-2", dir="BainSemBayesian")
+	jaspTools::expect_equal_plots(testPlot, "path-diagram-2")
 })
 
 test_that("Hypothesis Legend table results match", {

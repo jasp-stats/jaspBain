@@ -53,7 +53,7 @@ test_that("Posterior Probabilities plot matches", {
 	skip("Does not reproduce on Linux")
 	plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_posteriorProbabilityPlot"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-	jaspTools::expect_equal_plots(testPlot, "posterior-probabilities", dir="BainRegressionLinearBayesian")
+	jaspTools::expect_equal_plots(testPlot, "posterior-probabilities")
 })
 
 test_that("Hypothesis Legend table results match", {
