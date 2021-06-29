@@ -3,203 +3,67 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Language: gl_ES\n"
+"X-Source-Language: C\n"
 "X-Qt-Contexts: true\n"
-"Language: tr\n"
-"X-Language: tr\n"
+
+msgctxt "BainAnovaBayesian|"
+msgid "Fixed Factors"
+msgstr "Factores fixos"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Seed"
+msgstr "Semente"
 
 msgctxt "Description|"
 msgid "Bain"
-msgstr ""
+msgstr "Bain"
 
 msgctxt "Description|"
 msgid ""
 "A module for computing approximated adjusted fractional Bayes factors for "
 "equality, inequality, and about equality constrained hypotheses."
 msgstr ""
+"Un módulo para calcular factores baiesianos fraccionais axustados "
+"aproximadamente para a igualdade, a desigualdade e sobre hipóteses de "
+"restricións de igualdade."
 
-msgctxt "BainAncovaBayesian|"
-msgid "Dependent Variable"
+msgctxt "BainAnovaBayesian|"
+msgid ""
+"Place each hypothesis on a new line. For example:\n"
+"\n"
+"factorLow = factorMed = factorHigh\n"
+"factorLow < factorMed < factorHigh\n"
+"\n"
+"where factor is the factor name and Low/Med/High are the factor level "
+"names.\n"
+"Read the help file for further instructions."
 msgstr ""
+"Coloca cada hipótese nunha nova liña. Por exemplo:\n"
+"\n"
+"FactorBaixo = FactorMedio = FactorAlto\n"
+"FactorBaixo < FactorMedio < FactorAlto\n"
+"\n"
+"onde Factor é o nome do factor e Baixo/Medio/Alto son os nomes dos niveis "
+"dos factores.\n"
+"Consulta o ficheiro de axuda para ver outras instrucións."
 
-msgctxt "BainAncovaBayesian|"
-msgid "Fixed Factors"
-msgstr ""
-
-msgctxt "BainAncovaBayesian|"
-msgid "Covariates"
-msgstr ""
-
-msgctxt "BainAncovaBayesian|"
-msgid "Tables"
-msgstr ""
-
-msgctxt "BainAncovaBayesian|"
+msgctxt "BainRegressionLinearBayesian|"
 msgid "Bayes factor matrix"
-msgstr ""
+msgstr "Matriz de factores de Bayes"
 
-msgctxt "BainAncovaBayesian|"
-msgid "Coefficients"
-msgstr ""
-
-msgctxt "BainAncovaBayesian|"
-msgid "Credible interval"
-msgstr ""
-
-msgctxt "BainAncovaBayesian|"
-msgid "Plots"
-msgstr ""
-
-msgctxt "BainAncovaBayesian|"
+msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Posterior probabilities"
-msgstr ""
+msgstr "Probabilidades posteriores"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Model Constraints"
+msgstr "Restricións do modelo"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Adjusted means"
-msgstr ""
-
-msgctxt "BainAncovaBayesian|"
-msgid "Additional Options"
-msgstr ""
-
-msgctxt "BainAncovaBayesian|"
-msgid "Seed"
-msgstr ""
-
-msgctxt "BainAncovaBayesian|"
-msgid "Fraction"
-msgstr ""
-
-msgctxt "BainAncovaBayesian|"
-msgid "Model Constraints"
-msgstr ""
-
-msgctxt "BainAncovaBayesian|"
-msgid ""
-"Place each hypothesis on a new line. For example:\n"
-"\n"
-"factorLow = factorMed = factorHigh\n"
-"factorLow < factorMed < factorHigh\n"
-"\n"
-"where factor is the factor name and Low/Med/High are the factor level "
-"names.\n"
-"Read the help file for further instructions."
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
-msgid "Dependent Variable"
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
-msgid "Fixed Factors"
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
-msgid "Tables"
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
-msgid "Bayes factor matrix"
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
-msgid "Descriptives"
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
-msgid "Credible interval"
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
-msgid "Plots"
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
-msgid "Posterior probabilities"
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
-msgid "Descriptives plot"
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
-msgid "Additional Options"
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
-msgid "Seed"
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
-msgid "Fraction"
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
-msgid "Model Constraints"
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
-msgid ""
-"Place each hypothesis on a new line. For example:\n"
-"\n"
-"factorLow = factorMed = factorHigh\n"
-"factorLow < factorMed < factorHigh\n"
-"\n"
-"where factor is the factor name and Low/Med/High are the factor level "
-"names.\n"
-"Read the help file for further instructions."
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Dependent Variable"
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Covariates"
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Tables"
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Bayes factor matrix"
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Coefficients"
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Credible interval"
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Plots"
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Posterior probabilities"
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Additional Options"
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Seed"
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Fraction"
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Standardize coefficients"
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Model Constraints"
-msgstr ""
+msgstr "Medias axustadas"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid ""
@@ -211,14 +75,256 @@ msgid ""
 "where age, length and weight are the names of the predictors.\n"
 "Read the help file for further instructions."
 msgstr ""
+"Coloca cada hipótese nunha nova liña. Por exemplo:\n"
+"\n"
+"Idade = Longura = Peso\n"
+"Idade < Longura < Peso\n"
+"\n"
+"onde Idade , Longura e Peso son os nomes dos preditores.\n"
+"Consulta o ficheiro de axuda para ver outras instrucións."
 
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Equal vs. bigger"
+msgstr "Igual vs. maior"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "BF₁₀: Other vs. equal"
+msgstr "FB₁₀: Outro vs. igual"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "BF₀₁: Equal vs. other"
+msgstr "FB₀₁: Igual vs. outro"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Hypothesis Test"
+msgstr "Proba de hipóteses"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Equal vs. not equal"
+msgstr "Igual vs. non igual"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Equal vs. smaller"
+msgstr "Igual vs. menor"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Bigger vs. smaller"
+msgstr "Maior vs. menor"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Equal vs. bigger vs. smaller"
+msgstr "Igual vs. maior vs. menor"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Pairs"
+msgstr "Pares"
+
+#, fuzzy
+msgctxt "BainAncovaBayesian|"
+msgid "Dependent Variable"
+msgstr "Variable dependente"
+
+#, fuzzy
+msgctxt "BainAncovaBayesian|"
+msgid "Fixed Factors"
+msgstr "Factores fixos"
+
+#, fuzzy
+msgctxt "BainAncovaBayesian|"
+msgid "Covariates"
+msgstr "Covariantes"
+
+#, fuzzy
+msgctxt "BainAncovaBayesian|"
+msgid "Tables"
+msgstr "Táboas"
+
+#, fuzzy
+msgctxt "BainAncovaBayesian|"
+msgid "Bayes factor matrix"
+msgstr "Matriz de factores de Bayes"
+
+#, fuzzy
+msgctxt "BainAncovaBayesian|"
+msgid "Coefficients"
+msgstr "Coeficientes"
+
+#, fuzzy
+msgctxt "BainAncovaBayesian|"
+msgid "Credible interval"
+msgstr "Intervalo de credibilidade"
+
+#, fuzzy
+msgctxt "BainAncovaBayesian|"
+msgid "Plots"
+msgstr "Gráficas"
+
+#, fuzzy
+msgctxt "BainAncovaBayesian|"
+msgid "Posterior probabilities"
+msgstr "Probabilidades posteriores"
+
+#, fuzzy
+msgctxt "BainAncovaBayesian|"
+msgid "Additional Options"
+msgstr "Opcións adicionais"
+
+#, fuzzy
+msgctxt "BainAncovaBayesian|"
+msgid "Seed"
+msgstr "Semente"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Fraction"
+msgstr ""
+
+#, fuzzy
+msgctxt "BainAncovaBayesian|"
+msgid "Model Constraints"
+msgstr "Restricións do modelo"
+
+#, fuzzy
+msgctxt "BainAncovaBayesian|"
+msgid ""
+"Place each hypothesis on a new line. For example:\n"
+"\n"
+"factorLow = factorMed = factorHigh\n"
+"factorLow < factorMed < factorHigh\n"
+"\n"
+"where factor is the factor name and Low/Med/High are the factor level "
+"names.\n"
+"Read the help file for further instructions."
+msgstr ""
+"Coloca cada hipótese nunha nova liña. Por exemplo:\n"
+"\n"
+"FactorBaixo = FactorMedio = FactorAlto\n"
+"FactorBaixo < FactorMedio < FactorAlto\n"
+"\n"
+"onde Factor é o nome do factor e Baixo/Medio/Alto son os nomes dos niveis "
+"dos factores.\n"
+"Consulta o ficheiro de axuda para ver outras instrucións."
+
+#, fuzzy
+msgctxt "BainAnovaBayesian|"
+msgid "Dependent Variable"
+msgstr "Variable dependente"
+
+#, fuzzy
+msgctxt "BainAnovaBayesian|"
+msgid "Tables"
+msgstr "Táboas"
+
+#, fuzzy
+msgctxt "BainAnovaBayesian|"
+msgid "Bayes factor matrix"
+msgstr "Matriz de factores de Bayes"
+
+#, fuzzy
+msgctxt "BainAnovaBayesian|"
+msgid "Descriptives"
+msgstr "Descritivos"
+
+#, fuzzy
+msgctxt "BainAnovaBayesian|"
+msgid "Credible interval"
+msgstr "Intervalo de credibilidade"
+
+#, fuzzy
+msgctxt "BainAnovaBayesian|"
+msgid "Plots"
+msgstr "Gráficas"
+
+#, fuzzy
+msgctxt "BainAnovaBayesian|"
+msgid "Posterior probabilities"
+msgstr "Probabilidades posteriores"
+
+#, fuzzy
+msgctxt "BainAnovaBayesian|"
+msgid "Descriptives plot"
+msgstr "Gráfica descritiva"
+
+#, fuzzy
+msgctxt "BainAnovaBayesian|"
+msgid "Additional Options"
+msgstr "Opcións adicionais"
+
+#, fuzzy
+msgctxt "BainAnovaBayesian|"
+msgid "Seed"
+msgstr "Semente"
+
+msgctxt "BainAnovaBayesian|"
+msgid "Fraction"
+msgstr ""
+
+#, fuzzy
+msgctxt "BainAnovaBayesian|"
+msgid "Model Constraints"
+msgstr "Restricións do modelo"
+
+#, fuzzy
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Dependent Variable"
+msgstr "Variable dependente"
+
+#, fuzzy
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Covariates"
+msgstr "Covariantes"
+
+#, fuzzy
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Tables"
+msgstr "Táboas"
+
+#, fuzzy
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Coefficients"
+msgstr "Coeficientes"
+
+#, fuzzy
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Credible interval"
+msgstr "Intervalo de credibilidade"
+
+#, fuzzy
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Plots"
+msgstr "Gráficas"
+
+#, fuzzy
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Posterior probabilities"
+msgstr "Probabilidades posteriores"
+
+#, fuzzy
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Additional Options"
+msgstr "Opcións adicionais"
+
+#, fuzzy
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Seed"
+msgstr "Semente"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Fraction"
+msgstr ""
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Standardize coefficients"
+msgstr ""
+
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Model Options"
-msgstr ""
+msgstr "Opcións do modelo"
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Factor scaling"
-msgstr ""
+msgstr "Escalado dos factores"
 
 msgctxt "BainSemBayesian|"
 msgid "Factor variance"
@@ -228,45 +334,54 @@ msgctxt "BainSemBayesian|"
 msgid "Factor loading"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Grouping variable"
-msgstr ""
+msgstr "Variable de agrupación"
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Tables"
-msgstr ""
+msgstr "Táboas"
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Coefficients"
-msgstr ""
+msgstr "Coeficientes"
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Credible interval"
-msgstr ""
+msgstr "Intervalo de credibilidade"
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "Gráficas"
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Path diagram"
-msgstr ""
+msgstr "Diagrama da ruta"
 
 msgctxt "BainSemBayesian|"
 msgid "Show parameter estimates"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Show legend"
-msgstr ""
+msgstr "Amosar a lenda"
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Additional Options"
-msgstr ""
+msgstr "Opcións adicionais"
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Seed"
-msgstr ""
+msgstr "Semente"
 
 msgctxt "BainSemBayesian|"
 msgid "Fraction"
@@ -276,17 +391,20 @@ msgctxt "BainSemBayesian|"
 msgid "Standardize coefficients"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Bayes factor matrix"
-msgstr ""
+msgstr "Matriz de factores de Bayes"
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Posterior probabilities"
-msgstr ""
+msgstr "Probabilidades posteriores"
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Model Constraints"
-msgstr ""
+msgstr "Restricións do modelo"
 
 msgctxt "BainSemBayesian|"
 msgid ""
@@ -304,238 +422,239 @@ msgid ""
 "with Bain Structural Equation Modeling."
 msgstr ""
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Dependent Variables"
-msgstr ""
+msgstr "Variables dependentes"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Grouping Variable"
-msgstr ""
+msgstr "Variable de agrupación"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Hypothesis Test"
-msgstr ""
+msgstr "Proba de hipóteses"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Equal vs. not equal"
-msgstr ""
+msgstr "Igual vs. non igual"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Equal vs. bigger"
-msgstr ""
+msgstr "Igual vs. maior"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Equal vs. smaller"
-msgstr ""
+msgstr "Igual vs. menor"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Bigger vs. smaller"
-msgstr ""
+msgstr "Maior vs. menor"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Equal vs. bigger vs. smaller"
-msgstr ""
+msgstr "Igual vs. maior vs. menor"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Bayes Factor"
-msgstr ""
+msgstr "Factor de Bayes"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "BF₀₁: Equal vs. other"
-msgstr ""
+msgstr "FB₀₁: Igual vs. outro"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "BF₁₀: Other vs. equal"
-msgstr ""
+msgstr "FB₁₀: Outro vs. igual"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Additional Options"
-msgstr ""
+msgstr "Opcións adicionais"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Seed"
-msgstr ""
+msgstr "Semente"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Fraction"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Tables"
-msgstr ""
+msgstr "Táboas"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Descriptives"
-msgstr ""
+msgstr "Descritivos"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Credible interval"
-msgstr ""
+msgstr "Intervalo de credibilidade"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Plots"
-msgstr ""
+msgstr "Gráficas"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Posterior probabilities"
-msgstr ""
+msgstr "Probabilidades posteriores"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Descriptives plots"
-msgstr ""
+msgstr "Gráficas descritivas"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Variables"
-msgstr ""
+msgstr "Variables"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Test value"
-msgstr ""
+msgstr "Probar valor"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Hypothesis Test"
-msgstr ""
+msgstr "Proba de hipóteses"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Equal vs. not equal"
-msgstr ""
+msgstr "Igual vs. non igual"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Equal vs. bigger"
-msgstr ""
+msgstr "Igual vs. maior"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Equal vs. smaller"
-msgstr ""
+msgstr "Igual vs. menor"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Bigger vs. smaller"
-msgstr ""
+msgstr "Maior vs. menor"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Equal vs. bigger vs. smaller"
-msgstr ""
+msgstr "Igual vs. maior vs. menor"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Bayes Factor"
-msgstr ""
+msgstr "Factor de Bayes"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "BF₀₁: Equal vs. other"
-msgstr ""
+msgstr "FB₀₁: Igual vs. outro"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "BF₁₀: Other vs. equal"
-msgstr ""
+msgstr "FB₁₀: Outro vs. igual"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Additional Options"
-msgstr ""
+msgstr "Opcións adicionais"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Seed"
-msgstr ""
+msgstr "Semente"
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Fraction"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Tables"
-msgstr ""
+msgstr "Táboas"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Descriptives"
-msgstr ""
+msgstr "Descritivos"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Credible interval"
-msgstr ""
+msgstr "Intervalo de credibilidade"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Plots"
-msgstr ""
+msgstr "Gráficas"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Posterior probabilities"
-msgstr ""
+msgstr "Probabilidades posteriores"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Descriptives plots"
-msgstr ""
+msgstr "Gráficas descritivas"
 
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Pairs"
-msgstr ""
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Hypothesis Test"
-msgstr ""
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Equal vs. not equal"
-msgstr ""
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Equal vs. bigger"
-msgstr ""
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Equal vs. smaller"
-msgstr ""
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Bigger vs. smaller"
-msgstr ""
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Equal vs. bigger vs. smaller"
-msgstr ""
-
+#, fuzzy
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Bayes Factor"
-msgstr ""
+msgstr "Factor de Bayes"
 
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "BF₀₁: Equal vs. other"
-msgstr ""
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "BF₁₀: Other vs. equal"
-msgstr ""
-
+#, fuzzy
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Additional Options"
-msgstr ""
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Seed"
-msgstr ""
+msgstr "Opcións adicionais"
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Fraction"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Tables"
-msgstr ""
+msgstr "Táboas"
 
+#, fuzzy
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Descriptives"
-msgstr ""
+msgstr "Descritivos"
 
+#, fuzzy
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Credible interval"
-msgstr ""
+msgstr "Intervalo de credibilidade"
 
+#, fuzzy
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Plots"
-msgstr ""
+msgstr "Gráficas"
 
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Posterior probabilities"
-msgstr ""
-
+#, fuzzy
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Descriptives plots"
-msgstr ""
+msgstr "Gráficas descritivas"

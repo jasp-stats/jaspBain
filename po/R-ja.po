@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspBain 0.1.0\n"
-"POT-Creation-Date: 2021-03-03 14:07\n"
+"POT-Creation-Date: 2021-06-29 13:28\n"
 "PO-Revision-Date: 2021-03-12 00:02+0000\n"
 "Last-Translator: Yoshihiko Kunisato <ykunisato@psy.senshu-u.ac.jp>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jaspbain-r/"
@@ -244,6 +244,14 @@ msgid "H%1$i"
 msgstr ""
 
 msgid "Hu"
+msgstr ""
+
+msgid "<b>Warning</b>"
+msgstr ""
+
+msgid ""
+"The entered model contraints are incompatible with the data and therefore "
+"the computed results contain NaN's."
 msgstr ""
 
 msgid "Bayes Factor Matrix"
