@@ -784,7 +784,7 @@
   }
   
   if (any(is.nan(unlist(bainResult[["fit"]]))))
-    table$addFootnote(symbol = gettext("<b>Warning</b>"), message = gettext("The entered model contraints are incompatible with the data and therefore the computed results contain NaN's."))
+    table$addFootnote(symbol = gettext("<b>Warning</b>"), message = gettext("The entered model constraints are incompatible with the data and therefore the computed results contain NaNs."))
 }
 
 # Create the Bayes factor matrix
