@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspBain 1.1.0\n"
-"POT-Creation-Date: 2021-06-29 13:28\n"
+"POT-Creation-Date: 2021-07-03 03:35\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -175,7 +175,7 @@ msgstr ""
 msgid "<b>Warning</b>"
 msgstr ""
 
-msgid "The entered model contraints are incompatible with the data and therefore the computed results contain NaN's."
+msgid "The entered model constraints are incompatible with the data and therefore the computed results contain NaNs."
 msgstr ""
 
 msgid "Bayes Factor Matrix"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-06-29 13:28\n"
+"POT-Creation-Date: 2021-07-03 03:35\n"
 "PO-Revision-Date: 2021-07-01 19:32+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/jaspbain-r/"
@@ -266,8 +266,8 @@ msgid "<b>Warning</b>"
 msgstr "<b>1. Planificación</b>"
 
 msgid ""
-"The entered model contraints are incompatible with the data and therefore "
-"the computed results contain NaN's."
+"The entered model constraints are incompatible with the data and therefore "
+"the computed results contain NaNs."
 msgstr ""
 
 #, fuzzy
