@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-07-03 03:35\n"
-"PO-Revision-Date: 2021-07-01 19:32+0000\n"
+"POT-Creation-Date: 2021-06-29 13:28\n"
+"PO-Revision-Date: 2021-07-08 20:33+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/jaspbain-r/"
 "gl/>\n"
@@ -282,7 +282,7 @@ msgid "Coefficients for Parameters"
 msgstr "Parámetros supervisados"
 
 msgid "Descriptive Statistics"
-msgstr "Estatísticos descritivos"
+msgstr "Estatísticos Descritivos"
 
 #, fuzzy
 msgid "Coefficient"
@@ -292,7 +292,7 @@ msgid "Mean"
 msgstr "Media"
 
 msgid "%.0f%% Credible Interval"
-msgstr "Intervalo co %.0f%% de credibilidade"
+msgstr "Intervalo co %.0f%% de Credibilidade"
 
 msgid "Group"
 msgstr "Grupo"
@@ -301,10 +301,10 @@ msgid "N"
 msgstr "N"
 
 msgid "SD"
-msgstr "DS"
+msgstr "EP"
 
 msgid "SE"
-msgstr "DT"
+msgstr "ET"
 
 msgid "Lower"
 msgstr "Inferior"
