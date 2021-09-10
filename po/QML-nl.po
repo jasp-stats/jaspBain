@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2021-09-08 12:11+0000\n"
+"Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jaspbain-qml/"
+"nl/>\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 "X-Language: nl\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -447,104 +453,95 @@ msgstr "Beschrijvende diagrammen"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Fraction"
-msgstr ""
+msgstr "Fractie"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Fraction"
-msgstr ""
+msgstr "Fractie"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Fraction"
-msgstr ""
+msgstr "Fractie"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Standardize coefficients"
-msgstr ""
+msgstr "Standaardiseer coëfficiënten"
 
 msgctxt "BainSemBayesian|"
 msgid "Model Options"
-msgstr ""
+msgstr "Modelopties"
 
 msgctxt "BainSemBayesian|"
 msgid "Factor scaling"
-msgstr ""
+msgstr "Factorschaling"
 
 msgctxt "BainSemBayesian|"
 msgid "Factor variance"
-msgstr ""
+msgstr "Factor varianties"
 
 msgctxt "BainSemBayesian|"
 msgid "Factor loading"
-msgstr ""
+msgstr "Factorladingen"
 
 msgctxt "BainSemBayesian|"
 msgid "Grouping variable"
-msgstr ""
+msgstr "Groepeer variabele"
 
-#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Tables"
 msgstr "Tabellen"
 
-#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Coefficients"
 msgstr "Coëfficiënten"
 
-#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Credible interval"
 msgstr "Geloofwaardigheidsinterval"
 
-#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Plots"
 msgstr "Grafieken"
 
 msgctxt "BainSemBayesian|"
 msgid "Path diagram"
-msgstr ""
+msgstr "Paddiagram"
 
 msgctxt "BainSemBayesian|"
 msgid "Show parameter estimates"
-msgstr ""
+msgstr "Toon parameterschattingen"
 
 msgctxt "BainSemBayesian|"
 msgid "Show legend"
-msgstr ""
+msgstr "Toon legenda"
 
-#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Additional Options"
-msgstr "Aanvullende opties"
+msgstr "Aanvullende Opties"
 
-#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Seed"
 msgstr "Toevalsgenerator beginwaarde"
 
 msgctxt "BainSemBayesian|"
 msgid "Fraction"
-msgstr ""
+msgstr "Fractie"
 
 msgctxt "BainSemBayesian|"
 msgid "Standardize coefficients"
-msgstr ""
+msgstr "Standaardiseer coëfficiënten"
 
-#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Bayes factor matrix"
-msgstr "Bayes factormatrix"
+msgstr "Bayes factor matrix"
 
-#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Posterior probabilities"
 msgstr "Posterior kansen"
 
-#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Model Constraints"
-msgstr "Modelbeperkingen"
+msgstr "Modelrestricties"
 
 msgctxt "BainSemBayesian|"
 msgid ""
@@ -561,15 +558,27 @@ msgid ""
 "what can and cannot be done\n"
 "with Bain Structural Equation Modeling."
 msgstr ""
+"Hypothesen kunnen worden geformuleerd met behulp van de parameternamen die "
+"verschijnen als het vakje \"Coëfficiënten\" is aangevinkt.\n"
+"Gebruik GEEN spaties in de parameternamen. Plaats elke hypothese op een "
+"nieuwe regel. Bijvoorbeeld:\n"
+"\n"
+"A=~x1 = A=~x2 = A=~x3 = A=~x4\n"
+"A=~x1 > A=~x2 > A=~x3 = A=~x4\n"
+"A=~x1 > 0 & A=~x2 > 0 & A=~x3 > 0 & A=~x4 > 0\n"
+"\n"
+"Lees het helpbestand voor verdere instructies over het formuleren van "
+"hypotheses en wat wel en niet kan\n"
+"met Bain Structurele Vergelijking Modellering."
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Fraction"
-msgstr ""
+msgstr "Fractie"
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Fraction"
-msgstr ""
+msgstr "Fractie"
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Fraction"
-msgstr ""
+msgstr "Fractie"
