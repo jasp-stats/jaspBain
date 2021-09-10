@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2021-07-03 03:35\n"
-"PO-Revision-Date: 2021-09-07 11:34+0000\n"
-"Last-Translator: DanaJohanna <dana__@live.nl>\n"
+"PO-Revision-Date: 2021-09-08 12:11+0000\n"
+"Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jaspbain-r/nl/"
 ">\n"
 "Language: nl\n"
@@ -21,25 +21,24 @@ msgstr ""
 "Bain accepteert geen factorniveaus die spaties bevatten. Verwijder deze "
 "spaties a.u.b. uit uw factorniveaus om door te gaan."
 
-#, fuzzy
 msgid ""
 "An error occurred in the call to lavaan: %1$s. Please double check if the "
 "variables in lavaan syntax match the variables in your data set."
 msgstr ""
-"Fout opgetreden in de analyse:<br>%s<br><br>Controleer uw variabelen en uw "
-"model beperkingen."
+"Er is een fout opgetreden in de aanroep van lavaan: %1$s. Controleer of de "
+"variabelen in de lavaan-syntax overeenkomen met de variabelen in uw data set."
 
 msgid "The fixed factor has too many levels for a Bain analysis."
 msgstr "De gefixeerde factor heeft te veel niveaus voor een Bain analyse."
 
-#, fuzzy
 msgid ""
 "An error occurred in the analysis:<br>%1$s<br><br>Please double check if the "
 "variables in the 'Model Contraints' section match the variables in your data "
 "set."
 msgstr ""
-"Fout opgetreden in de analyse:<br>%s<br><br>Controleer uw variabelen en uw "
-"model beperkingen."
+"Er is een fout opgetreden in de analyse:<br>%1$s<br><br>Controleer of de "
+"variabelen in de sectie 'Model Contraints' overeenkomen met de variabelen in "
+"uw data set."
 
 msgid "Hypothesis"
 msgstr "Hypothese"
@@ -62,15 +61,14 @@ msgstr "Bain T-toets Voor Eén Steekproef"
 msgid "Bain ANOVA"
 msgstr "Bain ANOVA"
 
-#, fuzzy
 msgid "Bain ANCOVA"
-msgstr "Bain ANOVA"
+msgstr "Bain ANCOVA"
 
 msgid "Bain Linear Regression"
 msgstr "Bain Lineaire Regressie"
 
 msgid "Bain Structural Equation Model"
-msgstr ""
+msgstr "Bain Structureel Vergelijkingsmodel"
 
 msgid "BF"
 msgstr "BF"
@@ -218,7 +216,7 @@ msgstr ""
 "prior kansen."
 
 msgid "BF.u"
-msgstr ""
+msgstr "BF.u"
 
 msgid "BF.c"
 msgstr "BF.c"
@@ -229,7 +227,6 @@ msgstr "PMP a"
 msgid "PMP b"
 msgstr "PMP b"
 
-#, fuzzy
 msgid ""
 "BF.u and BF.c denote the Bayes factors of the hypothesis in the row versus \n"
 "\t\t\t\t\t\tthe unconstrained hypothesis and complement, respectively. "
@@ -238,15 +235,16 @@ msgid ""
 "unconstrained hypothesis) \n"
 "\t\t\t\t\t\tare based on equal prior model probabilities."
 msgstr ""
-"BF.c geeft de Bayes factor van de hypothese in de rij versus zijn "
-"complement.\n"
-"Posterior modelkansen (a: de ongebonden hypothese is uitgesloten, b: de "
-"ongebonden hypothese is meegenomen) zijn gebaseerd op gelijke prior "
-"modelkansen."
+"BF.u en BF.c staan voor de Bayes factoren van de hypothese in de rij "
+"tegenover\n"
+"\t\t\t\t\t\tde niet-beperkte hypothese en het complement, respectievelijk. "
+"Posterior model kansen\n"
+"\t\t\t\t\t\t(a: exclusief de onbeperkte hypothese, b: inclusief de "
+"onbeperkte hypothese)\n"
+"\t\t\t\t\t\tzijn gebaseerd op gelijke prior model kansen."
 
-#, fuzzy
 msgid "Results not computed: %1$s."
-msgstr "Onberekende resultaten: %s"
+msgstr "Resultaten niet berekend: %1$s."
 
 msgid ""
 "Variable contains missing values, the rows containing these values are "
@@ -293,13 +291,12 @@ msgstr "Resultaten niet berekend: De variabelen van deze paar zijn hetzelfde."
 msgid "Results not computed: The pair is incomplete."
 msgstr "Resultaten niet berekend: De paar is incompleet."
 
-#, fuzzy
 msgid ""
 "The variables %1$s contain missing values, the rows containing these values "
 "are removed in the analysis."
 msgstr ""
-"De variabelen %s bevatten ontbrekende waarden, de rijen die deze waarden "
-"bevatten, zijn niet meegenomen in de analyse."
+"De variabelen %1$s bevatten ontbrekende waarden, de rijen met deze waarden "
+"zijn in de analyse verwijderd."
 
 msgid "<b>Warning.</b>"
 msgstr "<b>Waarschuwing.</b>"
@@ -311,28 +308,28 @@ msgstr ""
 "De variabelen %1$s en %2$s bevatten ontbrekende waarden, de rijen die deze "
 "waarden bevatten, zijn niet meegenomen in de analyse."
 
-#, fuzzy
 msgid ""
 "The variable %1$s contains missing values, the rows containing these values "
 "are removed in the analysis."
 msgstr ""
-"De variabele %s bevat ontbrekende waarden, de rijen die deze waarden "
-"bevatten, zijn niet meegenomen in de analyse."
+"De variabele %1$s bevat ontbrekende waarden, de rijen met deze waarden zijn "
+"in de analyse verwijderd."
 
 msgid "H%1$i"
-msgstr ""
+msgstr "H%1$i"
 
 msgid "Hu"
 msgstr "Hu"
 
-#, fuzzy
 msgid "<b>Warning</b>"
-msgstr "<b>Waarschuwing.</b>"
+msgstr "<b>Waarschuwing</b>"
 
 msgid ""
 "The entered model constraints are incompatible with the data and therefore "
 "the computed results contain NaNs."
 msgstr ""
+"De ingevoerde modelrestricties zijn onverenigbaar met de gegevens en daarom "
+"bevatten de berekende resultaten NaN's."
 
 msgid "Bayes Factor Matrix"
 msgstr "Bayes Factormatrix"
@@ -340,9 +337,8 @@ msgstr "Bayes Factormatrix"
 msgid "Coefficients for Groups plus Covariates"
 msgstr "Coëfficiënten voor Groepen plus Covariaten"
 
-#, fuzzy
 msgid "Coefficients for Parameters"
-msgstr "Coëfficiënten voor Groepen plus Covariaten"
+msgstr "Coëfficiënten voor Parameters"
 
 msgid "Descriptive Statistics"
 msgstr "Beschrijvende Statistiek"
@@ -377,15 +373,11 @@ msgstr "Boven"
 msgid "The displayed coefficients are standardized."
 msgstr "De getoonde coëfficiënten zijn gestandaardiseerd."
 
-#, fuzzy
 msgid "The displayed coefficients are unstandardized."
-msgstr "De getoonde coëfficiënten zijn gestandaardiseerd."
+msgstr "De weergegeven coëfficiënten zijn niet gestandaardiseerd."
 
-#, fuzzy
 msgid "The results for this variable were not computed."
-msgstr ""
-"Grafiek maken niet mogelijk: de resultaten voor deze variabele zien niet "
-"berekend."
+msgstr "De resultaten voor deze variabele zijn niet berekend."
 
 msgid "Posterior Probabilities"
 msgstr "Posterior kansen"
@@ -395,11 +387,9 @@ msgstr ""
 "Grafiek maken niet mogelijk: de resultaten voor deze variabele zien niet "
 "berekend."
 
-#, fuzzy
 msgid "Plotting not possible: %1$s"
-msgstr "Grafiek maken niet mogelijk: %s"
+msgstr "Grafiek maken niet mogelijk: %1$s"
 
-#, fuzzy
 msgid "Plotting not possible: the results could not be computed."
 msgstr ""
 "Grafiek maken niet mogelijk: de resultaten voor deze variabele zien niet "
@@ -435,12 +425,11 @@ msgstr "Neem Hu mee"
 msgid "Path Diagram"
 msgstr "Paddiagram"
 
-#, fuzzy
 msgid "Group: %1$s"
-msgstr "Groep"
+msgstr "Groep: %1$s"
 
 msgid "An error occurred while creating this plot:<br>%1$s."
-msgstr ""
+msgstr "Er is een fout opgetreden bij het maken van deze plot:<br>%1$s."
 
 #~ msgid "Hypothesis Legend"
 #~ msgstr "Hypothese Legenda"
