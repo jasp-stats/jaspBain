@@ -303,7 +303,7 @@
     if (type == "onesampleTTest") {
       bainResult <- .bainTTestRaw(options, x = variableData, nu = testValue, type = testType)
     } else if (type == "independentTTest") {
-      levels <- base::levels(dataset[[options[["groupingVariable"]]]])
+      levels <- levels(dataset[[options[["groupingVariable"]]]])
       if (length(levels) != 2) {
         g1 <- "1"
         g2 <- "2"
@@ -529,21 +529,21 @@
       table$addColumnInfo(name="pmp[type2]",        type="number", format="dp:3", title=gettext("Posterior probability"))
     }
     if (type == "onesampleTTest")
-      message <- base::switch(options[["hypothesis"]],
+      message <- switch(options[["hypothesis"]],
                               "equalNotEqual"     = gettextf("The alternative hypothesis H1 specifies that the mean is unequal to %s. The posterior probabilities are based on equal prior probabilities.", options[["testValue"]]),
                               "equalBigger"       = gettextf("The alternative hypothesis H1 specifies that the mean is bigger than %s. The posterior probabilities are based on equal prior probabilities.", options[["testValue"]]),
                               "equalSmaller"      = gettextf("The alternative hypothesis H1 specifies that the mean is smaller than %s. The posterior probabilities are based on equal prior probabilities.", options[["testValue"]]),
                               "biggerSmaller"     = gettextf("The hypothesis H1 specifies that the mean is bigger than %1$s and the hypothesis H2 specifies that the mean is smaller than %1$s. The posterior probabilities are based on equal prior probabilities.", options[["testValue"]]),
                               "equalBiggerSmaller"= gettextf("The null hypothesis H0 with test value %1$s is tested against the other hypotheses. H1 states that the mean is bigger than %1$s and H2 states that the mean is smaller than %1$s. The posterior probabilities are based on equal prior probabilities.", options[["testValue"]]))
     if (type == "independentTTest")
-      message <- base::switch(options[["hypothesis"]],
+      message <- switch(options[["hypothesis"]],
                               "equalNotEqual"     = gettext("The alternative hypothesis H1 specifies that the mean of group 1 is unequal to the mean of group 2. The posterior probabilities are based on equal prior probabilities."),
                               "equalSmaller"      = gettext("The alternative hypothesis H1 specifies that the mean of group 1 is smaller than the mean of group 2. The posterior probabilities are based on equal prior probabilities."),
                               "equalBigger"       = gettext("The alternative hypothesis H1 specifies that mean of group 1 is bigger than the mean of group 2. The posterior probabilities are based on equal prior probabilities."),
                               "biggerSmaller"     = gettext("The hypothesis H1 specifies that the mean of group 1 is bigger than the mean of group 2. The hypothesis H2 specifies that the mean in group 1 is smaller than the mean in group 2. The posterior probabilities are based on equal prior probabilities."),
                               "equalBiggerSmaller"= gettext("The null hypothesis H0 (equal group means) is tested against H1 (first mean larger than second mean) and H2 (first mean smaller than second mean). The posterior probabilities are based on equal prior probabilities."))
     if (type == "pairedTTest")
-      message <- base::switch(options[["hypothesis"]],
+      message <- switch(options[["hypothesis"]],
                               "equalNotEqual"       = gettext("The alternative hypothesis H1 specifies that the mean of variable 1 is unequal to the mean of variable 2. The posterior probabilities are based on equal prior probabilities."),
                               "equalBigger"         = gettext("The alternative hypothesis H1 specifies that the mean of variable 1 is bigger than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."),
                               "equalSmaller"        = gettext("The alternative hypothesis H1 specifies that the mean of variable 1 is smaller than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."),
@@ -569,7 +569,7 @@
   
   if (type %in% c("onesampleTTest", "independentTTest")) {
     
-    testType <- base::switch(options[["hypothesis"]],
+    testType <- switch(options[["hypothesis"]],
                              "equalNotEqual"       = 1,
                              "equalBigger"         = 2,
                              "equalSmaller"        = 3,
@@ -637,7 +637,7 @@
       progressbarTick()
     }
   } else if (type == "pairedTTest") {
-    testType <- base::switch(options[["hypothesis"]],
+    testType <- switch(options[["hypothesis"]],
                              "equalNotEqual"       = 1,
                              "equalBigger"         = 2,
                              "equalSmaller"        = 3,
@@ -859,7 +859,7 @@
   
   if (type == "independentTTest") {
     table$setExpectedSize(length(options[["variables"]]) * 2)
-    levels <- base::levels(dataset[[ options[["groupingVariable"]] ]])
+    levels <- levels(dataset[[ options[["groupingVariable"]] ]])
     if (length(levels) != 2) {
       g1 <- "1"
       g2 <- "2"
@@ -895,7 +895,7 @@
         c2 <- subDataSet[[ pair[[2]] ]]
         difference <- c1 - c2
         currentPair <- paste(pair, collapse=" - ")
-        testType <- base::switch(options[["hypothesis"]],
+        testType <- switch(options[["hypothesis"]],
                                  "equalNotEqual"       = 1,
                                  "equalBigger"         = 2,
                                  "equalSmaller"        = 3,
@@ -988,7 +988,7 @@
     bainContainer[["posteriorProbabilityPlot"]] <- container
     if (!ready || bainContainer$getError())
       return()
-    analysisType <- base::switch(options[["hypothesis"]],
+    analysisType <- switch(options[["hypothesis"]],
                                  "equalNotEqual" = 1,
                                  "equalBigger" = 2,
                                  "equalSmaller"	= 3,
@@ -1107,19 +1107,19 @@
             yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(options[["testValue"]], CiLower, CiUpper), min.n = 4)
             plotData <- data.frame(v = variable, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1)
             p <- ggplot2::ggplot(plotData, ggplot2::aes(x = index, y = mean)) +
-              ggplot2::geom_segment(ggplot2::aes(x = -Inf, xend = Inf, y = options[["testValue"]], yend = options[["testValue"]]), linetype = 2, color = "darkgray") +
-              ggplot2::geom_errorbar(ggplot2::aes(ymin = lowerCI, ymax = upperCI), colour="black", width = .1, position = ggplot2::position_dodge(.2)) +
-              ggplot2::geom_point(position = ggplot2::position_dodge(.2), size = 4) +
-              ggplot2::ylab("") +
-              ggplot2::xlab("") +
-              ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks)) +
-              ggplot2::scale_x_continuous(breaks = 0:2, labels = NULL)
-            p <- jaspGraphs::themeJasp(p, sides = "l") + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())
+              ggplot2::geom_segment(mapping = ggplot2::aes(x = 0, xend = 2, y = options[["testValue"]], yend = options[["testValue"]]), linetype = "dashed", color = "darkgray") +
+              ggplot2::geom_errorbar(mapping = ggplot2::aes(ymin = lowerCI, ymax = upperCI), width = 0.2, color="black") +
+              jaspGraphs::geom_point(size = 4) +
+              ggplot2::scale_y_continuous(name = NULL, breaks = yBreaks, limits = range(yBreaks)) +
+              ggplot2::scale_x_continuous(name = NULL, limits = c(0, 2)) +
+			  jaspGraphs::geom_rangeframe(sides = "l") +
+			  jaspGraphs::themeJaspRaw() +
+			  ggplot2::theme(axis.ticks.x = ggplot2::element_blank(), axis.text.x = ggplot2::element_blank())
             
           } else if (type == "independentTTest") {
             
             bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
-            levels <- base::levels(dataset[[ options[["groupingVariable"]] ]])
+            levels <- levels(dataset[[ options[["groupingVariable"]] ]])
             N <- bainSummary[["n"]]
             mu <- bainSummary[["Estimate"]]
             CiLower <- bainSummary[["lb"]]
@@ -1127,14 +1127,13 @@
             yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(CiLower, CiUpper), min.n = 4)
             plotData <- data.frame(v = levels, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1:length(levels))
             p <- ggplot2::ggplot(plotData, ggplot2::aes(x = index, y = mean)) +
-              ggplot2::geom_errorbar(ggplot2::aes(ymin = lowerCI, ymax = upperCI), colour = "black", width = .2, position = ggplot2::position_dodge(.2)) +
-              ggplot2::geom_line(position = ggplot2::position_dodge(.2), size = .7) +
-              ggplot2::geom_point(position = ggplot2::position_dodge(.2), size = 4) +
-              ggplot2::ylab(variable) +
-              ggplot2::xlab(options[["groupingVariable"]]) +
-              ggplot2::scale_x_continuous(breaks = 1:length(levels), labels = as.character(levels)) +
-              ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks))
-            p <- jaspGraphs::themeJasp(p)
+              ggplot2::geom_errorbar(mapping = ggplot2::aes(ymin = lowerCI, ymax = upperCI), colour = "black", width = 0.2) +
+              jaspGraphs::geom_line() +
+              jaspGraphs::geom_point(size = 4) +
+              ggplot2::scale_x_continuous(name = options[["groupingVariable"]], breaks = 1:length(levels), labels = levels) +
+              ggplot2::scale_y_continuous(name = variable, breaks = yBreaks, limits = range(yBreaks)) +
+			  jaspGraphs::geom_rangeframe() + 
+			  jaspGraphs::themeJaspRaw()
           }
           container[[variable]] <- createJaspPlot(plot = p, title = variable)
           container[[variable]]$dependOn(optionContainsValue = list("variables" = variable))
@@ -1164,14 +1163,14 @@
           yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, CiLower, CiUpper), min.n = 4)
           plotData <- data.frame(v = gettext("Difference"), N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1)
           p <- ggplot2::ggplot(plotData, ggplot2::aes(x=index, y=mean)) +
-            ggplot2::geom_segment(ggplot2::aes(x = -Inf, xend = Inf, y = 0, yend = 0), linetype = 2, color = "darkgray") +
-            ggplot2::geom_errorbar(ggplot2::aes(ymin=lowerCI, ymax=upperCI), colour="black", width=.1, position = ggplot2::position_dodge(.2)) +
-            ggplot2::geom_point(position=ggplot2::position_dodge(.2), size=4) +
-            ggplot2::ylab("") +
-            ggplot2::xlab("") +
-            ggplot2::scale_y_continuous(breaks = yBreaks, labels = yBreaks, limits = range(yBreaks)) +
-            ggplot2::scale_x_continuous(breaks = 0:2, labels = NULL)
-          p <- jaspGraphs::themeJasp(p, sides = "l") + ggplot2::theme(axis.ticks.x = ggplot2::element_blank())  
+            ggplot2::geom_segment(mapping = ggplot2::aes(x = 0, xend = 2, y = 0, yend = 0), linetype = "dashed", color = "darkgray") +
+            ggplot2::geom_errorbar(mapping = ggplot2::aes(ymin=lowerCI, ymax=upperCI), color="black", width=0.2) +
+            jaspGraphs::geom_point(size=4) +
+            ggplot2::scale_y_continuous(name = NULL, breaks = yBreaks, labels = yBreaks, limits = range(yBreaks)) +
+            ggplot2::scale_x_continuous(name = NULL, breaks = 0:2) +
+			jaspGraphs::geom_rangeframe(sides = "l") +
+			jaspGraphs::themeJaspRaw() +
+			ggplot2::theme(axis.ticks.x = ggplot2::element_blank(), axis.text.x = ggplot2::element_blank())
           container[[currentPair]] <- createJaspPlot(plot = p, title = currentPair)
           container[[currentPair]]$dependOn(optionContainsValue = list("pairs" = pair))
         }
@@ -1196,15 +1195,16 @@
     yBreaks <- jaspGraphs::getPrettyAxisBreaks(pretty(c(CiLower, CiUpper)), min.n = 4)
     plotData <- data.frame(v = variable, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1:length(variable))
     p <- ggplot2::ggplot(plotData, ggplot2::aes(x=index, y=mean)) +
-      ggplot2::geom_errorbar(ggplot2::aes(ymin=lowerCI, ymax=upperCI), colour="black", width=.2, position = ggplot2::position_dodge(.2)) +
-      ggplot2::geom_line(position=ggplot2::position_dodge(.2), size = .7) +
-      ggplot2::geom_point(position=ggplot2::position_dodge(.2), size=4) +
-      ggplot2::scale_fill_manual(values = c(rep(c("white","black"),5),rep("grey",100)), guide=ggplot2::guide_legend(nrow=10)) +
-      ggplot2::scale_shape_manual(values = c(rep(c(21:25),each=2),21:25,7:14,33:112), guide=ggplot2::guide_legend(nrow=10)) +
-      ggplot2::scale_color_manual(values = rep("black",200), guide=ggplot2::guide_legend(nrow=10)) +
-      ggplot2::scale_y_continuous(name = options[["dependent"]], breaks = yBreaks) +
-      ggplot2::scale_x_continuous(name = options[["fixedFactors"]], breaks = 1:length(varLevels), labels = as.character(varLevels))
-    p <- jaspGraphs::themeJasp(p)
+      ggplot2::geom_errorbar(mapping = ggplot2::aes(ymin=lowerCI, ymax=upperCI), color="black", width=0.2) +
+      jaspGraphs::geom_line() +
+      jaspGraphs::geom_point(size=4) +
+    #   ggplot2::scale_fill_manual(values = c(rep(c("white","black"),5),rep("grey",100)), guide=ggplot2::guide_legend(nrow=10)) +
+    #   ggplot2::scale_shape_manual(values = c(rep(c(21:25),each=2),21:25,7:14,33:112), guide=ggplot2::guide_legend(nrow=10)) +
+    #   ggplot2::scale_color_manual(values = rep("black",200), guide=ggplot2::guide_legend(nrow=10)) +
+      ggplot2::scale_y_continuous(name = options[["dependent"]], breaks = yBreaks, limits = range(yBreaks)) +
+      ggplot2::scale_x_continuous(name = options[["fixedFactors"]], breaks = 1:length(varLevels), labels = varLevels) +
+	  jaspGraphs::geom_rangeframe() +
+	  jaspGraphs::themeJaspRaw()
     plot$plotObject <- p
   }
 }
@@ -1212,91 +1212,81 @@
 .plotModelProbabilitiesTTests <- function(x, type) {
   
   if (type == 1 || type == 2 || type == 3) {
-    labs <- c(gettext("H0"), gettext("H1"))
+    labels <- c(gettext("H0"), gettext("H1"))
   } else if (type == 4) {
-    labs <- c(gettext("H1"), gettext("H2"))
+    labels <- c(gettext("H1"), gettext("H2"))
   } else if (type == 5) {
-    labs <- c(gettext("H0"), gettext("H1"), gettext("H2"))
+    labels <- c(gettext("H0"), gettext("H1"), gettext("H2"))
   }
-  labels <- rev(labs)
   
   if (type == 1) {
-    values <- x$fit$PMPb
+    postProb <- x$fit$PMPb
   } else {
-    values <- na.omit(x$fit$PMPa)
+    postProb <- na.omit(x$fit$PMPa)
   }
   
-  ggdata <- data.frame(lab = labs, PMP = values)
-  
-  p <- ggplot2::ggplot(data = ggdata, mapping = ggplot2::aes(x = "", y = PMP, fill = lab)) +
+  plotData <- data.frame(x = labels, y = postProb)
+  yBreaks <- cumsum(rev(postProb)) - rev(postProb)/2
+  p <- ggplot2::ggplot(data = plotData, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
     ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
-    ggplot2::geom_col() +
     ggplot2::coord_polar(theta = "y", direction = -1) +
-    ggplot2::labs(x = "", y = "") +
-    ggplot2::theme(panel.grid = ggplot2::element_blank(), legend.position = "none") +
-    ggplot2::scale_y_continuous(breaks = cumsum(rev(values)) - rev(values)/2, labels = labels) +
-    ggplot2::theme(panel.background = ggplot2::element_blank(),
-                   axis.text=ggplot2::element_text(size=17, color = "black"),
-                   plot.title = ggplot2::element_text(size=18, hjust = .5),
-                   axis.ticks.y = ggplot2::element_blank()) +
-    ggplot2::scale_fill_brewer(palette="Set1")
+	ggplot2::scale_x_discrete(name = NULL) +
+    ggplot2::scale_y_continuous(name = NULL, breaks = yBreaks, labels = rev(plotData[["x"]])) +
+    ggplot2::scale_fill_brewer(palette="Set1") +
+	jaspGraphs::themeJaspRaw(legend.position = "none") +
+	ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
   
   return(p)
 }
 
 .plotModelProbabilitiesRegression <- function(x) {
   
-  PMPa <- na.omit(x$fit$PMPa)
-  PMPb <- x$fit$PMPb
-  numH <- length(PMPa)
-  P_lables <- paste(gettext("H"), 1:numH, sep = "")
-  ggdata1 <- data.frame(lab = P_lables, PMP = PMPa)
-  ggdata2 <- data.frame(lab = c(P_lables, gettext("Hu")), PMP = PMPb)
+  postProbA <- na.omit(x$fit$PMPa)
+  postProbB <- x$fit$PMPb
+  numH <- length(postProbA)
+  labels <- paste(gettext("H"), 1:numH, sep = "")
+  plotDataA <- data.frame(x = labels, y = postProbA)
+  yBreaksA <- cumsum(rev(postProbA)) - rev(postProbA)/2
+  yLabelsA <- rev(labels)
+  plotDataB <- data.frame(x = c(labels, gettext("Hu")), y = postProbB)
+  yBreaksB <- cumsum(rev(postProbB)) - rev(postProbB)/2
+  yLabelsB <- rev(c(labels, gettext("Hu")))
   
   if (numH == 1) {
     
-    p <- ggplot2::ggplot(data = ggdata2, mapping = ggplot2::aes(x = "", y = PMP, fill = lab)) +
+    p <- ggplot2::ggplot(data = plotDataB, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
       ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
-      ggplot2::geom_col() + 
       ggplot2::coord_polar(theta = "y", direction = -1) +
-      ggplot2::labs(x = "", y = "", title = "") +
-      ggplot2::theme(panel.grid = ggplot2::element_blank(), legend.position = "none") +
-      ggplot2::scale_y_continuous(breaks = cumsum(rev(PMPb)) - rev(PMPb)/2, labels = rev(c(P_lables, gettext("Hu")))) +
-      ggplot2::theme(panel.background = ggplot2::element_blank(),
-                     axis.text=ggplot2::element_text(size=17, color = "black"),
-                     plot.title = ggplot2::element_text(size=18, hjust = .5),
-                     axis.ticks.y = ggplot2::element_blank()) +
-      ggplot2::scale_fill_brewer(palette="Set1")
+	  ggplot2::scale_x_discrete(name = NULL) +
+      ggplot2::scale_y_continuous(name = NULL, breaks = yBreaksB, labels = yLabelsB) +
+      ggplot2::scale_fill_brewer(palette="Set1") +
+	  jaspGraphs::themeJaspRaw(legend.position = "none") +
+	  ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
     
     return(p)
     
   } else if (numH > 1) {
     
-    p1 <- ggplot2::ggplot(data = ggdata1, mapping = ggplot2::aes(x = "", y = PMP, fill = lab)) +
+    p1 <- ggplot2::ggplot(data = plotDataA, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
       ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
-      ggplot2::geom_col() +
       ggplot2::coord_polar(theta = "y", direction = -1) +
-      ggplot2::labs(x = "", y = "", title = gettext("Excluding Hu"), size = 30) +
-      ggplot2::theme(panel.grid = ggplot2::element_blank(),legend.position = "none") +
-      ggplot2::scale_y_continuous(breaks = cumsum(rev(PMPa)) - rev(PMPa)/2, labels = rev(P_lables)) +            
-      ggplot2::theme(panel.background = ggplot2::element_blank(),
-                     axis.text=ggplot2::element_text(size=17, color = "black"),
-                     plot.title = ggplot2::element_text(size=18, hjust = .5),
-                     axis.ticks.y = ggplot2::element_blank()) +
-      ggplot2::scale_fill_brewer(palette="Set1")
+      ggplot2::labs(title = gettext("Excluding Hu"), size = 30) +
+	  ggplot2::scale_x_discrete(name = NULL) +
+      ggplot2::scale_y_continuous(name = NULL, breaks = yBreaksA, labels = yLabelsA) +
+      ggplot2::scale_fill_brewer(palette="Set1") +
+	  jaspGraphs::themeJaspRaw(legend.position = "none") +
+	  ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
     
-    p2 <- ggplot2::ggplot(data = ggdata2, mapping = ggplot2::aes(x = "", y = PMP, fill = lab)) +
+    p2 <- ggplot2::ggplot(data = plotDataB, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
       ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
       ggplot2::geom_col() + 
       ggplot2::coord_polar(theta = "y", direction = -1) +
-      ggplot2::labs(x = "", y = "", title = gettext("Including Hu"), size = 30) +
-      ggplot2::theme(panel.grid = ggplot2::element_blank(), legend.position = "none") +
-      ggplot2::scale_y_continuous(breaks = cumsum(rev(PMPb)) - rev(PMPb)/2, labels = rev(c(P_lables, gettext("Hu")))) +
-      ggplot2::theme(panel.background = ggplot2::element_blank(),
-                     axis.text=ggplot2::element_text(size=17, color = "black"),
-                     plot.title = ggplot2::element_text(size=18, hjust = .5),
-                     axis.ticks.y = ggplot2::element_blank()) +
-      ggplot2::scale_fill_brewer(palette="Set1")
+      ggplot2::labs(title = gettext("Including Hu"), size = 30) +
+	  ggplot2::scale_x_discrete(name = NULL) +
+      ggplot2::scale_y_continuous(name = NULL, breaks = yBreaksB, labels = yLabelsB) +
+      ggplot2::scale_fill_brewer(palette="Set1") +
+	  jaspGraphs::themeJaspRaw(legend.position = "none") +
+	  ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
     
     plotMat <- list(p1 = p1, p2 = p2)
     pp <- jaspGraphs::ggMatrixPlot(plotList = plotMat, layout = matrix(c(1, 2), ncol = 2))
