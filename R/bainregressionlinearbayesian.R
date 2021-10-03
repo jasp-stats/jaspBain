@@ -16,34 +16,34 @@
 #
 
 BainRegressionLinearBayesian <- function(jaspResults, dataset, options, ...) {
-  
+
   # What type of Bain analysis is being conducted?
   type <- "regression"
 
   # Check if current options allow for analysis
   ready <- .bainOptionsReady(options, type)
-  
+
   # Read the data set
   dataList <- .bainReadDataset(options, type, dataset)
-  
+
   # Check if current data allow for analysis
   .bainDataReady(dataset, options, type)
-  
+
   # Create a container for the results
   bainContainer <- .bainGetContainer(jaspResults, deps = c("dependent", "covariates", "model", "seed", "fraction", "standardized"))
-  
+
   # Create a legend containing the order constrained hypotheses
   .bainLegend(dataList[["dataset"]], options, type, jaspResults, position = 0)
-  
+
   # Create a table containing the main analysis results
   .bainTestResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type, position = 1)
-  
+
   # Create the Bayes factor matrix
   .bainBfMatrix(dataList[["dataset"]], options, bainContainer, ready, type, position = 2)
-  
+
   # Create the descriptive statistics (coefficients) table
   .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type, position = 3)
-  
+
   # Create the posterior probability plots
   .bainPosteriorProbabilityPlot(dataList[["dataset"]], options, bainContainer, ready, type, position = 4)
 }

@@ -16,36 +16,36 @@
 #
 
 BainSemBayesian <- function(jaspResults, dataset, options, ...) {
-  
+
   # What type of Bain analysis is being conducted?
   type <- "sem"
   # Read the data set
   dataList <- .bainReadDataset(options, type, dataset)
-  
+
   # Check if current options allow for analysis
   ready <- .bainOptionsReady(options, type, dataList[["dataset"]])
-  
+
   # Check if current data allow for analysis
   .bainDataReady(dataList[["dataset"]], options, type)
-  
+
   # Create a container for the results
   bainContainer <- .bainGetContainer(jaspResults, deps = c("syntax", "model", "seed", "fraction", "standardized", "fixedFactors", "factorStandardisation"))
-  
+
   # Create a legend containing the order constrained hypotheses
   .bainLegend(dataList[["dataset"]], options, type, jaspResults, position = 0)
-  
+
   # Create a table containing the main analysis results
   .bainTestResultsTable(dataList[["dataset"]], options, bainContainer, dataList[["missing"]], ready, type, position = 1)
-  
+
   # Create the Bayes factor matrix
   .bainBfMatrix(dataList[["dataset"]], options, bainContainer, ready, type, position = 2)
-  
+
   # Create the descriptive statistics (coefficients) table
   .bainDescriptivesTable(dataList[["dataset"]], options, bainContainer, ready, type, position = 3)
-  
+
   # Create the posterior probability plots
   .bainPosteriorProbabilityPlot(dataList[["dataset"]], options, bainContainer, ready, type, position = 4)
-  
+
   # Create the path diagram plot
   .bainSemPathDiagram(dataList[["dataset"]], options, bainContainer, ready, jaspResults, position = 5)
 }
@@ -54,26 +54,30 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   vv <- availablevars
   # This regex will isolate all manifest variables in the SEM model
   # Model:
-  # A =~ Ab + Al + Af + An + Ar + Ac 
-  # B =~ Bb + Bl + Bf + Bn + Br + Bc 
+  # A =~ Ab + Al + Af + An + Ar + Ac
+  # B =~ Bb + Bl + Bf + Bn + Br + Bc
   # Returns:
   # Ab, Al, Af, An, Ar, Ac, Bb, Bl, Bf, Bn, Br, Bc
-  findpattern <- paste0("(?<=[\\s\\+\\^\\=\\~\\<\\*\\>\\:\\%\\|\\+]|^)\\Q",
-                        vv,
-                        "\\E(?=[\\s\\+\\^\\=\\~\\<\\*\\>\\:\\%\\|\\+]|$)")
+  findpattern <- paste0(
+    "(?<=[\\s\\+\\^\\=\\~\\<\\*\\>\\:\\%\\|\\+]|^)\\Q",
+    vv,
+    "\\E(?=[\\s\\+\\^\\=\\~\\<\\*\\>\\:\\%\\|\\+]|$)"
+  )
   return(vv[vapply(findpattern,
-                   function(p) stringr::str_detect(syntax, p),
-                   FUN.VALUE = TRUE,
-                   USE.NAMES = FALSE)])
+    function(p) stringr::str_detect(syntax, p),
+    FUN.VALUE = TRUE,
+    USE.NAMES = FALSE
+  )])
 }
 
 .bainSemTranslateModel <- function(syntax, dataset) {
   usedvars <- .bainSemGetUsedVars(syntax, colnames(dataset))
-  if (length(usedvars) == 0)
+  if (length(usedvars) == 0) {
     return(syntax)
+  }
   usedvars <- usedvars[order(nchar(usedvars), decreasing = TRUE)]
-  withSingleQuotes <- paste("\\b'", usedvars, "'\\b", sep="")
-  withDoubleQuotes <- paste('\\b"', usedvars, '"\\b', sep="")
+  withSingleQuotes <- paste("\\b'", usedvars, "'\\b", sep = "")
+  withDoubleQuotes <- paste('\\b"', usedvars, '"\\b', sep = "")
   newNames <- usedvars
   for (i in 1:length(usedvars)) {
     syntax <- gsub(withDoubleQuotes[i], newNames[i], syntax)
@@ -88,10 +92,10 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
 }
 
 .bainSemPathDiagram <- function(dataset, options, bainContainer, ready, jaspResults, position) {
-  
-  if (!is.null(bainContainer[["pathDiagram"]]) || !options[["pathDiagram"]])
+  if (!is.null(bainContainer[["pathDiagram"]]) || !options[["pathDiagram"]]) {
     return()
-  
+  }
+
   if (options[["fixedFactors"]] == "") {
     plot <- createJaspPlot(title = gettext("Path Diagram"), width = 600, height = 400)
     plot$dependOn(options = c("pathDiagram", "seed", "pathDiagramEstimates", "pathDiagramLegend"))
@@ -106,13 +110,14 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
       container[[paste0("pathDiagram", groups[i])]] <- plot
     }
   }
-  
-  if (!ready || is.null(bainContainer[["lavaanResult"]]))
+
+  if (!ready || is.null(bainContainer[["lavaanResult"]])) {
     return()
-  
+  }
+
   labels <- ifelse(options[["pathDiagramEstimates"]], "par", "name")
   labels <- ifelse(options[["standardized"]], "stand", labels)
-  
+
   fit <- bainContainer[["lavaanResult"]]$object
   po <- .bainlavToPlotObj(fit)
   error <- try({
@@ -137,7 +142,7 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
       ask            = FALSE
     ))
   })
-  
+
   if (isTryError(error)) {
     plot$setError(gettextf("An error occurred while creating this plot:<br>%1$s.", jaspBase::.extractErrorMessage(error)))
   } else {
@@ -156,10 +161,12 @@ BainSemBayesian <- function(jaspResults, dataset, options, ...) {
   manifests <- semPlotMod@Vars$name[semPlotMod@Vars$manifest]
   semPlotMod@Vars$name[semPlotMod@Vars$manifest] <- decodeColNames(manifests)
   lhsAreManifest <- semPlotMod@Pars$lhs %in% manifests
-  if (any(lhsAreManifest)) 
+  if (any(lhsAreManifest)) {
     semPlotMod@Pars$lhs[lhsAreManifest] <- decodeColNames(semPlotMod@Pars$lhs[lhsAreManifest])
+  }
   rhsAreManifest <- semPlotMod@Pars$rhs %in% manifests
-  if (any(rhsAreManifest)) 
+  if (any(rhsAreManifest)) {
     semPlotMod@Pars$rhs[rhsAreManifest] <- decodeColNames(semPlotMod@Pars$rhs[rhsAreManifest])
+  }
   return(semPlotMod)
 }
