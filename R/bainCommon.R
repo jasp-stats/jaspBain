@@ -754,26 +754,22 @@
               Variable = currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]" = "", "pmp[type1]" = tableResults[["PMP_0"]],
               "hypothesis[type2]" = gettext("H1: Not equal"), "BF[type2]" = tableResults[["BF_0u"]], "pmp[type2]" = tableResults[["PMP_u"]]
             )
-          }
-          if (options$hypothesis == "equalSmaller") {
+          } else if (options$hypothesis == "equalSmaller") {
             row <- list(
               Variable = currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]" = "", "pmp[type1]" = tableResults[["PMP_0"]],
               "hypothesis[type2]" = gettext("H1: Smaller"), "BF[type2]" = tableResults[["BF_01"]], "pmp[type2]" = tableResults[["PMP_1"]]
             )
-          }
-          if (options$hypothesis == "equalBigger") {
+          } else if (options$hypothesis == "equalBigger") {
             row <- list(
               Variable = currentPair, "hypothesis[type1]" = gettext("H0: Equal"), "BF[type1]" = "", "pmp[type1]" = tableResults[["PMP_0"]],
               "hypothesis[type2]" = gettext("H1: Bigger"), "BF[type2]" = tableResults[["BF_01"]], "pmp[type2]" = tableResults[["PMP_1"]]
             )
-          }
-          if (options$hypothesis == "biggerSmaller") {
+          } else if (options$hypothesis == "biggerSmaller") {
             row <- list(
               Variable = currentPair, "hypothesis[type1]" = gettext("H1: Bigger"), "BF[type1]" = "", "pmp[type1]" = tableResults[["PMP_0"]],
               "hypothesis[type2]" = gettext("H2: Smaller"), "BF[type2]" = tableResults[["BF_01"]], "pmp[type2]" = tableResults[["PMP_1"]]
             )
-          }
-          if (options$hypothesis == "equalBiggerSmaller") {
+          } else if (options$hypothesis == "equalBiggerSmaller") {
             row <- list(
               Variable = currentPair,
               "type[equal]" = gettext("H0: Equal"),
@@ -806,8 +802,7 @@
 
       if (pair[[1]] == pair[[2]]) {
         table$addFootnote(message = gettext("Results not computed: The variables in this pair are the same."), colNames = "Variable", rowNames = currentPair)
-      }
-      if (pair[[1]] == "" || pair[[2]] == "") {
+      } else if (pair[[1]] == "" || pair[[2]] == "") {
         table$addFootnote(message = gettext("Results not computed: The pair is incomplete."), colNames = "Variable", rowNames = currentPair)
       }
       progressbarTick()
@@ -1257,9 +1252,6 @@
       ggplot2::geom_errorbar(mapping = ggplot2::aes(ymin = lowerCI, ymax = upperCI), color = "black", width = 0.2) +
       jaspGraphs::geom_line() +
       jaspGraphs::geom_point(size = 4) +
-      #   ggplot2::scale_fill_manual(values = c(rep(c("white","black"),5),rep("grey",100)), guide=ggplot2::guide_legend(nrow=10)) +
-      #   ggplot2::scale_shape_manual(values = c(rep(c(21:25),each=2),21:25,7:14,33:112), guide=ggplot2::guide_legend(nrow=10)) +
-      #   ggplot2::scale_color_manual(values = rep("black",200), guide=ggplot2::guide_legend(nrow=10)) +
       ggplot2::scale_y_continuous(name = options[["dependent"]], breaks = yBreaks, limits = range(yBreaks)) +
       ggplot2::scale_x_continuous(name = options[["fixedFactors"]], breaks = 1:length(varLevels), labels = varLevels) +
       jaspGraphs::geom_rangeframe() +
@@ -1270,11 +1262,11 @@
 
 .plotModelProbabilitiesTTests <- function(x, type) {
   if (type == 1 || type == 2 || type == 3) {
-    labels <- c(gettext("H0"), gettext("H1"))
+    labels <- gettext(c("H0", "H1"))
   } else if (type == 4) {
-    labels <- c(gettext("H1"), gettext("H2"))
+    labels <- gettext(c("H1", "H2"))
   } else if (type == 5) {
-    labels <- c(gettext("H0"), gettext("H1"), gettext("H2"))
+    labels <- gettext(c("H0", "H1", "H2"))
   }
 
   if (type == 1) {
