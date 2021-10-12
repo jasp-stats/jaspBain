@@ -10,7 +10,7 @@ Description: A module for computing approximated adjusted fractional Bayes facto
 License: GPL (>= 3)
 Encoding: UTF-8
 Imports:
-  bain (>= 0.2.4),
+  bain (== 0.2.6),
   stats,
   lavaan,
   ggplot2,
