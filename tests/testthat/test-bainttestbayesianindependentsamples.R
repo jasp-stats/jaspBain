@@ -4,8 +4,8 @@ context("Bain Independent Samples T-Test")
 
 # library(bain)
 # data("sesamesim")
-# x<-sesamesim$age[which(sesamesim$sex==1)]
-# y<-sesamesim$age[which(sesamesim$sex==2)]
+# x <-sesamesim$age[which(sesamesim$sex==1)]
+# y <-sesamesim$age[which(sesamesim$sex==2)]
 # set.seed(100)
 # tt <- t_test(x,y,paired = FALSE, var.equal = FALSE)
 # bainResult <- bain(tt,"x=y;x>y;x<y", fraction = 1)
@@ -55,8 +55,8 @@ test_that("age plot matches", {
 
 # library(bain)
 # data("sesamesim")
-# x<-sesamesim$postnumb[which(sesamesim$sex==1)]
-# y<-sesamesim$postnumb[which(sesamesim$sex==2)]
+# x <-sesamesim$postnumb[which(sesamesim$sex==1)]
+# y <-sesamesim$postnumb[which(sesamesim$sex==2)]
 # set.seed(900)
 # tt <- t_test(x,y,paired = FALSE, var.equal = FALSE)
 # bainResult <- bain(tt,"x=y",fraction = 4)
@@ -92,8 +92,8 @@ test_that("Bain Independent Samples Welch's T-Test table results match", {
 
 # library(bain)
 # data("sesamesim")
-# x<-sesamesim$postnumb[which(sesamesim$sex==1)]
-# y<-sesamesim$postnumb[which(sesamesim$sex==2)]
+# x <-sesamesim$postnumb[which(sesamesim$sex==1)]
+# y <-sesamesim$postnumb[which(sesamesim$sex==2)]
 # set.seed(900)
 # tt <- t_test(x,y,paired = FALSE, var.equal = FALSE)
 # bainResult <- bain(tt,"x=y;x>y", fraction = 4)
@@ -118,8 +118,8 @@ test_that("Bain Independent Samples Welch's T-Test table results match", {
 
 # library(bain)
 # data("sesamesim")
-# x<-sesamesim$postnumb[which(sesamesim$sex==1)]
-# y<-sesamesim$postnumb[which(sesamesim$sex==2)]
+# x <-sesamesim$postnumb[which(sesamesim$sex==1)]
+# y <-sesamesim$postnumb[which(sesamesim$sex==2)]
 # set.seed(900)
 # tt <- t_test(x,y,paired = FALSE, var.equal = FALSE)
 # bainResult <- bain(tt,"x=y;x<y", fraction = 4)
@@ -144,8 +144,8 @@ test_that("Bain Independent Samples Welch's T-Test table results match", {
 
 # library(bain)
 # data("sesamesim")
-# x<-sesamesim$postnumb[which(sesamesim$sex==1)]
-# y<-sesamesim$postnumb[which(sesamesim$sex==2)]
+# x <-sesamesim$postnumb[which(sesamesim$sex==1)]
+# y <-sesamesim$postnumb[which(sesamesim$sex==2)]
 # set.seed(900)
 # tt <- t_test(x,y,paired = FALSE, var.equal = FALSE)
 # bainResult <- bain(tt,"x>y;x<y", fraction = 4)
@@ -170,8 +170,8 @@ test_that("Bain Independent Samples Welch's T-Test table results match", {
 
 # library(bain)
 # data("sesamesim")
-# x<-sesamesim$postnumb[which(sesamesim$sex==1)]
-# y<-sesamesim$postnumb[which(sesamesim$sex==2)]
+# x <-sesamesim$postnumb[which(sesamesim$sex==1)]
+# y <-sesamesim$postnumb[which(sesamesim$sex==2)]
 # set.seed(900)
 # tt <- t_test(x,y,paired = FALSE, var.equal = FALSE)
 # bainResult <- bain(tt,"x=y;x>y;x<y", fraction = 4)

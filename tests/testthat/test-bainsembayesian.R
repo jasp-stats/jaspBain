@@ -60,8 +60,9 @@ test_that("Coefficients for Parameters table results match", {
 test_that("Bain Structural Equation Model table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(48171725616844.4, 26.2218088646654, 1, 0.963264748313694, "H1",
-			 "", "", "", 0.0367352516863061, "Hu"))
+		list(48171725616844.4, 26.2218088646654, 1, 0.963264748313694, 0.999999999999979,
+			 "H1", "", "", "", 0.0367352516863061, "", "Hu", "", 5.44340243761088e-13,
+			 "", "", 2.0759065347875e-14, "Hc"))
 })
 
 test_that("Path Diagram plot matches", {
@@ -146,8 +147,9 @@ test_that("Coefficients for Parameters table results match", {
 test_that("Bain Structural Equation Model table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(771.696358400003, 91.2565818546305, 1, 0.989160664963984, "H1",
-			 "", "", "", 0.0108393350360163, "Hu"))
+		list(771.696358400003, 91.2565818546305, 1, 0.989160664963984, 0.998705830577394,
+			 "H1", "", "", "", 0.0108393350360163, "", "Hu", "", 0.118254519230643,
+			 "", "", 0.00129416942260562, "Hc"))
 })
 
 test_that("Path Diagram plot matches", {
@@ -230,10 +232,12 @@ test_that("Bain Structural Equation Model table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(50.2904553875014, 50.2904553875014, 0.654655104260404, 0.64624265208595,
-			 "H1", 21.0617040580892, 21.0617040580892, 0.274170356180089,
-			 0.270647210948336, "H2", 5.76322394871271, 5.46761185110921,
-			 0.0711745395595067, 0.0702599321483882, "H3", "", "", "", 0.0128502048173252,
-			 "Hu"))
+			 0.646668886707785, "H1", 21.0617040580892, 21.0617040580892,
+			 0.274170356180089, 0.270647210948336, 0.27082571852786, "H2",
+			 5.76322394871271, 5.46761185110921, 0.0711745395595067, 0.0702599321483882,
+			 0.0703062726607526, "H3", "", "", "", 0.0128502048173252, "",
+			 "Hu", "", 0.948707164560294, "", "", 0.0121991221036025, "Hc"
+			))
 })
 
 test_that("Hypothesis Legend table results match", {
@@ -308,10 +312,12 @@ test_that("Bain Structural Equation Model table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(50.2923775087579, 50.2923775087579, 0.84798782311953, 0.833926849102382,
-			 "H1", 7.81253789494585, 7.81253789494585, 0.131728451322873,
-			 0.12954418607652, "H2", 1.20949091885259, 1.20298517881302,
-			 0.020283725557597, 0.0199473894331145, "H3", "", "", "", 0.0165815753879832,
-			 "Hu"))
+			 0.834001234309521, "H1", 7.81253789494585, 7.81253789494585,
+			 0.131728451322873, 0.12954418607652, 0.129555741252044, "H2",
+			 1.20949091885259, 1.20298517881302, 0.020283725557597, 0.0199473894331145,
+			 0.0199491687147103, "H3", "", "", "", 0.0165815753879832, "",
+			 "Hu", "", 0.994621092280917, "", "", 0.0164938557237251, "Hc"
+			))
 })
 
 test_that("Hypothesis Legend table results match", {
@@ -374,9 +380,10 @@ test_that("Bain Structural Equation Model table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(13.7330955509952, 13.7330955509952, 0.988219638589409, 0.92188194786564,
-			 "H1", 0.147562929075261, 0.163709384593724, 0.0117803614105911,
-			 0.0109895635541697, "H2", "", "", "", 0.0671284885801899, "Hu"
-			))
+			 0.915159866445061, "H1", 0.147562929075261, 0.163709384593724,
+			 0.0117803614105911, 0.0109895635541697, 0.0109094310153357,
+			 "H2", "", "", "", 0.0671284885801899, "", "Hu", "", 1.10942081198611,
+			 "", "", 0.0739307025396031, "Hc"))
 })
 
 test_that("Hypothesis Legend table results match", {
@@ -438,9 +445,10 @@ test_that("Bain Structural Equation Model table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(15.521998977601, 15.521998977601, 0.99091888839136, 0.931455124849424,
-			 "H1", 0.12273462966041, 0.142248782171893, 0.00908111160864037,
-			 0.00853616582173471, "H2", "", "", "", 0.0600087093288408, "Hu"
-			))
+			 0.922652041549263, "H1", 0.12273462966041, 0.142248782171893,
+			 0.00908111160864037, 0.00853616582173471, 0.0084554914265996,
+			 "H2", "", "", "", 0.0600087093288408, "", "Hu", "", 1.15899467465275,
+			 "", "", 0.068892467024138, "Hc"))
 })
 
 test_that("Hypothesis Legend table results match", {

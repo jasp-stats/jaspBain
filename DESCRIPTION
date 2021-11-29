@@ -1,8 +1,8 @@
 Package: jaspBain
 Type: Package
 Title: Bain Module for JASP
-Version: 0.16
-Date: 2021-10-03
+Version: 0.16.1
+Date: 2021-11-29
 Author: Herbert Hoijtink, Joris Mulder & Xin Gu
 Website: www.informative-hypotheses.sites.uu.nl/software/bain/
 Maintainer: Koen Derks <k.derks@nyenrode.nl>
@@ -10,7 +10,7 @@ Description: A module for computing approximated adjusted fractional Bayes facto
 License: GPL (>= 3)
 Encoding: UTF-8
 Imports:
-  bain (== 0.2.6),
+  bain (>= 0.2.8),
   stats,
   lavaan,
   ggplot2,

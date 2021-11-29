@@ -193,7 +193,6 @@ gettextf <- function(fmt, ..., domain = NULL)  {
   dependent <- options[["dependent"]]
   fraction <- options[["fraction"]] # This has to be an object otherwise bain does not like it
   standardized <- options[["standardized"]]
-
   hypothesis <- NULL
   if (options[["model"]] != "") {
     hypothesis <- encodeColNames(.bainCleanModelInput(options[["model"]]))
@@ -576,10 +575,13 @@ gettextf <- function(fmt, ..., domain = NULL)  {
     table$addColumnInfo(name = "BF", type = "number", title = gettext("BF.c"))
     table$addColumnInfo(name = "PMP1", type = "number", title = gettext("PMP a"))
     table$addColumnInfo(name = "PMP2", type = "number", title = gettext("PMP b"))
-    message <- gettext("BF.u and BF.c denote the Bayes factors of the hypothesis in the row versus \
-						the unconstrained hypothesis and complement, respectively. Posterior model probabilities \
-						(a: excluding the unconstrained hypothesis, b: including the unconstrained hypothesis) \
-						are based on equal prior model probabilities.")
+	table$addColumnInfo(name = "PMP3", type = "number", title = gettext("PMP c"))
+    message <- gettext("BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. \
+                        BF.c denotes the Bayes factor of the hypothesis at hand versus its complement. \
+                        PMPa contains the posterior model probabilities of the hypotheses specified. \
+                        PMPb adds Hu, the unconstrained hypothesis. \
+                        PMPc adds Hc, the complement of the union of the hypotheses specified. \
+                        All PMPs are based on equal prior model probabilities.")
   }
   table$addFootnote(message = message)
   table$addCitation(.bainGetCitations())
@@ -836,16 +838,24 @@ gettextf <- function(fmt, ..., domain = NULL)  {
       }
     }
     bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)
-    for (i in 1:(length(bainResult[["fit"]]$BF) - 1)) {
-      row <- list(hypotheses = gettextf("H%1$i", i), BFu = bainResult[["fit"]]$BF.u[i], BF = bainResult[["fit"]]$BF.c[i], PMP1 = bainResult[["fit"]]$PMPa[i], PMP2 = bainResult[["fit"]]$PMPb[i])
+    for (i in 1:(length(bainResult[["fit"]]$BF) - 2)) {
+      row <- list(hypotheses = gettextf("H%1$i", i), BFu = bainResult[["fit"]]$BF.u[i], BF = bainResult[["fit"]]$BF.c[i], PMP1 = bainResult[["fit"]]$PMPa[i], PMP2 = bainResult[["fit"]]$PMPb[i], PMP3 = bainResult[["fit"]]$PMPc[i])
       table$addRows(row)
     }
-    row <- list(hypotheses = gettext("Hu"), BFu = "", BF = "", PMP1 = "", PMP2 = bainResult[["fit"]]$PMPb[length(bainResult[["fit"]]$BF)])
-    table$addRows(row)
+    rows <- list(
+        list(hypotheses = gettext("Hu"), BFu = "", BF = "", PMP1 = "", PMP2 = bainResult[["fit"]]$PMPb[length(bainResult[["fit"]]$BF) - 1], PMP3 = ""),
+        list(hypotheses = gettext("Hc"), BFu = bainResult[["fit"]]$BF.u[length(bainResult[["fit"]]$BF.u)], BF = "", PMP1 = "", PMP2 = "", PMP3 = bainResult[["fit"]]$PMPc[length(bainResult[["fit"]]$BF)])
+    )
+    table$addRows(rows)
   }
-
   if (any(is.nan(unlist(bainResult[["fit"]])))) {
     table$addFootnote(symbol = gettext("<b>Warning</b>"), message = gettext("The entered model constraints are incompatible with the data and therefore the computed results contain NaNs."))
+  }
+  if (!is.null(bainResult)) {
+    complexity <- na.omit(bainResult[["fit"]]$Com)
+    if (complexity[length(complexity)] < .05) {
+     table$addFootnote(gettext("<b>Your hypotheses (almost) completely cover the parameter space. Therefore instead of PMPc, you should interpret PMPa.</b>"))
+    }
   }
 }
 
@@ -1297,7 +1307,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
 
 .plotModelProbabilitiesRegression <- function(x) {
   postProbA <- na.omit(x$fit$PMPa)
-  postProbB <- x$fit$PMPb
+  postProbB <- na.omit(x$fit$PMPb)
   numH <- length(postProbA)
   labels <- paste(gettext("H"), 1:numH, sep = "")
   plotDataA <- data.frame(x = labels, y = postProbA)
