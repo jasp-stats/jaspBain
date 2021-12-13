@@ -193,7 +193,6 @@ gettextf <- function(fmt, ..., domain = NULL)  {
   dependent <- options[["dependent"]]
   fraction <- options[["fraction"]] # This has to be an object otherwise bain does not like it
   standardized <- options[["standardized"]]
-
   hypothesis <- NULL
   if (options[["model"]] != "") {
     hypothesis <- encodeColNames(.bainCleanModelInput(options[["model"]]))
@@ -576,10 +575,13 @@ gettextf <- function(fmt, ..., domain = NULL)  {
     table$addColumnInfo(name = "BF", type = "number", title = gettext("BF.c"))
     table$addColumnInfo(name = "PMP1", type = "number", title = gettext("PMP a"))
     table$addColumnInfo(name = "PMP2", type = "number", title = gettext("PMP b"))
-    message <- gettext("BF.u and BF.c denote the Bayes factors of the hypothesis in the row versus \
-						the unconstrained hypothesis and complement, respectively. Posterior model probabilities \
-						(a: excluding the unconstrained hypothesis, b: including the unconstrained hypothesis) \
-						are based on equal prior model probabilities.")
+	table$addColumnInfo(name = "PMP3", type = "number", title = gettext("PMP c"))
+    message <- gettext("BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. \
+                        BF.c denotes the Bayes factor of the hypothesis at hand versus its complement. \
+                        PMPa contains the posterior model probabilities of the hypotheses specified. \
+                        PMPb adds Hu, the unconstrained hypothesis. \
+                        PMPc adds Hc, the complement of the union of the hypotheses specified. \
+                        All PMPs are based on equal prior model probabilities.")
   }
   table$addFootnote(message = message)
   table$addCitation(.bainGetCitations())
@@ -836,16 +838,24 @@ gettextf <- function(fmt, ..., domain = NULL)  {
       }
     }
     bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)
-    for (i in 1:(length(bainResult[["fit"]]$BF) - 1)) {
-      row <- list(hypotheses = gettextf("H%1$i", i), BFu = bainResult[["fit"]]$BF.u[i], BF = bainResult[["fit"]]$BF.c[i], PMP1 = bainResult[["fit"]]$PMPa[i], PMP2 = bainResult[["fit"]]$PMPb[i])
+    for (i in 1:(length(bainResult[["fit"]]$BF) - 2)) {
+      row <- list(hypotheses = gettextf("H%1$i", i), BFu = bainResult[["fit"]]$BF.u[i], BF = bainResult[["fit"]]$BF.c[i], PMP1 = bainResult[["fit"]]$PMPa[i], PMP2 = bainResult[["fit"]]$PMPb[i], PMP3 = bainResult[["fit"]]$PMPc[i])
       table$addRows(row)
     }
-    row <- list(hypotheses = gettext("Hu"), BFu = "", BF = "", PMP1 = "", PMP2 = bainResult[["fit"]]$PMPb[length(bainResult[["fit"]]$BF)])
-    table$addRows(row)
+    rows <- list(
+        list(hypotheses = gettext("Hu"), BFu = "", BF = "", PMP1 = "", PMP2 = bainResult[["fit"]]$PMPb[length(bainResult[["fit"]]$BF) - 1], PMP3 = ""),
+        list(hypotheses = gettext("Hc"), BFu = bainResult[["fit"]]$BF.u[length(bainResult[["fit"]]$BF.u)], BF = "", PMP1 = "", PMP2 = "", PMP3 = bainResult[["fit"]]$PMPc[length(bainResult[["fit"]]$BF)])
+    )
+    table$addRows(rows)
   }
-
   if (any(is.nan(unlist(bainResult[["fit"]])))) {
     table$addFootnote(symbol = gettext("<b>Warning</b>"), message = gettext("The entered model constraints are incompatible with the data and therefore the computed results contain NaNs."))
+  }
+  if (!is.null(bainResult)) {
+    complexity <- na.omit(bainResult[["fit"]]$Com)
+    if (complexity[length(complexity)] < .05) {
+     table$addFootnote(gettext("<b>Your hypotheses (almost) completely cover the parameter space. Therefore instead of PMPc, you should interpret PMPa.</b>"))
+    }
   }
 }
 
@@ -1111,7 +1121,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
       width <- 400
     } else {
       height <- 400
-      width <- 600
+      width <- 800
     }
     plot <- createJaspPlot(plot = NULL, title = gettext("Posterior Probabilities"), height = height, width = width)
     plot$dependOn(options = c("bayesFactorPlot", "standardized"))
@@ -1296,13 +1306,9 @@ gettextf <- function(fmt, ..., domain = NULL)  {
 }
 
 .plotModelProbabilitiesRegression <- function(x) {
-  postProbA <- na.omit(x$fit$PMPa)
-  postProbB <- x$fit$PMPb
-  numH <- length(postProbA)
+  postProbB <- na.omit(x$fit$PMPb)
+  numH <- length(postProbB) - 1
   labels <- paste(gettext("H"), 1:numH, sep = "")
-  plotDataA <- data.frame(x = labels, y = postProbA)
-  yBreaksA <- cumsum(rev(postProbA)) - rev(postProbA) / 2
-  yLabelsA <- rev(labels)
   plotDataB <- data.frame(x = c(labels, gettext("Hu")), y = postProbB)
   yBreaksB <- cumsum(rev(postProbB)) - rev(postProbB) / 2
   yLabelsB <- rev(c(labels, gettext("Hu")))
@@ -1316,13 +1322,15 @@ gettextf <- function(fmt, ..., domain = NULL)  {
       ggplot2::scale_fill_brewer(palette = "Set1") +
       jaspGraphs::themeJaspRaw(legend.position = "none") +
       ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
-
-    return(p)
   } else if (numH > 1) {
+    postProbA <- na.omit(x$fit$PMPa)
+    plotDataA <- data.frame(x = labels, y = postProbA)
+    yBreaksA <- cumsum(rev(postProbA)) - rev(postProbA) / 2
+    yLabelsA <- rev(labels)
     p1 <- ggplot2::ggplot(data = plotDataA, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
       ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
       ggplot2::coord_polar(theta = "y", direction = -1) +
-      ggplot2::labs(title = gettext("Excluding Hu"), size = 30) +
+      ggplot2::labs(title = gettext("Excluding Hu and Hc"), size = 30) +
       ggplot2::scale_x_discrete(name = NULL) +
       ggplot2::scale_y_continuous(name = NULL, breaks = yBreaksA, labels = yLabelsA) +
       ggplot2::scale_fill_brewer(palette = "Set1") +
@@ -1340,9 +1348,23 @@ gettextf <- function(fmt, ..., domain = NULL)  {
       jaspGraphs::themeJaspRaw(legend.position = "none") +
       ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
 
-    plotMat <- list(p1 = p1, p2 = p2)
-    pp <- jaspGraphs::ggMatrixPlot(plotList = plotMat, layout = matrix(c(1, 2), ncol = 2))
+    postProbC <- na.omit(x$fit$PMPc)
+    plotDataC <- data.frame(x = c(labels, gettext("Hc")), y = postProbC)
+    yBreaksC <- cumsum(rev(postProbC)) - rev(postProbC) / 2
+    yLabelsC <- rev(c(labels, gettext("Hc")))
+    p3 <- ggplot2::ggplot(data = plotDataC, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
+      ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
+      ggplot2::geom_col() +
+      ggplot2::coord_polar(theta = "y", direction = -1) +
+      ggplot2::labs(title = gettext("Including Hc"), size = 30) +
+      ggplot2::scale_x_discrete(name = NULL) +
+      ggplot2::scale_y_continuous(name = NULL, breaks = yBreaksC, labels = yLabelsC) +
+      ggplot2::scale_fill_brewer(palette = "Set1") +
+      jaspGraphs::themeJaspRaw(legend.position = "none") +
+      ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
 
-    return(pp)
+    plotMat <- list(p1 = p1, p2 = p2, p3 = p3)
+    p <- jaspGraphs::ggMatrixPlot(plotList = plotMat, layout = matrix(c(1, 2, 3), nrow = 1))
   }
+  return(p)
 }
