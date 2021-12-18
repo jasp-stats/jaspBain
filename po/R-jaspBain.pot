@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: jaspBain 0.16\n"
-"POT-Creation-Date: 2021-10-09 03:26\n"
+"Project-Id-Version: jaspBain 0.16.1\n"
+"POT-Creation-Date: 2021-12-18 03:28\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,7 +115,10 @@ msgstr ""
 msgid "PMP b"
 msgstr ""
 
-msgid "BF.u and BF.c denote the Bayes factors of the hypothesis in the row versus \n\t\t\t\t\t\tthe unconstrained hypothesis and complement, respectively. Posterior model probabilities \n\t\t\t\t\t\t(a: excluding the unconstrained hypothesis, b: including the unconstrained hypothesis) \n\t\t\t\t\t\tare based on equal prior model probabilities."
+msgid "PMP c"
+msgstr ""
+
+msgid "BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. \n                        BF.c denotes the Bayes factor of the hypothesis at hand versus its complement. \n                        PMPa contains the posterior model probabilities of the hypotheses specified. \n                        PMPb adds Hu, the unconstrained hypothesis. \n                        PMPc adds Hc, the complement of the union of the hypotheses specified. \n                        All PMPs are based on equal prior model probabilities."
 msgstr ""
 
 msgid "Results not computed: %1$s."
@@ -172,10 +175,16 @@ msgstr ""
 msgid "Hu"
 msgstr ""
 
+msgid "Hc"
+msgstr ""
+
 msgid "<b>Warning</b>"
 msgstr ""
 
 msgid "The entered model constraints are incompatible with the data and therefore the computed results contain NaNs."
+msgstr ""
+
+msgid "<b>Your hypotheses (almost) completely cover the parameter space. Therefore instead of PMPc, you should interpret PMPa.</b>"
 msgstr ""
 
 msgid "Bayes Factor Matrix"
@@ -259,10 +268,13 @@ msgstr ""
 msgid "H"
 msgstr ""
 
-msgid "Excluding Hu"
+msgid "Excluding Hu and Hc"
 msgstr ""
 
 msgid "Including Hu"
+msgstr ""
+
+msgid "Including Hc"
 msgstr ""
 
 msgid "Path Diagram"
