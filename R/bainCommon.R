@@ -851,7 +851,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
   if (any(is.nan(unlist(bainResult[["fit"]])))) {
     table$addFootnote(symbol = gettext("<b>Warning</b>"), message = gettext("The entered model constraints are incompatible with the data and therefore the computed results contain NaNs."))
   }
-  if (!is.null(bainResult)) {
+  if (type %in% c("anova", "ancova", "regression", "sem") && !is.null(bainResult)) {
     complexity <- na.omit(bainResult[["fit"]]$Com)
     if (complexity[length(complexity)] < .05) {
      table$addFootnote(gettext("<b>Your hypotheses (almost) completely cover the parameter space. Therefore instead of PMPc, you should interpret PMPa.</b>"))
@@ -1286,7 +1286,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
   }
 
   if (type == 1) {
-    postProb <- x$fit$PMPb
+    postProb <- na.omit(x$fit$PMPb)
   } else {
     postProb <- na.omit(x$fit$PMPa)
   }
@@ -1323,6 +1323,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
       jaspGraphs::themeJaspRaw(legend.position = "none") +
       ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
   } else if (numH > 1) {
+    plotMat <- list()
     postProbA <- na.omit(x$fit$PMPa)
     plotDataA <- data.frame(x = labels, y = postProbA)
     yBreaksA <- cumsum(rev(postProbA)) - rev(postProbA) / 2
@@ -1336,6 +1337,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
       ggplot2::scale_fill_brewer(palette = "Set1") +
       jaspGraphs::themeJaspRaw(legend.position = "none") +
       ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
+    plotMat[["p1"]] <- p1
 
     p2 <- ggplot2::ggplot(data = plotDataB, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
       ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
@@ -1347,24 +1349,27 @@ gettextf <- function(fmt, ..., domain = NULL)  {
       ggplot2::scale_fill_brewer(palette = "Set1") +
       jaspGraphs::themeJaspRaw(legend.position = "none") +
       ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
+    plotMat[["p2"]] <- p2
 
-    postProbC <- na.omit(x$fit$PMPc)
-    plotDataC <- data.frame(x = c(labels, gettext("Hc")), y = postProbC)
-    yBreaksC <- cumsum(rev(postProbC)) - rev(postProbC) / 2
-    yLabelsC <- rev(c(labels, gettext("Hc")))
-    p3 <- ggplot2::ggplot(data = plotDataC, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
-      ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
-      ggplot2::geom_col() +
-      ggplot2::coord_polar(theta = "y", direction = -1) +
-      ggplot2::labs(title = gettext("Including Hc"), size = 30) +
-      ggplot2::scale_x_discrete(name = NULL) +
-      ggplot2::scale_y_continuous(name = NULL, breaks = yBreaksC, labels = yLabelsC) +
-      ggplot2::scale_fill_brewer(palette = "Set1") +
-      jaspGraphs::themeJaspRaw(legend.position = "none") +
-      ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
-
-    plotMat <- list(p1 = p1, p2 = p2, p3 = p3)
-    p <- jaspGraphs::ggMatrixPlot(plotList = plotMat, layout = matrix(c(1, 2, 3), nrow = 1))
+    complexity <- na.omit(x[["fit"]]$Com)
+    if (complexity[length(complexity)] >= .05) {
+      postProbC <- na.omit(x$fit$PMPc)
+      plotDataC <- data.frame(x = c(labels, gettext("Hc")), y = postProbC)
+      yBreaksC <- cumsum(rev(postProbC)) - rev(postProbC) / 2
+      yLabelsC <- rev(c(labels, gettext("Hc")))
+      p3 <- ggplot2::ggplot(data = plotDataC, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
+        ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
+        ggplot2::geom_col() +
+        ggplot2::coord_polar(theta = "y", direction = -1) +
+        ggplot2::labs(title = gettext("Including Hc"), size = 30) +
+        ggplot2::scale_x_discrete(name = NULL) +
+        ggplot2::scale_y_continuous(name = NULL, breaks = yBreaksC, labels = yLabelsC) +
+        ggplot2::scale_fill_brewer(palette = "Set1") +
+        jaspGraphs::themeJaspRaw(legend.position = "none") +
+        ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
+      plotMat[["p3"]] <- p3
+    }
+    p <- jaspGraphs::ggMatrixPlot(plotList = plotMat, layout = matrix(c(1:length(plotMat)), nrow = 1))
   }
   return(p)
 }
