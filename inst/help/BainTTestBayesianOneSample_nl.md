@@ -1,4 +1,4 @@
-bain T-Toets voor Eén Gemiddelde
+Bain T-Toets voor Eén Gemiddelde
 ==========================
 
 Met de bain (Bayesian informative hypotheses evaluation) t-toets voor één gemiddelde kan de gebruiker de nulhypothese dat het gemiddelde van een variabele nul is testen ten opzichte van eenzijdige en tweezijdige alternatieve hypotheses.

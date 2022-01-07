@@ -1,4 +1,4 @@
-bain Lineaire Regressie
+Bain Lineaire Regressie
 ==========================
 
 Met de bain (Bayesian informative hypotheses evaluation) lineaire regressie kan de gebruiker (informatieve) hypotheses evalueren met de Bayes factor. Een eenvoudig voorbeeld hiervan is de Bayesiaanse evaluatie van H0: b1 = b2 = b3 versus H1: b1 > b2 > b3 versus Hu: geen beperkingen op de drie regressiecoëfficiënten.
