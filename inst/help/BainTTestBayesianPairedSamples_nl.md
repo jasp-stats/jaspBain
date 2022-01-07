@@ -1,4 +1,4 @@
-bain Gepaarde T-Toets
+Bain Gepaarde T-Toets
 ==============================
 
 Met de bain (Bayesian informative hypothese evaluation) gepaarde t-toets kan de gebruiker de nulhypothese dat de gemiddelden van twee herhaalde metingen gelijk zijn testen tegenover eenzijdige en tweezijdige alternatieve hypotheses. 

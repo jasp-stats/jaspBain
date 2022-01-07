@@ -1,4 +1,4 @@
-bain One Sample t-test
+Bain One Sample t-test
 ==========================
 
 The bain (Bayesian informative hypotheses evaluation) One Sample t-test allows you test the null-hypothesis that the mean of a variable is equal to a reference value versus one-sided and two-sided alternative hypotheses. Read Hoijtink, Mulder, van Lissa, and Gu (2019) for an introduction to bain. Bain has been thoroughly debugged, if nevertheless problems are detected they will be posted at https://informative-hypotheses.sites.uu.nl/software/bain/.

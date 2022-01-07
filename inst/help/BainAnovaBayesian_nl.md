@@ -1,4 +1,4 @@
-bain ANOVA
+Bain ANOVA
 ==========================
 
 Met de bain (Bayesian informative hypotheses evaluation) ANOVA kan de gebruiker (informatieve) hypotheses evalueren met de Bayes factor. Een eenvoudig voorbeeld hiervan is de Bayesiaanse evaluatie van H0: m1 = m2 = m3 versus H1: m1 > m2 > m3 versus Hu: geen beperkingen rondom de drie gemiddeldes.

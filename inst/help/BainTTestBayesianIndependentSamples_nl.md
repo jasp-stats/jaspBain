@@ -1,4 +1,4 @@
-bain Welch toets
+Bain Welch toets
 ==========================
 
 Met de bain (Bayesian informative hypotheses evaluation) Welch toets kan de gebruiker de nulhypothese dat twee gemiddelden gelijk zijn testen ten opzichte van eenzijdige en tweezijdige alternatieve hypotheses. Een belangrijk kenmerk van de Bayesiaanse Welch toets is dat het er NIET vanuit gaat dat de variantie van de afhankelijke variabele hetzelfde is in beide groepen.

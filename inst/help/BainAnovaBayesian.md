@@ -1,7 +1,7 @@
-bain ANOVA
+Bain ANOVA
 ==========================
 
-bain (Bayesian informative hypotheses evaluation) ANOVA allows you to evaluate (informative) hypotheses using the Bayes factor. A simple example would be the Bayesian evaluation of H0: m1 = m2 = m3 versus H1: m1 > m2 > m3 versus Hu: no restrictions on the three means. Read Hoijtink, Mulder, van Lissa, and Gu (2019) for an introduction to bain. Bain has been thoroughly debugged, if nevertheless problems are detected they will be posted at https://informative-hypotheses.sites.uu.nl/software/bain/.
+Bain (Bayesian informative hypotheses evaluation) ANOVA allows you to evaluate (informative) hypotheses using the Bayes factor. A simple example would be the Bayesian evaluation of H0: m1 = m2 = m3 versus H1: m1 > m2 > m3 versus Hu: no restrictions on the three means. Read Hoijtink, Mulder, van Lissa, and Gu (2019) for an introduction to bain. Bain has been thoroughly debugged, if nevertheless problems are detected they will be posted at https://informative-hypotheses.sites.uu.nl/software/bain/.
 
 ### Specification of the bain ANOVA
 

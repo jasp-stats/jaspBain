@@ -1,7 +1,7 @@
-bain Linear Regression
+Bain Linear Regression
 ==========================
 
-bain (Bayesian informative hypotheses evaluation)  linear regression allows you to evaluate (informative) hypotheses using the Bayes factor. A simple example would be the Bayesian evaluation of H0: b1 = b2 = b3 versus H1: b1 > b2 > b3 versus Hu: no restrictions on the three regression coefficients. Read Hoijtink, Mulder, van Lissa, and Gu (2019) for an introduction to bain. Bain has been thoroughly debugged, if nevertheless problems are detected they will be posted at https://informative-hypotheses.sites.uu.nl/software/bain/.
+Bain (Bayesian informative hypotheses evaluation)  linear regression allows you to evaluate (informative) hypotheses using the Bayes factor. A simple example would be the Bayesian evaluation of H0: b1 = b2 = b3 versus H1: b1 > b2 > b3 versus Hu: no restrictions on the three regression coefficients. Read Hoijtink, Mulder, van Lissa, and Gu (2019) for an introduction to bain. Bain has been thoroughly debugged, if nevertheless problems are detected they will be posted at https://informative-hypotheses.sites.uu.nl/software/bain/.
 
 ### Specification of the bain Linear Regression
 

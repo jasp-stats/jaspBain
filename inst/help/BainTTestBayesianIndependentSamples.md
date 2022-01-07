@@ -1,4 +1,4 @@
-bain Welch test
+Bain Welch test
 ==========================
 
 The bain (Bayesian informative hypotheses evaluation) Welch test allows you test the nul-hypothesis that two means are equal versus one-sided and two-sided alternative hypotheses. An important characteristic of the Bayesian Welch test is that it does NOT assume that the variance of the dependent variable is the same in both groups. Read Hoijtink, Mulder, van Lissa, and Gu (2019) for an introduction to bain. Bain has been thoroughly debugged, if nevertheless problems are detected they will be posted at https://informative-hypotheses.sites.uu.nl/software/.bain/ 
