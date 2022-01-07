@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspBain 0.1.0\n"
 "POT-Creation-Date: 2021-12-18 03:28\n"
-"PO-Revision-Date: 2021-11-16 04:40+0000\n"
+"PO-Revision-Date: 2022-01-07 12:57+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jaspbain-r/"
 "ja/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.9.1-dev\n"
+"X-Generator: Weblate 4.10.1\n"
 
 msgid ""
 "Bain does not accept factor levels that contain spaces. Please remove the "
@@ -211,7 +211,6 @@ msgstr "PMP(事後モデル確率) a"
 msgid "PMP b"
 msgstr "PMP(事後モデル確率) b"
 
-#, fuzzy
 msgid "PMP c"
 msgstr "PMP(事後モデル確率) a"
 
@@ -228,6 +227,12 @@ msgid ""
 "                        All PMPs are based on equal prior model "
 "probabilities."
 msgstr ""
+"BF.uは手元の仮説のベイズファクターと制約のない仮説Huを表す。\n"
+"                        BF.c は，手元の仮説のベイズファクター対その補数を表す。\n"
+"                        PMPa は指定された仮説の事後モデル確率である。\n"
+"                        PMPb は制約のない仮説 Hu を追加する。\n"
+"                        PMPc は指定された仮説の和の補数である Hc を加える。\n"
+"                        すべてのPMPは等しい事前モデル確率に基づいている。"
 
 msgid "Results not computed: %1$s."
 msgstr "結果が計算されませんでした: %1$s."
@@ -304,9 +309,8 @@ msgstr "H%1$i"
 msgid "Hu"
 msgstr "Hu"
 
-#, fuzzy
 msgid "Hc"
-msgstr "H"
+msgstr "Hc"
 
 msgid "<b>Warning</b>"
 msgstr "<b>警告</b>"
@@ -322,6 +326,7 @@ msgid ""
 "<b>Your hypotheses (almost) completely cover the parameter space. Therefore "
 "instead of PMPc, you should interpret PMPa.</b>"
 msgstr ""
+"<b>あなたの仮説は、パラメータ空間を(ほぼ)完全にカバーしています。したがって、PMPcの代わりに、PMPaを解釈する必要があります。</b>"
 
 msgid "Bayes Factor Matrix"
 msgstr "ベイズファクター行列"
@@ -404,14 +409,12 @@ msgstr "H2"
 msgid "H"
 msgstr "H"
 
-#, fuzzy
 msgid "Excluding Hu and Hc"
-msgstr "Huを除く"
+msgstr "HuとHcを除く"
 
 msgid "Including Hu"
 msgstr "Huを含む"
 
-#, fuzzy
 msgid "Including Hc"
 msgstr "Huを含む"
 
