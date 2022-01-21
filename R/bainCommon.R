@@ -848,7 +848,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
     )
     table$addRows(rows)
   }
-  if (any(is.nan(unlist(bainResult[["fit"]])))) {
+  if (!isTryError(bainResult) && any(is.nan(unlist(bainResult[["fit"]])))) {
     table$addFootnote(symbol = gettext("<b>Warning</b>"), message = gettext("The entered model constraints are incompatible with the data and therefore the computed results contain NaNs."))
   }
   if (type %in% c("anova", "ancova", "regression", "sem") && !is.null(bainResult)) {
