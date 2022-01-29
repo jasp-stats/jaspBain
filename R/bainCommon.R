@@ -852,8 +852,8 @@ gettextf <- function(fmt, ..., domain = NULL)  {
     table$addFootnote(symbol = gettext("<b>Warning</b>"), message = gettext("The entered model constraints are incompatible with the data and therefore the computed results contain NaNs."))
   }
   if (type %in% c("anova", "ancova", "regression", "sem") && !is.null(bainResult)) {
-    complexity <- na.omit(bainResult[["fit"]]$Com)
-    if (complexity[length(complexity)] < .05) {
+    complexity <- bainResult[["fit"]]$Com[length(bainResult[["fit"]]$Com)]
+    if (!is.na(complexity) && complexity < .05) {
      table$addFootnote(gettext("<b>Your hypotheses (almost) completely cover the parameter space. Therefore instead of PMPc, you should interpret PMPa.</b>"))
     }
   }
