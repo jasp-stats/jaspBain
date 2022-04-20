@@ -1116,9 +1116,9 @@ gettextf <- function(fmt, ..., domain = NULL)  {
       }
     }
   } else if (type %in% c("anova", "ancova", "regression", "sem")) {
-    if (options[["model"]] == "") {
+    if (options[["model"]] == "" || !grepl(pattern = "\n", x = options[["model"]], fixed = TRUE)) {
       height <- 300
-      width <- 400
+      width <- 600
     } else {
       height <- 400
       width <- 800
@@ -1306,28 +1306,23 @@ gettextf <- function(fmt, ..., domain = NULL)  {
 }
 
 .plotModelProbabilitiesRegression <- function(x) {
+  postProbA <- na.omit(x$fit$PMPa)
   postProbB <- na.omit(x$fit$PMPb)
+  postProbC <- na.omit(x$fit$PMPc)
   numH <- length(postProbB) - 1
   labels <- paste(gettext("H"), 1:numH, sep = "")
+  plotDataA <- data.frame(x = labels, y = postProbA)
   plotDataB <- data.frame(x = c(labels, gettext("Hu")), y = postProbB)
+  yBreaksA <- cumsum(rev(postProbA)) - rev(postProbA) / 2
   yBreaksB <- cumsum(rev(postProbB)) - rev(postProbB) / 2
+  yBreaksC <- cumsum(rev(postProbC)) - rev(postProbC) / 2
+  yLabelsA <- rev(labels)
   yLabelsB <- rev(c(labels, gettext("Hu")))
+  yLabelsC <- rev(c(labels, gettext("Hc")))
+  complexity <- x[["fit"]]$Com[length(x[["fit"]]$Com)]
+  plotMat <- list()
 
-  if (numH == 1) {
-    p <- ggplot2::ggplot(data = plotDataB, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
-      ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
-      ggplot2::coord_polar(theta = "y", direction = -1) +
-      ggplot2::scale_x_discrete(name = NULL) +
-      ggplot2::scale_y_continuous(name = NULL, breaks = yBreaksB, labels = yLabelsB) +
-      ggplot2::scale_fill_brewer(palette = "Set1") +
-      jaspGraphs::themeJaspRaw(legend.position = "none") +
-      ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
-  } else if (numH > 1) {
-    plotMat <- list()
-    postProbA <- na.omit(x$fit$PMPa)
-    plotDataA <- data.frame(x = labels, y = postProbA)
-    yBreaksA <- cumsum(rev(postProbA)) - rev(postProbA) / 2
-    yLabelsA <- rev(labels)
+  if (numH > 1) {
     p1 <- ggplot2::ggplot(data = plotDataA, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
       ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
       ggplot2::coord_polar(theta = "y", direction = -1) +
@@ -1338,38 +1333,37 @@ gettextf <- function(fmt, ..., domain = NULL)  {
       jaspGraphs::themeJaspRaw(legend.position = "none") +
       ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
     plotMat[["p1"]] <- p1
+  }
 
-    p2 <- ggplot2::ggplot(data = plotDataB, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
+  p2 <- ggplot2::ggplot(data = plotDataB, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
+    ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
+    ggplot2::coord_polar(theta = "y", direction = -1) +
+    ggplot2::scale_x_discrete(name = NULL) +
+    ggplot2::scale_y_continuous(name = NULL, breaks = yBreaksB, labels = yLabelsB) +
+    ggplot2::scale_fill_brewer(palette = "Set1") +
+    jaspGraphs::themeJaspRaw(legend.position = "none") +
+    ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
+  plotMat[["p2"]] <- p2
+
+  if (!is.na(complexity) && complexity >= .05) {
+    plotDataC <- data.frame(x = c(labels, gettext("Hc")), y = postProbC)
+    p3 <- ggplot2::ggplot(data = plotDataC, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
       ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
       ggplot2::geom_col() +
       ggplot2::coord_polar(theta = "y", direction = -1) +
-      ggplot2::labs(title = gettext("Including Hu"), size = 30) +
+      ggplot2::labs(title = gettext("Including Hc"), size = 30) +
       ggplot2::scale_x_discrete(name = NULL) +
-      ggplot2::scale_y_continuous(name = NULL, breaks = yBreaksB, labels = yLabelsB) +
+      ggplot2::scale_y_continuous(name = NULL, breaks = yBreaksC, labels = yLabelsC) +
       ggplot2::scale_fill_brewer(palette = "Set1") +
       jaspGraphs::themeJaspRaw(legend.position = "none") +
       ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
-    plotMat[["p2"]] <- p2
-
-    complexity <- na.omit(x[["fit"]]$Com)
-    if (complexity[length(complexity)] >= .05) {
-      postProbC <- na.omit(x$fit$PMPc)
-      plotDataC <- data.frame(x = c(labels, gettext("Hc")), y = postProbC)
-      yBreaksC <- cumsum(rev(postProbC)) - rev(postProbC) / 2
-      yLabelsC <- rev(c(labels, gettext("Hc")))
-      p3 <- ggplot2::ggplot(data = plotDataC, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
-        ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
-        ggplot2::geom_col() +
-        ggplot2::coord_polar(theta = "y", direction = -1) +
-        ggplot2::labs(title = gettext("Including Hc"), size = 30) +
-        ggplot2::scale_x_discrete(name = NULL) +
-        ggplot2::scale_y_continuous(name = NULL, breaks = yBreaksC, labels = yLabelsC) +
-        ggplot2::scale_fill_brewer(palette = "Set1") +
-        jaspGraphs::themeJaspRaw(legend.position = "none") +
-        ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
-      plotMat[["p3"]] <- p3
-    }
-    p <- jaspGraphs::ggMatrixPlot(plotList = plotMat, layout = matrix(c(1:length(plotMat)), nrow = 1))
+    plotMat[["p3"]] <- p3
   }
+
+  if (!is.null(plotMat[["p1"]]) || !is.null(plotMat[["p3"]])) {
+    plotMat[["p2"]] <- plotMat[["p2"]] + ggplot2::labs(title = gettext("Including Hu"), size = 30)
+  }
+
+  p <- jaspGraphs::ggMatrixPlot(plotList = plotMat, layout = matrix(c(1:length(plotMat)), nrow = 1))
   return(p)
 }
