@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspBain 0.16.1\n"
-"POT-Creation-Date: 2021-12-18 03:28\n"
+"POT-Creation-Date: 2022-04-23 03:32\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -271,10 +271,10 @@ msgstr ""
 msgid "Excluding Hu and Hc"
 msgstr ""
 
-msgid "Including Hu"
+msgid "Including Hc"
 msgstr ""
 
-msgid "Including Hc"
+msgid "Including Hu"
 msgstr ""
 
 msgid "Path Diagram"

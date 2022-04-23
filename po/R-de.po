@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2021-12-18 03:28\n"
+"POT-Creation-Date: 2022-04-23 03:32\n"
 "PO-Revision-Date: 2022-01-27 16:20+0000\n"
 "Last-Translator: Thomas Langkamp <thomas.lassdiesonnerein@gmx.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/jaspbain-r/"
@@ -446,11 +446,11 @@ msgstr "H"
 msgid "Excluding Hu and Hc"
 msgstr "Ausgenommen Hu und Hc"
 
-msgid "Including Hu"
-msgstr "Hu einbeziehen"
-
 msgid "Including Hc"
 msgstr "Einschließlich Hc"
+
+msgid "Including Hu"
+msgstr "Hu einbeziehen"
 
 msgid "Path Diagram"
 msgstr "Pfaddiagramm"
