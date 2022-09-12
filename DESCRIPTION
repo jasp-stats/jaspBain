@@ -1,8 +1,8 @@
 Package: jaspBain
 Type: Package
 Title: Bain Module for JASP
-Version: 0.16.1
-Date: 2022-01-21
+Version: 0.16.4
+Date: 2022-09-12
 Author: Herbert Hoijtink, Joris Mulder & Xin Gu
 Website: www.informative-hypotheses.sites.uu.nl/software/bain/
 Maintainer: Koen Derks <k.derks@nyenrode.nl>
