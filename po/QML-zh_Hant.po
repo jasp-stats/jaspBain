@@ -18,7 +18,7 @@ msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "依變數"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Fixed Factors"
@@ -86,7 +86,7 @@ msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "依變數"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Fixed Factors"
@@ -150,7 +150,7 @@ msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "依變數"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Covariates"
