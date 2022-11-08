@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-11-08 09:33+0000\n"
+"PO-Revision-Date: 2022-11-09 04:41+0000\n"
 "Last-Translator: Changya Hu <changyahu@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "jasp/jaspbain-qml/zh_Hant/>\n"
@@ -53,7 +53,7 @@ msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Posterior probabilities"
@@ -117,7 +117,7 @@ msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Posterior probabilities"
@@ -181,7 +181,7 @@ msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Posterior probabilities"
@@ -252,7 +252,7 @@ msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "BainSemBayesian|"
 msgid "Path diagram"
@@ -380,7 +380,7 @@ msgstr ""
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Posterior probabilities"
@@ -460,7 +460,7 @@ msgstr ""
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Posterior probabilities"
@@ -536,7 +536,7 @@ msgstr ""
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Posterior probabilities"
