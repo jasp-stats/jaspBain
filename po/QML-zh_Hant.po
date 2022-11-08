@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-11-07 10:06+0000\n"
+"PO-Revision-Date: 2022-11-08 09:33+0000\n"
 "Last-Translator: Changya Hu <changyahu@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "jasp/jaspbain-qml/zh_Hant/>\n"
@@ -29,7 +29,7 @@ msgstr "依變數"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Fixed Factors"
-msgstr ""
+msgstr "固定因子"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Covariates"
@@ -97,7 +97,7 @@ msgstr "依變數"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Fixed Factors"
-msgstr ""
+msgstr "固定因子"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Tables"
@@ -312,7 +312,7 @@ msgstr ""
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Dependent Variables"
-msgstr ""
+msgstr "依變數"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Grouping Variable"
