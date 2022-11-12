@@ -1,8 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2022-11-09 04:41+0000\n"
+"Last-Translator: Changya Hu <changyahu@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
+"jasp/jaspbain-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Qt-Contexts: true\n"
 "X-Language: zh_Hant\n"
 
@@ -22,7 +29,7 @@ msgstr "依變數"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Fixed Factors"
-msgstr ""
+msgstr "固定因子"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Covariates"
@@ -46,7 +53,7 @@ msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Posterior probabilities"
@@ -90,7 +97,7 @@ msgstr "依變數"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Fixed Factors"
-msgstr ""
+msgstr "固定因子"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Tables"
@@ -110,7 +117,7 @@ msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Posterior probabilities"
@@ -174,7 +181,7 @@ msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Posterior probabilities"
@@ -245,7 +252,7 @@ msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "BainSemBayesian|"
 msgid "Path diagram"
@@ -305,15 +312,15 @@ msgstr ""
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Dependent Variables"
-msgstr ""
+msgstr "依變數"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Grouping Variable"
-msgstr ""
+msgstr "分組變數"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Hypothesis Test"
-msgstr ""
+msgstr "假設考驗"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Equal vs. not equal"
@@ -373,7 +380,7 @@ msgstr ""
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Posterior probabilities"
@@ -453,7 +460,7 @@ msgstr ""
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Posterior probabilities"
@@ -529,7 +536,7 @@ msgstr ""
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Posterior probabilities"
