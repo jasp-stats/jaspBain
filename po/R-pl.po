@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspBain 0.17.0\n"
 "POT-Creation-Date: 2022-10-08 03:48\n"
-"PO-Revision-Date: 2022-11-14 06:44+0000\n"
+"PO-Revision-Date: 2022-11-24 17:48+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/jaspbain-r/"
 "pl/>\n"
@@ -27,7 +27,7 @@ msgid "An error occurred in the analysis:<br>%1$s<br><br>Please double check if 
 msgstr ""
 
 msgid "Hypothesis"
-msgstr ""
+msgstr "Hipoteza"
 
 msgid "H%i"
 msgstr ""
@@ -204,7 +204,7 @@ msgid "Descriptive Statistics"
 msgstr ""
 
 msgid "Coefficient"
-msgstr ""
+msgstr "Współczynnik"
 
 msgid "Mean"
 msgstr "Średnia"
@@ -216,13 +216,13 @@ msgid "Group"
 msgstr ""
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "SD"
 msgstr "SD"
 
 msgid "SE"
-msgstr ""
+msgstr "SE"
 
 msgid "Lower"
 msgstr "Dolny"
@@ -255,7 +255,7 @@ msgid "Descriptive Plots"
 msgstr ""
 
 msgid "Descriptives Plot"
-msgstr ""
+msgstr "Wykresy opisowe"
 
 msgid "Adjusted Means"
 msgstr ""
