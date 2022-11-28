@@ -3,8 +3,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
@@ -19,11 +17,11 @@ msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Dependent Variable"
-msgstr "依變數"
+msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Fixed Factors"
-msgstr "固定因子"
+msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Covariates"
@@ -47,7 +45,7 @@ msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Plots"
-msgstr "圖"
+msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Posterior probabilities"
@@ -87,11 +85,11 @@ msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Dependent Variable"
-msgstr "依變數"
+msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Fixed Factors"
-msgstr "固定因子"
+msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Tables"
@@ -111,7 +109,7 @@ msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Plots"
-msgstr "圖"
+msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Posterior probabilities"
@@ -151,7 +149,7 @@ msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Dependent Variable"
-msgstr "依變數"
+msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Covariates"
@@ -175,7 +173,7 @@ msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Plots"
-msgstr "圖"
+msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Posterior probabilities"
@@ -246,7 +244,7 @@ msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Plots"
-msgstr "圖"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Path diagram"
@@ -306,15 +304,15 @@ msgstr ""
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Dependent Variables"
-msgstr "依變數"
+msgstr ""
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Grouping Variable"
-msgstr "分組變數"
+msgstr ""
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Hypothesis Test"
-msgstr "假設考驗"
+msgstr ""
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Equal vs. not equal"
@@ -374,7 +372,7 @@ msgstr ""
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Plots"
-msgstr "圖"
+msgstr ""
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Posterior probabilities"
@@ -392,10 +390,9 @@ msgctxt "BainTTestBayesianOneSample|"
 msgid "Test value"
 msgstr ""
 
-#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Hypothesis Test"
-msgstr "假設考驗"
+msgstr ""
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Equal vs. not equal"
@@ -455,7 +452,7 @@ msgstr ""
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Plots"
-msgstr "圖"
+msgstr ""
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Posterior probabilities"
@@ -469,10 +466,9 @@ msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Pairs"
 msgstr ""
 
-#, fuzzy
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Hypothesis Test"
-msgstr "假設考驗"
+msgstr ""
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Equal vs. not equal"
@@ -532,7 +528,7 @@ msgstr ""
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Plots"
-msgstr "圖"
+msgstr ""
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Posterior probabilities"
