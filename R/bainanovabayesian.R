@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-BainAnovaBayesian <- function(jaspResults, dataset, options, ...) {
+BainAnovaBayesianInternal <- function(jaspResults, dataset, options, ...) {
 
   # What type of Bain analysis is being conducted?
   type <- "anova"

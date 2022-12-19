@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-BainTTestBayesianPairedSamples <- function(jaspResults, dataset, options, ...) {
+BainTTestBayesianPairedSamplesInternal <- function(jaspResults, dataset, options, ...) {
 
   # What type of Bain analysis is being conducted?
   type <- "pairedTTest"
