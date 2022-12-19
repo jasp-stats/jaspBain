@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-BainRegressionLinearBayesian <- function(jaspResults, dataset, options, ...) {
+BainRegressionLinearBayesianInternal <- function(jaspResults, dataset, options, ...) {
 
   # What type of Bain analysis is being conducted?
   type <- "regression"

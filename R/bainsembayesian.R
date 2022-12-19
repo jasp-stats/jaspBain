@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-BainSemBayesian <- function(jaspResults, dataset, options, ...) {
+BainSemBayesianInternal <- function(jaspResults, dataset, options, ...) {
 
   # What type of Bain analysis is being conducted?
   type <- "sem"

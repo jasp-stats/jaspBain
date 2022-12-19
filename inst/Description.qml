@@ -13,6 +13,7 @@ Description
 	maintainer		: "Koen Derks <k.derks@nyenrode.nl>"
 	website			: "www.informative-hypotheses.sites.uu.nl/software/bain/"
 	license			: "GPL (>= 3)"
+	hasWrappers		: true
 
 	GroupTitle
 	{
