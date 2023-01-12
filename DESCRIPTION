@@ -17,7 +17,9 @@ Imports:
   semPlot,
   stringr,
   jaspBase,
-  jaspGraphs
+  jaspGraphs,
+  jaspSem
 Remotes:
   jasp-stats/jaspBase,
-  jasp-stats/jaspGraphs
+  jasp-stats/jaspGraphs,
+  jasp-stats/jaspSem
