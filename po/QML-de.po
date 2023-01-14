@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-01-15 10:48+0000\n"
+"Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/jasp/jaspbain-qml/"
+"de/>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 "X-Language: de\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -51,7 +57,7 @@ msgstr "Glaubwürdigkeitsintervall"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Plots"
-msgstr "Abbildungen"
+msgstr "Diagramme"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Posterior probabilities"
@@ -119,7 +125,7 @@ msgstr "Glaubwürdigkeitsintervall"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Plots"
-msgstr "Abbildungen"
+msgstr "Diagramme"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Posterior probabilities"
@@ -127,7 +133,7 @@ msgstr "Posterior-Wahrscheinlichkeiten"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Descriptives plot"
-msgstr "Deskriptive Abbildungen"
+msgstr "Deskriptives Diagramm"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Additional Options"
@@ -187,7 +193,7 @@ msgstr "Glaubwürdigkeitsintervall"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Plots"
-msgstr "Abbildungen"
+msgstr "Diagramme"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Posterior probabilities"
@@ -289,7 +295,7 @@ msgstr "Glaubwürdigkeitsintervall"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Plots"
-msgstr "Abbildungen"
+msgstr "Diagramme"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Posterior probabilities"
@@ -297,7 +303,7 @@ msgstr "Posterior-Wahrscheinlichkeiten"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Descriptives plots"
-msgstr "Deskriptive Abbildungen"
+msgstr "Deskriptive Diagramme"
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Variables"
@@ -365,7 +371,7 @@ msgstr "Glaubwürdigkeitsintervall"
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Plots"
-msgstr "Abbildungen"
+msgstr "Diagramme"
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Posterior probabilities"
@@ -373,7 +379,7 @@ msgstr "Posterior-Wahrscheinlichkeiten"
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Descriptives plots"
-msgstr "Deskriptive Abbildungen"
+msgstr "Deskriptive Diagramme"
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Pairs"
@@ -437,7 +443,7 @@ msgstr "Glaubwürdigkeitsintervall"
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Plots"
-msgstr "Abbildungen"
+msgstr "Diagramme"
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Posterior probabilities"
@@ -445,7 +451,7 @@ msgstr "Posterior-Wahrscheinlichkeiten"
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Descriptives plots"
-msgstr "Deskriptive Abbildungen"
+msgstr "Deskriptive Diagramme"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Fraction"
@@ -497,7 +503,7 @@ msgstr "Glaubwürdigkeitsintervall"
 
 msgctxt "BainSemBayesian|"
 msgid "Plots"
-msgstr "Abbildungen"
+msgstr "Diagramme"
 
 msgctxt "BainSemBayesian|"
 msgid "Path diagram"
