@@ -1,16 +1,10 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-12-19 14:07+0000\n"
-"Last-Translator: JASP Stats <b.boutin@uva.nl>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/jasp/jaspbain-qml/"
-"fr/>\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Language: fr\n"
-"X-Generator: Weblate 4.15.1-dev\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
@@ -91,13 +85,15 @@ msgid ""
 "Read the help file for further instructions."
 msgstr ""
 
+#, fuzzy
 msgctxt "BainAnovaBayesian|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "Variable Dépendante"
 
+#, fuzzy
 msgctxt "BainAnovaBayesian|"
 msgid "Fixed Factors"
-msgstr ""
+msgstr "Facteurs fixes"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Tables"
@@ -155,9 +151,10 @@ msgid ""
 "Read the help file for further instructions."
 msgstr ""
 
+#, fuzzy
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "Variable Dépendante"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Covariates"
