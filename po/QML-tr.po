@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-01-31 18:50+0000\n"
-"Last-Translator: Ünal Halit ÖZDEN <uozden@ticaret.edu.tr>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/jasp/"
-"jaspbain-qml/tr/>\n"
-"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.16-dev\n"
 "X-Language: tr\n"
 "X-Qt-Contexts: true\n"
 
@@ -33,9 +27,10 @@ msgctxt "BainAncovaBayesian|"
 msgid "Fixed Factors"
 msgstr "Sabit Faktörler"
 
+#, fuzzy
 msgctxt "BainAncovaBayesian|"
 msgid "Covariates"
-msgstr ""
+msgstr "Kovaryanslar"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Tables"
@@ -81,6 +76,7 @@ msgctxt "BainAncovaBayesian|"
 msgid "Model Constraints"
 msgstr "Model Kısıtlamaları"
 
+#, fuzzy
 msgctxt "BainAncovaBayesian|"
 msgid ""
 "Place each hypothesis on a new line. For example:\n"
@@ -92,6 +88,13 @@ msgid ""
 "names.\n"
 "Read the help file for further instructions."
 msgstr ""
+"Her hipotezi yeni bir satıra yerleştirin. Örneğin:\n"
+"\n"
+"faktörDüşük = faktörOrta = faktörYüksek\n"
+"faktörDüşük < faktörOrta < faktörYüksek\n"
+"\n"
+"faktör, faktör adıdır ve Düşük/Orta/Yüksek, faktör düzeyi adlarıdır.\n"
+"Daha fazla talimat için yardım dosyasını okuyun."
 
 msgctxt "BainAnovaBayesian|"
 msgid "Dependent Variable"
@@ -188,21 +191,25 @@ msgctxt "BainRegressionLinearBayesian|"
 msgid "Credible interval"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "Grafikler"
 
+#, fuzzy
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Posterior probabilities"
-msgstr ""
+msgstr "Sonraki olasılıklar"
 
+#, fuzzy
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Additional Options"
-msgstr ""
+msgstr "Ek seçenekler"
 
+#, fuzzy
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Seed"
-msgstr ""
+msgstr "Başlangıç sayısı"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Fraction"
@@ -212,9 +219,10 @@ msgctxt "BainRegressionLinearBayesian|"
 msgid "Standardize coefficients"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Model Constraints"
-msgstr ""
+msgstr "Model Kısıtlamaları"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid ""
@@ -247,21 +255,24 @@ msgctxt "BainSemBayesian|"
 msgid "Grouping variable"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Tables"
-msgstr ""
+msgstr "Tablolar"
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Coefficients"
-msgstr ""
+msgstr "katsayılar"
 
 msgctxt "BainSemBayesian|"
 msgid "Credible interval"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "Grafikler"
 
 msgctxt "BainSemBayesian|"
 msgid "Path diagram"
@@ -275,13 +286,15 @@ msgctxt "BainSemBayesian|"
 msgid "Show legend"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Additional Options"
-msgstr ""
+msgstr "Ek seçenekler"
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Seed"
-msgstr ""
+msgstr "Başlangıç sayısı"
 
 msgctxt "BainSemBayesian|"
 msgid "Fraction"
@@ -295,13 +308,15 @@ msgctxt "BainSemBayesian|"
 msgid "Bayes factor matrix"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Posterior probabilities"
-msgstr ""
+msgstr "Sonraki olasılıklar"
 
+#, fuzzy
 msgctxt "BainSemBayesian|"
 msgid "Model Constraints"
-msgstr ""
+msgstr "Model Kısıtlamaları"
 
 msgctxt "BainSemBayesian|"
 msgid ""
@@ -363,37 +378,43 @@ msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "BF₁₀: Other vs. equal"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Additional Options"
-msgstr ""
+msgstr "Ek seçenekler"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Seed"
-msgstr ""
+msgstr "Başlangıç sayısı"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Fraction"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Tables"
-msgstr ""
+msgstr "Tablolar"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Descriptives"
-msgstr ""
+msgstr "Tanımsal"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Credible interval"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Plots"
-msgstr ""
+msgstr "Grafikler"
 
+#, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Posterior probabilities"
-msgstr ""
+msgstr "Sonraki olasılıklar"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Descriptives plots"
@@ -443,37 +464,43 @@ msgctxt "BainTTestBayesianOneSample|"
 msgid "BF₁₀: Other vs. equal"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Additional Options"
-msgstr ""
+msgstr "Ek seçenekler"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Seed"
-msgstr ""
+msgstr "Başlangıç sayısı"
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Fraction"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Tables"
-msgstr ""
+msgstr "Tablolar"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Descriptives"
-msgstr ""
+msgstr "Tanımsal"
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Credible interval"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Plots"
-msgstr ""
+msgstr "Grafikler"
 
+#, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Posterior probabilities"
-msgstr ""
+msgstr "Sonraki olasılıklar"
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Descriptives plots"
@@ -519,37 +546,43 @@ msgctxt "BainTTestBayesianPairedSamples|"
 msgid "BF₁₀: Other vs. equal"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Additional Options"
-msgstr ""
+msgstr "Ek seçenekler"
 
+#, fuzzy
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Seed"
-msgstr ""
+msgstr "Başlangıç sayısı"
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Fraction"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Tables"
-msgstr ""
+msgstr "Tablolar"
 
+#, fuzzy
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Descriptives"
-msgstr ""
+msgstr "Tanımsal"
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Credible interval"
 msgstr ""
 
+#, fuzzy
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Plots"
-msgstr ""
+msgstr "Grafikler"
 
+#, fuzzy
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Posterior probabilities"
-msgstr ""
+msgstr "Sonraki olasılıklar"
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Descriptives plots"
