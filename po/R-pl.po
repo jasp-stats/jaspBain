@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspBain 0.17.0\n"
 "POT-Creation-Date: 2022-10-08 03:48\n"
-"PO-Revision-Date: 2023-05-30 14:49+0000\n"
+"PO-Revision-Date: 2023-06-02 20:50+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/jaspbain-r/"
 "pl/>\n"
@@ -174,7 +174,7 @@ msgid "The variable %1$s contains missing values, the rows containing these valu
 msgstr ""
 
 msgid "H%1$i"
-msgstr ""
+msgstr "H%1$i"
 
 msgid "Hu"
 msgstr ""
@@ -183,7 +183,7 @@ msgid "Hc"
 msgstr ""
 
 msgid "<b>Warning</b>"
-msgstr ""
+msgstr "<b>Ostrzeżenie</b>"
 
 msgid "The entered model constraints are incompatible with the data and therefore the computed results contain NaNs."
 msgstr ""
@@ -192,7 +192,7 @@ msgid "<b>Your hypotheses (almost) completely cover the parameter space. Therefo
 msgstr ""
 
 msgid "Bayes Factor Matrix"
-msgstr ""
+msgstr "Macierz współczynników Bayesa"
 
 msgid "Coefficients for Groups plus Covariates"
 msgstr ""
@@ -201,7 +201,7 @@ msgid "Coefficients for Parameters"
 msgstr ""
 
 msgid "Descriptive Statistics"
-msgstr ""
+msgstr "Statystyki opisowe"
 
 msgid "Coefficient"
 msgstr "Współczynnik"
@@ -231,7 +231,7 @@ msgid "Upper"
 msgstr "Górna granica"
 
 msgid "The displayed coefficients are standardized."
-msgstr ""
+msgstr "Podane współczynniki są wystandaryzowane."
 
 msgid "The displayed coefficients are unstandardized."
 msgstr ""
@@ -240,19 +240,20 @@ msgid "The results for this variable were not computed."
 msgstr ""
 
 msgid "Posterior Probabilities"
-msgstr ""
+msgstr "Prawdopodobieństwa a posteriori"
 
 msgid "Plotting not possible: the results for this variable were not computed."
 msgstr ""
+"Nie można stworzyć wykresu: wyniki dla tej zmiennej nie zostały policzone."
 
 msgid "Plotting not possible: %1$s"
-msgstr ""
+msgstr "Nie można stworzyć wykresu: %1$s"
 
 msgid "Plotting not possible: the results could not be computed."
 msgstr ""
 
 msgid "Descriptive Plots"
-msgstr ""
+msgstr "Wykresy opisowe"
 
 msgid "Descriptives Plot"
 msgstr "Wykresy opisowe"
@@ -261,16 +262,16 @@ msgid "Adjusted Means"
 msgstr ""
 
 msgid "Difference"
-msgstr ""
+msgstr "Różnica"
 
 msgid "H0"
-msgstr ""
+msgstr "H0"
 
 msgid "H2"
-msgstr ""
+msgstr "H2"
 
 msgid "H"
-msgstr ""
+msgstr "H"
 
 msgid "Excluding Hu and Hc"
 msgstr ""
@@ -285,7 +286,7 @@ msgid "Path Diagram"
 msgstr "Diagram ścieżkowy"
 
 msgid "Group: %1$s"
-msgstr ""
+msgstr "Grupa: %1$s"
 
 msgid "An error occurred while creating this plot:<br>%1$s."
 msgstr ""
