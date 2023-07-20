@@ -8,7 +8,7 @@ Description
 	description		: qsTr("A module for computing approximated adjusted fractional Bayes factors for equality, inequality, and about equality constrained hypotheses.")
 	icon			: "bain-module"
 	requiresData	: true
-	version			: "0.17.2"
+	version			: "0.17.3"
 	author			: "Herbert Hoijtink, Joris Mulder & Xin Gu"
 	maintainer		: "Koen Derks <k.derks@nyenrode.nl>"
 	website			: "www.informative-hypotheses.sites.uu.nl/software/bain/"
