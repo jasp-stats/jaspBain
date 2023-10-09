@@ -29,7 +29,7 @@ test_that("age plot matches", {
 test_that("Descriptive Statistics table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_descriptivesTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(240, 50.2165034595134, 51.0125, 6.29171019316781, 0.406128146621706,
+		list(240, 50.2165034595135, 51.0125, 6.29171019316781, 0.406128146621706,
 			 51.8084965404866, "age"))
 })
 
@@ -37,15 +37,14 @@ test_that("Bain One Sample T-test table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list("", 15.1135035681881, 15.8743731825382, "age", 0.885613607789322,
-			 0.0585975054555463, 0.0557888867551317, "H0: Equal", "H1: Bigger",
+			 0.0585975054555462, 0.0557888867551316, "H0: Equal", "H1: Bigger",
 			 "H2: Smaller"))
 })
 
 test_that("age plot matches", {
-	skip("Does not reproduce on Linux")
 	plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_posteriorProbabilityPlot"]][["collection"]][["bainContainer_posteriorProbabilityPlot_age"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-	jaspTools::expect_equal_plots(testPlot, "age")
+	jaspTools::expect_equal_plots(testPlot, "age-2")
 })
 
 # ==================================================================================================
@@ -67,7 +66,7 @@ test_that("Bain One Sample T-test table results match", {
 	results <- jaspTools::runAnalysis("BainTTestBayesianOneSample", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(6.16007603449514, "", "postnumb", "H0: Equal", "H1: Not equal",
+		list(6.16007603449518, "", "postnumb", "H0: Equal", "H1: Not equal",
 			 0.860336678663426, 0.139663321336574))
 })
 
@@ -90,8 +89,8 @@ test_that("Bain One Sample T-test table results match", {
 	results <- jaspTools::runAnalysis("BainTTestBayesianOneSample", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(12.3576651279191, "", "postnumb", "H0: Equal", "H1: Bigger", 0.925136617034224,
-			 0.0748633829657758))
+		list(12.3576651279192, "", "postnumb", "H0: Equal", "H1: Bigger", 0.925136617034224,
+			 0.0748633829657756))
 })
 
 # ==================================================================================================
@@ -113,8 +112,8 @@ test_that("Bain One Sample T-test table results match", {
 	results <- jaspTools::runAnalysis("BainTTestBayesianOneSample", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(4.10256609199388, "", "postnumb", "H0: Equal", "H1: Smaller",
-			 0.804020176912743, 0.195979823087257))
+		list(4.10256609199393, "", "postnumb", "H0: Equal", "H1: Smaller",
+			 0.804020176912744, 0.195979823087256))
 })
 
 # ==================================================================================================
@@ -136,8 +135,8 @@ test_that("Bain One Sample T-test table results match", {
 	results <- jaspTools::runAnalysis("BainTTestBayesianOneSample", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(0.331985536873396, "", "postnumb", "H1: Bigger", "H2: Smaller",
-			 0.249241097356563, 0.750758902643437))
+		list(0.331985536873399, "", "postnumb", "H1: Bigger", "H2: Smaller",
+			 0.249241097356565, 0.750758902643435))
 })
 
 # ==================================================================================================
@@ -159,8 +158,8 @@ test_that("Bain One Sample T-test table results match", {
 	results <- jaspTools::runAnalysis("BainTTestBayesianOneSample", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list("", 12.3576651279191, 4.10256609199388, "postnumb", 0.754904244574999,
-			 0.0610879350395631, 0.184007820385438, "H0: Equal", "H1: Bigger",
+		list("", 12.3576651279192, 4.10256609199393, "postnumb", 0.754904244575,
+			 0.061087935039563, 0.184007820385436, "H0: Equal", "H1: Bigger",
 			 "H2: Smaller"))
 })
 

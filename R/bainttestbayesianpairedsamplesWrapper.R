@@ -19,7 +19,7 @@
 
 BainTTestBayesianPairedSamples <- function(
           data = NULL,
-          version = "0.17.1",
+          version = "0.18.1",
           bayesFactorPlot = FALSE,
           bayesFactorType = "BF01",
           credibleInterval = 0.95,

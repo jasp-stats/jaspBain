@@ -35,16 +35,15 @@ test_that("Descriptive Statistics table results match", {
 test_that("Bain Paired Samples T-Test table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list("", 276.004579526046, 2.76244529575416e-43, "prenumb - postnumb",
-			 2.76244529575416e-43, 1.00086936981184e-45, 1, "H0: Equal",
+		list("", 276.004579526015, 2.76244529575384e-43, "prenumb - postnumb",
+			 2.76244529575384e-43, 1.00086936981184e-45, 1, "H0: Equal",
 			 "H1: Bigger", "H2: Smaller"))
 })
 
 test_that("prenumb - postnumb plot matches", {
-	skip("Does not reproduce on Linux")
 	plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_posteriorProbabilityPlot"]][["collection"]][["bainContainer_posteriorProbabilityPlot_prenumb - postnumb"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-	jaspTools::expect_equal_plots(testPlot, "prenumb-postnumb")
+	jaspTools::expect_equal_plots(testPlot, "prenumb-postnumb-2")
 })
 
 # ==================================================================================================
@@ -66,8 +65,8 @@ test_that("Bain Paired Samples T-Test table results match", {
 	results <- jaspTools::runAnalysis("BainTTestBayesianPairedSamples", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(2.76244529575416e-43, "", "postnumb - prenumb", "H0: Equal", "H1: Not equal",
-			 2.76244529575416e-43, 1))
+		list(2.76244529575384e-43, "", "postnumb - prenumb", "H0: Equal", "H1: Not equal",
+			 2.76244529575384e-43, 1))
 })
 
 # ==================================================================================================
@@ -89,8 +88,8 @@ test_that("Bain Paired Samples T-Test table results match", {
 	results <- jaspTools::runAnalysis("BainTTestBayesianPairedSamples", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(1.38122264787708e-43, "", "postnumb - prenumb", "H0: Equal", "H1: Bigger",
-			 1.38122264787708e-43, 1))
+		list(1.38122264787692e-43, "", "postnumb - prenumb", "H0: Equal", "H1: Bigger",
+			 1.38122264787692e-43, 1))
 })
 
 # ==================================================================================================
@@ -112,8 +111,8 @@ test_that("Bain Paired Samples T-Test table results match", {
 	results <- jaspTools::runAnalysis("BainTTestBayesianPairedSamples", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(138.002289763023, "", "postnumb - prenumb", "H0: Equal", "H1: Smaller",
-			 0.992805873905352, 0.0071941260946481))
+		list(138.002289763008, "", "postnumb - prenumb", "H0: Equal", "H1: Smaller",
+			 0.992805873905351, 0.0071941260946489))
 })
 
 # ==================================================================================================
@@ -135,7 +134,7 @@ test_that("Bain Paired Samples T-Test table results match", {
 	results <- jaspTools::runAnalysis("BainTTestBayesianPairedSamples", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(9.99131385335527e+44, "", "postnumb - prenumb", "H1: Bigger",
+		list(9.99131385335528e+44, "", "postnumb - prenumb", "H1: Bigger",
 			 "H2: Smaller", 1, 1.00086936981184e-45))
 })
 
@@ -158,8 +157,8 @@ test_that("Bain Paired Samples T-Test table results match", {
 	results <- jaspTools::runAnalysis("BainTTestBayesianPairedSamples", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list("", 1.38122264787708e-43, 138.002289763023, "postnumb - prenumb",
-			 1.38122264787708e-43, 1, 1.00086936981184e-45, "H0: Equal",
+		list("", 1.38122264787692e-43, 138.002289763008, "postnumb - prenumb",
+			 1.38122264787692e-43, 1, 1.00086936981184e-45, "H0: Equal",
 			 "H1: Bigger", "H2: Smaller"))
 })
 
