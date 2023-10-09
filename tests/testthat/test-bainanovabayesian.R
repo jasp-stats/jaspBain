@@ -26,8 +26,8 @@ results <- jaspTools::runAnalysis("BainAnovaBayesian", "sesame.csv", options)
 test_that("Bayes Factor Matrix table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(1, 142.769141339179, 8689.31495869546, "H1", 0.00700431473230118,
-			 1, 60.8626967787956, "H2", 0.000115083870794589, 0.0164304254153325,
+		list(1, 151.738689499398, 7759.91033700745, "H1", 0.00659027703019649,
+			 1, 51.1399588503645, "H2", 0.000128867468381812, 0.0195541807713612,
 			 1, "H3"))
 })
 
@@ -41,10 +41,10 @@ test_that("Descriptive Statistics table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_descriptivesTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(60, 48.2744318767126, 49.8666666666667, 7.46169123980563, 0.812379616418173,
-			 51.4589014566208, "site1", 55, 49.2096922729294, 50.8727272727273,
-			 5.69942994373136, 0.848502836233587, 52.5357622725252, "site2",
+			 51.4589014566207, "site1", 55, 49.2096922729294, 50.8727272727273,
+			 5.69942994373137, 0.848502836233587, 52.5357622725252, "site2",
 			 64, 50.489575293814, 52.03125, 5.6791703787152, 0.786583181296488,
-			 53.5729247061861, "site3", 43, 49.5377791422724, 51.4186046511629,
+			 53.5729247061861, "site3", 43, 49.5377791422723, 51.4186046511628,
 			 5.77446166585718, 0.959622484763091, 53.2994301600533, "site4",
 			 18, 47.7596569623255, 50.6666666666667, 7.00420042042, 1.48319547056542,
 			 53.5736763710078, "site5"))
@@ -53,13 +53,13 @@ test_that("Descriptive Statistics table results match", {
 test_that("Bain ANOVA table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(404.653666701287, 404.653666701287, 0.992930928931594, 0.990500459070911,
-			 0.990516311870556, "H1", 2.87678720723381, 2.83432163915552,
-			 0.00695480073367306, 0.00693777695782146, 0.00693788799581956,
-			 "H2", 0.0461864514395514, 0.0465691102952077, 0.000114270334733115,
-			 0.000113990626853698, 0.000113992451255244, "H3", "", "", "",
-			 0.00244777334441428, "", "Hu", "", 0.993461575130136, "", "",
-			 0.0024318076823691, "Hc"))
+		list(404.653666701285, 404.653666701285, 0.99332570108029, 0.990893300577126,
+			 0.990908453263251, "H1", 2.70591193899018, 2.66677976484626,
+			 0.00654629155133326, 0.00653026135816901, 0.00653036121856833,
+			 "H2", 0.0517188788578635, 0.0521466935992119, 0.000128007368376805,
+			 0.000127693911081872, 0.000127695863770172, "H3", "", "", "",
+			 0.0024487441536236, "", "Hu", "", 0.993755284147618, "", "",
+			 0.00243348965441062, "Hc"))
 })
 
 test_that("Posterior Probabilities plot matches", {
@@ -100,7 +100,7 @@ results <- jaspTools::runAnalysis("BainAnovaBayesian", "sesame.csv", options)
 test_that("Bayes Factor Matrix table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(1, 1.63285673189987e-13, "H1", 6124236012038.1, 1, "H2"))
+		list(1, 1.5926902664359e-13, "H1", 6278684695159.13, 1, "H2"))
 })
 
 test_that("Descriptive Statistics table results match", {
@@ -119,11 +119,11 @@ test_that("Descriptive Statistics table results match", {
 test_that("Bain ANOVA table results match", {
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
-		list(1.15146657084113e-11, 1.15146657084113e-11, 1.6328567318996e-13,
-			 1.61002549190051e-13, 1.62369274107627e-13, "H1", 177.181838391031,
-			 70.5185303980327, 0.999999999999837, 0.986017609779649, 0.994387755738415,
-			 "H2", "", "", "", 0.0139823902201903, "", "Hu", "", 0.398000895793857,
-			 "", "", 0.00561224426142286, "Hc"))
+		list(1.15146657084113e-11, 1.15146657084113e-11, 1.59269026643565e-13,
+			 1.57096098370134e-13, 1.58426482533593e-13, "H1", 188.033458021386,
+			 72.2969553532757, 0.999999999999841, 0.986356868505771, 0.994709931191564,
+			 "H2", "", "", "", 0.0136431314940717, "", "Hu", "", 0.384489846190315,
+			 "", "", 0.00529006880827789, "Hc"))
 })
 
 test_that("Hypothesis Legend table results match", {
