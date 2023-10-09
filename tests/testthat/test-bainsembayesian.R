@@ -66,6 +66,7 @@ test_that("Bain Structural Equation Model table results match", {
 })
 
 test_that("Path Diagram plot matches", {
+	skip("This plot cannot be tested because it was created with qgraph instead of ggplot.")
 	plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_pathDiagram"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 	jaspTools::expect_equal_plots(testPlot, "path-diagram")
@@ -152,6 +153,7 @@ test_that("Bain Structural Equation Model table results match", {
 })
 
 test_that("Path Diagram plot matches", {
+	skip("This plot cannot be tested because it was created with qgraph instead of ggplot.")
 	plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_pathDiagram"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 	jaspTools::expect_equal_plots(testPlot, "path-diagram-2")

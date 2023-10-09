@@ -19,7 +19,7 @@
 
 BainAncovaBayesian <- function(
           data = NULL,
-          version = "0.17.1",
+          version = "0.18.1",
           bayesFactorMatrix = FALSE,
           bayesFactorPlot = FALSE,
           covariates = list(),

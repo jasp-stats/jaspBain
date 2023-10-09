@@ -464,7 +464,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
   if (options[["model"]] != "") {
     rest.string <- .bainCleanModelInput(options[["model"]])
     hyp.vector <- unlist(strsplit(rest.string, "[;]"))
-    for (i in 1:length(hyp.vector)) {
+    for (i in seq_along(hyp.vector)) {
       row <- list(number = gettextf("H%i", i), hypothesis = hyp.vector[i])
       legendTable$addRows(row)
     }
@@ -520,8 +520,6 @@ gettextf <- function(fmt, ..., domain = NULL)  {
   table$dependOn(options = deps)
   table$position <- position
   if (type %in% c("independentTTest", "pairedTTest", "onesampleTTest")) {
-    bf.type <- options[["bayesFactorType"]]
-    BFH1H0 <- FALSE
     if (options$hypothesis == "equalBiggerSmaller") {
       table$addColumnInfo(name = "Variable", type = "string", title = "")
       table$addColumnInfo(name = "type[equal]", type = "string", title = gettext("Hypothesis"))
@@ -885,9 +883,9 @@ gettextf <- function(fmt, ..., domain = NULL)  {
       bayesFactorMatrix$addColumnInfo(name = paste0("H", i), title = gettextf("H%i", i), type = "number")
     }
   }
-  for (i in 1:nrow(BFmatrix)) {
+  for (i in seq_len(nrow(BFmatrix))) {
     tmp <- list(hypothesis = gettextf("H%i", i))
-    for (j in 1:ncol(BFmatrix)) {
+    for (j in seq_len(ncol(BFmatrix))) {
       tmp[[paste0("H", j)]] <- BFmatrix[i, j]
     }
     row <- tmp
@@ -1017,7 +1015,6 @@ gettextf <- function(fmt, ..., domain = NULL)  {
     }
   } else if (type %in% c("anova", "ancova")) {
     groupCol <- dataset[, options[["fixedFactors"]]]
-    varLevels <- levels(groupCol)
     bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type)
     bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
     sigma <- diag(bainResult[["posterior"]])
@@ -1254,7 +1251,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
     bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
 
     if (type == "ancova") {
-      bainSummary <- bainSummary[1:length(varLevels), ]
+      bainSummary <- bainSummary[seq_along(varLevels), ]
     }
 
     variable <- bainSummary[["Parameter"]]
@@ -1263,13 +1260,13 @@ gettextf <- function(fmt, ..., domain = NULL)  {
     CiLower <- bainSummary[["lb"]]
     CiUpper <- bainSummary[["ub"]]
     yBreaks <- jaspGraphs::getPrettyAxisBreaks(pretty(c(CiLower, CiUpper)), min.n = 4)
-    plotData <- data.frame(v = variable, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = 1:length(variable))
+    plotData <- data.frame(v = variable, N = N, mean = mu, lowerCI = CiLower, upperCI = CiUpper, index = seq_along(variable))
     p <- ggplot2::ggplot(plotData, ggplot2::aes(x = index, y = mean)) +
       ggplot2::geom_errorbar(mapping = ggplot2::aes(ymin = lowerCI, ymax = upperCI), color = "black", width = 0.2) +
       jaspGraphs::geom_line() +
       jaspGraphs::geom_point(size = 4) +
       ggplot2::scale_y_continuous(name = options[["dependent"]], breaks = yBreaks, limits = range(yBreaks)) +
-      ggplot2::scale_x_continuous(name = options[["fixedFactors"]], breaks = 1:length(varLevels), labels = varLevels) +
+      ggplot2::scale_x_continuous(name = options[["fixedFactors"]], breaks = seq_along(varLevels), labels = varLevels) +
       jaspGraphs::geom_rangeframe() +
       jaspGraphs::themeJaspRaw()
     plot$plotObject <- p
@@ -1364,6 +1361,6 @@ gettextf <- function(fmt, ..., domain = NULL)  {
     plotMat[["p2"]] <- plotMat[["p2"]] + ggplot2::labs(title = gettext("Including Hu"), size = 30)
   }
 
-  p <- jaspGraphs::ggMatrixPlot(plotList = plotMat, layout = matrix(c(1:length(plotMat)), nrow = 1))
+  p <- jaspGraphs::ggMatrixPlot(plotList = plotMat, layout = matrix(c(seq_along(plotMat)), nrow = 1))
   return(p)
 }

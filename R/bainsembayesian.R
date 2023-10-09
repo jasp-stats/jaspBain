@@ -79,13 +79,13 @@ BainSemBayesianInternal <- function(jaspResults, dataset, options, ...) {
   withSingleQuotes <- paste("\\b'", usedvars, "'\\b", sep = "")
   withDoubleQuotes <- paste('\\b"', usedvars, '"\\b', sep = "")
   newNames <- usedvars
-  for (i in 1:length(usedvars)) {
+  for (i in seq_along(usedvars)) {
     syntax <- gsub(withDoubleQuotes[i], newNames[i], syntax)
   }
-  for (i in 1:length(usedvars)) {
+  for (i in seq_along(usedvars)) {
     syntax <- gsub(withSingleQuotes[i], newNames[i], syntax)
   }
-  for (i in 1:length(usedvars)) {
+  for (i in seq_along(usedvars)) {
     syntax <- gsub(paste0("\\b", usedvars[i], "\\b"), newNames[i], syntax)
   }
   return(syntax)
@@ -105,7 +105,7 @@ BainSemBayesianInternal <- function(jaspResults, dataset, options, ...) {
     bainContainer[["pathDiagram"]] <- container
     container$dependOn(options = c("pathDiagram", "seed", "pathDiagramEstimates", "pathDiagramLegend"))
     groups <- levels(as.factor(dataset[, encodeColNames(options[["fixedFactors"]])]))
-    for (i in 1:length(groups)) {
+    for (i in seq_along(groups)) {
       plot <- createJaspPlot(title = gettextf("Group: %1$s", groups[i]), width = 600, height = 400)
       container[[paste0("pathDiagram", groups[i])]] <- plot
     }
@@ -149,7 +149,7 @@ BainSemBayesianInternal <- function(jaspResults, dataset, options, ...) {
     if (options[["fixedFactors"]] == "") {
       plot$plotObject <- pp
     } else {
-      for (i in 1:length(groups)) {
+      for (i in seq_along(groups)) {
         container[[paste0("pathDiagram", groups[i])]]$plotObject <- pp[[i]]
       }
     }
