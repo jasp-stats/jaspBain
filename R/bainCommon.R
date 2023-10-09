@@ -102,7 +102,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
     "onesampleTTest" = length(options[["variables"]][options[["variables"]] != ""] > 0),
     "anova" = options[["fixedFactors"]] != "" && options[["dependent"]] != "",
     "ancova" = options[["dependent"]] != "" && options[["fixedFactors"]] != "" && !is.null(unlist(options[["covariates"]])),
-    "regression" = (options[["dependent"]] != "" && unlist(options[["covariates"]]) != "" && !is.null(unlist(options[["covariates"]]))),
+    "regression" = (options[["dependent"]] != "" && all(unlist(options[["covariates"]]) != "") && !is.null(unlist(options[["covariates"]]))),
     "sem" = length(.bainSemGetUsedVars(options[["syntax"]]$model, colnames(dataset))) > 1
   )
   return(ready)
