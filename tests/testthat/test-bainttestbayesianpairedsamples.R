@@ -41,7 +41,6 @@ test_that("Bain Paired Samples T-Test table results match", {
 })
 
 test_that("prenumb - postnumb plot matches", {
-	skip("Does not reproduce on Linux")
 	plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_posteriorProbabilityPlot"]][["collection"]][["bainContainer_posteriorProbabilityPlot_prenumb - postnumb"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 	jaspTools::expect_equal_plots(testPlot, "prenumb-postnumb")

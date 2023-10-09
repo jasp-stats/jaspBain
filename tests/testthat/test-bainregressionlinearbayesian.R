@@ -21,8 +21,6 @@ results <- jaspTools::runAnalysis("BainRegressionLinearBayesian", "sesame.csv", 
 
 
 test_that("Bayes Factor Matrix table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(1, 0.0330714146533409, 0.453860786138191, "H1", 30.2375937189908,
@@ -42,8 +40,6 @@ test_that("Coefficients for Parameters table results match", {
 })
 
 test_that("Bain Linear Regression table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(1.26536373845463, 1.16763339997158, 0.0299034902115412, 0.0291567752383641,
@@ -56,7 +52,6 @@ test_that("Bain Linear Regression table results match", {
 })
 
 test_that("Posterior Probabilities plot matches", {
-	skip("Does not reproduce on Linux")
 	plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_posteriorProbabilityPlot"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 	jaspTools::expect_equal_plots(testPlot, "posterior-probabilities")
@@ -91,8 +86,6 @@ results <- jaspTools::runAnalysis("BainRegressionLinearBayesian", "sesame.csv", 
 
 
 test_that("Bayes Factor Matrix table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(1, 4.77369802413396e-63, "H1", 2.09481201983114e+62, 1, "H2"
@@ -110,8 +103,6 @@ test_that("Coefficients for Parameters table results match", {
 })
 
 test_that("Bain Linear Regression table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(8.64985149525717e-62, 8.64985149525717e-62, 4.77369802413396e-63,
@@ -151,8 +142,6 @@ results <- jaspTools::runAnalysis("BainRegressionLinearBayesian", "sesame.csv", 
 
 
 test_that("Bayes Factor Matrix table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(1, 2.66173007733809e-164, "H1", 3.75695495390001e+163, 1, "H2"
@@ -170,8 +159,6 @@ test_that("Coefficients for Parameters table results match", {
 })
 
 test_that("Bain Linear Regression table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(1.05833115528427e-162, 1.05833115528427e-162, 2.66173007733809e-164,

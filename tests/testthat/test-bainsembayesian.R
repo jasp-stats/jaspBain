@@ -31,8 +31,6 @@ results <- jaspTools::runAnalysis("BainSemBayesian", "sesame.csv", options)
 
 
 test_that("Bayes Factor Matrix table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(1, "H1"))
@@ -60,8 +58,6 @@ test_that("Coefficients for Parameters table results match", {
 })
 
 test_that("Bain Structural Equation Model table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(48171725616844.4, 26.2218088646654, 1, 0.963264748313694, 0.999999999999979,
@@ -76,7 +72,6 @@ test_that("Path Diagram plot matches", {
 })
 
 test_that("Posterior Probabilities plot matches", {
-	skip("Does not reproduce on Linux")
 	plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_posteriorProbabilityPlot"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 	jaspTools::expect_equal_plots(testPlot, "posterior-probabilities")
@@ -121,8 +116,6 @@ results <- jaspTools::runAnalysis("BainSemBayesian", "sesame.csv", options)
 
 
 test_that("Bayes Factor Matrix table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(1, "H1"))
@@ -151,8 +144,6 @@ test_that("Coefficients for Parameters table results match", {
 })
 
 test_that("Bain Structural Equation Model table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(771.696358400003, 91.2565818546305, 1, 0.989160664963984, 0.998705830577394,
@@ -203,8 +194,6 @@ results <- jaspTools::runAnalysis("BainSemBayesian", "sesame.csv", options)
 
 
 test_that("Bayes Factor Matrix table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(1, 2.38776763973124, 9.19788323622478, "H1", 0.41880121975041,
@@ -239,8 +228,6 @@ test_that("Coefficients for Parameters table results match", {
 })
 
 test_that("Bain Structural Equation Model table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(50.2904553875014, 50.2904553875014, 0.654655104260404, 0.64624265208595,
@@ -288,8 +275,6 @@ results <- jaspTools::runAnalysis("BainSemBayesian", "sesame.csv", options)
 
 
 test_that("Bayes Factor Matrix table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(1, 6.43739309620418, 41.8063151520964, "H1", 0.155342385505346,
@@ -323,8 +308,6 @@ test_that("Coefficients for Parameters table results match", {
 })
 
 test_that("Bain Structural Equation Model table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(50.2923775087579, 50.2923775087579, 0.84798782311953, 0.833926849102382,
@@ -372,8 +355,6 @@ results <- jaspTools::runAnalysis("BainSemBayesian", "sesame.csv", options)
 
 
 test_that("Bayes Factor Matrix table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(1, 83.8870391277601, "H1", 0.011920792656384, 1, "H2"))
@@ -395,8 +376,6 @@ test_that("Coefficients for Parameters table results match", {
 })
 
 test_that("Bain Structural Equation Model table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(13.7330955509952, 13.7330955509952, 0.988219638589409, 0.92188194786564,
@@ -442,8 +421,6 @@ results <- jaspTools::runAnalysis("BainSemBayesian", "sesame.csv", options)
 
 
 test_that("Bayes Factor Matrix table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(1, 109.118677436861, "H1", 0.00916433394804139, 1, "H2"))
@@ -464,8 +441,6 @@ test_that("Coefficients for Parameters table results match", {
 })
 
 test_that("Bain Structural Equation Model table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(15.521998977601, 15.521998977601, 0.99091888839136, 0.931455124849424,

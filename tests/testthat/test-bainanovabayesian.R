@@ -24,8 +24,6 @@ results <- jaspTools::runAnalysis("BainAnovaBayesian", "sesame.csv", options)
 
 
 test_that("Bayes Factor Matrix table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(1, 142.769141339179, 8689.31495869546, "H1", 0.00700431473230118,
@@ -53,8 +51,6 @@ test_that("Descriptive Statistics table results match", {
 })
 
 test_that("Bain ANOVA table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(404.653666701287, 404.653666701287, 0.992930928931594, 0.990500459070911,
@@ -67,7 +63,6 @@ test_that("Bain ANOVA table results match", {
 })
 
 test_that("Posterior Probabilities plot matches", {
-	skip("Does not reproduce on Linux")
 	plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_posteriorProbabilityPlot"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 	jaspTools::expect_equal_plots(testPlot, "posterior-probabilities")
@@ -103,8 +98,6 @@ results <- jaspTools::runAnalysis("BainAnovaBayesian", "sesame.csv", options)
 
 
 test_that("Bayes Factor Matrix table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_bayesFactorMatrix"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(1, 1.63285673189987e-13, "H1", 6124236012038.1, 1, "H2"))
@@ -124,8 +117,6 @@ test_that("Descriptive Statistics table results match", {
 })
 
 test_that("Bain ANOVA table results match", {
-	skip_on_os("linux")
-	skip_on_os("windows")
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
 	jaspTools::expect_equal_tables(table,
 		list(1.15146657084113e-11, 1.15146657084113e-11, 1.6328567318996e-13,
