@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspBain 0.17.0\n"
 "POT-Creation-Date: 2022-10-08 03:48\n"
-"PO-Revision-Date: 2023-09-20 11:21+0000\n"
+"PO-Revision-Date: 2023-11-18 03:24+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/jaspbain-r/"
 "pl/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.2\n"
 
 msgid "Bain does not accept factor levels that contain spaces. Please remove the spaces from your factor levels to continue."
 msgstr ""
@@ -126,7 +126,7 @@ msgid "BF.u denotes the Bayes factor of the hypothesis at hand versus the uncons
 msgstr ""
 
 msgid "Results not computed: %1$s."
-msgstr ""
+msgstr "Wyniki nie zostały obliczone: %1$s."
 
 msgid "Variable contains missing values, the rows containing these values are removed in the analysis."
 msgstr ""
@@ -147,7 +147,7 @@ msgid "H2: Smaller"
 msgstr ""
 
 msgid "Results not computed: %s"
-msgstr ""
+msgstr "Wyniki nie zostały obliczone: %s."
 
 msgid "Both variables contain missing values, the rows containing these values are removed in the analysis."
 msgstr ""
@@ -156,10 +156,10 @@ msgid "The variable %s contains missing values, the rows containing these values
 msgstr ""
 
 msgid "Results not computed: The variables in this pair are the same."
-msgstr ""
+msgstr "Wyniki nie zostały obliczone: zmienne w podanej parze są takie same."
 
 msgid "Results not computed: The pair is incomplete."
-msgstr ""
+msgstr "Wyniki nie zostały obliczone: para jest niekompletna."
 
 msgid "The variables %1$s contain missing values, the rows containing these values are removed in the analysis."
 msgstr ""
@@ -250,7 +250,7 @@ msgid "Plotting not possible: %1$s"
 msgstr "Nie można stworzyć wykresu: %1$s"
 
 msgid "Plotting not possible: the results could not be computed."
-msgstr ""
+msgstr "Nie można stworzyć wykresu: wyniki nie mogły zostać obliczone."
 
 msgid "Descriptive Plots"
 msgstr "Wykresy opisowe"
