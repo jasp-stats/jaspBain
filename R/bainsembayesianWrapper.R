@@ -19,7 +19,7 @@
 
 BainSemBayesian <- function(
           data = NULL,
-          version = "0.18.1",
+          version = "0.18.2",
           bayesFactorMatrix = FALSE,
           bayesFactorPlot = FALSE,
           credibleInterval = 0.95,
