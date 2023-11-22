@@ -19,7 +19,7 @@
 
 BainTTestBayesianOneSample <- function(
           data = NULL,
-          version = "0.18.1",
+          version = "0.18.2",
           bayesFactorPlot = FALSE,
           bayesFactorType = "BF01",
           credibleInterval = 0.95,
