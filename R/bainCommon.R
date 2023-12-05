@@ -1053,7 +1053,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
 
 # Create the posterior probability plots
 .bainPosteriorProbabilityPlot <- function(dataset, options, bainContainer, ready, type, position) {
-  if (!is.null(bainContainer[["posteriorProbabilityPlot"]]) || !options[["bayesFactorPlot"]]) {
+  if (!options[["bayesFactorPlot"]]) {
     return()
   }
 
@@ -1075,7 +1075,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
     if (type == "onesampleTTest" || type == "independentTTest") {
       for (variable in options[["variables"]]) {
         if (is.null(container[[variable]])) {
-          bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable)
+          bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable, testType = analysisType)
           plot <- createJaspPlot(plot = NULL, title = variable, height = 300, width = 400)
           plot$dependOn(optionContainsValue = list("variables" = variable))
           if (isTryError(bainResult) || any(is.nan(unlist(bainResult[["fit"]])))) {
@@ -1095,7 +1095,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
       for (pair in options[["pairs"]]) {
         currentPair <- paste(pair, collapse = " - ")
         if (is.null(container[[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]) {
-          bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, pair = pair)
+          bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, pair = pair, testType = analysisType)
           plot <- createJaspPlot(plot = NULL, title = currentPair, height = 300, width = 400)
           plot$dependOn(optionContainsValue = list("pairs" = pair))
           if (isTryError(bainResult) || any(is.nan(unlist(bainResult[["fit"]])))) {
@@ -1143,7 +1143,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
 
 # Create the descriptive plot(s)
 .bainDescriptivePlots <- function(dataset, options, bainContainer, ready, type, position) {
-  if (!is.null(bainContainer[["descriptivesPlots"]]) || !options[["descriptivesPlot"]]) {
+  if (!options[["descriptivesPlot"]]) {
     return()
   }
 
@@ -1163,10 +1163,20 @@ gettextf <- function(fmt, ..., domain = NULL)  {
     return()
   }
 
+  if (type %in% c("independentTTest", "pairedTTest", "onesampleTTest")) {
+    analysisType <- switch(options[["hypothesis"]],
+      "equalNotEqual" = 1,
+      "equalBigger" = 2,
+      "equalSmaller" = 3,
+      "biggerSmaller" = 4,
+      "equalBiggerSmaller" = 5
+    )
+  }
+
   if (type %in% c("independentTTest", "onesampleTTest")) {
     for (variable in options[["variables"]]) {
       if (is.null(bainContainer[["descriptivesPlots"]][[variable]])) {
-        bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable)
+        bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, variable = variable, testType = analysisType)
         if (isTryError(bainResult)) {
           container[[variable]] <- createJaspPlot(plot = NULL, title = variable)
           container[[variable]]$dependOn(optionContainsValue = list("variables" = variable))
@@ -1217,10 +1227,10 @@ gettextf <- function(fmt, ..., domain = NULL)  {
       currentPair <- paste(pair, collapse = " - ")
 
       if (is.null(bainContainer[["descriptivesPlots"]][[currentPair]]) && pair[[2]] != "" && pair[[1]] != pair[[2]]) {
-        bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, pair = pair)
+        bainResult <- .bainGetGeneralTestResults(dataset, options, bainContainer, ready, type, pair = pair, testType = analysisType)
         if (isTryError(bainResult)) {
           container[[currentPair]] <- createJaspPlot(plot = NULL, title = currentPair)
-          container[[currentPair]]$dependOn(optionContainsValue = list("variables" = currentPair))
+          container[[currentPair]]$dependOn(optionContainsValue = list("pairs" = pair))
           container[[currentPair]]$setError(gettext("Plotting not possible: the results for this variable were not computed."))
         } else {
           bainSummary <- summary(bainResult, ci = options[["credibleInterval"]])
