@@ -43,7 +43,7 @@ Form
 			name: 						"fixedFactors"
 			title: 						qsTr("Fixed Factors")
 			singleVariable: 			true
-			allowedColumns: 			["ordinal", "nominal", "nominalText"]
+			allowedColumns: 			["ordinal", "nominal"]
 		}
 	}
 
