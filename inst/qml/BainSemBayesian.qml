@@ -54,7 +54,7 @@ Form
 			label: 						qsTr("Grouping variable")
 			showVariableTypeIcon: 		true
 			addEmptyValue: 				true
-			source: 					[ { model: columnsModel, use: "type=ordinal|nominal|nominalText"} ]
+			source: 					[ { model: columnsModel, use: "type=ordinal|nominal"} ]
 		}
 	}
 
