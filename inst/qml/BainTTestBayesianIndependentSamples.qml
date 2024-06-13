@@ -38,6 +38,7 @@ Form
 			title: 						qsTr("Dependent Variables")
 			singleVariable: 			false
 			allowedColumns: 			["scale"]
+			minNumericLevels:			1
 		}
 
 		AssignedVariablesList
@@ -46,6 +47,8 @@ Form
 			title: 						qsTr("Grouping Variable")
 			singleVariable: 			true
 			allowedColumns: 			["nominal"]
+			minLevels:					2
+			maxLevels:					2
 		}
 	}
 

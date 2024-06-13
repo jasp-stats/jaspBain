@@ -37,6 +37,7 @@ Form
 			name: 						"variables"
 			title: 						qsTr("Variables")
 			allowedColumns: 			["scale"]
+			minNumericLevels:			1
 		}
 	}
 
