@@ -36,13 +36,15 @@ Form
 			title: 						qsTr("Dependent Variable")
 			singleVariable: 			true
 			allowedColumns: 			["scale"]
+			minNumericLevels:			1
 		}
 
 		AssignedVariablesList
 		{
 			name: 						"covariates"
 			title: 						qsTr("Covariates")
-			suggestedColumns: 			["scale"]
+			allowedColumns: 			["scale"]
+			minNumericLevels:			1
 		}
 	}
 

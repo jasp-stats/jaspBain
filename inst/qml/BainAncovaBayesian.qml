@@ -38,6 +38,7 @@ Form
 			title: 						qsTr("Dependent Variable")
 			singleVariable: 			true
 			allowedColumns: 			["scale"]
+			minNumericLevels:			1
 		}
 
 		AssignedVariablesList
@@ -45,7 +46,8 @@ Form
 			name: 						"fixedFactors"
 			title: 						qsTr("Fixed Factors")
 			singleVariable: 			true
-			allowedColumns: 			["ordinal", "nominal"]
+			allowedColumns: 			["nominal"]
+			minLevels:					2
 		}
 
 		AssignedVariablesList
