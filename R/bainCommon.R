@@ -257,6 +257,10 @@
       bainContainer$setError(gettextf("An error occurred in the call to lavaan: %1$s. Please double check if the variables in lavaan syntax match the variables in your data set.", jaspBase::.extractErrorMessage(error)))
       return()
     }
+    if (is.null(fit@vcov$vcov)) {
+      bainContainer$setError(gettext("An error occurred in the analysis: Lavaan could not compute the standard errors because the information matrix could not be inverted. This may be a symptom that the model is not identified."))
+      return()
+    }
 
     bainContainer[["lavaanResult"]] <- createJaspState(fit)
     bainContainer[["lavaanResult"]]$dependOn(options = "syntax")
