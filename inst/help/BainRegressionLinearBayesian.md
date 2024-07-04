@@ -9,7 +9,7 @@ Bain (Bayesian informative hypotheses evaluation)  linear regression allows you 
 - Choose the predictors from the variable list and move them to the Covariates box. Note that, the name of the predictors has to start with a letter and may further consist of letters, numbers and _.
 - Set the seed equal to an integer number to create a repeatable random number sequence. It is recommended to run analyses with two different seeds to ensure stability of the results.
 - The default value for fraction is equal to 1. It renders a Bayes factor that somewhat favors the null-hypothesis. If, additionally, values of 2 and 3 are used, you execute a so-called sensitivity analysis (see the tutorial by Hoijtink, Mulder, van Lissa, and Gu, 2019).
-- When you execute bain Linear Regression for the first time tick both additional statistics and the plot. When you return to bain Linear Regression you will know what each of these four options renders and you can tick only the options you need.
+- When you execute bain Linear Regression for the first time tick both additional statistics and the plot. When you return to bain Linear Regression you will know what each of these three options renders and you can tick only the options you need.
 - If your hypotheses involve the comparison of regression coefficients, for example, b1 = b2 = b3, then the regression coefficients have to be on the same scale. You can achieve this by ticking the Standardize box under additional options, which implies that your hypotheses and the results are in terms of standardized regression coefficients.
 - When you tick model constraints a box opens in which you can specify the hypotheses you want to evaluate. You need to adhere to the following specification rules:
 
