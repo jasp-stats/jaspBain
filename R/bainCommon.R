@@ -54,7 +54,7 @@
   if (type != "sem") {
     dataset[factors] <- lapply(dataset[factors], as.factor)
     missing <- names(which(apply(dataset, 2, function(x) {
-      any(is.na(x))
+      anyNA(x)
     })))
     if (type != "onesampleTTest") {
       dataset <- jaspBase::excludeNaListwise(dataset, vars)
@@ -67,7 +67,7 @@
   } else {
     trydata <- .readDataSetToEnd(all.columns = TRUE)
     missing <- names(which(apply(trydata, 2, function(x) {
-      any(is.na(x))
+      anyNA(x)
     })))
     dataset <- .readDataSetToEnd(all.columns = TRUE, exclude.na.listwise = .bainSemGetUsedVars(options[["syntax"]]$model, colnames(trydata)))
   }
