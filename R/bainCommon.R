@@ -52,28 +52,22 @@
   vars <- c(numerics, factors)
 
   if (type != "sem") {
-    if (is.null(dataset)) {
-      trydata <- .readDataSetToEnd(columns.as.numeric = numerics, columns.as.factor = factors)
-      missing <- names(which(apply(trydata, 2, function(x) {
-        any(is.na(x))
-      })))
-      if (type == "onesampleTTest") { # For the one sample t test we do not remove the NA's listwise
-        dataset <- .readDataSetToEnd(columns.as.numeric = numerics, columns.as.factor = factors)
-      } else {
-        dataset <- .readDataSetToEnd(columns.as.numeric = numerics, columns.as.factor = factors, exclude.na.listwise = vars)
+    dataset[factors] <- lapply(dataset[factors], as.factor)
+    missing <- names(which(apply(dataset, 2, function(x) {
+      anyNA(x)
+    })))
+    if (type != "onesampleTTest") {
+      dataset <- jaspBase::excludeNaListwise(dataset, vars)
+    }
+    if ((type == "anova" || type == "ancova") && options[["fixedFactors"]] != "") {
+      if (any(grepl(pattern = " ", x = base::levels(dataset[, options[["fixedFactors"]]])))) {
+        jaspBase:::.quitAnalysis(gettext("Bain does not accept factor levels that contain spaces. Please remove the spaces from your factor levels to continue."))
       }
-      if ((type == "anova" || type == "ancova") && options[["fixedFactors"]] != "") {
-        if (any(grepl(pattern = " ", x = levels(dataset[, options[["fixedFactors"]]])))) {
-          jaspBase:::.quitAnalysis(gettext("Bain does not accept factor levels that contain spaces. Please remove the spaces from your factor levels to continue."))
-        }
-      }
-    } else {
-      dataset <- .vdf(dataset, columns.as.numeric = numerics, columns.as.factor = factors)
     }
   } else {
     trydata <- .readDataSetToEnd(all.columns = TRUE)
     missing <- names(which(apply(trydata, 2, function(x) {
-      any(is.na(x))
+      anyNA(x)
     })))
     dataset <- .readDataSetToEnd(all.columns = TRUE, exclude.na.listwise = .bainSemGetUsedVars(options[["syntax"]]$model, colnames(trydata)))
   }

@@ -14,6 +14,7 @@ Description
 	website			: "www.informative-hypotheses.sites.uu.nl/software/bain/"
 	license			: "GPL (>= 3)"
 	hasWrappers		: true
+	preloadData		: true
 
 	GroupTitle
 	{
@@ -73,5 +74,6 @@ Description
 		menu:   	"Structural Equation Modeling"
 		title:		"Bain Structural Equation Modeling"
 		func:		"BainSemBayesian"
+		preloadData: false
 	}
 }
