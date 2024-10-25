@@ -52,7 +52,9 @@
   vars <- c(numerics, factors)
 
   if (type != "sem") {
-    dataset[factors] <- lapply(dataset[factors], as.factor)
+    if (length(factors) > 0 && type %in% c("independentTTest", "anova", "ancova")) {
+      dataset[[factors]] <- as.factor(dataset[[factors]])
+    }
     missing <- names(which(apply(dataset, 2, function(x) {
       anyNA(x)
     })))
