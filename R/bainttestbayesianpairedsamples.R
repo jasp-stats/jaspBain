@@ -27,7 +27,7 @@ BainTTestBayesianPairedSamplesInternal <- function(jaspResults, dataset, options
   dataList <- .bainReadDataset(options, type, dataset)
 
   # Check if current data allow for analysis
-  .bainDataReady(dataset, options, type)
+  .bainDataReady(dataList[["dataset"]], options, type)
 
   # Create a container for the results
   bainContainer <- .bainGetContainer(jaspResults, deps = c("seed", "fraction"))
