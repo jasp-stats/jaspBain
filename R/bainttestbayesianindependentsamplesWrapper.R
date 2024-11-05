@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013-2022 University of Amsterdam
+# Copyright (C) 2013-2024 University of Amsterdam
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,19 +19,19 @@
 
 BainTTestBayesianIndependentSamples <- function(
           data = NULL,
-          version = "0.19",
+          version = "0.19.2",
           bayesFactorPlot = FALSE,
           bayesFactorType = "BF01",
           credibleInterval = 0.95,
           descriptives = FALSE,
           descriptivesPlot = FALSE,
           fraction = 1,
-          groupingVariable = "",
+          groupingVariable = list(types = list(), value = ""),
           hypothesis = "equalNotEqual",
           plotHeight = 320,
           plotWidth = 480,
           seed = 100,
-          variables = list()) {
+          variables = list(types = list(), value = NULL)) {
 
    defaultArgCalls <- formals(jaspBain::BainTTestBayesianIndependentSamples)
    defaultArgs <- lapply(defaultArgCalls, eval)

@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013-2022 University of Amsterdam
+# Copyright (C) 2013-2024 University of Amsterdam
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,12 +19,12 @@
 
 BainRegressionLinearBayesian <- function(
           data = NULL,
-          version = "0.19",
+          version = "0.19.2",
           bayesFactorMatrix = FALSE,
           bayesFactorPlot = FALSE,
-          covariates = list(),
+          covariates = list(types = list(), value = NULL),
           credibleInterval = 0.95,
-          dependent = "",
+          dependent = list(types = list(), value = ""),
           descriptives = FALSE,
           fraction = 1,
           model = "",
