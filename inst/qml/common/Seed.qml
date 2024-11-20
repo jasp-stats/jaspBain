@@ -25,7 +25,7 @@ IntegerField
 {
 	name:			"seed"
 	text:			qsTr("Seed")
-	defaultValue:	Math.floor(Math.random() * 1000000); // Init with random integer in [1,...,999999]
+	defaultValue:	Math.floor(Math.random() * 1000000) // Init with random integer in [1,...,999999]
 	min:			-999999
 	max:			999999
 	fieldWidth:		60 * preferencesModel.uiScale
