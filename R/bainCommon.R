@@ -185,7 +185,18 @@
   standardized <- options[["standardized"]]
   hypothesis <- NULL
   if (options[["model"]] != "") {
-    hypothesis <- encodeColNames(.bainCleanModelInput(options[["model"]]))
+    hypothesis <- .bainCleanModelInput(options[["model"]])
+    if (type == "regression") {
+      encodedVariables <- options[["covariates"]]
+      decodedVariables <- gsub("\\.scale$", "", decodeColNames(options[["covariates"]])) # Remove the type ".scale" at the end of the variable
+    } else {
+      encodedVariables <- options[["fixedFactors"]]
+      decodedVariables <- gsub("\\.nominal$", "", decodeColNames(options[["fixedFactors"]])) # Remove the type ".nominal" at the end of the variable
+    }
+    # Do not use encodeColNames, since it will use the 'untyped' column names, but the grouping variable is encoded with its type.
+    for (i in seq_along(decodedVariables)) {
+      hypothesis <- gsub(decodedVariables[i], encodedVariables[i], hypothesis, fixed = TRUE)
+    }
   }
 
   if (type == "regression") {
