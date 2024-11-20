@@ -16,6 +16,8 @@ options$bayesFactorPlot <- TRUE
 options$descriptivesPlot <- TRUE
 options$hypothesis <- "equalBiggerSmaller"
 options$bayesFactorType <- "BF01"
+options$seed <- 100
+options$fraction <- 1
 set.seed(1)
 results <- jaspTools::runAnalysis("BainTTestBayesianOneSample", "sesame.csv", options)
 
@@ -62,6 +64,7 @@ test_that("Bain One Sample T-test table results match", {
 	options$fraction <- 4
 	options$hypothesis <- "equalNotEqual"
 	options$bayesFactorType <- "BF01"
+	options$seed <- 100
 	set.seed(1)
 	results <- jaspTools::runAnalysis("BainTTestBayesianOneSample", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
@@ -85,6 +88,7 @@ test_that("Bain One Sample T-test table results match", {
 	options$fraction <- 4
 	options$hypothesis <- "equalBigger"
 	options$bayesFactorType <- "BF01"
+	options$seed <- 100
 	set.seed(1)
 	results <- jaspTools::runAnalysis("BainTTestBayesianOneSample", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
@@ -108,6 +112,7 @@ test_that("Bain One Sample T-test table results match", {
 	options$fraction <- 4
 	options$hypothesis <- "equalSmaller"
 	options$bayesFactorType <- "BF01"
+	options$seed <- 100
 	set.seed(1)
 	results <- jaspTools::runAnalysis("BainTTestBayesianOneSample", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
@@ -131,6 +136,7 @@ test_that("Bain One Sample T-test table results match", {
 	options$fraction <- 4
 	options$hypothesis <- "biggerSmaller"
 	options$bayesFactorType <- "BF01"
+	options$seed <- 100
 	set.seed(1)
 	results <- jaspTools::runAnalysis("BainTTestBayesianOneSample", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
@@ -154,6 +160,7 @@ test_that("Bain One Sample T-test table results match", {
 	options$fraction <- 4
 	options$hypothesis <- "equalBiggerSmaller"
 	options$bayesFactorType <- "BF01"
+	options$seed <- 100
 	set.seed(1)
 	results <- jaspTools::runAnalysis("BainTTestBayesianOneSample", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]

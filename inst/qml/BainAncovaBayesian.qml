@@ -21,6 +21,8 @@ import QtQuick.Layouts
 import JASP
 import JASP.Controls
 
+import "./common" as BAIN
+
 Form
 {
 
@@ -102,25 +104,9 @@ Form
 	{
 		title: 							qsTr("Additional Options")
 
-		DoubleField
-		{
-			name: 						"seed"
-			text: 						qsTr("Seed")
-			defaultValue: 				100
-			min: 						-999999
-			max: 						999999
-			fieldWidth: 				60 * preferencesModel.uiScale
-		}
+		BAIN.Seed { }
 
-		DoubleField
-		{
-			name: 						"fraction"
-			text: 						qsTr("Fraction")
-			defaultValue: 				1
-			min: 						0.01
-			max: 						100
-			fieldWidth: 				60 * preferencesModel.uiScale
-		}
+		BAIN.Fraction { }
 
 		CheckBox
 		{
