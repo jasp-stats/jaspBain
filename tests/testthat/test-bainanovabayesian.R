@@ -18,6 +18,8 @@ options$bayesFactorMatrix <- TRUE
 options$descriptives <- TRUE
 options$bayesFactorPlot <- TRUE
 options$descriptivesPlot <- TRUE
+options$seed <- 100
+options$fraction <- 1
 options$model <- "site1 = site2 = site3 = site4 = site5;site1 < site2 < site3 < site4 < site5;site1 > site2 > site3 > site4 > site5"
 set.seed(1)
 results <- jaspTools::runAnalysis("BainAnovaBayesian", "sesame.csv", options)
@@ -92,6 +94,7 @@ options$fixedFactors <- "site"
 options$bayesFactorMatrix <- TRUE
 options$descriptives <- TRUE
 options$seed <- 900
+options$fraction <- 1
 options$model <- "site1 = site2 = site3 = site4 = site5;site3 < site4 < site1 < site5 < site2"
 set.seed(1)
 results <- jaspTools::runAnalysis("BainAnovaBayesian", "sesame.csv", options)

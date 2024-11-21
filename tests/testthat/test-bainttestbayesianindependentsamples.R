@@ -18,6 +18,8 @@ options$bayesFactorPlot <- TRUE
 options$descriptivesPlot <- TRUE
 options$hypothesis <- "equalBiggerSmaller"
 options$bayesFactorType <- "BF01"
+options$seed <- 100
+options$fraction <- 1
 set.seed(1)
 results <- jaspTools::runAnalysis("BainTTestBayesianIndependentSamples", "sesame.csv", options)
 

@@ -14,6 +14,8 @@ options$bayesFactorPlot <- TRUE
 options$descriptivesPlot <- TRUE
 options$hypothesis <- "equalBiggerSmaller"
 options$bayesFactorType <- "BF01"
+options$seed <- 100
+options$fraction <- 1
 options$pairs <- list(list("prenumb", "postnumb"))
 set.seed(1)
 results <- jaspTools::runAnalysis("BainTTestBayesianPairedSamples", "sesame.csv", options)

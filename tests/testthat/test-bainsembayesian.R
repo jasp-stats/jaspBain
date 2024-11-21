@@ -25,6 +25,8 @@ options$fixedFactors <- ""
 options$pathDiagram <- TRUE
 options$pathDiagramEstimates <- TRUE
 options$pathDiagramLegend <- TRUE
+options$seed <- 100
+options$fraction <- 1
 options$model <- "A=~Ab > .6 & A=~Al > .6 & A=~Af > .6 & A=~An > .6 & A=~Ar > .6 & A=~Ac >.6 & B=~Bb > .6 & B=~Bl > .6 & B=~Bf > .6 & B=~Bn > .6 & B=~Br > .6 & B=~Bc >.6"
 set.seed(1)
 results <- jaspTools::runAnalysis("BainSemBayesian", "sesame.csv", options)
@@ -110,6 +112,7 @@ options$pathDiagramLegend <- TRUE
 options$fraction <- 3
 options$standardized <- TRUE
 options$bayesFactorMatrix <- TRUE
+options$seed <- 100
 options$model <- "A=~Ab > .6 & A=~Al > .6 & A=~Af > .6 & A=~An > .6 & A=~Ar > .6 & A=~Ac >.6 & B=~Bb > .6 & B=~Bl > .6 & B=~Bf > .6 & B=~Bn > .6 & B=~Br > .6 & B=~Bc >.6"
 set.seed(1)
 results <- jaspTools::runAnalysis("BainSemBayesian", "sesame.csv", options)
@@ -188,6 +191,7 @@ options$descriptives <- TRUE
 options$fraction <- 3
 options$standardized <- TRUE
 options$bayesFactorMatrix <- TRUE
+options$seed <- 100
 options$model <- "A~B > A~peabody = A~age = 0;A~B > A~peabody > A~age = 0;A~B > A~peabody > A~age > 0"
 set.seed(1)
 results <- jaspTools::runAnalysis("BainSemBayesian", "sesame.csv", options)
@@ -269,6 +273,7 @@ options$fixedFactors <- ""
 options$descriptives <- TRUE
 options$fraction <- 3
 options$bayesFactorMatrix <- TRUE
+options$seed <- 100
 options$model <- "A~B > A~peabody = A~age = 0;A~B > A~peabody > A~age = 0;A~B > A~peabody > A~age > 0"
 set.seed(1)
 results <- jaspTools::runAnalysis("BainSemBayesian", "sesame.csv", options)
@@ -349,6 +354,7 @@ options$descriptives <- TRUE
 options$fraction <- 3
 options$standardized <- TRUE
 options$bayesFactorMatrix <- TRUE
+options$seed <- 100
 options$model <- "postnumb~prenumb.1 = postnumb~prenumb.2 & postnumb~peabody.1 = postnumb~peabody.2;postnumb~prenumb.1 < postnumb~prenumb.2 & postnumb~peabody.1 < postnumb~peabody.2"
 set.seed(1)
 results <- jaspTools::runAnalysis("BainSemBayesian", "sesame.csv", options)
@@ -415,6 +421,7 @@ options$fixedFactors <- "sex"
 options$descriptives <- TRUE
 options$fraction <- 3
 options$bayesFactorMatrix <- TRUE
+options$seed <- 100
 options$model <- "postnumb~prenumb.1 = postnumb~prenumb.2 & postnumb~peabody.1 = postnumb~peabody.2;postnumb~prenumb.1 < postnumb~prenumb.2 & postnumb~peabody.1 < postnumb~peabody.2"
 set.seed(1)
 results <- jaspTools::runAnalysis("BainSemBayesian", "sesame.csv", options)

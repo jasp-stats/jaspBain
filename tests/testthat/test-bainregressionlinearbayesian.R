@@ -15,6 +15,8 @@ options$covariates <- list("peabody", "prenumb", "postnumb", "funumb")
 options$bayesFactorMatrix <- TRUE
 options$descriptives <- TRUE
 options$bayesFactorPlot <- TRUE
+options$seed <- 100
+options$fraction <- 1
 options$model <- "peabody < 0 & prenumb > 0;peabody = 0 & postnumb = 0;postnumb > 0 & funumb > 0"
 set.seed(1)
 results <- jaspTools::runAnalysis("BainRegressionLinearBayesian", "sesame.csv", options)
