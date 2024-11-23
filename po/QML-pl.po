@@ -65,10 +65,6 @@ msgid "Additional Options"
 msgstr "Dodatkowe opcje"
 
 msgctxt "BainAncovaBayesian|"
-msgid "Seed"
-msgstr "Ziarno generatora"
-
-msgctxt "BainAncovaBayesian|"
 msgid "Model Constraints"
 msgstr "Ograniczenia modelu"
 
@@ -133,10 +129,6 @@ msgid "Additional Options"
 msgstr "Dodatkowe opcje"
 
 msgctxt "BainAnovaBayesian|"
-msgid "Seed"
-msgstr "Ziarno generatora"
-
-msgctxt "BainAnovaBayesian|"
 msgid "Model Constraints"
 msgstr "Ograniczenia modelu"
 
@@ -195,10 +187,6 @@ msgstr "Prawdopodobieństwo a posteriori"
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Additional Options"
 msgstr "Dodatkowe opcje"
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Seed"
-msgstr "Ziarno generatora"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Model Constraints"
@@ -269,10 +257,6 @@ msgstr "BF₁₀: Inne vs. równe"
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Additional Options"
 msgstr "Dodatkowe opcje"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Seed"
-msgstr "Ziarno generatora"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Tables"
@@ -347,10 +331,6 @@ msgid "Additional Options"
 msgstr "Dodatkowe opcje"
 
 msgctxt "BainTTestBayesianOneSample|"
-msgid "Seed"
-msgstr "Ziarno generatora"
-
-msgctxt "BainTTestBayesianOneSample|"
 msgid "Tables"
 msgstr "Tabele"
 
@@ -419,10 +399,6 @@ msgid "Additional Options"
 msgstr "Dodatkowe opcje"
 
 msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Seed"
-msgstr "Ziarno generatora"
-
-msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Tables"
 msgstr "Tabele"
 
@@ -445,18 +421,6 @@ msgstr "Prawdopodobieństwa a posteriori"
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Descriptives plots"
 msgstr "Wykresy opisowe"
-
-msgctxt "BainAncovaBayesian|"
-msgid "Fraction"
-msgstr "Frakcja"
-
-msgctxt "BainAnovaBayesian|"
-msgid "Fraction"
-msgstr "Frakcja"
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Fraction"
-msgstr "Frakcja"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Standardize coefficients"
@@ -515,14 +479,6 @@ msgid "Additional Options"
 msgstr "Dodatkowe opcje"
 
 msgctxt "BainSemBayesian|"
-msgid "Seed"
-msgstr "Ziarno generatora"
-
-msgctxt "BainSemBayesian|"
-msgid "Fraction"
-msgstr "Frakcja"
-
-msgctxt "BainSemBayesian|"
 msgid "Standardize coefficients"
 msgstr "Standaryzuj współczynniki"
 
@@ -566,14 +522,12 @@ msgstr ""
 "hipotez i informacji na temat tego, co można i czego nie można robić\n"
 "w tym module."
 
-msgctxt "BainTTestBayesianIndependentSamples|"
+#, fuzzy
+msgctxt "Fraction|"
 msgid "Fraction"
 msgstr "Frakcja"
 
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Fraction"
-msgstr "Frakcja"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Fraction"
-msgstr "Frakcja"
+#, fuzzy
+msgctxt "Seed|"
+msgid "Seed"
+msgstr "Ziarno generatora"

@@ -63,14 +63,6 @@ msgid "Additional Options"
 msgstr ""
 
 msgctxt "BainAncovaBayesian|"
-msgid "Seed"
-msgstr ""
-
-msgctxt "BainAncovaBayesian|"
-msgid "Fraction"
-msgstr ""
-
-msgctxt "BainAncovaBayesian|"
 msgid "Model Constraints"
 msgstr ""
 
@@ -127,14 +119,6 @@ msgid "Additional Options"
 msgstr ""
 
 msgctxt "BainAnovaBayesian|"
-msgid "Seed"
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
-msgid "Fraction"
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
 msgid "Model Constraints"
 msgstr ""
 
@@ -184,14 +168,6 @@ msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Additional Options"
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Seed"
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Fraction"
 msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
@@ -263,14 +239,6 @@ msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Additional Options"
-msgstr ""
-
-msgctxt "BainSemBayesian|"
-msgid "Seed"
-msgstr ""
-
-msgctxt "BainSemBayesian|"
-msgid "Fraction"
 msgstr ""
 
 msgctxt "BainSemBayesian|"
@@ -354,14 +322,6 @@ msgid "Additional Options"
 msgstr ""
 
 msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Seed"
-msgstr ""
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Fraction"
-msgstr ""
-
-msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Tables"
 msgstr ""
 
@@ -434,14 +394,6 @@ msgid "Additional Options"
 msgstr ""
 
 msgctxt "BainTTestBayesianOneSample|"
-msgid "Seed"
-msgstr ""
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Fraction"
-msgstr ""
-
-msgctxt "BainTTestBayesianOneSample|"
 msgid "Tables"
 msgstr ""
 
@@ -510,14 +462,6 @@ msgid "Additional Options"
 msgstr ""
 
 msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Seed"
-msgstr ""
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Fraction"
-msgstr ""
-
-msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Tables"
 msgstr ""
 
@@ -539,4 +483,12 @@ msgstr ""
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Descriptives plots"
+msgstr ""
+
+msgctxt "Fraction|"
+msgid "Fraction"
+msgstr ""
+
+msgctxt "Seed|"
+msgid "Seed"
 msgstr ""

@@ -64,10 +64,6 @@ msgid "Additional Options"
 msgstr "追加オプション"
 
 msgctxt "BainAncovaBayesian|"
-msgid "Seed"
-msgstr "シード"
-
-msgctxt "BainAncovaBayesian|"
 msgid "Model Constraints"
 msgstr "モデルの制約"
 
@@ -131,10 +127,6 @@ msgid "Additional Options"
 msgstr "追加オプション"
 
 msgctxt "BainAnovaBayesian|"
-msgid "Seed"
-msgstr "シード"
-
-msgctxt "BainAnovaBayesian|"
 msgid "Model Constraints"
 msgstr "モデルの制約"
 
@@ -192,10 +184,6 @@ msgstr "事後確率"
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Additional Options"
 msgstr "追加オプション"
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Seed"
-msgstr "シード"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Model Constraints"
@@ -266,10 +254,6 @@ msgstr "BF₁₀: 他 vs. 等値"
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Additional Options"
 msgstr "追加オプション"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Seed"
-msgstr "シード"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Tables"
@@ -344,10 +328,6 @@ msgid "Additional Options"
 msgstr "追加オプション"
 
 msgctxt "BainTTestBayesianOneSample|"
-msgid "Seed"
-msgstr "シード"
-
-msgctxt "BainTTestBayesianOneSample|"
 msgid "Tables"
 msgstr "表"
 
@@ -416,10 +396,6 @@ msgid "Additional Options"
 msgstr "追加オプション"
 
 msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Seed"
-msgstr "シード"
-
-msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Tables"
 msgstr "表"
 
@@ -442,18 +418,6 @@ msgstr "事後確率"
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Descriptives plots"
 msgstr "記述統計量プロット"
-
-msgctxt "BainAncovaBayesian|"
-msgid "Fraction"
-msgstr "Fraction(比)"
-
-msgctxt "BainAnovaBayesian|"
-msgid "Fraction"
-msgstr "Fraction(比)"
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Fraction"
-msgstr "Fraction(比)"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Standardize coefficients"
@@ -512,14 +476,6 @@ msgid "Additional Options"
 msgstr "追加オプション"
 
 msgctxt "BainSemBayesian|"
-msgid "Seed"
-msgstr "シード"
-
-msgctxt "BainSemBayesian|"
-msgid "Fraction"
-msgstr "Fraction(比)"
-
-msgctxt "BainSemBayesian|"
 msgid "Standardize coefficients"
 msgstr "標準化係数"
 
@@ -563,14 +519,12 @@ msgstr ""
 "いての詳しい説明は、\n"
 "ヘルプファイルをお読みください."
 
-msgctxt "BainTTestBayesianIndependentSamples|"
+#, fuzzy
+msgctxt "Fraction|"
 msgid "Fraction"
 msgstr "Fraction(比)"
 
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Fraction"
-msgstr "Fraction(比)"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Fraction"
-msgstr "Fraction(比)"
+#, fuzzy
+msgctxt "Seed|"
+msgid "Seed"
+msgstr "シード"

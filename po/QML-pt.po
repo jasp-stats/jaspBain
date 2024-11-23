@@ -59,10 +59,6 @@ msgid "Additional Options"
 msgstr "Opções Adicionais"
 
 msgctxt "BainAncovaBayesian|"
-msgid "Seed"
-msgstr ""
-
-msgctxt "BainAncovaBayesian|"
 msgid "Model Constraints"
 msgstr ""
 
@@ -113,10 +109,6 @@ msgid "Additional Options"
 msgstr "Opções Adicionais"
 
 msgctxt "BainAnovaBayesian|"
-msgid "Seed"
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
 msgid "Model Constraints"
 msgstr ""
 
@@ -164,10 +156,6 @@ msgid "Additional Options"
 msgstr "Opções Adicionais"
 
 msgctxt "BainRegressionLinearBayesian|"
-msgid "Seed"
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
 msgid "Model Constraints"
 msgstr ""
 
@@ -213,10 +201,6 @@ msgstr "Fator de Bayes"
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Additional Options"
 msgstr "Opções Adicionais"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Seed"
-msgstr ""
 
 #, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
@@ -288,10 +272,6 @@ msgctxt "BainTTestBayesianOneSample|"
 msgid "Additional Options"
 msgstr "Opções Adicionais"
 
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Seed"
-msgstr ""
-
 #, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Tables"
@@ -356,10 +336,6 @@ msgstr "Fator de Bayes"
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Additional Options"
 msgstr "Opções Adicionais"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Seed"
-msgstr ""
 
 #, fuzzy
 msgctxt "BainTTestBayesianPairedSamples|"
@@ -433,18 +409,6 @@ msgid ""
 "equality, inequality, and about equality constrained hypotheses."
 msgstr ""
 
-msgctxt "BainAncovaBayesian|"
-msgid "Fraction"
-msgstr ""
-
-msgctxt "BainAnovaBayesian|"
-msgid "Fraction"
-msgstr ""
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Fraction"
-msgstr ""
-
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Standardize coefficients"
 msgstr ""
@@ -507,14 +471,6 @@ msgid "Additional Options"
 msgstr "Opções Adicionais"
 
 msgctxt "BainSemBayesian|"
-msgid "Seed"
-msgstr ""
-
-msgctxt "BainSemBayesian|"
-msgid "Fraction"
-msgstr ""
-
-msgctxt "BainSemBayesian|"
 msgid "Standardize coefficients"
 msgstr ""
 
@@ -554,20 +510,12 @@ msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "BF₁₀: Other vs. equal"
 msgstr ""
 
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Fraction"
-msgstr ""
-
 msgctxt "BainTTestBayesianOneSample|"
 msgid "BF₀₁: Equal vs. other"
 msgstr ""
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "BF₁₀: Other vs. equal"
-msgstr ""
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Fraction"
 msgstr ""
 
 msgctxt "BainTTestBayesianPairedSamples|"
@@ -578,6 +526,10 @@ msgctxt "BainTTestBayesianPairedSamples|"
 msgid "BF₁₀: Other vs. equal"
 msgstr ""
 
-msgctxt "BainTTestBayesianPairedSamples|"
+msgctxt "Fraction|"
 msgid "Fraction"
+msgstr ""
+
+msgctxt "Seed|"
+msgid "Seed"
 msgstr ""

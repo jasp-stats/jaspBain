@@ -66,10 +66,6 @@ msgid "Additional Options"
 msgstr "Opciones Adicionales"
 
 msgctxt "BainAncovaBayesian|"
-msgid "Seed"
-msgstr "Semilla"
-
-msgctxt "BainAncovaBayesian|"
 msgid "Model Constraints"
 msgstr "Restricciones del Modelo"
 
@@ -134,10 +130,6 @@ msgid "Additional Options"
 msgstr "Opciones Adicionales"
 
 msgctxt "BainAnovaBayesian|"
-msgid "Seed"
-msgstr "Semilla"
-
-msgctxt "BainAnovaBayesian|"
 msgid "Model Constraints"
 msgstr "Restricciones del Modelo"
 
@@ -196,10 +188,6 @@ msgstr "Probabilidades posteriores"
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Additional Options"
 msgstr "Opciones Adicionales"
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Seed"
-msgstr "Semilla"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Model Constraints"
@@ -270,10 +258,6 @@ msgstr "FB₁₀: Otro vs. Igual"
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Additional Options"
 msgstr "Opciones Adicionales"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Seed"
-msgstr "Semilla"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Tables"
@@ -348,10 +332,6 @@ msgid "Additional Options"
 msgstr "Opciones Adicionales"
 
 msgctxt "BainTTestBayesianOneSample|"
-msgid "Seed"
-msgstr "Semilla"
-
-msgctxt "BainTTestBayesianOneSample|"
 msgid "Tables"
 msgstr "Tablas"
 
@@ -420,10 +400,6 @@ msgid "Additional Options"
 msgstr "Opciones Adicionales"
 
 msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Seed"
-msgstr "Semilla"
-
-msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Tables"
 msgstr "Tablas"
 
@@ -446,18 +422,6 @@ msgstr "Probabilidades posteriores"
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Descriptives plots"
 msgstr "Gráficos descriptivos"
-
-msgctxt "BainAncovaBayesian|"
-msgid "Fraction"
-msgstr "Fracción"
-
-msgctxt "BainAnovaBayesian|"
-msgid "Fraction"
-msgstr "Fracción"
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Fraction"
-msgstr "Fracción"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Standardize coefficients"
@@ -516,14 +480,6 @@ msgid "Additional Options"
 msgstr "Opciones Adicionales"
 
 msgctxt "BainSemBayesian|"
-msgid "Seed"
-msgstr "Semilla"
-
-msgctxt "BainSemBayesian|"
-msgid "Fraction"
-msgstr "Fracción"
-
-msgctxt "BainSemBayesian|"
 msgid "Standardize coefficients"
 msgstr "Tipificar los coeficientes"
 
@@ -567,14 +523,12 @@ msgstr ""
 "enunciado de hipótesis, y sobre lo que se puede y no se puede hacer\n"
 "con los Modelos de Ecuaciones Estruturales de BAIN."
 
-msgctxt "BainTTestBayesianIndependentSamples|"
+#, fuzzy
+msgctxt "Fraction|"
 msgid "Fraction"
 msgstr "Fracción"
 
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Fraction"
-msgstr "Fracción"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Fraction"
-msgstr "Fracción"
+#, fuzzy
+msgctxt "Seed|"
+msgid "Seed"
+msgstr "Semilla"

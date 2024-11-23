@@ -66,10 +66,6 @@ msgid "Additional Options"
 msgstr "Aanvullende opties"
 
 msgctxt "BainAncovaBayesian|"
-msgid "Seed"
-msgstr "Toevalsgenerator beginwaarde"
-
-msgctxt "BainAncovaBayesian|"
 msgid "Model Constraints"
 msgstr "Modelbeperkingen"
 
@@ -133,10 +129,6 @@ msgid "Additional Options"
 msgstr "Aanvullende opties"
 
 msgctxt "BainAnovaBayesian|"
-msgid "Seed"
-msgstr "Toevalsgenerator beginwaarde"
-
-msgctxt "BainAnovaBayesian|"
 msgid "Model Constraints"
 msgstr "Modelbeperkingen"
 
@@ -194,10 +186,6 @@ msgstr "Posterior kansen"
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Additional Options"
 msgstr "Aanvullende opties"
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Seed"
-msgstr "Toevalsgenerator beginwaarde"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Model Constraints"
@@ -268,10 +256,6 @@ msgstr "BF₁₀: Anders vs. gelijk"
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Additional Options"
 msgstr "Aanvullende opties"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Seed"
-msgstr "Toevalsgenerator beginwaarde"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Tables"
@@ -346,10 +330,6 @@ msgid "Additional Options"
 msgstr "Aanvullende opties"
 
 msgctxt "BainTTestBayesianOneSample|"
-msgid "Seed"
-msgstr "Toevalsgenerator beginwaarde"
-
-msgctxt "BainTTestBayesianOneSample|"
 msgid "Tables"
 msgstr "Tabellen"
 
@@ -418,10 +398,6 @@ msgid "Additional Options"
 msgstr "Aanvullende opties"
 
 msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Seed"
-msgstr "Toevalsgenerator beginwaarde"
-
-msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Tables"
 msgstr "Tabellen"
 
@@ -444,18 +420,6 @@ msgstr "Posterior kansen"
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Descriptives plots"
 msgstr "Beschrijvende diagrammen"
-
-msgctxt "BainAncovaBayesian|"
-msgid "Fraction"
-msgstr "Fractie"
-
-msgctxt "BainAnovaBayesian|"
-msgid "Fraction"
-msgstr "Fractie"
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Fraction"
-msgstr "Fractie"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Standardize coefficients"
@@ -514,14 +478,6 @@ msgid "Additional Options"
 msgstr "Aanvullende Opties"
 
 msgctxt "BainSemBayesian|"
-msgid "Seed"
-msgstr "Toevalsgenerator beginwaarde"
-
-msgctxt "BainSemBayesian|"
-msgid "Fraction"
-msgstr "Fractie"
-
-msgctxt "BainSemBayesian|"
 msgid "Standardize coefficients"
 msgstr "Standaardiseer coëfficiënten"
 
@@ -565,14 +521,12 @@ msgstr ""
 "hypotheses en wat wel en niet kan\n"
 "met Bain Structurele Vergelijking Modellering."
 
-msgctxt "BainTTestBayesianIndependentSamples|"
+#, fuzzy
+msgctxt "Fraction|"
 msgid "Fraction"
 msgstr "Fractie"
 
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Fraction"
-msgstr "Fractie"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Fraction"
-msgstr "Fractie"
+#, fuzzy
+msgctxt "Seed|"
+msgid "Seed"
+msgstr "Toevalsgenerator beginwaarde"

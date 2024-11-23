@@ -66,10 +66,6 @@ msgid "Additional Options"
 msgstr "Weitere Optionen"
 
 msgctxt "BainAncovaBayesian|"
-msgid "Seed"
-msgstr "Startwert für Zufallszahlen"
-
-msgctxt "BainAncovaBayesian|"
 msgid "Model Constraints"
 msgstr "Modelbeperkingen"
 
@@ -134,10 +130,6 @@ msgid "Additional Options"
 msgstr "Weitere Optionen"
 
 msgctxt "BainAnovaBayesian|"
-msgid "Seed"
-msgstr "Startwert für Zufallszahlen"
-
-msgctxt "BainAnovaBayesian|"
 msgid "Model Constraints"
 msgstr "Modellbedingungen"
 
@@ -196,10 +188,6 @@ msgstr "Posterior-Wahrscheinlichkeiten"
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Additional Options"
 msgstr "Weitere Optionen"
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Seed"
-msgstr "Startwert für Zufallszahlen"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Model Constraints"
@@ -270,10 +258,6 @@ msgstr "BF₁₀: Anders vs. gleich"
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Additional Options"
 msgstr "Weitere Optionen"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Seed"
-msgstr "Startwert für Zufallszahlen"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Tables"
@@ -348,10 +332,6 @@ msgid "Additional Options"
 msgstr "Weitere Optionen"
 
 msgctxt "BainTTestBayesianOneSample|"
-msgid "Seed"
-msgstr "Startwert für Zufallszahlen"
-
-msgctxt "BainTTestBayesianOneSample|"
 msgid "Tables"
 msgstr "Tabellen"
 
@@ -420,10 +400,6 @@ msgid "Additional Options"
 msgstr "Weitere Optionen"
 
 msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Seed"
-msgstr "Startwert für Zufallszahlen"
-
-msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Tables"
 msgstr "Tabellen"
 
@@ -446,18 +422,6 @@ msgstr "Posterior-Wahrscheinlichkeiten"
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Descriptives plots"
 msgstr "Deskriptive Diagramme"
-
-msgctxt "BainAncovaBayesian|"
-msgid "Fraction"
-msgstr "Bruchteil"
-
-msgctxt "BainAnovaBayesian|"
-msgid "Fraction"
-msgstr "Bruchteil"
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Fraction"
-msgstr "Bruchteil"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Standardize coefficients"
@@ -516,14 +480,6 @@ msgid "Additional Options"
 msgstr "Weitere Optionen"
 
 msgctxt "BainSemBayesian|"
-msgid "Seed"
-msgstr "Startwert für Zufallszahlen"
-
-msgctxt "BainSemBayesian|"
-msgid "Fraction"
-msgstr "Bruchteil"
-
-msgctxt "BainSemBayesian|"
 msgid "Standardize coefficients"
 msgstr "Koeffizienten standardisieren"
 
@@ -567,14 +523,12 @@ msgstr ""
 "und was\n"
 "mit Bain Strukturgleichungsmodellierung möglich ist."
 
-msgctxt "BainTTestBayesianIndependentSamples|"
+#, fuzzy
+msgctxt "Fraction|"
 msgid "Fraction"
 msgstr "Bruchteil"
 
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Fraction"
-msgstr "Bruchteil"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Fraction"
-msgstr "Bruchteil"
+#, fuzzy
+msgctxt "Seed|"
+msgid "Seed"
+msgstr "Startwert für Zufallszahlen"

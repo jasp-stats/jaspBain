@@ -65,14 +65,6 @@ msgid "Additional Options"
 msgstr "Ek seçenekler"
 
 msgctxt "BainAncovaBayesian|"
-msgid "Seed"
-msgstr "Başlangıç sayısı"
-
-msgctxt "BainAncovaBayesian|"
-msgid "Fraction"
-msgstr "Kesir"
-
-msgctxt "BainAncovaBayesian|"
 msgid "Model Constraints"
 msgstr "Model Kısıtlamaları"
 
@@ -137,14 +129,6 @@ msgid "Additional Options"
 msgstr "Ek seçenekler"
 
 msgctxt "BainAnovaBayesian|"
-msgid "Seed"
-msgstr "Başlangıç sayısı"
-
-msgctxt "BainAnovaBayesian|"
-msgid "Fraction"
-msgstr "kesir"
-
-msgctxt "BainAnovaBayesian|"
 msgid "Model Constraints"
 msgstr "Model Kısıtlamaları"
 
@@ -205,15 +189,6 @@ msgstr "Sonraki olasılıklar"
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Additional Options"
 msgstr "Ek seçenekler"
-
-#, fuzzy
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Seed"
-msgstr "Başlangıç sayısı"
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Fraction"
-msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Standardize coefficients"
@@ -290,15 +265,6 @@ msgstr ""
 msgctxt "BainSemBayesian|"
 msgid "Additional Options"
 msgstr "Ek seçenekler"
-
-#, fuzzy
-msgctxt "BainSemBayesian|"
-msgid "Seed"
-msgstr "Başlangıç sayısı"
-
-msgctxt "BainSemBayesian|"
-msgid "Fraction"
-msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Standardize coefficients"
@@ -385,15 +351,6 @@ msgstr "Ek seçenekler"
 
 #, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Seed"
-msgstr "Başlangıç sayısı"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Fraction"
-msgstr ""
-
-#, fuzzy
-msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Tables"
 msgstr "Tablolar"
 
@@ -471,15 +428,6 @@ msgstr "Ek seçenekler"
 
 #, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
-msgid "Seed"
-msgstr "Başlangıç sayısı"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Fraction"
-msgstr ""
-
-#, fuzzy
-msgctxt "BainTTestBayesianOneSample|"
 msgid "Tables"
 msgstr "Tablolar"
 
@@ -553,15 +501,6 @@ msgstr "Ek seçenekler"
 
 #, fuzzy
 msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Seed"
-msgstr "Başlangıç sayısı"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Fraction"
-msgstr ""
-
-#, fuzzy
-msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Tables"
 msgstr "Tablolar"
 
@@ -587,3 +526,12 @@ msgstr "Sonraki olasılıklar"
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Descriptives plots"
 msgstr ""
+
+msgctxt "Fraction|"
+msgid "Fraction"
+msgstr ""
+
+#, fuzzy
+msgctxt "Seed|"
+msgid "Seed"
+msgstr "Başlangıç sayısı"

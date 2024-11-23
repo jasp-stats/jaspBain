@@ -65,14 +65,6 @@ msgid "Additional Options"
 msgstr "Options Supplémentaires"
 
 msgctxt "BainAncovaBayesian|"
-msgid "Seed"
-msgstr "Graine"
-
-msgctxt "BainAncovaBayesian|"
-msgid "Fraction"
-msgstr "Fraction"
-
-msgctxt "BainAncovaBayesian|"
 msgid "Model Constraints"
 msgstr ""
 
@@ -130,14 +122,6 @@ msgstr "Graphique descriptif"
 msgctxt "BainAnovaBayesian|"
 msgid "Additional Options"
 msgstr "Options Supplémentaires"
-
-msgctxt "BainAnovaBayesian|"
-msgid "Seed"
-msgstr "Graine"
-
-msgctxt "BainAnovaBayesian|"
-msgid "Fraction"
-msgstr "Fraction"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Model Constraints"
@@ -198,16 +182,6 @@ msgstr "Probabilités posterieures"
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Additional Options"
 msgstr "Options Supplémentaires"
-
-#, fuzzy
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Seed"
-msgstr "Graine"
-
-#, fuzzy
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Fraction"
-msgstr "Fraction"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Standardize coefficients"
@@ -283,16 +257,6 @@ msgstr ""
 msgctxt "BainSemBayesian|"
 msgid "Additional Options"
 msgstr "Options Supplémentaires"
-
-#, fuzzy
-msgctxt "BainSemBayesian|"
-msgid "Seed"
-msgstr "Graine"
-
-#, fuzzy
-msgctxt "BainSemBayesian|"
-msgid "Fraction"
-msgstr "Fraction"
 
 msgctxt "BainSemBayesian|"
 msgid "Standardize coefficients"
@@ -379,16 +343,6 @@ msgstr "Options Supplémentaires"
 
 #, fuzzy
 msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Seed"
-msgstr "Graine"
-
-#, fuzzy
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Fraction"
-msgstr "Fraction"
-
-#, fuzzy
-msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Tables"
 msgstr "Tableaux"
 
@@ -467,16 +421,6 @@ msgstr "Options Supplémentaires"
 
 #, fuzzy
 msgctxt "BainTTestBayesianOneSample|"
-msgid "Seed"
-msgstr "Graine"
-
-#, fuzzy
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Fraction"
-msgstr "Fraction"
-
-#, fuzzy
-msgctxt "BainTTestBayesianOneSample|"
 msgid "Tables"
 msgstr "Tableaux"
 
@@ -551,16 +495,6 @@ msgstr "Options Supplémentaires"
 
 #, fuzzy
 msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Seed"
-msgstr "Graine"
-
-#, fuzzy
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Fraction"
-msgstr "Fraction"
-
-#, fuzzy
-msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Tables"
 msgstr "Tableaux"
 
@@ -587,3 +521,13 @@ msgstr "Probabilités posterieures"
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Descriptives plots"
 msgstr ""
+
+#, fuzzy
+msgctxt "Fraction|"
+msgid "Fraction"
+msgstr "Fraction"
+
+#, fuzzy
+msgctxt "Seed|"
+msgid "Seed"
+msgstr "Graine"
