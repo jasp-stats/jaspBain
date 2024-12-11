@@ -35,7 +35,7 @@
     },
     "Hmisc": {
       "Package": "Hmisc",
-      "Version": "5.2-0",
+      "Version": "5.2-1",
       "Source": "Repository",
       "Requirements": [
         "R",
@@ -145,7 +145,7 @@
     },
     "RcppArmadillo": {
       "Package": "RcppArmadillo",
-      "Version": "14.2.0-1",
+      "Version": "14.2.2-1",
       "Source": "Repository",
       "Requirements": [
         "R",
@@ -242,7 +242,7 @@
     },
     "admisc": {
       "Package": "admisc",
-      "Version": "0.36",
+      "Version": "0.37",
       "Source": "Repository",
       "Requirements": [
         "R",
@@ -477,7 +477,7 @@
     },
     "cpp11": {
       "Package": "cpp11",
-      "Version": "0.5.0",
+      "Version": "0.5.1",
       "Source": "Repository",
       "Requirements": [
         "R"
@@ -503,7 +503,7 @@
     },
     "data.table": {
       "Package": "data.table",
-      "Version": "1.16.2",
+      "Version": "1.16.4",
       "Source": "Repository",
       "Requirements": [
         "R",
@@ -865,7 +865,7 @@
     },
     "igraph": {
       "Package": "igraph",
-      "Version": "2.1.1",
+      "Version": "2.1.2",
       "Source": "Repository",
       "Requirements": [
         "methods",
@@ -926,7 +926,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspBase",
-      "RemoteSha": "67652e03f135b8d9b7c42e353a0fe02b9fea0929"
+      "RemoteSha": "e1c6dab867c820187bec60b941b1e3c6dc2834d9"
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",
@@ -949,7 +949,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspGraphs",
-      "RemoteSha": "797e38a84746e9aa0f456439b8f00f756164d82c"
+      "RemoteSha": "c73a76cd55a7f15ccbace1f7eb3b04a5209197ee"
     },
     "jaspSem": {
       "Package": "jaspSem",
@@ -974,7 +974,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspSem",
-      "RemoteSha": "597ab9162e96a56a688d0428560f9dde2a36e4df"
+      "RemoteSha": "e4bfbfea1f8e2d9727e52fe6a05383fb593b6bde"
     },
     "jpeg": {
       "Package": "jpeg",
@@ -1325,7 +1325,7 @@
     },
     "parallelly": {
       "Package": "parallelly",
-      "Version": "1.39.0",
+      "Version": "1.40.1",
       "Source": "Repository",
       "Requirements": [
         "parallel",
@@ -1427,7 +1427,7 @@
     },
     "progressr": {
       "Package": "progressr",
-      "Version": "0.15.0",
+      "Version": "0.15.1",
       "Source": "Repository",
       "Requirements": [
         "R",
@@ -1816,7 +1816,7 @@
     },
     "textshaping": {
       "Package": "textshaping",
-      "Version": "0.4.0",
+      "Version": "0.4.1",
       "Source": "Repository",
       "Requirements": [
         "R",
