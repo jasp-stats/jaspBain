@@ -2,226 +2,302 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspBain 0.19.2\n"
 "POT-Creation-Date: 2024-10-19 03:29\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-01-06 12:24+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/jasp/jaspbain-r/ta/"
+">\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 msgid "Bain does not accept factor levels that contain spaces. Please remove the spaces from your factor levels to continue."
 msgstr ""
+"இடைவெளிகளைக் கொண்ட காரணி நிலைகளை பெயின் ஏற்கவில்லை. தொடர உங்கள் காரணி மட்டங்களிலிருந்து"
+" இடைவெளிகளை அகற்றவும்."
 
 msgid "An error occurred in the call to lavaan: %1$s. Please double check if the variables in lavaan syntax match the variables in your data set."
 msgstr ""
+"லாவானுக்கான அழைப்பில் பிழை ஏற்பட்டது: %1$s. லாவான் தொடரியல் மாறிகள் உங்கள் தரவு "
+"தொகுப்பில் உள்ள மாறிகளுடன் பொருந்துமா என்பதை இருமுறை சரிபார்க்கவும்."
 
 msgid "An error occurred in the analysis: Lavaan could not compute the standard errors because the information matrix could not be inverted. This may be a symptom that the model is not identified."
 msgstr ""
+"பகுப்பாய்வில் ஒரு பிழை ஏற்பட்டது: லாவான் நிலையான பிழைகளை கணக்கிட முடியவில்லை, ஏனெனில் "
+"செய்தி மேட்ரிக்சை தலைகீழாக மாற்ற முடியாது. இது மாதிரி அடையாளம் காணப்படாத அறிகுறியாக "
+"இருக்கலாம்."
 
 msgid "The fixed factor has too many levels for a Bain analysis."
-msgstr ""
+msgstr "நிலையான காரணி பெயின் பகுப்பாய்விற்கு பல நிலைகளைக் கொண்டுள்ளது."
 
 msgid "An error occurred in the analysis:<br>%1$s<br><br>Please double check if the variables in the 'Model Contraints' section match the variables in your data set."
 msgstr ""
+"பகுப்பாய்வில் ஒரு பிழை ஏற்பட்டது: <br>%1$s <br> <br> 'மாதிரி முரண்பாடுகள்' பிரிவில் "
+"உள்ள மாறிகள் உங்கள் தரவு தொகுப்பில் உள்ள மாறிகளுடன் பொருந்துமா என்பதை இருமுறை "
+"சரிபார்க்கவும்."
 
 msgid "Hypothesis"
-msgstr ""
+msgstr "கருதுகோள்"
 
 msgid "H%i"
-msgstr ""
+msgstr "H%i"
 
 msgid "H1"
-msgstr ""
+msgstr "எச் 1"
 
 msgid "Bain Independent Samples Welch's T-Test"
-msgstr ""
+msgstr "பெயின் சுயாதீன மாதிரிகள் வெல்ச்சின் டி-சோதனை"
 
 msgid "Bain Paired Samples T-Test"
-msgstr ""
+msgstr "பெயின் இணை மாதிரிகள் டி-சோதனை"
 
 msgid "Bain One Sample T-test"
-msgstr ""
+msgstr "பெயின் ஒரு மாதிரி டி-சோதனை"
 
 msgid "Bain ANOVA"
-msgstr ""
+msgstr "பெயின் அனோவா"
 
 msgid "Bain ANCOVA"
-msgstr ""
+msgstr "பெயின் அன்கோவா"
 
 msgid "Bain Linear Regression"
-msgstr ""
+msgstr "பெயின் நேரியல் பின்னடைவு"
 
 msgid "Bain Structural Equation Model"
-msgstr ""
+msgstr "பெயின் கட்டமைப்பு சமன்பாடு மாதிரி"
 
 msgid "BF"
-msgstr ""
+msgstr "பி.எஃப்"
 
 msgid "Posterior probability"
-msgstr ""
+msgstr "பின்புற நிகழ்தகவு"
 
 msgid "The alternative hypothesis H1 specifies that the mean is unequal to %s. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"மாற்று கருதுகோள் H1 சராசரி %s க்கு சமமற்றது என்பதைக் குறிப்பிடுகிறது. பின்புற "
+"நிகழ்தகவுகள் சமமான முன் நிகழ்தகவுகளை அடிப்படையாகக் கொண்டவை."
 
 msgid "The alternative hypothesis H1 specifies that the mean is bigger than %s. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"மாற்று கருதுகோள் H1 சராசரி %s ஐ விட பெரியது என்பதைக் குறிப்பிடுகிறது. பின்புற "
+"நிகழ்தகவுகள் சமமான முன் நிகழ்தகவுகளை அடிப்படையாகக் கொண்டவை."
 
 msgid "The alternative hypothesis H1 specifies that the mean is smaller than %s. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"மாற்று கருதுகோள் H1 சராசரி %s ஐ விட சிறியது என்பதைக் குறிப்பிடுகிறது. பின்புற "
+"நிகழ்தகவுகள் சமமான முன் நிகழ்தகவுகளை அடிப்படையாகக் கொண்டவை."
 
 msgid "The hypothesis H1 specifies that the mean is bigger than %1$s and the hypothesis H2 specifies that the mean is smaller than %1$s. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"H1 கருதுகோள் சராசரி %1$s ஐ விட பெரியது என்பதைக் குறிப்பிடுகிறது மற்றும் H2 கருதுகோள்"
+" சராசரி %1$s ஐ விட சிறியது என்பதைக் குறிப்பிடுகிறது. பின்புற நிகழ்தகவுகள் சமமான முன்"
+" நிகழ்தகவுகளை அடிப்படையாகக் கொண்டவை."
 
 msgid "The null hypothesis H0 with test value %1$s is tested against the other hypotheses. H1 states that the mean is bigger than %1$s and H2 states that the mean is smaller than %1$s. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"சோதனை மதிப்பு %1$s உடன் NULL கருதுகோள் மற்ற கருதுகோள்களுக்கு எதிராக சோதிக்கப்படுகிறது"
+". சராசரி %1$s ஐ விட பெரியது என்றும், H2 கூறுகிறது, சராசரி %1$s ஐ விட சிறியது "
+"என்று H2 கூறுகிறது. பின்புற நிகழ்தகவுகள் சமமான முன் நிகழ்தகவுகளை அடிப்படையாகக் "
+"கொண்டவை."
 
 msgid "The alternative hypothesis H1 specifies that the mean of group 1 is unequal to the mean of group 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"மாற்று கருதுகோள் H1 குழு 1 இன் சராசரி குழுவின் சராசரிக்கு சமமற்றது என்பதைக் "
+"குறிப்பிடுகிறது. பின்புற நிகழ்தகவுகள் சமமான முன் நிகழ்தகவுகளை அடிப்படையாகக் கொண்டவை."
 
 msgid "The alternative hypothesis H1 specifies that the mean of group 1 is smaller than the mean of group 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"மாற்று கருதுகோள் H1 குழு 1 இன் சராசரி குழுவின் சராசரியை விட சிறியது என்பதைக் "
+"குறிப்பிடுகிறது. பின்புற நிகழ்தகவுகள் சமமான முன் நிகழ்தகவுகளை அடிப்படையாகக் கொண்டவை."
 
 msgid "The alternative hypothesis H1 specifies that mean of group 1 is bigger than the mean of group 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"மாற்று கருதுகோள் H1 குழு 1 இன் சராசரி குழுவின் சராசரியை விட பெரியது என்பதைக் "
+"குறிப்பிடுகிறது. பின்புற நிகழ்தகவுகள் சமமான முன் நிகழ்தகவுகளை அடிப்படையாகக் கொண்டவை."
 
 msgid "The hypothesis H1 specifies that the mean of group 1 is bigger than the mean of group 2. The hypothesis H2 specifies that the mean in group 1 is smaller than the mean in group 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"குரூப் 1 இன் சராசரி குழுவின் சராசரியை விட பெரியது என்று H1 கருதுகிறது. குழு 1 இல் "
+"உள்ள சராசரி குழு 2 இல் உள்ள சராசரியை விட சிறியது என்று H2 கருதுகிறது. பின்புற "
+"நிகழ்தகவுகள் சமமான முன் நிகழ்தகவுகளை அடிப்படையாகக் கொண்டவை."
 
 msgid "The null hypothesis H0 (equal group means) is tested against H1 (first mean larger than second mean) and H2 (first mean smaller than second mean). The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"சுழிய கருதுகோள் H0 (சமமான குழு வழிமுறைகள்) H1 க்கு எதிராக சோதிக்கப்படுகிறது "
+"(முதலில் இரண்டாவது சராசரியை விட பெரியது) மற்றும் H2 (முதலில் இரண்டாவது சராசரியை வி"
+"ட சிறியது). பின்புற நிகழ்தகவுகள் சமமான முன் நிகழ்தகவுகளை அடிப்படையாகக் கொண்டவை."
 
 msgid "The alternative hypothesis H1 specifies that the mean of variable 1 is unequal to the mean of variable 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"மாற்று கருதுகோள் H1 மாறி 1 இன் சராசரி மாறியின் சராசரிக்கு சமமற்றது என்பதைக் "
+"குறிப்பிடுகிறது. பின்புற நிகழ்தகவுகள் சமமான முன் நிகழ்தகவுகளை அடிப்படையாகக் கொண்டவை."
 
 msgid "The alternative hypothesis H1 specifies that the mean of variable 1 is bigger than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"மாற்று கருதுகோள் H1 மாறி 1 இன் சராசரி மாறியின் சராசரியை விட பெரியது என்பதைக் "
+"குறிப்பிடுகிறது. பின்புற நிகழ்தகவுகள் சமமான முன் நிகழ்தகவுகளை அடிப்படையாகக் கொண்டவை."
 
 msgid "The alternative hypothesis H1 specifies that the mean of variable 1 is smaller than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"மாற்று கருதுகோள் H1 மாறி 1 இன் சராசரி மாறியின் சராசரியை விட சிறியது என்பதைக் "
+"குறிப்பிடுகிறது. பின்புற நிகழ்தகவுகள் சமமான முன் நிகழ்தகவுகளை அடிப்படையாகக் கொண்டவை."
 
 msgid "The hypothesis H1 specifies that the mean of variable 1 is bigger than the mean of variable 2, while the hypothesis H2 specifies that it is smaller. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"மாறி 1 இன் சராசரி மாறி 2 இன் சராசரியை விட பெரியது என்று H1 கருதுகோள் "
+"குறிப்பிடுகிறது, அதே நேரத்தில் H2 கருதுகோள் இது சிறியது என்பதைக் குறிப்பிடுகிறது. "
+"பின்புற நிகழ்தகவுகள் சமமான முன் நிகழ்தகவுகளை அடிப்படையாகக் கொண்டவை."
 
 msgid "The null hypothesis H0 with equal means is tested against the other hypotheses. The alternative hypothesis H1 states that the mean of variable 1 is bigger than the mean of variable 2. The alternative hypothesis H2 states that the mean of variable 1 is smaller than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"சமமான வழிமுறைகளைக் கொண்ட சுழிய கருதுகோள் மற்ற கருதுகோள்களுக்கு எதிராக "
+"சோதிக்கப்படுகிறது. மாற்று கருதுகோள் எச் 1 மாறி 1 இன் சராசரி மாறியின் சராசரியை விட "
+"பெரியது என்று கூறுகிறது. மாற்று கருதுகோள் எச் 2 மாறி 1 இன் சராசரி மாறியின் சராசரியை"
+" விட சிறியது என்று கூறுகிறது. பின்புற நிகழ்தகவுகள் சமமான முன் நிகழ்தகவுகளை "
+"அடிப்படையாகக் கொண்டவை."
 
 msgid "BF.u"
-msgstr ""
+msgstr "Bf.u"
 
 msgid "BF.c"
-msgstr ""
+msgstr "பி.எஃப்.சி."
 
 msgid "PMP a"
-msgstr ""
+msgstr "Pmp a"
 
 msgid "PMP b"
-msgstr ""
+msgstr "பி.எம்.பி ஆ"
 
 msgid "PMP c"
-msgstr ""
+msgstr "பி.எம்.பி சி"
 
 msgid "BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. \n                        BF.c denotes the Bayes factor of the hypothesis at hand versus its complement. \n                        PMPa contains the posterior model probabilities of the hypotheses specified. \n                        PMPb adds Hu, the unconstrained hypothesis. \n                        PMPc adds Hc, the complement of the union of the hypotheses specified. \n                        All PMPs are based on equal prior model probabilities."
 msgstr ""
+"Bf.U கருதுகோளின் பேயச் காரணியைக் குறிக்கிறது, இது கட்டுப்படுத்தப்படாத கருதுகோள் உ க்கு "
+"எதிராக கையில் உள்ளது.\n"
+" BF.C கருதுகோளின் பேயச் காரணியைக் குறிக்கிறது.\n"
+" PMPA குறிப்பிடப்பட்ட கருதுகோள்களின் பின்புற மாதிரி நிகழ்தகவுகளைக் கொண்டுள்ளது.\n"
+" PMPB கட்டுப்படுத்தப்படாத கருதுகோள் உ ஐ சேர்க்கிறது.\n"
+" பி.எம்.பி.சி எச்.சி., குறிப்பிடப்பட்ட கருதுகோள்களின் ஒன்றியத்தின் நிரப்புதல் ஆகியவற்றைச் "
+"சேர்க்கிறது.\n"
+" அனைத்து PMP களும் சமமான முன் மாதிரி நிகழ்தகவுகளை அடிப்படையாகக் கொண்டவை."
 
 msgid "Results not computed: %1$s."
-msgstr ""
+msgstr "முடிவுகள் கணக்கிடப்படவில்லை: %1$s."
 
 msgid "Variable contains missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"மாறி காணாமல் போன மதிப்புகளைக் கொண்டுள்ளது, இந்த மதிப்புகளைக் கொண்ட வரிசைகள் பகுப்பாய்வில் "
+"அகற்றப்படுகின்றன."
 
 msgid "H0: Equal"
-msgstr ""
+msgstr "H0: சமம்"
 
 msgid "H1: Not equal"
-msgstr ""
+msgstr "எச் 1: சமமாக இல்லை"
 
 msgid "H1: Bigger"
-msgstr ""
+msgstr "எச் 1: பெரியது"
 
 msgid "H1: Smaller"
-msgstr ""
+msgstr "எச் 1: சிறியது"
 
 msgid "H2: Smaller"
-msgstr ""
+msgstr "எச் 2: சிறியது"
 
 msgid "Results not computed: %s"
-msgstr ""
+msgstr "முடிவுகள் கணக்கிடப்படவில்லை: %s"
 
 msgid "Both variables contain missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"இரண்டு மாறிகள் காணாமல் போன மதிப்புகளைக் கொண்டுள்ளன, இந்த மதிப்புகளைக் கொண்ட வரிசைகள் "
+"பகுப்பாய்வில் அகற்றப்படுகின்றன."
 
 msgid "The variable %s contains missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"மாறி %s இல் காணாமல் போன மதிப்புகள் உள்ளன, இந்த மதிப்புகளைக் கொண்ட வரிசைகள் பகுப்பாய்வில் "
+"அகற்றப்படுகின்றன."
 
 msgid "Results not computed: The variables in this pair are the same."
-msgstr ""
+msgstr "முடிவுகள் கணக்கிடப்படவில்லை: இந்த சோடியில் உள்ள மாறிகள் ஒன்றே."
 
 msgid "Results not computed: The pair is incomplete."
-msgstr ""
+msgstr "முடிவுகள் கணக்கிடப்படவில்லை: இணை முழுமையடையாது."
 
 msgid "The variables %1$s contain missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"%1$s மாறிகள் காணாமல் போன மதிப்புகளைக் கொண்டுள்ளன, இந்த மதிப்புகளைக் கொண்ட வரிசைகள் "
+"பகுப்பாய்வில் அகற்றப்படுகின்றன."
 
 msgid "<b>Warning.</b>"
-msgstr ""
+msgstr "<b> எச்சரிக்கை. </b>"
 
 msgid "The variables %1$s and %2$s contain missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"%1$s மற்றும் %2$s மாறிகள் காணாமல் போன மதிப்புகளைக் கொண்டுள்ளன, இந்த மதிப்புகளைக் கொண்ட "
+"வரிசைகள் பகுப்பாய்வில் அகற்றப்படுகின்றன."
 
 msgid "The variable %1$s contains missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"மாறி %1$s காணாமல் போன மதிப்புகளைக் கொண்டுள்ளது, இந்த மதிப்புகளைக் கொண்ட வரிசைகள் "
+"பகுப்பாய்வில் அகற்றப்படுகின்றன."
 
 msgid "H%1$i"
-msgstr ""
+msgstr "எச்%1 $ i"
 
 msgid "Hu"
-msgstr ""
+msgstr "உ"
 
 msgid "Hc"
-msgstr ""
+msgstr "எச்.சி."
 
 msgid "<b>Warning</b>"
-msgstr ""
+msgstr "<b> எச்சரிக்கை </b>"
 
 msgid "The entered model constraints are incompatible with the data and therefore the computed results contain NaNs."
 msgstr ""
+"உள்ளிடப்பட்ட மாதிரி தடைகள் தரவுகளுடன் பொருந்தாது, எனவே கணக்கிடப்பட்ட முடிவுகளில் NANS "
+"உள்ளது."
 
 msgid "<b>Your hypotheses (almost) completely cover the parameter space. Therefore instead of PMPc, you should interpret PMPa.</b>"
 msgstr ""
+"<b> உங்கள் கருதுகோள்கள் (கிட்டத்தட்ட) அளவுரு இடத்தை முழுமையாக மறைக்கின்றன. எனவே PMPC "
+"க்கு பதிலாக, நீங்கள் PMPA ஐ விளக்க வேண்டும். </B>"
 
 msgid "Bayes Factor Matrix"
-msgstr ""
+msgstr "பேயச் காரணி மேட்ரிக்ச்"
 
 msgid "Coefficients for Groups plus Covariates"
-msgstr ""
+msgstr "குழுக்கள் மற்றும் கோவாரியட்டுகளுக்கான குணகங்கள்"
 
 msgid "Coefficients for Parameters"
-msgstr ""
+msgstr "அளவுருக்களுக்கான குணகங்கள்"
 
 msgid "Descriptive Statistics"
-msgstr ""
+msgstr "விளக்க புள்ளிவிவரங்கள்"
 
 msgid "Coefficient"
-msgstr ""
+msgstr "கெழு"
 
 msgid "Mean"
 msgstr ""
 
 msgid "%.0f%% Credible Interval"
-msgstr ""
+msgstr "%.0f %% நம்பகமான இடைவெளி"
 
 msgid "Group"
-msgstr ""
+msgstr "குழு"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "SD"
 msgstr ""
 
 msgid "SE"
-msgstr ""
+msgstr "உடன்"
 
 msgid "Lower"
 msgstr ""
@@ -230,61 +306,61 @@ msgid "Upper"
 msgstr ""
 
 msgid "The displayed coefficients are standardized."
-msgstr ""
+msgstr "காட்டப்படும் குணகங்கள் தரப்படுத்தப்பட்டவை."
 
 msgid "The displayed coefficients are unstandardized."
-msgstr ""
+msgstr "காட்டப்படும் குணகங்கள் நிலையற்றவை."
 
 msgid "The results for this variable were not computed."
-msgstr ""
+msgstr "இந்த மாறிக்கான முடிவுகள் கணக்கிடப்படவில்லை."
 
 msgid "Posterior Probabilities"
-msgstr ""
+msgstr "பின்புற நிகழ்தகவுகள்"
 
 msgid "Plotting not possible: the results for this variable were not computed."
-msgstr ""
+msgstr "சூழ்ச்சி செய்ய முடியாது: இந்த மாறிக்கான முடிவுகள் கணக்கிடப்படவில்லை."
 
 msgid "Plotting not possible: %1$s"
-msgstr ""
+msgstr "சூழ்ச்சி செய்ய முடியாது: %1$s"
 
 msgid "Plotting not possible: the results could not be computed."
-msgstr ""
+msgstr "சூழ்ச்சி செய்ய முடியாது: முடிவுகளை கணக்கிட முடியவில்லை."
 
 msgid "Descriptive Plots"
-msgstr ""
+msgstr "விளக்கக் கதைகள்"
 
 msgid "Descriptives Plot"
-msgstr ""
+msgstr "விளக்கங்கள் சூழ்ச்சி"
 
 msgid "Adjusted Means"
-msgstr ""
+msgstr "சரிசெய்யப்பட்ட வழிமுறைகள்"
 
 msgid "Difference"
-msgstr ""
+msgstr "வேறுபாடு"
 
 msgid "H0"
-msgstr ""
+msgstr "ம"
 
 msgid "H2"
-msgstr ""
+msgstr "எச் 2"
 
 msgid "H"
-msgstr ""
+msgstr "ம"
 
 msgid "Excluding Hu and Hc"
-msgstr ""
+msgstr "உ மற்றும் HC ஐத் தவிர"
 
 msgid "Including Hc"
-msgstr ""
+msgstr "எச்.சி உட்பட"
 
 msgid "Including Hu"
-msgstr ""
+msgstr "உ உட்பட"
 
 msgid "Path Diagram"
-msgstr ""
+msgstr "பாதை வரைபடம்"
 
 msgid "Group: %1$s"
-msgstr ""
+msgstr "குழு: %1$s"
 
 msgid "An error occurred while creating this plot:<br>%1$s."
-msgstr ""
+msgstr "இந்த சதித்திட்டத்தை உருவாக்கும் போது பிழை ஏற்பட்டது: <br>%1$s."
