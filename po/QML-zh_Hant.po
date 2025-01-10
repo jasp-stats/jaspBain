@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-01-09 19:00+0000\n"
+"PO-Revision-Date: 2025-01-11 03:29+0000\n"
 "Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspbain-qml/zh_Hant/>\n"
@@ -196,7 +196,7 @@ msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Model Options"
-msgstr "模式設定"
+msgstr "模型選項"
 
 msgctxt "BainSemBayesian|"
 msgid "Factor scaling"
