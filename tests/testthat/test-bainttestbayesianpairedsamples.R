@@ -16,7 +16,7 @@ options$hypothesis <- "equalBiggerSmaller"
 options$bayesFactorType <- "BF01"
 options$seed <- 100
 options$fraction <- 1
-options$pairs <- list(list("prenumb", "postnumb"))
+options$pairs <- list(c("prenumb", "postnumb"))
 set.seed(1)
 results <- jaspTools::runAnalysis("BainTTestBayesianPairedSamples", "sesame.csv", options)
 
@@ -62,7 +62,7 @@ test_that("Bain Paired Samples T-Test table results match", {
 	options$fraction <- 4
 	options$hypothesis <- "equalNotEqual"
 	options$bayesFactorType <- "BF01"
-	options$pairs <- list(list("postnumb", "prenumb"))
+	options$pairs <- list(c("postnumb", "prenumb"))
 	set.seed(1)
 	results <- jaspTools::runAnalysis("BainTTestBayesianPairedSamples", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
@@ -85,7 +85,7 @@ test_that("Bain Paired Samples T-Test table results match", {
 	options$fraction <- 4
 	options$hypothesis <- "equalBigger"
 	options$bayesFactorType <- "BF01"
-	options$pairs <- list(list("postnumb", "prenumb"))
+	options$pairs <- list(c("postnumb", "prenumb"))
 	set.seed(1)
 	results <- jaspTools::runAnalysis("BainTTestBayesianPairedSamples", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
@@ -108,7 +108,7 @@ test_that("Bain Paired Samples T-Test table results match", {
 	options$fraction <- 4
 	options$hypothesis <- "equalSmaller"
 	options$bayesFactorType <- "BF01"
-	options$pairs <- list(list("postnumb", "prenumb"))
+	options$pairs <- list(c("postnumb", "prenumb"))
 	set.seed(1)
 	results <- jaspTools::runAnalysis("BainTTestBayesianPairedSamples", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
@@ -131,7 +131,7 @@ test_that("Bain Paired Samples T-Test table results match", {
 	options$fraction <- 4
 	options$hypothesis <- "biggerSmaller"
 	options$bayesFactorType <- "BF01"
-	options$pairs <- list(list("postnumb", "prenumb"))
+	options$pairs <- list(c("postnumb", "prenumb"))
 	set.seed(1)
 	results <- jaspTools::runAnalysis("BainTTestBayesianPairedSamples", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
@@ -154,7 +154,7 @@ test_that("Bain Paired Samples T-Test table results match", {
 	options$fraction <- 4
 	options$hypothesis <- "equalBiggerSmaller"
 	options$bayesFactorType <- "BF01"
-	options$pairs <- list(list("postnumb", "prenumb"))
+	options$pairs <- list(c("postnumb", "prenumb"))
 	set.seed(1)
 	results <- jaspTools::runAnalysis("BainTTestBayesianPairedSamples", "sesame.csv", options)
 	table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
