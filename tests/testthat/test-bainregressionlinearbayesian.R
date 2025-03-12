@@ -11,7 +11,7 @@ context("Bain Linear Regression")
 
 options <- jaspTools::analysisOptions("BainRegressionLinearBayesian")
 options$dependent <- "age"
-options$covariates <- list("peabody", "prenumb", "postnumb", "funumb")
+options$covariates <- c("peabody", "prenumb", "postnumb", "funumb")
 options$bayesFactorMatrix <- TRUE
 options$descriptives <- TRUE
 options$bayesFactorPlot <- TRUE
@@ -77,7 +77,7 @@ test_that("Hypothesis Legend table results match", {
 
 options <- jaspTools::analysisOptions("BainRegressionLinearBayesian")
 options$dependent <- "postnumb"
-options$covariates <- list("prenumb", "funumb", "peabody")
+options$covariates <- c("prenumb", "funumb", "peabody")
 options$bayesFactorMatrix <- TRUE
 options$descriptives <- TRUE
 options$seed <- 900
@@ -132,7 +132,7 @@ test_that("Hypothesis Legend table results match", {
 
 options <- jaspTools::analysisOptions("BainRegressionLinearBayesian")
 options$dependent <- "postnumb"
-options$covariates <- list("prenumb", "funumb", "peabody")
+options$covariates <- c("prenumb", "funumb", "peabody")
 options$bayesFactorMatrix <- TRUE
 options$descriptives <- TRUE
 options$seed <- 900

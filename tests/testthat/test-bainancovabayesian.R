@@ -14,7 +14,7 @@ context("Bain ANCOVA")
 options <- jaspTools::analysisOptions("BainAncovaBayesian")
 options$dependent <- "age"
 options$fixedFactors <- "site"
-options$covariates <- list("peabody", "prenumb", "postnumb", "funumb")
+options$covariates <- c("peabody", "prenumb", "postnumb", "funumb")
 options$bayesFactorMatrix <- TRUE
 options$descriptives <- TRUE
 options$bayesFactorPlot <- TRUE
@@ -96,7 +96,7 @@ test_that("Hypothesis Legend table results match", {
 options <- jaspTools::analysisOptions("BainAncovaBayesian")
 options$dependent <- "postnumb"
 options$fixedFactors <- "site"
-options$covariates <- list("prenumb", "funumb")
+options$covariates <- c("prenumb", "funumb")
 options$bayesFactorMatrix <- TRUE
 options$descriptives <- TRUE
 options$seed <- 900
