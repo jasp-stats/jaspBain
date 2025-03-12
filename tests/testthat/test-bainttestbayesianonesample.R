@@ -9,7 +9,7 @@ context("Bain One Sample T-Test")
 # bainResult <- bain(tt,"x=51;x>51;x<51", fraction = 1)
 
 options <- jaspTools::analysisOptions("BainTTestBayesianOneSample")
-options$variables <- list("age")
+options$variables <- c("age")
 options$testValue <- 51
 options$descriptives <- TRUE
 options$bayesFactorPlot <- TRUE
@@ -59,7 +59,7 @@ test_that("age plot matches", {
 
 test_that("Bain One Sample T-test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianOneSample")
-	options$variables <- list("postnumb")
+	options$variables <- c("postnumb")
 	options$testValue <- 30
 	options$fraction <- 4
 	options$hypothesis <- "equalNotEqual"
@@ -83,7 +83,7 @@ test_that("Bain One Sample T-test table results match", {
 
 test_that("Bain One Sample T-test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianOneSample")
-	options$variables <- list("postnumb")
+	options$variables <- c("postnumb")
 	options$testValue <- 30
 	options$fraction <- 4
 	options$hypothesis <- "equalBigger"
@@ -107,7 +107,7 @@ test_that("Bain One Sample T-test table results match", {
 
 test_that("Bain One Sample T-test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianOneSample")
-	options$variables <- list("postnumb")
+	options$variables <- c("postnumb")
 	options$testValue <- 30
 	options$fraction <- 4
 	options$hypothesis <- "equalSmaller"
@@ -131,7 +131,7 @@ test_that("Bain One Sample T-test table results match", {
 
 test_that("Bain One Sample T-test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianOneSample")
-	options$variables <- list("postnumb")
+	options$variables <- c("postnumb")
 	options$testValue <- 30
 	options$fraction <- 4
 	options$hypothesis <- "biggerSmaller"
@@ -155,7 +155,7 @@ test_that("Bain One Sample T-test table results match", {
 
 test_that("Bain One Sample T-test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianOneSample")
-	options$variables <- list("postnumb")
+	options$variables <- c("postnumb")
 	options$testValue <- 30
 	options$fraction <- 4
 	options$hypothesis <- "equalBiggerSmaller"

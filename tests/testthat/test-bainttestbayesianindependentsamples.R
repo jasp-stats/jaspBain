@@ -11,7 +11,7 @@ context("Bain Independent Samples T-Test")
 # bainResult <- bain(tt,"x=y;x>y;x<y", fraction = 1)
 
 options <- jaspTools::analysisOptions("BainTTestBayesianIndependentSamples")
-options$variables <- list("age")
+options$variables <- c("age")
 options$groupingVariable <- "sex"
 options$descriptives <- TRUE
 options$bayesFactorPlot <- TRUE
@@ -63,7 +63,7 @@ test_that("age plot matches", {
 # bainResult <- bain(tt,"x=y",fraction = 4)
 
 options <- jaspTools::analysisOptions("BainTTestBayesianIndependentSamples")
-options$variables <- list("postnumb")
+options$variables <- c("postnumb")
 options$groupingVariable <- "sex"
 options$seed <- 900
 options$fraction <- 4
@@ -101,7 +101,7 @@ test_that("Bain Independent Samples Welch's T-Test table results match", {
 
 test_that("Bain Independent Samples Welch's T-Test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianIndependentSamples")
-	options$variables <- list("postnumb")
+	options$variables <- c("postnumb")
 	options$groupingVariable <- "sex"
 	options$seed <- 900
 	options$fraction <- 4
@@ -127,7 +127,7 @@ test_that("Bain Independent Samples Welch's T-Test table results match", {
 
 test_that("Bain Independent Samples Welch's T-Test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianIndependentSamples")
-	options$variables <- list("postnumb")
+	options$variables <- c("postnumb")
 	options$groupingVariable <- "sex"
 	options$seed <- 900
 	options$fraction <- 4
@@ -153,7 +153,7 @@ test_that("Bain Independent Samples Welch's T-Test table results match", {
 
 test_that("Bain Independent Samples Welch's T-Test table results match", {
 	options <- jaspTools::analysisOptions("BainTTestBayesianIndependentSamples")
-	options$variables <- list("postnumb")
+	options$variables <- c("postnumb")
 	options$groupingVariable <- "sex"
 	options$seed <- 900
 	options$fraction <- 4
