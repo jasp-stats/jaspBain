@@ -529,21 +529,21 @@
       table$addColumnInfo(name = "Variable", type = "string", title = "")
       table$addColumnInfo(name = "type[equal]", type = "string", title = gettext("Hypothesis"))
       table$addColumnInfo(name = "BF[equal]", type = "number", title = gettext("BF"))
-      table$addColumnInfo(name = "pmp[equal]", type = "number", format = "dp:3", title = gettext("Posterior probability"))
+      table$addColumnInfo(name = "pmp[equal]", type = "number", title = gettext("Posterior probability"))
       table$addColumnInfo(name = "type[greater]", type = "string", title = gettext("Hypothesis"))
       table$addColumnInfo(name = "BF[greater]", type = "number", title = gettext("BF"))
-      table$addColumnInfo(name = "pmp[greater]", type = "number", format = "dp:3", title = gettext("Posterior probability"))
+      table$addColumnInfo(name = "pmp[greater]", type = "number", title = gettext("Posterior probability"))
       table$addColumnInfo(name = "type[less]", type = "string", title = gettext("Hypothesis"))
       table$addColumnInfo(name = "BF[less]", type = "number", title = gettext("BF"))
-      table$addColumnInfo(name = "pmp[less]", type = "number", format = "dp:3", title = gettext("Posterior probability"))
+      table$addColumnInfo(name = "pmp[less]", type = "number", title = gettext("Posterior probability"))
     } else {
       table$addColumnInfo(name = "Variable", type = "string", title = "")
       table$addColumnInfo(name = "hypothesis[type1]", type = "string", title = gettext("Hypothesis"))
       table$addColumnInfo(name = "BF[type1]", type = "number", title = gettext("BF"))
-      table$addColumnInfo(name = "pmp[type1]", type = "number", format = "dp:3", title = gettext("Posterior probability"))
+      table$addColumnInfo(name = "pmp[type1]", type = "number", title = gettext("Posterior probability"))
       table$addColumnInfo(name = "hypothesis[type2]", type = "string", title = gettext("Hypothesis"))
       table$addColumnInfo(name = "BF[type2]", type = "number", title = gettext("BF"))
-      table$addColumnInfo(name = "pmp[type2]", type = "number", format = "dp:3", title = gettext("Posterior probability"))
+      table$addColumnInfo(name = "pmp[type2]", type = "number", title = gettext("Posterior probability"))
     }
     if (type == "onesampleTTest") {
       message <- switch(options[["hypothesis"]],
