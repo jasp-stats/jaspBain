@@ -1,0 +1,498 @@
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2025-05-07 18:07+0000\n"
+"Last-Translator: ChaeReen <cherish4@g.skku.edu>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/jasp/jaspbain-qml/"
+"ko/>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.12-dev\n"
+"X-Qt-Contexts: true\n"
+
+msgctxt "Description|"
+msgid "Bain"
+msgstr ""
+
+msgctxt "Description|"
+msgid ""
+"A module for computing approximated adjusted fractional Bayes factors for "
+"equality, inequality, and about equality constrained hypotheses."
+msgstr ""
+
+msgctxt "BainAncovaBayesian|"
+msgid "Dependent Variable"
+msgstr "독립변인"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Fixed Factors"
+msgstr ""
+
+msgctxt "BainAncovaBayesian|"
+msgid "Covariates"
+msgstr "공변량"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Tables"
+msgstr "표"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Bayes factor matrix"
+msgstr ""
+
+msgctxt "BainAncovaBayesian|"
+msgid "Coefficients"
+msgstr "계수"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Credible interval"
+msgstr "신용구간"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "BainAncovaBayesian|"
+msgid "Posterior probabilities"
+msgstr "사후확률"
+
+msgctxt "BainAncovaBayesian|"
+msgid "Adjusted means"
+msgstr ""
+
+msgctxt "BainAncovaBayesian|"
+msgid "Additional Options"
+msgstr ""
+
+msgctxt "BainAncovaBayesian|"
+msgid "Model Constraints"
+msgstr ""
+
+msgctxt "BainAncovaBayesian|"
+msgid ""
+"Place each hypothesis on a new line. For example:\n"
+"\n"
+"factorLow = factorMed = factorHigh\n"
+"factorLow < factorMed < factorHigh\n"
+"\n"
+"where factor is the factor name and Low/Med/High are the factor level "
+"names.\n"
+"Read the help file for further instructions."
+msgstr ""
+
+msgctxt "BainAnovaBayesian|"
+msgid "Dependent Variable"
+msgstr ""
+
+msgctxt "BainAnovaBayesian|"
+msgid "Fixed Factors"
+msgstr ""
+
+msgctxt "BainAnovaBayesian|"
+msgid "Tables"
+msgstr "표"
+
+msgctxt "BainAnovaBayesian|"
+msgid "Bayes factor matrix"
+msgstr ""
+
+msgctxt "BainAnovaBayesian|"
+msgid "Descriptives"
+msgstr "기술통계"
+
+msgctxt "BainAnovaBayesian|"
+msgid "Credible interval"
+msgstr "신용구간"
+
+msgctxt "BainAnovaBayesian|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "BainAnovaBayesian|"
+msgid "Posterior probabilities"
+msgstr "사후확률"
+
+msgctxt "BainAnovaBayesian|"
+msgid "Descriptives plot"
+msgstr ""
+
+msgctxt "BainAnovaBayesian|"
+msgid "Additional Options"
+msgstr ""
+
+msgctxt "BainAnovaBayesian|"
+msgid "Model Constraints"
+msgstr ""
+
+msgctxt "BainAnovaBayesian|"
+msgid ""
+"Place each hypothesis on a new line. For example:\n"
+"\n"
+"factorLow = factorMed = factorHigh\n"
+"factorLow < factorMed < factorHigh\n"
+"\n"
+"where factor is the factor name and Low/Med/High are the factor level "
+"names.\n"
+"Read the help file for further instructions."
+msgstr ""
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Dependent Variable"
+msgstr ""
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Covariates"
+msgstr "공변량"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Tables"
+msgstr "표"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Bayes factor matrix"
+msgstr ""
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Coefficients"
+msgstr "계수"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Credible interval"
+msgstr "신용구간"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Posterior probabilities"
+msgstr "사후확률"
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Additional Options"
+msgstr ""
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Model Constraints"
+msgstr ""
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid ""
+"Place each hypothesis on a new line. For example:\n"
+"\n"
+"age = length = weight\n"
+"age < length < weight,\n"
+"\n"
+"where age, length and weight are the names of the predictors.\n"
+"Read the help file for further instructions."
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Dependent Variables"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Grouping Variable"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Hypothesis Test"
+msgstr "가설검정"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Equal vs. not equal"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Equal vs. bigger"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Equal vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Bigger vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Equal vs. bigger vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Bayes Factor"
+msgstr "베이즈 인자"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "BF₀₁: Equal vs. other"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "BF₁₀: Other vs. equal"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Additional Options"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Tables"
+msgstr "표"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Descriptives"
+msgstr "기술통계"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Credible interval"
+msgstr "신용구간"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Posterior probabilities"
+msgstr "사후확률"
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Descriptives plots"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Variables"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Test value"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Hypothesis Test"
+msgstr "가설검정"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Equal vs. not equal"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Equal vs. bigger"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Equal vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Bigger vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Equal vs. bigger vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Bayes Factor"
+msgstr "베이즈 인자"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "BF₀₁: Equal vs. other"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "BF₁₀: Other vs. equal"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Additional Options"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Tables"
+msgstr "표"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Descriptives"
+msgstr "기술통계"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Credible interval"
+msgstr "신용구간"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Posterior probabilities"
+msgstr "사후확률"
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Descriptives plots"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Pairs"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Hypothesis Test"
+msgstr "가설검정"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Equal vs. not equal"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Equal vs. bigger"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Equal vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Bigger vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Equal vs. bigger vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Bayes Factor"
+msgstr "베이즈 인자"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "BF₀₁: Equal vs. other"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "BF₁₀: Other vs. equal"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Additional Options"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Tables"
+msgstr "표"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Descriptives"
+msgstr "기술통계"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Credible interval"
+msgstr "신용구간"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Posterior probabilities"
+msgstr "사후확률"
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Descriptives plots"
+msgstr ""
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Standardize coefficients"
+msgstr "표준화계수"
+
+msgctxt "BainSemBayesian|"
+msgid "Model Options"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Factor scaling"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Factor variance"
+msgstr "요인 분산"
+
+msgctxt "BainSemBayesian|"
+msgid "Factor loading"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Grouping variable"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Tables"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Coefficients"
+msgstr "계수"
+
+msgctxt "BainSemBayesian|"
+msgid "Credible interval"
+msgstr "신용구간"
+
+msgctxt "BainSemBayesian|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Path diagram"
+msgstr "경로도"
+
+msgctxt "BainSemBayesian|"
+msgid "Show parameter estimates"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Show legend"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Additional Options"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Standardize coefficients"
+msgstr "표준화 계수"
+
+msgctxt "BainSemBayesian|"
+msgid "Bayes factor matrix"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid "Posterior probabilities"
+msgstr "사후확률"
+
+msgctxt "BainSemBayesian|"
+msgid "Model Constraints"
+msgstr ""
+
+msgctxt "BainSemBayesian|"
+msgid ""
+"Hypotheses can be formulated using the parameter names that appear if the "
+"'Coefficients' box is ticked.\n"
+"Do NOT use spaces in the parameter names. Place each hypothesis on a new "
+"line. For example:\n"
+"\n"
+"A=~x1 = A=~x2 = A=~x3 = A=~x4\n"
+"A=~x1 > A=~x2 > A=~x3 = A=~x4\n"
+"A=~x1 > 0 & A=~x2 > 0 & A=~x3 > 0 & A=~x4 > 0\n"
+"\n"
+"Read the help file for further instructions about formulating hypotheses and "
+"what can and cannot be done\n"
+"with Bain Structural Equation Modeling."
+msgstr ""
+
+msgctxt "Fraction|"
+msgid "Fraction"
+msgstr ""
+
+msgctxt "Seed|"
+msgid "Seed"
+msgstr ""
