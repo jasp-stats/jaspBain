@@ -3,70 +3,67 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
-"X-Language: pl\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: br_FR\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
 msgid "Bain"
-msgstr "Bain"
+msgstr ""
 
 msgctxt "Description|"
 msgid ""
 "A module for computing approximated adjusted fractional Bayes factors for "
 "equality, inequality, and about equality constrained hypotheses."
 msgstr ""
-"Moduł do obliczania przybliżonych skorygowanych ułamkowych współczynników "
-"Bayesa dla równości, nierówności i hipotez ograniczonych równością."
 
 msgctxt "BainAncovaBayesian|"
 msgid "Dependent Variable"
-msgstr "Zmienna zależna"
+msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Fixed Factors"
-msgstr "Czynniki stałe"
+msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Covariates"
-msgstr "Współzmienne"
+msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Tables"
-msgstr "Tabele"
+msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Bayes factor matrix"
-msgstr "Macierz współczynników Bayesa"
+msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Coefficients"
-msgstr "Współczynniki"
+msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Credible interval"
-msgstr "Przedział wiarygodności"
+msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Plots"
-msgstr "Wykresy"
+msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Posterior probabilities"
-msgstr "Prawdopodobieństwo a posteriori"
+msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Adjusted means"
-msgstr "Skorygowane średnie"
+msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Additional Options"
-msgstr "Dodatkowe opcje"
+msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Model Constraints"
-msgstr "Ograniczenia modelu"
+msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid ""
@@ -79,58 +76,50 @@ msgid ""
 "names.\n"
 "Read the help file for further instructions."
 msgstr ""
-"Umieść każdą hipotezę w nowej linii. Na przykład:\n"
-"\n"
-"czynnikLow = czynnikMed = czynnikHigh\n"
-"czynnikLow < czynnikMed < czynnikHigh\n"
-"\n"
-"gdzie 'czynnik' jest nazwą czynnika a Low/Med/High to nazwy poziomów "
-"czynnika.\n"
-"Sprawdź plik pomocy, aby uzyskać więcej informacji."
 
 msgctxt "BainAnovaBayesian|"
 msgid "Dependent Variable"
-msgstr "Zmienna zależna"
+msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Fixed Factors"
-msgstr "Czynniki stałe"
+msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Tables"
-msgstr "Tabele"
+msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Bayes factor matrix"
-msgstr "Macierz współczynników Bayesa"
+msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Descriptives"
-msgstr "Statystyki opisowe"
+msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Credible interval"
-msgstr "Przedział wiarygodności"
+msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Plots"
-msgstr "Wykresy"
+msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Posterior probabilities"
-msgstr "Prawdopodobieństwo a posteriori"
+msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Descriptives plot"
-msgstr "Wykresy opisowe"
+msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Additional Options"
-msgstr "Dodatkowe opcje"
+msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Model Constraints"
-msgstr "Ograniczenia modelu"
+msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid ""
@@ -143,54 +132,50 @@ msgid ""
 "names.\n"
 "Read the help file for further instructions."
 msgstr ""
-"Umieść każdą hipotezę w nowej linii. Na przykład:\n"
-"\n"
-"czynnikLow = czynnikMed = czynnikHigh\n"
-"czynnikLow < czynnikMed < czynnikHigh\n"
-"\n"
-"gdzie 'czynnik' jest nazwą czynnika a Low/Med/High to nazwy poziomów "
-"czynnika.\n"
-"Sprawdź plik pomocy, aby uzyskać więcej informacji."
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Dependent Variable"
-msgstr "Zmienna zależna"
+msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Covariates"
-msgstr "Współzmienne"
+msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Tables"
-msgstr "Tabele"
+msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Bayes factor matrix"
-msgstr "Macierz współczynników Bayesa"
+msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Coefficients"
-msgstr "Współczynniki"
+msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Credible interval"
-msgstr "Przedział wiarygodności"
+msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Plots"
-msgstr "Wykresy"
+msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Posterior probabilities"
-msgstr "Prawdopodobieństwo a posteriori"
+msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Additional Options"
-msgstr "Dodatkowe opcje"
+msgstr ""
+
+msgctxt "BainRegressionLinearBayesian|"
+msgid "Standardize coefficients"
+msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Model Constraints"
-msgstr "Ograniczenia modelu"
+msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid ""
@@ -202,297 +187,74 @@ msgid ""
 "where age, length and weight are the names of the predictors.\n"
 "Read the help file for further instructions."
 msgstr ""
-"Umieść każdą hipotezę w nowej linii. Na przykład:\n"
-"\n"
-"wiek = długość = waga\n"
-"wiek < długość < waga\n"
-"\n"
-"gdzie 'wiek, długość i waga' są nazwami predyktorów.\n"
-"Sprawdź plik pomocy, aby uzyskać więcej informacji."
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Dependent Variables"
-msgstr "Zmienne zależne"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Grouping Variable"
-msgstr "Zmienna grupująca"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Hypothesis Test"
-msgstr "Weryfikacja hipotezy"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Equal vs. not equal"
-msgstr "Równe vs. nierówne"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Equal vs. bigger"
-msgstr "Równe vs. większe"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Equal vs. smaller"
-msgstr "Równe vs. mniejsze"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Bigger vs. smaller"
-msgstr "Większe vs. mniejsze"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Equal vs. bigger vs. smaller"
-msgstr "Równe vs. większe vs. mniejsze"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Bayes Factor"
-msgstr "Współczynnik Bayesa"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "BF₀₁: Equal vs. other"
-msgstr "BF₀₁: Równe vs. inne"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "BF₁₀: Other vs. equal"
-msgstr "BF₁₀: Inne vs. równe"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Additional Options"
-msgstr "Dodatkowe opcje"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Tables"
-msgstr "Tabele"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Descriptives"
-msgstr "Statystyki opisowe"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Credible interval"
-msgstr "Przedział wiarygodności"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Plots"
-msgstr "Wykresy"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Posterior probabilities"
-msgstr "Prawdopodobieństwo a posteriori"
-
-msgctxt "BainTTestBayesianIndependentSamples|"
-msgid "Descriptives plots"
-msgstr "Wykresy opisowe"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Variables"
-msgstr "Zmienne"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Test value"
-msgstr "Wartość testowana"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Hypothesis Test"
-msgstr "Weryfikacja hipotezy"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Equal vs. not equal"
-msgstr "Równe vs. nierówne"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Equal vs. bigger"
-msgstr "Równe vs. większe"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Equal vs. smaller"
-msgstr "Równe vs. mniejsze"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Bigger vs. smaller"
-msgstr "Większe vs. mniejsze"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Equal vs. bigger vs. smaller"
-msgstr "Równe vs. większe vs. mniejsze"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Bayes Factor"
-msgstr "Współczynnik Bayesa"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "BF₀₁: Equal vs. other"
-msgstr "BF₀₁: Równe vs. inne"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "BF₁₀: Other vs. equal"
-msgstr "BF₁₀: Inne vs. równe"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Additional Options"
-msgstr "Dodatkowe opcje"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Tables"
-msgstr "Tabele"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Descriptives"
-msgstr "Statystyki opisowe"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Credible interval"
-msgstr "Przedział wiarygodności"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Plots"
-msgstr "Wykresy"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Posterior probabilities"
-msgstr "Prawdopodobieństwo a posteriori"
-
-msgctxt "BainTTestBayesianOneSample|"
-msgid "Descriptives plots"
-msgstr "Wykresy opisowe"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Pairs"
-msgstr "Pary"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Hypothesis Test"
-msgstr "Weryfikacja hipotezy"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Equal vs. not equal"
-msgstr "Równe vs. nierówne"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Equal vs. bigger"
-msgstr "Równe vs. większe"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Equal vs. smaller"
-msgstr "Równe vs. mniejsze"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Bigger vs. smaller"
-msgstr "Większe vs. mniejsze"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Equal vs. bigger vs. smaller"
-msgstr "Równe vs. większe vs. mniejsze"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Bayes Factor"
-msgstr "Współczynnik Bayesa"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "BF₀₁: Equal vs. other"
-msgstr "BF₀₁: Równe vs. inne"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "BF₁₀: Other vs. equal"
-msgstr "BF₁₀: Inne vs. równe"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Additional Options"
-msgstr "Dodatkowe opcje"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Tables"
-msgstr "Tabele"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Descriptives"
-msgstr "Statystyki opisowe"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Credible interval"
-msgstr "Przedział wiarygodności"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Plots"
-msgstr "Wykresy"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Posterior probabilities"
-msgstr "Prawdopodobieństwa a posteriori"
-
-msgctxt "BainTTestBayesianPairedSamples|"
-msgid "Descriptives plots"
-msgstr "Wykresy opisowe"
-
-msgctxt "BainRegressionLinearBayesian|"
-msgid "Standardize coefficients"
-msgstr "Standaryzuj współczynniki"
 
 msgctxt "BainSemBayesian|"
 msgid "Model Options"
-msgstr "Opcje modelu"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Factor scaling"
-msgstr "Skalowanie czynników"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Factor variance"
-msgstr "Wariancja czynnika"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Factor loading"
-msgstr "Ładunki czynnikowe"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Grouping variable"
-msgstr "Zmienna grupująca"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Tables"
-msgstr "Tabele"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Coefficients"
-msgstr "Współczyniki"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Credible interval"
-msgstr "Przedział wiarygodności"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Plots"
-msgstr "Wykresy"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Path diagram"
-msgstr "Diagram ścieżkowy"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Show parameter estimates"
-msgstr "Pokaż oszacowania parametrów"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Show legend"
-msgstr "Pokaż legendę"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Additional Options"
-msgstr "Dodatkowe opcje"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Standardize coefficients"
-msgstr "Standaryzuj współczynniki"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Bayes factor matrix"
-msgstr "Macierz współczynników Bayesa"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Posterior probabilities"
-msgstr "Prawdopodobieństwa a posteriori"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Model Constraints"
-msgstr "Ograniczenia modelu"
+msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid ""
@@ -509,23 +271,223 @@ msgid ""
 "what can and cannot be done\n"
 "with Bain Structural Equation Modeling."
 msgstr ""
-"Hipotezy można formułować używając nazw parametrów, które pojawiają się, "
-"jeśli pole 'Współczynniki' zostało zaznaczone.\n"
-"NIE należy używać spacji w nazwach parametrów. Każdą hipotezę należy "
-"umieścić w nowej linii. Na przykład:\n"
-"\n"
-"A=~x1 = A=~x2 = A=~x3 = A=~x4\n"
-"A=~x1 > A=~x2 > A=~x3 = A=~x4\n"
-"A=~x1 > 0 & A=~x2 > 0 & A=~x3 > 0 & A=~x4 > 0\n"
-"\n"
-"W pliku pomocy można znaleźć dalsze instrukcje dotyczące formułowania "
-"hipotez i informacji na temat tego, co można i czego nie można robić\n"
-"w tym module."
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Dependent Variables"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Grouping Variable"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Hypothesis Test"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Equal vs. not equal"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Equal vs. bigger"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Equal vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Bigger vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Equal vs. bigger vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Bayes Factor"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "BF₀₁: Equal vs. other"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "BF₁₀: Other vs. equal"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Additional Options"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Tables"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Descriptives"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Credible interval"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Posterior probabilities"
+msgstr ""
+
+msgctxt "BainTTestBayesianIndependentSamples|"
+msgid "Descriptives plots"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Variables"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Test value"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Hypothesis Test"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Equal vs. not equal"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Equal vs. bigger"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Equal vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Bigger vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Equal vs. bigger vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Bayes Factor"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "BF₀₁: Equal vs. other"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "BF₁₀: Other vs. equal"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Additional Options"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Tables"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Descriptives"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Credible interval"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Posterior probabilities"
+msgstr ""
+
+msgctxt "BainTTestBayesianOneSample|"
+msgid "Descriptives plots"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Pairs"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Hypothesis Test"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Equal vs. not equal"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Equal vs. bigger"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Equal vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Bigger vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Equal vs. bigger vs. smaller"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Bayes Factor"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "BF₀₁: Equal vs. other"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "BF₁₀: Other vs. equal"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Additional Options"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Tables"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Descriptives"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Credible interval"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Posterior probabilities"
+msgstr ""
+
+msgctxt "BainTTestBayesianPairedSamples|"
+msgid "Descriptives plots"
+msgstr ""
 
 msgctxt "Fraction|"
 msgid "Fraction"
-msgstr "Frakcja"
+msgstr ""
 
 msgctxt "Seed|"
 msgid "Seed"
-msgstr "Ziarno generatora"
+msgstr ""
