@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013-2024 University of Amsterdam
+# Copyright (C) 2013-2025 University of Amsterdam
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,14 +15,16 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-# This is a generated file. Don't change it
+# This is a generated file. Don't change it!
 
+#' Regression
+#'
 BainRegressionLinearBayesian <- function(
           data = NULL,
-          version = "0.19.2",
+          version = "0.95",
           bayesFactorMatrix = FALSE,
           bayesFactorPlot = FALSE,
-          covariates = list(types = list(), value = NULL),
+          covariates = list(types = list(), value = list()),
           credibleInterval = 0.95,
           dependent = list(types = list(), value = ""),
           descriptives = FALSE,
@@ -30,7 +32,7 @@ BainRegressionLinearBayesian <- function(
           model = "",
           plotHeight = 320,
           plotWidth = 480,
-          seed = 100,
+          seed = 720807,
           standardized = FALSE) {
 
    defaultArgCalls <- formals(jaspBain::BainRegressionLinearBayesian)
@@ -42,9 +44,14 @@ BainRegressionLinearBayesian <- function(
    options[["data"]] <- NULL
    options[["version"]] <- NULL
 
+
+   if (!jaspBase::jaspResultsCalledFromJasp() && !is.null(data)) {
+      jaspBase::storeDataSet(data)
+   }
+
    optionsWithFormula <- c("covariates", "dependent", "model")
    for (name in optionsWithFormula) {
       if ((name %in% optionsWithFormula) && inherits(options[[name]], "formula")) options[[name]] = jaspBase::jaspFormula(options[[name]], data)   }
 
-   return(jaspBase::runWrappedAnalysis("jaspBain::BainRegressionLinearBayesian", data, options, version))
+   return(jaspBase::runWrappedAnalysis("jaspBain", "BainRegressionLinearBayesian", "BainRegressionLinearBayesian.qml", options, version, TRUE))
 }

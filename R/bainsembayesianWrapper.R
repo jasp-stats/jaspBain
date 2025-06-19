@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013-2024 University of Amsterdam
+# Copyright (C) 2013-2025 University of Amsterdam
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,11 +15,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-# This is a generated file. Don't change it
+# This is a generated file. Don't change it!
 
+#' Bain Structural Equation Modeling
+#'
 BainSemBayesian <- function(
           data = NULL,
-          version = "0.19.2",
+          version = "0.95",
           bayesFactorMatrix = FALSE,
           bayesFactorPlot = FALSE,
           credibleInterval = 0.95,
@@ -33,7 +35,7 @@ BainSemBayesian <- function(
           pathDiagramLegend = FALSE,
           plotHeight = 320,
           plotWidth = 480,
-          seed = 100,
+          seed = 346177,
           standardized = FALSE,
           syntax = list(columns = list(), model = "", modelOriginal = "")) {
 
@@ -46,9 +48,14 @@ BainSemBayesian <- function(
    options[["data"]] <- NULL
    options[["version"]] <- NULL
 
+
+   if (!jaspBase::jaspResultsCalledFromJasp() && !is.null(data)) {
+      jaspBase::storeDataSet(data)
+   }
+
    optionsWithFormula <- c("factorStandardisation", "fixedFactors", "model", "syntax")
    for (name in optionsWithFormula) {
       if ((name %in% optionsWithFormula) && inherits(options[[name]], "formula")) options[[name]] = jaspBase::jaspFormula(options[[name]], data)   }
 
-   return(jaspBase::runWrappedAnalysis("jaspBain::BainSemBayesian", data, options, version))
+   return(jaspBase::runWrappedAnalysis("jaspBain", "BainSemBayesian", "BainSemBayesian.qml", options, version, FALSE))
 }
