@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2024-07-06 03:28\n"
-"PO-Revision-Date: 2025-08-04 22:02+0000\n"
+"PO-Revision-Date: 2025-08-06 02:01+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspbain-r/pt/>\n"
@@ -28,36 +28,45 @@ msgid ""
 "An error occurred in the call to lavaan: %1$s. Please double check if the "
 "variables in lavaan syntax match the variables in your data set."
 msgstr ""
+"Um erro ocorreu na chamada para lavaan: %1$s. Por favor, assegure-se de que "
+"as variáveis na sintaxe lavaan correspondem às variáveis em seu conjunto de "
+"dados."
 
 msgid ""
 "An error occurred in the analysis: Lavaan could not compute the standard "
 "errors because the information matrix could not be inverted. This may be a "
 "symptom that the model is not identified."
 msgstr ""
+"Um erro ocorreu na análise: o Lavaan não pode calcular os erros padrões "
+"porque a matriz de informação não pode ser invertida. Isso pode ser um "
+"sintoma de que o modelo não foi identificado."
 
 msgid "The fixed factor has too many levels for a Bain analysis."
-msgstr ""
+msgstr "O fator fixo tem níveis demais para uma análise de Bain."
 
 msgid ""
 "An error occurred in the analysis:<br>%1$s<br><br>Please double check if the "
 "variables in the 'Model Contraints' section match the variables in your data "
 "set."
 msgstr ""
+"Um erro ocorreu na análise:<br>%1$s<br><br>Por favor, assegure-se de que as "
+"variáveis na seção 'Restrições do Modelo' correspondam às variáveis em seu "
+"conjunto de dados."
 
 msgid "Hypothesis"
 msgstr "Hipótese"
 
 msgid "H%i"
-msgstr ""
+msgstr "H%i"
 
 msgid "H1"
-msgstr ""
+msgstr "H1"
 
 msgid "Bain Independent Samples Welch's T-Test"
-msgstr ""
+msgstr "Teste t de Welch para Amostras Independentes Bain"
 
 msgid "Bain Paired Samples T-Test"
-msgstr ""
+msgstr "Teste t de amostras pareadas Bain"
 
 msgid "Bain One Sample T-test"
 msgstr ""
@@ -68,9 +77,8 @@ msgstr ""
 msgid "Bain ANCOVA"
 msgstr ""
 
-#, fuzzy
 msgid "Bain Linear Regression"
-msgstr "Regressão"
+msgstr "Regressão Linear Bain"
 
 msgid "Bain Structural Equation Model"
 msgstr ""
@@ -78,9 +86,8 @@ msgstr ""
 msgid "BF"
 msgstr ""
 
-#, fuzzy
 msgid "Posterior probability"
-msgstr "Amostras posteriores"
+msgstr "Probabilidade a posteriori"
 
 msgid ""
 "The alternative hypothesis H1 specifies that the mean is unequal to %s. The "
@@ -284,9 +291,8 @@ msgid ""
 "instead of PMPc, you should interpret PMPa.</b>"
 msgstr ""
 
-#, fuzzy
 msgid "Bayes Factor Matrix"
-msgstr "Fator de Bayes"
+msgstr "Matriz do Fator de Bayes"
 
 msgid "Coefficients for Groups plus Covariates"
 msgstr ""
@@ -333,9 +339,8 @@ msgstr ""
 msgid "The results for this variable were not computed."
 msgstr ""
 
-#, fuzzy
 msgid "Posterior Probabilities"
-msgstr "Amostras posteriores"
+msgstr "Probabilidades Posteriores"
 
 msgid "Plotting not possible: the results for this variable were not computed."
 msgstr ""
@@ -346,9 +351,8 @@ msgstr ""
 msgid "Plotting not possible: the results could not be computed."
 msgstr ""
 
-#, fuzzy
 msgid "Descriptive Plots"
-msgstr "Diagramas Descritivos"
+msgstr "Gráficos Descritivos"
 
 msgid "Descriptives Plot"
 msgstr "Diagramas Descritivos"
@@ -356,9 +360,8 @@ msgstr "Diagramas Descritivos"
 msgid "Adjusted Means"
 msgstr ""
 
-#, fuzzy
 msgid "Difference"
-msgstr "Preferências sobre os dados"
+msgstr "Diferença"
 
 msgid "H0"
 msgstr ""
