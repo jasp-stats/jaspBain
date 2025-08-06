@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-08-06 02:02+0000\n"
+"PO-Revision-Date: 2025-08-06 07:43+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspbain-qml/pt/>\n"
@@ -60,7 +60,7 @@ msgstr "Opções Adicionais"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Model Constraints"
-msgstr ""
+msgstr "Restrições do Modelo"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Dependent Variable"
@@ -76,7 +76,7 @@ msgstr "Tabelas"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Bayes factor matrix"
-msgstr ""
+msgstr "Matriz dos fatores de Bayes"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Descriptives"
