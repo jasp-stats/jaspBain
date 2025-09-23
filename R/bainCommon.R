@@ -1306,7 +1306,7 @@
   plotData <- data.frame(x = labels, y = postProb)
   yBreaks <- cumsum(rev(postProb)) - rev(postProb) / 2
   p <- ggplot2::ggplot(data = plotData, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
-    ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
+    ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", linewidth = 1) +
     ggplot2::coord_polar(theta = "y", direction = -1) +
     ggplot2::scale_x_discrete(name = NULL) +
     ggplot2::scale_y_continuous(name = NULL, breaks = yBreaks, labels = rev(plotData[["x"]])) +
@@ -1336,7 +1336,7 @@
 
   if (numH > 1) {
     p1 <- ggplot2::ggplot(data = plotDataA, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
-      ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
+      ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", linewidth = 1) +
       ggplot2::coord_polar(theta = "y", direction = -1) +
       ggplot2::labs(title = gettext("Excluding Hu and Hc"), size = 30) +
       ggplot2::scale_x_discrete(name = NULL) +
@@ -1348,7 +1348,7 @@
   }
 
   p2 <- ggplot2::ggplot(data = plotDataB, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
-    ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
+    ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", linewidth = 1) +
     ggplot2::coord_polar(theta = "y", direction = -1) +
     ggplot2::scale_x_discrete(name = NULL) +
     ggplot2::scale_y_continuous(name = NULL, breaks = yBreaksB, labels = yLabelsB) +
@@ -1360,7 +1360,7 @@
   if (!is.na(complexity) && complexity >= .05) {
     plotDataC <- data.frame(x = c(labels, gettext("Hc")), y = postProbC)
     p3 <- ggplot2::ggplot(data = plotDataC, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
-      ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", size = 1) +
+      ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", linewidth = 1) +
       ggplot2::geom_col() +
       ggplot2::coord_polar(theta = "y", direction = -1) +
       ggplot2::labs(title = gettext("Including Hc"), size = 30) +
