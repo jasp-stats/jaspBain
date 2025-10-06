@@ -1338,7 +1338,7 @@
     p1 <- ggplot2::ggplot(data = plotDataA, mapping = ggplot2::aes(x = "", y = y, fill = x)) +
       ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", linewidth = 1) +
       ggplot2::coord_polar(theta = "y", direction = -1) +
-      ggplot2::labs(title = gettext("Excluding Hu and Hc"), size = 30) +
+      ggplot2::labs(title = gettext("Excluding Hu and Hc")) +
       ggplot2::scale_x_discrete(name = NULL) +
       ggplot2::scale_y_continuous(name = NULL, breaks = yBreaksA, labels = yLabelsA) +
       ggplot2::scale_fill_brewer(palette = "Set1") +
@@ -1363,7 +1363,7 @@
       ggplot2::geom_bar(stat = "identity", width = 1e10, color = "black", linewidth = 1) +
       ggplot2::geom_col() +
       ggplot2::coord_polar(theta = "y", direction = -1) +
-      ggplot2::labs(title = gettext("Including Hc"), size = 30) +
+      ggplot2::labs(title = gettext("Including Hc")) +
       ggplot2::scale_x_discrete(name = NULL) +
       ggplot2::scale_y_continuous(name = NULL, breaks = yBreaksC, labels = yLabelsC) +
       ggplot2::scale_fill_brewer(palette = "Set1") +
@@ -1373,7 +1373,7 @@
   }
 
   if (!is.null(plotMat[["p1"]]) || !is.null(plotMat[["p3"]])) {
-    plotMat[["p2"]] <- plotMat[["p2"]] + ggplot2::labs(title = gettext("Including Hu"), size = 30)
+    plotMat[["p2"]] <- plotMat[["p2"]] + ggplot2::labs(title = gettext("Including Hu"))
   }
 
   p <- jaspGraphs::ggMatrixPlot(plotList = plotMat, layout = matrix(c(seq_along(plotMat)), nrow = 1))
