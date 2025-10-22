@@ -3,18 +3,10 @@ import JASP.Module
 
 Description
 {
-	name			: "jaspBain"
 	title			: qsTr("Bain")
 	description		: qsTr("A module for computing approximated adjusted fractional Bayes factors for equality, inequality, and about equality constrained hypotheses.")
-	icon			: "bain-module"
-	requiresData	: true
-	version			: "0.95.0"
-	author			: "Herbert Hoijtink, Joris Mulder & Xin Gu"
-	maintainer		: "Koen Derks <k.derks@nyenrode.nl>"
-	website			: "www.informative-hypotheses.sites.uu.nl/software/bain/"
-	license			: "GPL (>= 3)"
+	icon			: "bain-module"	
 	hasWrappers		: true
-	preloadData		: true
 
 	GroupTitle
 	{
