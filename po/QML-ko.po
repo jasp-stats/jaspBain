@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-11-10 16:26+0000\n"
+"PO-Revision-Date: 2025-11-11 02:51+0000\n"
 "Last-Translator: ChaeReen <cherish4@g.skku.edu>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/jasp/jaspbain-qml/"
 "ko/>\n"
