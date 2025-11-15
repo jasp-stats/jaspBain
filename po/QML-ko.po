@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-05-07 18:07+0000\n"
+"PO-Revision-Date: 2025-11-11 02:51+0000\n"
 "Last-Translator: ChaeReen <cherish4@g.skku.edu>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/jasp/jaspbain-qml/"
 "ko/>\n"
@@ -9,12 +9,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.12-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
 msgid "Bain"
-msgstr ""
+msgstr "Bain"
 
 msgctxt "Description|"
 msgid ""
@@ -24,11 +24,11 @@ msgstr ""
 
 msgctxt "BainAncovaBayesian|"
 msgid "Dependent Variable"
-msgstr "독립변인"
+msgstr "독립변수"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Fixed Factors"
-msgstr ""
+msgstr "고정 요인"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Covariates"
@@ -60,15 +60,15 @@ msgstr "사후확률"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Adjusted means"
-msgstr ""
+msgstr "조정 평균"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Additional Options"
-msgstr ""
+msgstr "추가 옵션"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Model Constraints"
-msgstr ""
+msgstr "모형 제약"
 
 msgctxt "BainAncovaBayesian|"
 msgid ""
@@ -84,11 +84,11 @@ msgstr ""
 
 msgctxt "BainAnovaBayesian|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "독립변수"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Fixed Factors"
-msgstr ""
+msgstr "고정 요인"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Tables"
@@ -108,7 +108,7 @@ msgstr "신용구간"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "그림"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Posterior probabilities"
@@ -116,15 +116,15 @@ msgstr "사후확률"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Descriptives plot"
-msgstr ""
+msgstr "기술통계 그림"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Additional Options"
-msgstr ""
+msgstr "추가 옵션"
 
 msgctxt "BainAnovaBayesian|"
 msgid "Model Constraints"
-msgstr ""
+msgstr "모형 제약"
 
 msgctxt "BainAnovaBayesian|"
 msgid ""
@@ -140,7 +140,7 @@ msgstr ""
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "독립변수"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Covariates"
@@ -164,7 +164,7 @@ msgstr "신용구간"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "그림"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Posterior probabilities"
@@ -172,11 +172,11 @@ msgstr "사후확률"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Additional Options"
-msgstr ""
+msgstr "추가 옵션"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Model Constraints"
-msgstr ""
+msgstr "모형 제약"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid ""
@@ -191,11 +191,11 @@ msgstr ""
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Dependent Variables"
-msgstr ""
+msgstr "독립변인"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Grouping Variable"
-msgstr ""
+msgstr "집단변수"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Hypothesis Test"
@@ -235,7 +235,7 @@ msgstr ""
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Additional Options"
-msgstr ""
+msgstr "추가 옵션"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Tables"
@@ -251,7 +251,7 @@ msgstr "신용구간"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Plots"
-msgstr ""
+msgstr "그림"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Posterior probabilities"
@@ -259,11 +259,11 @@ msgstr "사후확률"
 
 msgctxt "BainTTestBayesianIndependentSamples|"
 msgid "Descriptives plots"
-msgstr ""
+msgstr "기술통계 그림"
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Variables"
-msgstr ""
+msgstr "변수"
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Test value"
@@ -307,7 +307,7 @@ msgstr ""
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Additional Options"
-msgstr ""
+msgstr "추가 옵션"
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Tables"
@@ -323,7 +323,7 @@ msgstr "신용구간"
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Plots"
-msgstr ""
+msgstr "그림"
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Posterior probabilities"
@@ -331,7 +331,7 @@ msgstr "사후확률"
 
 msgctxt "BainTTestBayesianOneSample|"
 msgid "Descriptives plots"
-msgstr ""
+msgstr "기술통계 그림"
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Pairs"
@@ -375,7 +375,7 @@ msgstr ""
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Additional Options"
-msgstr ""
+msgstr "추가 옵션"
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Tables"
@@ -391,7 +391,7 @@ msgstr "신용구간"
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Plots"
-msgstr ""
+msgstr "그림"
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Posterior probabilities"
@@ -399,7 +399,7 @@ msgstr "사후확률"
 
 msgctxt "BainTTestBayesianPairedSamples|"
 msgid "Descriptives plots"
-msgstr ""
+msgstr "기술통계 그림"
 
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Standardize coefficients"
@@ -419,15 +419,15 @@ msgstr "요인 분산"
 
 msgctxt "BainSemBayesian|"
 msgid "Factor loading"
-msgstr ""
+msgstr "요인부하량"
 
 msgctxt "BainSemBayesian|"
 msgid "Grouping variable"
-msgstr ""
+msgstr "집단변수"
 
 msgctxt "BainSemBayesian|"
 msgid "Tables"
-msgstr ""
+msgstr "표"
 
 msgctxt "BainSemBayesian|"
 msgid "Coefficients"
@@ -439,7 +439,7 @@ msgstr "신용구간"
 
 msgctxt "BainSemBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "그림"
 
 msgctxt "BainSemBayesian|"
 msgid "Path diagram"
@@ -455,7 +455,7 @@ msgstr ""
 
 msgctxt "BainSemBayesian|"
 msgid "Additional Options"
-msgstr ""
+msgstr "추가 옵션"
 
 msgctxt "BainSemBayesian|"
 msgid "Standardize coefficients"
@@ -471,7 +471,7 @@ msgstr "사후확률"
 
 msgctxt "BainSemBayesian|"
 msgid "Model Constraints"
-msgstr ""
+msgstr "모형 제약"
 
 msgctxt "BainSemBayesian|"
 msgid ""
