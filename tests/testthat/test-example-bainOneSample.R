@@ -11,7 +11,7 @@ test_that("BainTTestBayesianOneSample results match", {
   dataset <- jaspTools::extractDatasetFromJASPFile(jaspFile)
 
   # Encode and run analysis
-  encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset)
+  encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset, forceEncode = c("model", "hypothesis"))
   set.seed(1)
   results <- jaspTools::runAnalysis("BainTTestBayesianOneSample", encoded$dataset, encoded$options, encodedDataset = TRUE)
 
@@ -26,8 +26,8 @@ test_that("BainTTestBayesianOneSample results match", {
 
   table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_mainResultsTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list("", 24.7153302558384, 8.20513218398786, "jaspColumn1", 0.860336678663424,
-     0.0348098394703907, 0.104853481866185, "H0: Equal", "H1: Bigger",
+    list("", 24.7153302558383, 8.20513218398777, "jaspColumn1", 0.860336678663423,
+     0.0348098394703908, 0.104853481866186, "H0: Equal", "H1: Bigger",
      "H2: Smaller"))
 
   plotName <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_posteriorProbabilityPlot"]][["collection"]][["bainContainer_posteriorProbabilityPlot_jaspColumn1"]][["data"]]

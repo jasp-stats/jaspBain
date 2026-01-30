@@ -11,7 +11,7 @@ test_that("BainTTestBayesianIndependentSamples results match", {
   dataset <- jaspTools::extractDatasetFromJASPFile(jaspFile)
 
   # Encode and run analysis
-  encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset)
+  encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset, forceEncode = c("model", "hypothesis"))
   set.seed(1)
   results <- jaspTools::runAnalysis("BainTTestBayesianIndependentSamples", encoded$dataset, encoded$options, encodedDataset = TRUE)
 
@@ -21,7 +21,7 @@ test_that("BainTTestBayesianIndependentSamples results match", {
 
   table <- results[["results"]][["bainContainer"]][["collection"]][["bainContainer_descriptivesTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list(115, 1, 27.709094405675, 30.095652173913, 13.0578832229393, 1.21765388908315,
+    list(115, 1, 27.7090944056749, 30.095652173913, 13.0578832229393, 1.21765388908315,
      32.4822099421511, "jaspColumn2", 125, 2, 26.7239441460813, 28.856,
      12.1620138400333, 1.08780358758431, 30.9880558539187, ""))
 
