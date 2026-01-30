@@ -41,7 +41,7 @@ msgstr "固定因子はベイン分析に対してあまりにも多くの水準
 
 msgid ""
 "An error occurred in the analysis:<br>%1$s<br><br>Please double check if the "
-"variables in the 'Model Contraints' section match the variables in your data "
+"variables in the 'Model Constraints' section match the variables in your data "
 "set."
 msgstr ""
 "分析でエラーが発生しました:<br>%1$s<br><br> 'モデルの制約' セクションの変数が"

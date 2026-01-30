@@ -40,7 +40,7 @@ msgstr "Czynnik stały ma zbyt wiele poziomów dla analizy Baina."
 
 msgid ""
 "An error occurred in the analysis:<br>%1$s<br><br>Please double check if the "
-"variables in the 'Model Contraints' section match the variables in your data "
+"variables in the 'Model Constraints' section match the variables in your data "
 "set."
 msgstr ""
 

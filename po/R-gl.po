@@ -50,7 +50,7 @@ msgstr "O factor fixo ten demasiados niveis para unha análise BAIN."
 
 msgid ""
 "An error occurred in the analysis:<br>%1$s<br><br>Please double check if the "
-"variables in the 'Model Contraints' section match the variables in your data "
+"variables in the 'Model Constraints' section match the variables in your data "
 "set."
 msgstr ""
 "Fallou a análise:<br>%1$s<br>. <br>Por favor, comproba polo miúdo se as "
