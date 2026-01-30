@@ -43,11 +43,11 @@ msgstr "Der feste Faktor hat zu viele Stufen für eine Bain-Analyse."
 
 msgid ""
 "An error occurred in the analysis:<br>%1$s<br><br>Please double check if the "
-"variables in the 'Model Contraints' section match the variables in your data "
+"variables in the 'Model Constraints' section match the variables in your data "
 "set."
 msgstr ""
 "In der Analyse ist ein Fehler aufgetreten:<br>%1$s<br><br>Bitte überprüfe, "
-"ob die Variablen im Abschnitt 'Model Contraints' mit den Variablen im "
+"ob die Variablen im Abschnitt 'Model Constraints' mit den Variablen im "
 "Datensatz übereinstimmen."
 
 msgid "Hypothesis"
