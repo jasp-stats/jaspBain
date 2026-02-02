@@ -393,7 +393,7 @@
     })
 
     if (isTryError(p)) {
-      bainContainer$setError(gettextf("An error occurred in the analysis:<br>%1$s<br><br>Please double check if the variables in the 'Model Contraints' section match the variables in your data set.", jaspBase::.extractErrorMessage(p)))
+      bainContainer$setError(gettextf("An error occurred in the analysis:<br>%1$s<br><br>Please double check if the variables in the 'Model Constraints' section match the variables in your data set.", jaspBase::.extractErrorMessage(p)))
       return()
     }
 

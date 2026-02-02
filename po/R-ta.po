@@ -32,7 +32,7 @@ msgstr ""
 msgid "The fixed factor has too many levels for a Bain analysis."
 msgstr "நிலையான காரணி பெயின் பகுப்பாய்விற்கு பல நிலைகளைக் கொண்டுள்ளது."
 
-msgid "An error occurred in the analysis:<br>%1$s<br><br>Please double check if the variables in the 'Model Contraints' section match the variables in your data set."
+msgid "An error occurred in the analysis:<br>%1$s<br><br>Please double check if the variables in the 'Model Constraints' section match the variables in your data set."
 msgstr ""
 "பகுப்பாய்வில் ஒரு பிழை ஏற்பட்டது: <br>%1$s <br><br> 'மாதிரி முரண்பாடுகள்' பிரிவில் உள்"
 "ள மாறிகள் உங்கள் தரவு தொகுப்பில் உள்ள மாறிகளுடன் பொருந்துமா என்பதை இருமுறை "

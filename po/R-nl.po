@@ -42,11 +42,11 @@ msgstr "De gefixeerde factor heeft te veel niveaus voor een Bain analyse."
 
 msgid ""
 "An error occurred in the analysis:<br>%1$s<br><br>Please double check if the "
-"variables in the 'Model Contraints' section match the variables in your data "
+"variables in the 'Model Constraints' section match the variables in your data "
 "set."
 msgstr ""
 "Er is een fout opgetreden in de analyse:<br>%1$s<br><br>Controleer of de "
-"variabelen in de sectie 'Model Contraints' overeenkomen met de variabelen in "
+"variabelen in de sectie 'Model Constraints' overeenkomen met de variabelen in "
 "uw data set."
 
 msgid "Hypothesis"

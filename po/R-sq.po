@@ -23,7 +23,7 @@ msgstr ""
 msgid "The fixed factor has too many levels for a Bain analysis."
 msgstr ""
 
-msgid "An error occurred in the analysis:<br>%1$s<br><br>Please double check if the variables in the 'Model Contraints' section match the variables in your data set."
+msgid "An error occurred in the analysis:<br>%1$s<br><br>Please double check if the variables in the 'Model Constraints' section match the variables in your data set."
 msgstr ""
 
 msgid "Hypothesis"
