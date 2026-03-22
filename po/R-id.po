@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspBain 0.95.5\n"
 "POT-Creation-Date: 2025-11-15 03:35\n"
-"PO-Revision-Date: 2026-03-21 04:02+0000\n"
+"PO-Revision-Date: 2026-03-22 23:25+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/jaspbain-"
 "r/id/>\n"
@@ -23,46 +23,46 @@ msgid "An error occurred in the analysis: Lavaan could not compute the standard 
 msgstr ""
 
 msgid "The fixed factor has too many levels for a Bain analysis."
-msgstr ""
+msgstr "Faktor terbaiki memiliki terlalu banyak tingkat untuk analisis Bain."
 
 msgid "An error occurred in the analysis:<br>%1$s<br><br>Please double check if the variables in the 'Model Contraints' section match the variables in your data set."
 msgstr ""
 
 msgid "Hypothesis"
-msgstr ""
+msgstr "Hipotesis"
 
 msgid "H%i"
-msgstr ""
+msgstr "H%i"
 
 msgid "H1"
-msgstr ""
+msgstr "H1"
 
 msgid "Bain Independent Samples Welch's T-Test"
-msgstr ""
+msgstr "Uji-T Welch Sampel Independen Bain"
 
 msgid "Bain Paired Samples T-Test"
-msgstr ""
+msgstr "Uji-T Sampel Berpasangan Bain"
 
 msgid "Bain One Sample T-test"
-msgstr ""
+msgstr "Uji-T Satu Sampel Bain"
 
 msgid "Bain ANOVA"
-msgstr ""
+msgstr "ANOVA Bain"
 
 msgid "Bain ANCOVA"
-msgstr ""
+msgstr "ANCOVA Bain"
 
 msgid "Bain Linear Regression"
-msgstr ""
+msgstr "Regresi Linear Bain"
 
 msgid "Bain Structural Equation Model"
-msgstr ""
+msgstr "Model Persamaan Struktural Bain"
 
 msgid "BF"
-msgstr ""
+msgstr "BF"
 
 msgid "Posterior probability"
-msgstr ""
+msgstr "Probabilitas posterior"
 
 msgid "The alternative hypothesis H1 specifies that the mean is unequal to %s. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
@@ -110,46 +110,46 @@ msgid "The null hypothesis H0 with equal means is tested against the other hypot
 msgstr ""
 
 msgid "BF.u"
-msgstr ""
+msgstr "BF.u"
 
 msgid "BF.c"
-msgstr ""
+msgstr "BF.c"
 
 msgid "PMP a"
-msgstr ""
+msgstr "a PMP"
 
 msgid "PMP b"
-msgstr ""
+msgstr "b PMP"
 
 msgid "PMP c"
-msgstr ""
+msgstr "c PMP"
 
 msgid "BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. \n                        BF.c denotes the Bayes factor of the hypothesis at hand versus its complement. \n                        PMPa contains the posterior model probabilities of the hypotheses specified. \n                        PMPb adds Hu, the unconstrained hypothesis. \n                        PMPc adds Hc, the complement of the union of the hypotheses specified. \n                        All PMPs are based on equal prior model probabilities."
 msgstr ""
 
 msgid "Results not computed: %1$s."
-msgstr ""
+msgstr "Hasil tidak dihitung: %1$s."
 
 msgid "Variable contains missing values, the rows containing these values are removed in the analysis."
 msgstr ""
 
 msgid "H0: Equal"
-msgstr ""
+msgstr "H0: Sama"
 
 msgid "H1: Not equal"
-msgstr ""
+msgstr "H1: Tidak sama"
 
 msgid "H1: Bigger"
-msgstr ""
+msgstr "H1: Besar"
 
 msgid "H1: Smaller"
-msgstr ""
+msgstr "H1: Kecil"
 
 msgid "H2: Smaller"
-msgstr ""
+msgstr "H2: Kecil"
 
 msgid "Results not computed: %s"
-msgstr ""
+msgstr "Hasil tidak dihitung: %s"
 
 msgid "Both variables contain missing values, the rows containing these values are removed in the analysis."
 msgstr ""
@@ -158,10 +158,10 @@ msgid "The variable %s contains missing values, the rows containing these values
 msgstr ""
 
 msgid "Results not computed: The variables in this pair are the same."
-msgstr ""
+msgstr "Hasil tidak dihitung: Variabel dalam pasangan ini sama."
 
 msgid "Results not computed: The pair is incomplete."
-msgstr ""
+msgstr "Hasil tidak dihitung: Pasangan tidak selesai."
 
 msgid "The variables %1$s contain missing values, the rows containing these values are removed in the analysis."
 msgstr ""
@@ -176,13 +176,13 @@ msgid "The variable %1$s contains missing values, the rows containing these valu
 msgstr ""
 
 msgid "H%1$i"
-msgstr ""
+msgstr "H%1$i"
 
 msgid "Hu"
-msgstr ""
+msgstr "Hu"
 
 msgid "Hc"
-msgstr ""
+msgstr "Hc"
 
 msgid "<b>Warning</b>"
 msgstr ""
@@ -194,19 +194,19 @@ msgid "<b>Your hypotheses (almost) completely cover the parameter space. Therefo
 msgstr ""
 
 msgid "Bayes Factor Matrix"
-msgstr ""
+msgstr "Matriks Faktor Bayes"
 
 msgid "Coefficients for Groups plus Covariates"
-msgstr ""
+msgstr "Koefisien untuk Grup ditambah Kovariat"
 
 msgid "Coefficients for Parameters"
-msgstr ""
+msgstr "Koefisien untuk Parameter"
 
 msgid "Descriptive Statistics"
-msgstr ""
+msgstr "Statistik Deskriptif"
 
 msgid "Coefficient"
-msgstr ""
+msgstr "Koefisien"
 
 msgid "Mean"
 msgstr "Rerata"
@@ -218,13 +218,13 @@ msgid "Group"
 msgstr "Grup"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "SD"
 msgstr "SD"
 
 msgid "SE"
-msgstr ""
+msgstr "SE"
 
 msgid "Lower"
 msgstr "Bawah"
@@ -233,61 +233,62 @@ msgid "Upper"
 msgstr "Atas"
 
 msgid "The displayed coefficients are standardized."
-msgstr ""
+msgstr "Koefisien tertampil distandardisasi."
 
 msgid "The displayed coefficients are unstandardized."
-msgstr ""
+msgstr "Koefisien tertampil tidak distandardisasi."
 
 msgid "The results for this variable were not computed."
-msgstr ""
+msgstr "Hasil untuk variabel ini tidak dihitung."
 
 msgid "Posterior Probabilities"
-msgstr ""
+msgstr "Probabilitas posterior"
 
 msgid "Plotting not possible: the results for this variable were not computed."
 msgstr ""
+"Pendiagraman tidak memungkinkan: hasil untuk variabel ini tidak dihitung."
 
 msgid "Plotting not possible: %1$s"
-msgstr ""
+msgstr "Pendiagraman tidak memungkinkan: %1$s"
 
 msgid "Plotting not possible: the results could not be computed."
-msgstr ""
+msgstr "Pendiagraman tidak memungkinkan: hasil tidak dapat dihitung."
 
 msgid "Descriptive Plots"
-msgstr ""
+msgstr "Diagram Deskriptif"
 
 msgid "Descriptives Plot"
-msgstr ""
+msgstr "Diagram Deskriptif"
 
 msgid "Adjusted Means"
-msgstr ""
+msgstr "Rerata Tersesuai"
 
 msgid "Difference"
-msgstr ""
+msgstr "Perbedaan"
 
 msgid "H0"
-msgstr ""
+msgstr "H0"
 
 msgid "H2"
-msgstr ""
+msgstr "H2"
 
 msgid "H"
-msgstr ""
+msgstr "H"
 
 msgid "Excluding Hu and Hc"
-msgstr ""
+msgstr "Mengecualikan Hu dan Hc"
 
 msgid "Including Hc"
-msgstr ""
+msgstr "Menyertakan Hc"
 
 msgid "Including Hu"
-msgstr ""
+msgstr "Menyertakan Hu"
 
 msgid "Path Diagram"
-msgstr ""
+msgstr "Diagram Jalur"
 
 msgid "Group: %1$s"
-msgstr ""
+msgstr "Grup: %1$s"
 
 msgid "An error occurred while creating this plot:<br>%1$s."
-msgstr ""
+msgstr "Terjadi galat saat membuat diagram ini:<br>%1$s."
