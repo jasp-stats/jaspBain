@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspBain 0.95.5\n"
 "POT-Creation-Date: 2025-11-15 03:35\n"
-"PO-Revision-Date: 2026-03-21 04:02+0000\n"
+"PO-Revision-Date: 2026-03-25 03:54+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/jaspbain-"
 "r/id/>\n"
@@ -15,198 +15,280 @@ msgstr ""
 
 msgid "Bain does not accept factor levels that contain spaces. Please remove the spaces from your factor levels to continue."
 msgstr ""
+"Bain tidak menerima tingkat faktor yang berisi ruang. Silakan hapus ruang "
+"dari tingkat faktor Anda untuk melanjutkan."
 
 msgid "An error occurred in the call to lavaan: %1$s. Please double check if the variables in lavaan syntax match the variables in your data set."
 msgstr ""
+"Terjadi galat dalam memanggil lavaan: %1$s. Silakan periksa kembali jika "
+"variabel di sintaks lavaan cocok variabel dalam data set Anda."
 
 msgid "An error occurred in the analysis: Lavaan could not compute the standard errors because the information matrix could not be inverted. This may be a symptom that the model is not identified."
 msgstr ""
+"Terjadi galat dalam analisis: Lavaan tidak dapat menghitung galat standar "
+"karena matriks informasi tidak dapat dibalikkan. Ini mungkin simptom bahwa "
+"model tidak diidentifikasi."
 
 msgid "The fixed factor has too many levels for a Bain analysis."
-msgstr ""
+msgstr "Faktor terbaiki memiliki terlalu banyak tingkat untuk analisis Bain."
 
 msgid "An error occurred in the analysis:<br>%1$s<br><br>Please double check if the variables in the 'Model Contraints' section match the variables in your data set."
 msgstr ""
+"Terjadi galat dalam analisis:<br>%1$s<br><br>Silakan periksa kembali jika "
+"variabel di bagian 'Batasan Model’ cocok variabel dalam data set Anda."
 
 msgid "Hypothesis"
-msgstr ""
+msgstr "Hipotesis"
 
 msgid "H%i"
-msgstr ""
+msgstr "H%i"
 
 msgid "H1"
-msgstr ""
+msgstr "H1"
 
 msgid "Bain Independent Samples Welch's T-Test"
-msgstr ""
+msgstr "Uji-T Welch Sampel Independen Bain"
 
 msgid "Bain Paired Samples T-Test"
-msgstr ""
+msgstr "Uji-T Sampel Berpasangan Bain"
 
 msgid "Bain One Sample T-test"
-msgstr ""
+msgstr "Uji-T Satu Sampel Bain"
 
 msgid "Bain ANOVA"
-msgstr ""
+msgstr "ANOVA Bain"
 
 msgid "Bain ANCOVA"
-msgstr ""
+msgstr "ANCOVA Bain"
 
 msgid "Bain Linear Regression"
-msgstr ""
+msgstr "Regresi Linear Bain"
 
 msgid "Bain Structural Equation Model"
-msgstr ""
+msgstr "Model Persamaan Struktural Bain"
 
 msgid "BF"
-msgstr ""
+msgstr "BF"
 
 msgid "Posterior probability"
-msgstr ""
+msgstr "Probabilitas posterior"
 
 msgid "The alternative hypothesis H1 specifies that the mean is unequal to %s. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"Hipotesis alternatif H1 menetukan bahwa rerata tidak sama dengan %s. "
+"Probabilitas posterior didasarkan pada probabilitas priori sama."
 
 msgid "The alternative hypothesis H1 specifies that the mean is bigger than %s. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"Hipotesis alternatif H1 menetukan bahwa rerata lebih besar dari %s. "
+"Probabilitas posterior didasarkan pada probabilitas priori sama."
 
 msgid "The alternative hypothesis H1 specifies that the mean is smaller than %s. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"Hipotesis alternatif H1 menetukan bahwa rerata lebih kecil dari %s. "
+"Probabilitas posterior didasarkan pada probabilitas priori sama."
 
 msgid "The hypothesis H1 specifies that the mean is bigger than %1$s and the hypothesis H2 specifies that the mean is smaller than %1$s. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"Hipotesis H1 menentukan bahwa rerata lebih besar dari %1$s, dan hipotesis H2 "
+"menentukan bahwa rerata lebih kecil dari %1$s. Probabilitas posterior "
+"didasarkan pada probabilitas priori sama."
 
 msgid "The null hypothesis H0 with test value %1$s is tested against the other hypotheses. H1 states that the mean is bigger than %1$s and H2 states that the mean is smaller than %1$s. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"Hipotesis null H0 dengan nilai uji %1$s diuji terhadap hipotesis lain. H1 "
+"menyatakan bahwa rerata lebih besar dari %1$s dan H2 menyatakan bahwa rerata "
+"lebih kecil dari %1$s. Probabilitas posterior didasarkan pada probabilitas "
+"priori sama."
 
 msgid "The alternative hypothesis H1 specifies that the mean of group 1 is unequal to the mean of group 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"Hipotesis alternatif H1 menyatakan bahwa rerata grup 1 tidak sama dengan "
+"rerata grup 2. Probabilitas posterior didasarkan pada probabilitas priori "
+"sama."
 
 msgid "The alternative hypothesis H1 specifies that the mean of group 1 is smaller than the mean of group 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"Hipotesis alternatif H1 menentukan bahwa rerata grup 1 lebih kecil dari "
+"rerata grup 2. Probabilitas posterior didasarkan pada probabilitas priori "
+"sama."
 
 msgid "The alternative hypothesis H1 specifies that mean of group 1 is bigger than the mean of group 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"Hipotesis alternatif H1 menentukan bahwa rerata grup 1 lebih besar dari "
+"rerata grup 2. Probabilitas posterior didasarkan pada probabilitas priori "
+"sama."
 
 msgid "The hypothesis H1 specifies that the mean of group 1 is bigger than the mean of group 2. The hypothesis H2 specifies that the mean in group 1 is smaller than the mean in group 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"Hipotesis H1 menentukan bahwa rerata grup 1 lebih besar dari rerata grup 2. "
+"Hipotesis H2 menentukan bahwa rerata di grup 1 lebih kecil dari rerata di "
+"grup 2. Probabilitas posterior didasarkan pada probabilitas priori sama."
 
 msgid "The null hypothesis H0 (equal group means) is tested against H1 (first mean larger than second mean) and H2 (first mean smaller than second mean). The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"Hipotesis null H0 (rerata grup sama) diuji terhadap H1 (rerata pertaman "
+"lebih besar dari rerata kedua) dan H2 (rerata pertama lebih kecil dari "
+"rerata kedua). Probabilitas posterior didasarkan pada probabilitas priori "
+"sama."
 
 msgid "The alternative hypothesis H1 specifies that the mean of variable 1 is unequal to the mean of variable 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"Hipotesis alternatif H1 menentukan bahwa rerata variabel 1 tidak sama dengan "
+"rerata variabel 2. Probabilitas posterior didasarkan pada probabilitas "
+"priori sama."
 
 msgid "The alternative hypothesis H1 specifies that the mean of variable 1 is bigger than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"Hipotesis alternatif H1 menentukan bahwa rerata variabel 1 lebih besar dari "
+"rerata variabel 2. Probabilitas posterior didasarkan pada probabilitas "
+"priori sama."
 
 msgid "The alternative hypothesis H1 specifies that the mean of variable 1 is smaller than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"Hipotesis alternatif H1 menentukan bahwa rerata variabel 1 lebih kecil dari "
+"rerata variabel 2. Probabilitas posterior didasarkan pada probabilitas "
+"priori sama."
 
 msgid "The hypothesis H1 specifies that the mean of variable 1 is bigger than the mean of variable 2, while the hypothesis H2 specifies that it is smaller. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"Hipotesis H1 menentukan bahwa rerata variabel 1 lebih besar dari rerata "
+"variabel 2, ketika hipotesis H2 menentukan bahwa itu lebih kecil. "
+"Probabilitas posterior didasarkan pada probabilitas priori sama."
 
 msgid "The null hypothesis H0 with equal means is tested against the other hypotheses. The alternative hypothesis H1 states that the mean of variable 1 is bigger than the mean of variable 2. The alternative hypothesis H2 states that the mean of variable 1 is smaller than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"Hipotesis null H0 dengan rerata sama diuji terhadap hipotesis lain. "
+"Hipotesis alternatif H1 menyatakan bahwa rerata variabel 1 lebih besar dari "
+"rerata variabel 2. Hipotesis alternatif H2 menyatakan bahwa rerata variabel "
+"1 lebih kecil dari rerata variabel 2. Probabilitas posterior didasarkan pada "
+"probabilitas priori sama."
 
 msgid "BF.u"
-msgstr ""
+msgstr "BF.u"
 
 msgid "BF.c"
-msgstr ""
+msgstr "BF.c"
 
 msgid "PMP a"
-msgstr ""
+msgstr "a PMP"
 
 msgid "PMP b"
-msgstr ""
+msgstr "b PMP"
 
 msgid "PMP c"
-msgstr ""
+msgstr "c PMP"
 
 msgid "BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. \n                        BF.c denotes the Bayes factor of the hypothesis at hand versus its complement. \n                        PMPa contains the posterior model probabilities of the hypotheses specified. \n                        PMPb adds Hu, the unconstrained hypothesis. \n                        PMPc adds Hc, the complement of the union of the hypotheses specified. \n                        All PMPs are based on equal prior model probabilities."
 msgstr ""
+"BF.u menunjukkan faktor Bayes hipotesis yang dibahas versus hipotesis tidak "
+"terbatas Hu. \n"
+"                        Bf.c menunjukkan faktor Bayes hipotesis yang dibahas "
+"versus komplemennya. \n"
+"                        PMPa berisi probabilitas model posterior hipotesis "
+"ditentukan. \n"
+"                        PMPb menambahkan Hu, hipotesis tidak terbatas. \n"
+"                        PMPc menambahkan Hc, komplemen gabungan hipotesis "
+"ditentukan. \n"
+"                        Semua PMPs didasarkan pada probabilitas model priori "
+"sama."
 
 msgid "Results not computed: %1$s."
-msgstr ""
+msgstr "Hasil tidak dihitung: %1$s."
 
 msgid "Variable contains missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"Variabel berisi nilai hilang, baris yang berisi nilai ini dihapus dalam "
+"analisis."
 
 msgid "H0: Equal"
-msgstr ""
+msgstr "H0: Sama"
 
 msgid "H1: Not equal"
-msgstr ""
+msgstr "H1: Tidak sama"
 
 msgid "H1: Bigger"
-msgstr ""
+msgstr "H1: Besar"
 
 msgid "H1: Smaller"
-msgstr ""
+msgstr "H1: Kecil"
 
 msgid "H2: Smaller"
-msgstr ""
+msgstr "H2: Kecil"
 
 msgid "Results not computed: %s"
-msgstr ""
+msgstr "Hasil tidak dihitung: %s"
 
 msgid "Both variables contain missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"Kedua variabel berisi nilai hilang, baris yang berisi nilai ini dihapus "
+"dalam analisis."
 
 msgid "The variable %s contains missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"Variabel %s berisi nilai hilang, baris yang berisi nilai ini dihapus dalam "
+"analisis."
 
 msgid "Results not computed: The variables in this pair are the same."
-msgstr ""
+msgstr "Hasil tidak dihitung: Variabel dalam pasangan ini sama."
 
 msgid "Results not computed: The pair is incomplete."
-msgstr ""
+msgstr "Hasil tidak dihitung: Pasangan tidak selesai."
 
 msgid "The variables %1$s contain missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"Variabel %1$s berisi nilai hilang, baris yang berisi nilai ini dihapus dalam "
+"analisis."
 
 msgid "<b>Warning.</b>"
-msgstr ""
+msgstr "<b>Peringatan.</b>"
 
 msgid "The variables %1$s and %2$s contain missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"Variabel %1$s dan %2$s berisi nilai hilang, baris yang berisi nilai ini "
+"dihapus dalam analisis."
 
 msgid "The variable %1$s contains missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"Variabel %1$s berisi nilai hilang, baris yang berisi nilai ini dihapus dalam "
+"analisis."
 
 msgid "H%1$i"
-msgstr ""
+msgstr "H%1$i"
 
 msgid "Hu"
-msgstr ""
+msgstr "Hu"
 
 msgid "Hc"
-msgstr ""
+msgstr "Hc"
 
 msgid "<b>Warning</b>"
-msgstr ""
+msgstr "<b>Peringatan</b>"
 
 msgid "The entered model constraints are incompatible with the data and therefore the computed results contain NaNs."
 msgstr ""
+"Batasan model termasukan tidak kompatibel dengan data dan oleh karena itu "
+"hasil terhitung berisi NaNs."
 
 msgid "<b>Your hypotheses (almost) completely cover the parameter space. Therefore instead of PMPc, you should interpret PMPa.</b>"
 msgstr ""
+"<b>Hipotesis Anda (hampir) sepenuhnya mencakup ruang parameter. Oleh karena "
+"itu alih-alih PMPc, Anda harus menginterpretasi PMPa.</b>"
 
 msgid "Bayes Factor Matrix"
-msgstr ""
+msgstr "Matriks Faktor Bayes"
 
 msgid "Coefficients for Groups plus Covariates"
-msgstr ""
+msgstr "Koefisien untuk Grup ditambah Kovariat"
 
 msgid "Coefficients for Parameters"
-msgstr ""
+msgstr "Koefisien untuk Parameter"
 
 msgid "Descriptive Statistics"
-msgstr ""
+msgstr "Statistik Deskriptif"
 
 msgid "Coefficient"
-msgstr ""
+msgstr "Koefisien"
 
 msgid "Mean"
 msgstr "Rerata"
@@ -218,13 +300,13 @@ msgid "Group"
 msgstr "Grup"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "SD"
 msgstr "SD"
 
 msgid "SE"
-msgstr ""
+msgstr "SE"
 
 msgid "Lower"
 msgstr "Bawah"
@@ -233,61 +315,62 @@ msgid "Upper"
 msgstr "Atas"
 
 msgid "The displayed coefficients are standardized."
-msgstr ""
+msgstr "Koefisien tertampil distandardisasi."
 
 msgid "The displayed coefficients are unstandardized."
-msgstr ""
+msgstr "Koefisien tertampil tidak distandardisasi."
 
 msgid "The results for this variable were not computed."
-msgstr ""
+msgstr "Hasil untuk variabel ini tidak dihitung."
 
 msgid "Posterior Probabilities"
-msgstr ""
+msgstr "Probabilitas posterior"
 
 msgid "Plotting not possible: the results for this variable were not computed."
 msgstr ""
+"Pendiagraman tidak memungkinkan: hasil untuk variabel ini tidak dihitung."
 
 msgid "Plotting not possible: %1$s"
-msgstr ""
+msgstr "Pendiagraman tidak memungkinkan: %1$s"
 
 msgid "Plotting not possible: the results could not be computed."
-msgstr ""
+msgstr "Pendiagraman tidak memungkinkan: hasil tidak dapat dihitung."
 
 msgid "Descriptive Plots"
-msgstr ""
+msgstr "Diagram Deskriptif"
 
 msgid "Descriptives Plot"
-msgstr ""
+msgstr "Diagram Deskriptif"
 
 msgid "Adjusted Means"
-msgstr ""
+msgstr "Rerata Tersesuai"
 
 msgid "Difference"
-msgstr ""
+msgstr "Perbedaan"
 
 msgid "H0"
-msgstr ""
+msgstr "H0"
 
 msgid "H2"
-msgstr ""
+msgstr "H2"
 
 msgid "H"
-msgstr ""
+msgstr "H"
 
 msgid "Excluding Hu and Hc"
-msgstr ""
+msgstr "Mengecualikan Hu dan Hc"
 
 msgid "Including Hc"
-msgstr ""
+msgstr "Menyertakan Hc"
 
 msgid "Including Hu"
-msgstr ""
+msgstr "Menyertakan Hu"
 
 msgid "Path Diagram"
-msgstr ""
+msgstr "Diagram Jalur"
 
 msgid "Group: %1$s"
-msgstr ""
+msgstr "Grup: %1$s"
 
 msgid "An error occurred while creating this plot:<br>%1$s."
-msgstr ""
+msgstr "Terjadi galat saat membuat diagram ini:<br>%1$s."
