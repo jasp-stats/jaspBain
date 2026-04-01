@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2026-04-02 08:09+0000\n"
+"Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jaspbain-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.17-dev\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
@@ -15,7 +21,7 @@ msgctxt "Description|"
 msgid ""
 "A module for computing approximated adjusted fractional Bayes factors for "
 "equality, inequality, and about equality constrained hypotheses."
-msgstr ""
+msgstr "用於計算等式、不等式及約略等式約束假設之近似調整分數貝氏因子的模組。"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Dependent Variable"
@@ -41,7 +47,7 @@ msgstr "貝氏因子矩陣"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Coefficients"
-msgstr ""
+msgstr "係數"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Credible interval"
@@ -58,7 +64,7 @@ msgstr "後驗機率"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Adjusted means"
-msgstr ""
+msgstr "調整後平均數"
 
 #, fuzzy
 msgctxt "BainAncovaBayesian|"
