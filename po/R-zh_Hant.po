@@ -1,0 +1,292 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: jaspBain 0.1\n"
+"Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
+"POT-Creation-Date: 2026-01-01 00:00+0000\n"
+"PO-Revision-Date: 2026-01-01 00:00+0000\n"
+"Last-Translator: JASP translators\n"
+"Language-Team: Chinese (Traditional)\n"
+"Language: zh_Hant\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Bain does not accept factor levels that contain spaces. Please remove the spaces from your factor levels to continue."
+msgstr "Bain 不接受包含空格的因子水準。請移除因子水準中的空格以繼續。"
+
+msgid "An error occurred in the call to lavaan: %1$s. Please double check if the variables in lavaan syntax match the variables in your data set."
+msgstr "呼叫 lavaan 時發生錯誤：%1$s。請仔細檢查 lavaan 語法中的變數是否與資料集中的變數相符。"
+
+msgid "An error occurred in the analysis: Lavaan could not compute the standard errors because the information matrix could not be inverted. This may be a symptom that the model is not identified."
+msgstr "分析中發生錯誤：由於資訊矩陣無法求逆，Lavaan 無法計算標準誤。這可能是模型未被識別的跡象。"
+
+msgid "The fixed factor has too many levels for a Bain analysis."
+msgstr "就 Bain 分析而言，固定因子的水準過多。"
+
+msgid "An error occurred in the analysis:<br>%1$s<br><br>Please double check if the variables in the 'Model Contraints' section match the variables in your data set."
+msgstr "分析中發生錯誤：<br>%1$s<br><br>請仔細檢查「模型約束」區段中的變數是否與資料集中的變數相符。"
+
+msgid "Hypothesis"
+msgstr "假設"
+
+msgid "H%i"
+msgstr "H%i"
+
+msgid "H1"
+msgstr "H1"
+
+msgid "Bain Independent Samples Welch's T-Test"
+msgstr "Bain 獨立樣本 Welch t 檢定"
+
+msgid "Bain Paired Samples T-Test"
+msgstr "Bain 成對樣本 t 檢定"
+
+msgid "Bain One Sample T-test"
+msgstr "Bain 單樣本 t 檢定"
+
+msgid "Bain ANOVA"
+msgstr "Bain 變異數分析"
+
+msgid "Bain ANCOVA"
+msgstr "Bain 共變異數分析"
+
+msgid "Bain Linear Regression"
+msgstr "Bain 線性迴歸"
+
+msgid "Bain Structural Equation Model"
+msgstr "Bain 結構方程模型"
+
+msgid "BF"
+msgstr "BF"
+
+msgid "Posterior probability"
+msgstr "後驗機率"
+
+msgid "The alternative hypothesis H1 specifies that the mean is unequal to %s. The posterior probabilities are based on equal prior probabilities."
+msgstr "對立假設 H1 指定平均數不等於 %s。後驗機率基於相等的先驗機率。"
+
+msgid "The alternative hypothesis H1 specifies that the mean is bigger than %s. The posterior probabilities are based on equal prior probabilities."
+msgstr "對立假設 H1 指定平均數大於 %s。後驗機率基於相等的先驗機率。"
+
+msgid "The alternative hypothesis H1 specifies that the mean is smaller than %s. The posterior probabilities are based on equal prior probabilities."
+msgstr "對立假設 H1 指定平均數小於 %s。後驗機率基於相等的先驗機率。"
+
+msgid "The hypothesis H1 specifies that the mean is bigger than %1$s and the hypothesis H2 specifies that the mean is smaller than %1$s. The posterior probabilities are based on equal prior probabilities."
+msgstr "假設 H1 指定平均數大於 %1$s，而假設 H2 指定平均數小於 %1$s。後驗機率基於相等的先驗機率。"
+
+msgid "The null hypothesis H0 with test value %1$s is tested against the other hypotheses. H1 states that the mean is bigger than %1$s and H2 states that the mean is smaller than %1$s. The posterior probabilities are based on equal prior probabilities."
+msgstr "檢定值為 %1$s 的虛無假設 H0 與其他假設進行檢定。H1 指出平均數大於 %1$s，H2 指出平均數小於 %1$s。後驗機率基於相等的先驗機率。"
+
+msgid "The alternative hypothesis H1 specifies that the mean of group 1 is unequal to the mean of group 2. The posterior probabilities are based on equal prior probabilities."
+msgstr "對立假設 H1 指定組 1 的平均數不等於組 2 的平均數。後驗機率基於相等的先驗機率。"
+
+msgid "The alternative hypothesis H1 specifies that the mean of group 1 is smaller than the mean of group 2. The posterior probabilities are based on equal prior probabilities."
+msgstr "對立假設 H1 指定組 1 的平均數小於組 2 的平均數。後驗機率基於相等的先驗機率。"
+
+msgid "The alternative hypothesis H1 specifies that mean of group 1 is bigger than the mean of group 2. The posterior probabilities are based on equal prior probabilities."
+msgstr "對立假設 H1 指定組 1 的平均數大於組 2 的平均數。後驗機率基於相等的先驗機率。"
+
+msgid "The hypothesis H1 specifies that the mean of group 1 is bigger than the mean of group 2. The hypothesis H2 specifies that the mean in group 1 is smaller than the mean in group 2. The posterior probabilities are based on equal prior probabilities."
+msgstr "假設 H1 指定組 1 的平均數大於組 2 的平均數。假設 H2 指定組 1 的平均數小於組 2 的平均數。後驗機率基於相等的先驗機率。"
+
+msgid "The null hypothesis H0 (equal group means) is tested against H1 (first mean larger than second mean) and H2 (first mean smaller than second mean). The posterior probabilities are based on equal prior probabilities."
+msgstr "虛無假設 H0（組平均數相等）與 H1（第一個平均數大於第二個平均數）和 H2（第一個平均數小於第二個平均數）進行檢定。後驗機率基於相等的先驗機率。"
+
+msgid "The alternative hypothesis H1 specifies that the mean of variable 1 is unequal to the mean of variable 2. The posterior probabilities are based on equal prior probabilities."
+msgstr "對立假設 H1 指定變數 1 的平均數不等於變數 2 的平均數。後驗機率基於相等的先驗機率。"
+
+msgid "The alternative hypothesis H1 specifies that the mean of variable 1 is bigger than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."
+msgstr "對立假設 H1 指定變數 1 的平均數大於變數 2 的平均數。後驗機率基於相等的先驗機率。"
+
+msgid "The alternative hypothesis H1 specifies that the mean of variable 1 is smaller than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."
+msgstr "對立假設 H1 指定變數 1 的平均數小於變數 2 的平均數。後驗機率基於相等的先驗機率。"
+
+msgid "The hypothesis H1 specifies that the mean of variable 1 is bigger than the mean of variable 2, while the hypothesis H2 specifies that it is smaller. The posterior probabilities are based on equal prior probabilities."
+msgstr "假設 H1 指定變數 1 的平均數大於變數 2 的平均數，而假設 H2 指定其較小。後驗機率基於相等的先驗機率。"
+
+msgid "The null hypothesis H0 with equal means is tested against the other hypotheses. The alternative hypothesis H1 states that the mean of variable 1 is bigger than the mean of variable 2. The alternative hypothesis H2 states that the mean of variable 1 is smaller than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."
+msgstr "平均數相等的虛無假設 H0 與其他假設進行檢定。對立假設 H1 指出變數 1 的平均數大於變數 2 的平均數。對立假設 H2 指出變數 1 的平均數小於變數 2 的平均數。後驗機率基於相等的先驗機率。"
+
+msgid "BF.u"
+msgstr "BF.u"
+
+msgid "BF.c"
+msgstr "BF.c"
+
+msgid "PMP a"
+msgstr "PMP a"
+
+msgid "PMP b"
+msgstr "PMP b"
+
+msgid "PMP c"
+msgstr "PMP c"
+
+msgid "BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. \n                        BF.c denotes the Bayes factor of the hypothesis at hand versus its complement. \n                        PMPa contains the posterior model probabilities of the hypotheses specified. \n                        PMPb adds Hu, the unconstrained hypothesis. \n                        PMPc adds Hc, the complement of the union of the hypotheses specified. \n                        All PMPs are based on equal prior model probabilities."
+msgstr "BF.u 表示當前假設相對於無約束假設 Hu 的貝氏因子。\n                        BF.c 表示當前假設相對於其補集的貝氏因子。\n                        PMPa 包含所指定假設的後驗模型機率。\n                        PMPb 加入無約束假設 Hu。\n                        PMPc 加入所指定假設聯集的補集 Hc。\n                        所有 PMP 均基於相等的先驗模型機率。"
+
+msgid "Results not computed: %1$s."
+msgstr "未計算結果：%1$s。"
+
+msgid "Variable contains missing values, the rows containing these values are removed in the analysis."
+msgstr "變數包含缺失值，分析中已移除包含這些值的列。"
+
+msgid "H0: Equal"
+msgstr "H0：相等"
+
+msgid "H1: Not equal"
+msgstr "H1：不相等"
+
+msgid "H1: Bigger"
+msgstr "H1：較大"
+
+msgid "H1: Smaller"
+msgstr "H1：較小"
+
+msgid "H2: Smaller"
+msgstr "H2：較小"
+
+msgid "Results not computed: %s"
+msgstr "未計算結果：%s"
+
+msgid "Both variables contain missing values, the rows containing these values are removed in the analysis."
+msgstr "兩個變數都包含缺失值，分析中已移除包含這些值的列。"
+
+msgid "The variable %s contains missing values, the rows containing these values are removed in the analysis."
+msgstr "變數 %s 包含缺失值，分析中已移除包含這些值的列。"
+
+msgid "Results not computed: The variables in this pair are the same."
+msgstr "未計算結果：這對變數相同。"
+
+msgid "Results not computed: The pair is incomplete."
+msgstr "未計算結果：配對不完整。"
+
+msgid "The variables %1$s contain missing values, the rows containing these values are removed in the analysis."
+msgstr "變數 %1$s 包含缺失值，分析中已移除包含這些值的列。"
+
+msgid "<b>Warning.</b>"
+msgstr "<b>警告。</b>"
+
+msgid "The variables %1$s and %2$s contain missing values, the rows containing these values are removed in the analysis."
+msgstr "變數 %1$s 和 %2$s 包含缺失值，分析中已移除包含這些值的列。"
+
+msgid "The variable %1$s contains missing values, the rows containing these values are removed in the analysis."
+msgstr "變數 %1$s 包含缺失值，分析中已移除包含這些值的列。"
+
+msgid "H%1$i"
+msgstr "H%1$i"
+
+msgid "Hu"
+msgstr "Hu"
+
+msgid "Hc"
+msgstr "Hc"
+
+msgid "<b>Warning</b>"
+msgstr "<b>警告</b>"
+
+msgid "The entered model constraints are incompatible with the data and therefore the computed results contain NaNs."
+msgstr "輸入的模型約束與資料不相容，因此計算結果包含 NaN。"
+
+msgid "<b>Your hypotheses (almost) completely cover the parameter space. Therefore instead of PMPc, you should interpret PMPa.</b>"
+msgstr "<b>您的假設（幾乎）完全涵蓋了參數空間。因此，您應該解釋 PMPa 而非 PMPc。</b>"
+
+msgid "Bayes Factor Matrix"
+msgstr "貝氏因子矩陣"
+
+msgid "Coefficients for Groups plus Covariates"
+msgstr "各組及共變數的係數"
+
+msgid "Coefficients for Parameters"
+msgstr "參數的係數"
+
+msgid "Descriptive Statistics"
+msgstr "描述統計"
+
+msgid "Coefficient"
+msgstr "係數"
+
+msgid "Mean"
+msgstr "平均值"
+
+msgid "%.0f%% Credible Interval"
+msgstr "%.0f%% 可信區間"
+
+msgid "Group"
+msgstr "組"
+
+msgid "N"
+msgstr "N"
+
+msgid "SD"
+msgstr "SD"
+
+msgid "SE"
+msgstr "SE"
+
+msgid "Lower"
+msgstr "下限"
+
+msgid "Upper"
+msgstr "上限"
+
+msgid "The displayed coefficients are standardized."
+msgstr "顯示的係數為標準化。"
+
+msgid "The displayed coefficients are unstandardized."
+msgstr "顯示的係數為非標準化。"
+
+msgid "The results for this variable were not computed."
+msgstr "未計算該變數的結果。"
+
+msgid "Posterior Probabilities"
+msgstr "後驗機率"
+
+msgid "Plotting not possible: the results for this variable were not computed."
+msgstr "無法繪圖：未計算該變數的結果。"
+
+msgid "Plotting not possible: %1$s"
+msgstr "無法繪圖：%1$s"
+
+msgid "Plotting not possible: the results could not be computed."
+msgstr "無法繪圖：無法計算結果。"
+
+msgid "Descriptive Plots"
+msgstr "描述統計圖"
+
+msgid "Descriptives Plot"
+msgstr "描述統計圖"
+
+msgid "Adjusted Means"
+msgstr "調整後平均值"
+
+msgid "Difference"
+msgstr "差值"
+
+msgid "H0"
+msgstr "H0"
+
+msgid "H2"
+msgstr "H2"
+
+msgid "H"
+msgstr "H"
+
+msgid "Excluding Hu and Hc"
+msgstr "不含 Hu 和 Hc"
+
+msgid "Including Hc"
+msgstr "包含 Hc"
+
+msgid "Including Hu"
+msgstr "包含 Hu"
+
+msgid "Path Diagram"
+msgstr "路徑圖"
+
+msgid "Group: %1$s"
+msgstr "組：%1$s"
+
+msgid "An error occurred while creating this plot:<br>%1$s."
+msgstr "建立此圖時發生錯誤：<br>%1$s。"
