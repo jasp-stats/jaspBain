@@ -2,290 +2,356 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspBain 0.96.3\n"
 "POT-Creation-Date: 2026-04-25 04:18\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-09-15 04:03+0000\n"
+"Last-Translator: Sohrab Delshad <sdel4030@gmail.com>\n"
+"Language-Team: Persian <https://hosted.weblate.org/projects/jasp/jaspbain-r/"
+"fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 msgid "Bain does not accept factor levels that contain spaces. Please remove the spaces from your factor levels to continue."
 msgstr ""
+"Bain سطوح عاملی که حاوی فاصله باشند را نمی‌پذیرد. لطفاً برای ادامه، فاصله‌ها را "
+"از سطوح عامل خود حذف کنید."
 
 msgid "An error occurred in the call to lavaan: %1$s. Please double check if the variables in lavaan syntax match the variables in your data set."
 msgstr ""
+"خطایی در فراخوانی lavaan رخ داد: %1$s. لطفاً به دقت بررسی کنید که آیا "
+"متغیرهای موجود در نحو lavaan با متغیرهای مجموعه‌داده شما مطابقت دارند یا خیر."
 
 msgid "An error occurred in the analysis: Lavaan could not compute the standard errors because the information matrix could not be inverted. This may be a symptom that the model is not identified."
 msgstr ""
+"خطایی در تحلیل رخ داد: Lavaan نتوانست خطاهای معیار را محاسبه کند، زیرا "
+"ماتریس اطلاعات قابل وارون‌سازی نبود. این ممکن است نشانه‌ای از آن باشد که مدل "
+"شناسایی‌پذیر نیست."
 
 msgid "The fixed factor has too many levels for a Bain analysis."
-msgstr ""
+msgstr "عامل ثابت برای تحلیل Bain سطوح بیش از حدی دارد."
 
 msgid "An error occurred in the analysis:<br>%1$s<br><br>Please double check if the variables in the 'Model Contraints' section match the variables in your data set."
 msgstr ""
+"خطایی در تحلیل رخ داد:<br>%1$s<br><br>لطفاً به دقت بررسی کنید که آیا متغیرهای "
+"بخش «قیدهای مدل» با متغیرهای مجموعه‌داده شما مطابقت دارند یا خیر."
 
 msgid "Hypothesis"
-msgstr ""
+msgstr "فرضیه"
 
 msgid "H%i"
-msgstr ""
+msgstr "H%i"
 
 msgid "H1"
-msgstr ""
+msgstr "H1"
 
 msgid "Bain Independent Samples Welch's T-Test"
-msgstr ""
+msgstr "آزمون t ولچ نمونه‌های مستقل Bain"
 
 msgid "Bain Paired Samples T-Test"
-msgstr ""
+msgstr "آزمون t نمونه‌های جفتی Bain"
 
 msgid "Bain One Sample T-test"
-msgstr ""
+msgstr "آزمون t تک‌نمونه‌ای Bain"
 
 msgid "Bain ANOVA"
-msgstr ""
+msgstr "آنووای Bain"
 
 msgid "Bain ANCOVA"
-msgstr ""
+msgstr "آنکووای Bain"
 
 msgid "Bain Linear Regression"
-msgstr ""
+msgstr "رگرسیون خطی Bain"
 
 msgid "Bain Structural Equation Model"
-msgstr ""
+msgstr "مدل معادلات ساختاری Bain"
 
 msgid "BF"
-msgstr ""
+msgstr "BF"
 
 msgid "Posterior probability"
-msgstr ""
+msgstr "احتمال پسین"
 
 msgid "The alternative hypothesis H1 specifies that the mean is unequal to %s. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"فرض مقابل H1 مشخص می‌کند که میانگین نابرابر با %s است. احتمالات پسین بر اساس "
+"احتمالات پیشین برابر هستند."
 
 msgid "The alternative hypothesis H1 specifies that the mean is bigger than %s. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"فرض مقابل H1 مشخص می‌کند که میانگین بزرگ‌تر از %s است. احتمالات پسین بر اساس "
+"احتمالات پیشین برابر هستند."
 
 msgid "The alternative hypothesis H1 specifies that the mean is smaller than %s. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"فرض مقابل H1 مشخص می‌کند که میانگین کوچک‌تر از %s است. احتمالات پسین بر اساس "
+"احتمالات پیشین برابر هستند."
 
 msgid "The hypothesis H1 specifies that the mean is bigger than %1$s and the hypothesis H2 specifies that the mean is smaller than %1$s. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"فرضیه H1 مشخص می‌کند که میانگین بزرگ‌تر از %1$s است و فرضیه H2 مشخص می‌کند که "
+"میانگین کوچک‌تر از %1$s است. احتمالات پسین بر اساس احتمالات پیشین برابر هستند."
 
 msgid "The null hypothesis H0 with test value %1$s is tested against the other hypotheses. H1 states that the mean is bigger than %1$s and H2 states that the mean is smaller than %1$s. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"فرض صفر H0 با مقدار آزمون %1$s در برابر سایر فرضیه‌ها آزمون می‌شود. H1 بیان "
+"می‌کند که میانگین بزرگ‌تر از %1$s است و H2 بیان می‌کند که میانگین کوچک‌تر از "
+"%1$s است. احتمالات پسین بر اساس احتمالات پیشین برابر هستند."
 
 msgid "The alternative hypothesis H1 specifies that the mean of group 1 is unequal to the mean of group 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"فرض مقابل H1 مشخص می‌کند که میانگین گروه 1 نابرابر با میانگین گروه 2 است. "
+"احتمالات پسین بر اساس احتمالات پیشین برابر هستند."
 
 msgid "The alternative hypothesis H1 specifies that the mean of group 1 is smaller than the mean of group 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"فرض مقابل H1 مشخص می‌کند که میانگین گروه 1 کوچک‌تر از میانگین گروه 2 است. "
+"احتمالات پسین بر اساس احتمالات پیشین برابر هستند."
 
 msgid "The alternative hypothesis H1 specifies that mean of group 1 is bigger than the mean of group 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"فرض مقابل H1 مشخص می‌کند که میانگین گروه 1 بزرگ‌تر از میانگین گروه 2 است. "
+"احتمالات پسین بر اساس احتمالات پیشین برابر هستند."
 
 msgid "The hypothesis H1 specifies that the mean of group 1 is bigger than the mean of group 2. The hypothesis H2 specifies that the mean in group 1 is smaller than the mean in group 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"فرضیه H1 مشخص می‌کند که میانگین گروه 1 بزرگ‌تر از میانگین گروه 2 است. فرضیه H2 "
+"مشخص می‌کند که میانگین در گروه 1 کوچک‌تر از میانگین در گروه 2 است. احتمالات "
+"پسین بر اساس احتمالات پیشین برابر هستند."
 
 msgid "The null hypothesis H0 (equal group means) is tested against H1 (first mean larger than second mean) and H2 (first mean smaller than second mean). The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"فرض صفر H0 (برابری میانگین‌های گروه‌ها) در برابر H1 (میانگین اول بزرگ‌تر از "
+"میانگین دوم) و H2 (میانگین اول کوچک‌تر از میانگین دوم) آزمون می‌شود. احتمالات "
+"پسین بر اساس احتمالات پیشین برابر هستند."
 
 msgid "The alternative hypothesis H1 specifies that the mean of variable 1 is unequal to the mean of variable 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"فرض مقابل H1 مشخص می‌کند که میانگین متغیر 1 نابرابر با میانگین متغیر 2 است. "
+"احتمالات پسین بر اساس احتمالات پیشین برابر هستند."
 
 msgid "The alternative hypothesis H1 specifies that the mean of variable 1 is bigger than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"فرض مقابل H1 مشخص می‌کند که میانگین متغیر 1 بزرگ‌تر از میانگین متغیر 2 است. "
+"احتمالات پسین بر اساس احتمالات پیشین برابر هستند."
 
 msgid "The alternative hypothesis H1 specifies that the mean of variable 1 is smaller than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"فرض مقابل H1 مشخص می‌کند که میانگین متغیر 1 کوچک‌تر از میانگین متغیر 2 است. "
+"احتمالات پسین بر اساس احتمالات پیشین برابر هستند."
 
 msgid "The hypothesis H1 specifies that the mean of variable 1 is bigger than the mean of variable 2, while the hypothesis H2 specifies that it is smaller. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"فرضیه H1 مشخص می‌کند که میانگین متغیر 1 بزرگ‌تر از میانگین متغیر 2 است، در "
+"حالی که فرضیه H2 مشخص می‌کند که کوچک‌تر است. احتمالات پسین بر اساس احتمالات "
+"پیشین برابر هستند."
 
 msgid "The null hypothesis H0 with equal means is tested against the other hypotheses. The alternative hypothesis H1 states that the mean of variable 1 is bigger than the mean of variable 2. The alternative hypothesis H2 states that the mean of variable 1 is smaller than the mean of variable 2. The posterior probabilities are based on equal prior probabilities."
 msgstr ""
+"فرض صفر H0 با میانگین‌های برابر در برابر سایر فرضیه‌ها آزمون می‌شود. فرض مقابل "
+"H1 بیان می‌کند که میانگین متغیر 1 بزرگ‌تر از میانگین متغیر 2 است. فرض مقابل H2 "
+"بیان می‌کند که میانگین متغیر 1 کوچک‌تر از میانگین متغیر 2 است. احتمالات پسین بر "
+"اساس احتمالات پیشین برابر هستند."
 
 msgid "BF.u"
-msgstr ""
+msgstr "BF.u"
 
 msgid "BF.c"
-msgstr ""
+msgstr "BF.c"
 
 msgid "PMP a"
-msgstr ""
+msgstr "PMP a"
 
 msgid "PMP b"
-msgstr ""
+msgstr "PMP b"
 
 msgid "PMP c"
-msgstr ""
+msgstr "PMP c"
 
 msgid "BF.u denotes the Bayes factor of the hypothesis at hand versus the unconstrained hypothesis Hu. \n                        BF.c denotes the Bayes factor of the hypothesis at hand versus its complement. \n                        PMPa contains the posterior model probabilities of the hypotheses specified. \n                        PMPb adds Hu, the unconstrained hypothesis. \n                        PMPc adds Hc, the complement of the union of the hypotheses specified. \n                        All PMPs are based on equal prior model probabilities."
 msgstr ""
+"BF.u نشان‌دهنده فاکتور بیزی فرضیه مورد نظر در برابر فرضیه بدون قید Hu است. "
+"BF.c نشان‌دهنده فاکتور بیزی فرضیه مورد نظر در برابر متمم آن است. PMPa شامل "
+"احتمالات پسین مدلِ فرضیه‌های مشخص‌شده است. PMPb فرضیه بدون قید Hu را اضافه "
+"می‌کند. PMPc متمم اجتماع فرضیه‌های مشخص‌شده، یعنی Hc را اضافه می‌کند. همه PMPها "
+"بر اساس احتمالات پیشین مدل برابر هستند."
 
 msgid "Results not computed: %1$s."
-msgstr ""
+msgstr "نتایج محاسبه نشدند: %1$s."
 
 msgid "Variable contains missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"متغیر حاوی مقادیر گم‌شده است؛ ردیف‌های حاوی این مقادیر در تحلیل حذف می‌شوند."
 
 msgid "H0: Equal"
-msgstr ""
+msgstr "H0: برابر"
 
 msgid "H1: Not equal"
-msgstr ""
+msgstr "H1: نابرابر"
 
 msgid "H1: Bigger"
-msgstr ""
+msgstr "H1: بزرگ‌تر"
 
 msgid "H1: Smaller"
-msgstr ""
+msgstr "H1: کوچک‌تر"
 
 msgid "H2: Smaller"
-msgstr ""
+msgstr "H2: کوچک‌تر"
 
 msgid "Results not computed: %s"
-msgstr ""
+msgstr "نتایج محاسبه نشدند: %s"
 
 msgid "Both variables contain missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"هر دو متغیر حاوی مقادیر گم‌شده هستند؛ ردیف‌های حاوی این مقادیر در تحلیل حذف "
+"می‌شوند."
 
 msgid "The variable %s contains missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"متغیر %s حاوی مقادیر گم‌شده است؛ ردیف‌های حاوی این مقادیر در تحلیل حذف می‌شوند."
 
 msgid "Results not computed: The variables in this pair are the same."
-msgstr ""
+msgstr "نتایج محاسبه نشدند: متغیرهای این جفت یکسان هستند."
 
 msgid "Results not computed: The pair is incomplete."
-msgstr ""
+msgstr "نتایج محاسبه نشدند: جفت ناقص است."
 
 msgid "The variables %1$s contain missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"متغیرهای %1$s حاوی مقادیر گم‌شده هستند؛ ردیف‌های حاوی این مقادیر در تحلیل حذف "
+"می‌شوند."
 
 msgid "<b>Warning.</b>"
-msgstr ""
+msgstr "<b>هشدار.</b>"
 
 msgid "The variables %1$s and %2$s contain missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"متغیرهای %1$s و %2$s حاوی مقادیر گم‌شده هستند؛ ردیف‌های حاوی این مقادیر در "
+"تحلیل حذف می‌شوند."
 
 msgid "The variable %1$s contains missing values, the rows containing these values are removed in the analysis."
 msgstr ""
+"متغیر %1$s حاوی مقادیر گم‌شده است؛ ردیف‌های حاوی این مقادیر در تحلیل حذف "
+"می‌شوند."
 
 msgid "H%1$i"
-msgstr ""
+msgstr "H%1$i"
 
 msgid "Hu"
-msgstr ""
+msgstr "Hu"
 
 msgid "Hc"
-msgstr ""
+msgstr "Hc"
 
 msgid "<b>Warning</b>"
-msgstr ""
+msgstr "<b>هشدار</b>"
 
 msgid "The entered model constraints are incompatible with the data and therefore the computed results contain NaNs."
 msgstr ""
+"قیدهای مدل واردشده با داده‌ها ناسازگار هستند و بنابراین نتایج محاسبه‌شده حاوی "
+"NaN هستند."
 
 msgid "<b>Your hypotheses (almost) completely cover the parameter space. Therefore instead of PMPc, you should interpret PMPa.</b>"
 msgstr ""
+"<b>فرضیه‌های شما (تقریباً) به طور کامل فضای پارامتر را پوشش می‌دهند. بنابراین "
+"به جای PMPc باید PMPa را تفسیر کنید.</b>"
 
 msgid "Bayes Factor Matrix"
-msgstr ""
+msgstr "ماتریس فاکتور بیزی"
 
 msgid "Coefficients for Groups plus Covariates"
-msgstr ""
+msgstr "ضریب‌های گروه‌ها به همراه هم‌متغیرها"
 
 msgid "Coefficients for Parameters"
-msgstr ""
+msgstr "ضریب‌های پارامترها"
 
 msgid "Descriptive Statistics"
-msgstr ""
+msgstr "آمار توصیفی"
 
 msgid "Coefficient"
-msgstr ""
+msgstr "ضریب"
 
 msgid "Mean"
-msgstr ""
+msgstr "میانگین"
 
 msgid "%.0f%% Credible Interval"
-msgstr ""
+msgstr "بازه باورپذیر %.0f%%"
 
 msgid "Group"
-msgstr ""
+msgstr "گروه"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "SD"
-msgstr ""
+msgstr "انحراف معیار"
 
 msgid "SE"
-msgstr ""
+msgstr "خطای معیار"
 
 msgid "Lower"
-msgstr ""
+msgstr "پایین"
 
 msgid "Upper"
-msgstr ""
+msgstr "بالا"
 
 msgid "The displayed coefficients are standardized."
-msgstr ""
+msgstr "ضریب‌های نمایش‌داده‌شده استانداردشده هستند."
 
 msgid "The displayed coefficients are unstandardized."
-msgstr ""
+msgstr "ضریب‌های نمایش‌داده‌شده استانداردنشده هستند."
 
 msgid "The results for this variable were not computed."
-msgstr ""
+msgstr "نتایج برای این متغیر محاسبه نشدند."
 
 msgid "Posterior Probabilities"
-msgstr ""
+msgstr "احتمالات پسین"
 
 msgid "Plotting not possible: the results for this variable were not computed."
-msgstr ""
+msgstr "رسم نمودار امکان‌پذیر نیست: نتایج برای این متغیر محاسبه نشدند."
 
 msgid "Plotting not possible: %1$s"
-msgstr ""
+msgstr "رسم نمودار امکان‌پذیر نیست: %1$s"
 
 msgid "Plotting not possible: the results could not be computed."
-msgstr ""
+msgstr "رسم نمودار امکان‌پذیر نیست: نتایج قابل محاسبه نبودند."
 
 msgid "Descriptive Plots"
-msgstr ""
+msgstr "نمودارهای توصیفی"
 
 msgid "Descriptives Plot"
-msgstr ""
+msgstr "نمودار توصیفی‌ها"
 
 msgid "Adjusted Means"
-msgstr ""
+msgstr "میانگین‌های تعدیل‌شده"
 
 msgid "Difference"
-msgstr ""
+msgstr "تفاوت"
 
 msgid "H0"
-msgstr ""
+msgstr "H0"
 
 msgid "H2"
-msgstr ""
+msgstr "H2"
 
 msgid "H"
-msgstr ""
+msgstr "H"
 
 msgid "Excluding Hu and Hc"
-msgstr ""
+msgstr "به استثنای Hu و Hc"
 
 msgid "Including Hc"
-msgstr ""
+msgstr "شامل Hc"
 
 msgid "Including Hu"
-msgstr ""
+msgstr "شامل Hu"
 
 msgid "Path Diagram"
-msgstr ""
+msgstr "نمودار مسیر"
 
 msgid "Group: %1$s"
-msgstr ""
+msgstr "گروه: %1$s"
 
 msgid "An error occurred while creating this plot:<br>%1$s."
-msgstr ""
+msgstr "خطایی هنگام ایجاد این نمودار رخ داد:<br>%1$s."
