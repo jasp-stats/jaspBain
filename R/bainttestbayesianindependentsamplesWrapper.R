@@ -21,7 +21,7 @@
 #'
 BainTTestBayesianIndependentSamples <- function(
           data = NULL,
-          version = "0.95",
+          version = "1",
           bayesFactorPlot = FALSE,
           bayesFactorType = "BF01",
           credibleInterval = 0.95,
@@ -32,7 +32,7 @@ BainTTestBayesianIndependentSamples <- function(
           hypothesis = "equalNotEqual",
           plotHeight = 320,
           plotWidth = 480,
-          seed = 222777,
+          seed = 421018,
           variables = list(types = list(), value = list())) {
 
    defaultArgCalls <- formals(jaspBain::BainTTestBayesianIndependentSamples)

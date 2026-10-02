@@ -21,7 +21,7 @@
 #'
 BainTTestBayesianPairedSamples <- function(
           data = NULL,
-          version = "0.95",
+          version = "1",
           bayesFactorPlot = FALSE,
           bayesFactorType = "BF01",
           credibleInterval = 0.95,
@@ -32,7 +32,7 @@ BainTTestBayesianPairedSamples <- function(
           pairs = list(),
           plotHeight = 320,
           plotWidth = 480,
-          seed = 424838) {
+          seed = 188626) {
 
    defaultArgCalls <- formals(jaspBain::BainTTestBayesianPairedSamples)
    defaultArgs <- lapply(defaultArgCalls, eval)

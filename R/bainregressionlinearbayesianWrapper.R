@@ -21,7 +21,7 @@
 #'
 BainRegressionLinearBayesian <- function(
           data = NULL,
-          version = "0.95",
+          version = "1",
           bayesFactorMatrix = FALSE,
           bayesFactorPlot = FALSE,
           covariates = list(types = list(), value = list()),
@@ -32,7 +32,7 @@ BainRegressionLinearBayesian <- function(
           model = "",
           plotHeight = 320,
           plotWidth = 480,
-          seed = 720807,
+          seed = 836204,
           standardized = FALSE) {
 
    defaultArgCalls <- formals(jaspBain::BainRegressionLinearBayesian)

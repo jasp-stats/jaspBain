@@ -21,7 +21,7 @@
 #'
 BainSemBayesian <- function(
           data = NULL,
-          version = "0.95",
+          version = "1",
           bayesFactorMatrix = FALSE,
           bayesFactorPlot = FALSE,
           credibleInterval = 0.95,
@@ -35,7 +35,7 @@ BainSemBayesian <- function(
           pathDiagramLegend = FALSE,
           plotHeight = 320,
           plotWidth = 480,
-          seed = 346177,
+          seed = 802582,
           standardized = FALSE,
           syntax = list(columns = list(), model = "", modelOriginal = "")) {
 

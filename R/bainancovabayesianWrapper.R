@@ -17,11 +17,11 @@
 
 # This is a generated file. Don't change it!
 
-#' Regression
+#' Bain ANCOVA
 #'
 BainAncovaBayesian <- function(
           data = NULL,
-          version = "0.95",
+          version = "1",
           bayesFactorMatrix = FALSE,
           bayesFactorPlot = FALSE,
           covariates = list(types = list(), value = list()),
@@ -34,7 +34,7 @@ BainAncovaBayesian <- function(
           model = "",
           plotHeight = 320,
           plotWidth = 480,
-          seed = 300801,
+          seed = 730518,
           standardized = FALSE) {
 
    defaultArgCalls <- formals(jaspBain::BainAncovaBayesian)

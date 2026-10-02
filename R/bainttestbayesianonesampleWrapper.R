@@ -17,11 +17,11 @@
 
 # This is a generated file. Don't change it!
 
-#' ANOVA
+#' Bain One Sample T-Test
 #'
 BainTTestBayesianOneSample <- function(
           data = NULL,
-          version = "0.95",
+          version = "1",
           bayesFactorPlot = FALSE,
           bayesFactorType = "BF01",
           credibleInterval = 0.95,
@@ -31,7 +31,7 @@ BainTTestBayesianOneSample <- function(
           hypothesis = "equalNotEqual",
           plotHeight = 320,
           plotWidth = 480,
-          seed = 121845,
+          seed = 972076,
           testValue = 0,
           variables = list(types = list(), value = list())) {
 

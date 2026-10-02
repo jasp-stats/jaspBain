@@ -21,7 +21,7 @@
 #'
 BainAnovaBayesian <- function(
           data = NULL,
-          version = "0.95",
+          version = "1",
           bayesFactorMatrix = FALSE,
           bayesFactorPlot = FALSE,
           credibleInterval = 0.95,
@@ -33,7 +33,7 @@ BainAnovaBayesian <- function(
           model = "",
           plotHeight = 320,
           plotWidth = 480,
-          seed = 33009,
+          seed = 353263,
           standardized = FALSE) {
 
    defaultArgCalls <- formals(jaspBain::BainAnovaBayesian)
