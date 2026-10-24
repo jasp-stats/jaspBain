@@ -6,18 +6,22 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Language: zh_Hans\n"
 "X-Qt-Contexts: true\n"
+"PO-Revision-Date: 2026-10-25 12:51+0000\n"
+"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
+"Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
+"projects/jasp/jaspbain-qml/zh_Hans/>\n"
+"Language: zh_Hans\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 msgctxt "Description|"
 msgid "Bain"
 msgstr "Bain"
 
-#, fuzzy
 msgctxt "Description|"
 msgid ""
 "A module for computing approximated adjusted fractional Bayes factors for "
 "equality, inequality, and about equality constrained hypotheses."
-msgstr ""
-"用于计算针对等式、不等式和关于相等约束假设的近似调整分数贝叶斯因子的模块。"
+msgstr "用于计算关于等式、不等式和相等约束假设的近似调整分数贝叶斯因子的模块。"
 
 msgctxt "BainAncovaBayesian|"
 msgid "Dependent Variable"
@@ -86,7 +90,6 @@ msgstr ""
 "其中 factor 是因子名称，Low/Med/High 是因子水平名称。\n"
 "请阅读帮助文件以获取更多说明。"
 
-#, fuzzy
 msgctxt "BainAnovaBayesian|"
 msgid "Dependent Variable"
 msgstr "因变量"
@@ -150,7 +153,6 @@ msgstr ""
 "其中 factor 是因子名称，Low/Med/High 是因子水平名称。\n"
 "请阅读帮助文件以获取更多说明。"
 
-#, fuzzy
 msgctxt "BainRegressionLinearBayesian|"
 msgid "Dependent Variable"
 msgstr "因变量"
