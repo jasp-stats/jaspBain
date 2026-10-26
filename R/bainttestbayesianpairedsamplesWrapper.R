@@ -32,7 +32,7 @@ BainTTestBayesianPairedSamples <- function(
           pairs = list(),
           plotHeight = 320,
           plotWidth = 480,
-          seed = 188626) {
+          seed = 289289) {
 
    defaultArgCalls <- formals(jaspBain::BainTTestBayesianPairedSamples)
    defaultArgs <- lapply(defaultArgCalls, eval)

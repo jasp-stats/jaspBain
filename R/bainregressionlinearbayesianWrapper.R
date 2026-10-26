@@ -32,7 +32,7 @@ BainRegressionLinearBayesian <- function(
           model = "",
           plotHeight = 320,
           plotWidth = 480,
-          seed = 836204,
+          seed = 607063,
           standardized = FALSE) {
 
    defaultArgCalls <- formals(jaspBain::BainRegressionLinearBayesian)

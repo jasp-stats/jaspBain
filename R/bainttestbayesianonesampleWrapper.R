@@ -31,7 +31,7 @@ BainTTestBayesianOneSample <- function(
           hypothesis = "equalNotEqual",
           plotHeight = 320,
           plotWidth = 480,
-          seed = 972076,
+          seed = 139413,
           testValue = 0,
           variables = list(types = list(), value = list())) {
 

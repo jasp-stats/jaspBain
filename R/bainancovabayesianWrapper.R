@@ -34,7 +34,7 @@ BainAncovaBayesian <- function(
           model = "",
           plotHeight = 320,
           plotWidth = 480,
-          seed = 730518,
+          seed = 954279,
           standardized = FALSE) {
 
    defaultArgCalls <- formals(jaspBain::BainAncovaBayesian)

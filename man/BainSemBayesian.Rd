@@ -20,7 +20,7 @@ BainSemBayesian(
   pathDiagramLegend = FALSE,
   plotHeight = 320,
   plotWidth = 480,
-  seed = 802582,
+  seed = 616442,
   standardized = FALSE,
   syntax = list(columns = list(), model = "", modelOriginal = "")
 )
