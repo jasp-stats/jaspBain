@@ -32,7 +32,7 @@ BainRegressionLinearBayesian <- function(
           model = "",
           plotHeight = 320,
           plotWidth = 480,
-          seed = 250474,
+          seed = 693914,
           standardized = FALSE) {
 
    options <- mget(names(formals(sys.function())), envir = environment(), inherits = FALSE)

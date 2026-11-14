@@ -17,7 +17,7 @@ BainTTestBayesianIndependentSamples(
   hypothesis = "equalNotEqual",
   plotHeight = 320,
   plotWidth = 480,
-  seed = 195686,
+  seed = 58406,
   variables = list(types = list(), value = list())
 )
 }

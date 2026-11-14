@@ -17,7 +17,7 @@ BainTTestBayesianPairedSamples(
   pairs = list(),
   plotHeight = 320,
   plotWidth = 480,
-  seed = 776344
+  seed = 771595
 )
 }
 \description{

@@ -32,7 +32,7 @@ BainTTestBayesianIndependentSamples <- function(
           hypothesis = "equalNotEqual",
           plotHeight = 320,
           plotWidth = 480,
-          seed = 195686,
+          seed = 58406,
           variables = list(types = list(), value = list())) {
 
    options <- mget(names(formals(sys.function())), envir = environment(), inherits = FALSE)

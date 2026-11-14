@@ -34,7 +34,7 @@ BainAncovaBayesian <- function(
           model = "",
           plotHeight = 320,
           plotWidth = 480,
-          seed = 466265,
+          seed = 875530,
           standardized = FALSE) {
 
    options <- mget(names(formals(sys.function())), envir = environment(), inherits = FALSE)

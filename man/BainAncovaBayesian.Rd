@@ -19,7 +19,7 @@ BainAncovaBayesian(
   model = "",
   plotHeight = 320,
   plotWidth = 480,
-  seed = 466265,
+  seed = 875530,
   standardized = FALSE
 )
 }

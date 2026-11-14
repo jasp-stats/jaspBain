@@ -18,7 +18,7 @@ BainAnovaBayesian(
   model = "",
   plotHeight = 320,
   plotWidth = 480,
-  seed = 47237,
+  seed = 364173,
   standardized = FALSE
 )
 }
